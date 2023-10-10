@@ -1,3 +1,5 @@
+-- Adds prequire function to global namespace
+
 local M = {}
 
 function M.error(msg, name)

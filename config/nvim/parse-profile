@@ -1,8 +1,10 @@
 #!/usr/bin/env ruby
 
+# This script parses the output of `:profile` and prints the results in
+# descending order of self time.
+
 require "debug"
 
-# Replace 'your_file.txt' with the actual filename containing the neovim profile output
 file_path = "profile.log"
 script = ""
 

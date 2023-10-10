@@ -4,6 +4,43 @@ Nolan's Dotfiles
 These are my dotfiles I've maintained over the last 10 years. They originally 
 started as a fork of [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles).
 
+What's in it?
+-------------
+
+[neovim](https://neovim.io) configuration:
+
+* Full LUA based configs
+
+[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
+configuration:
+
+* Improve color resolution.
+* Remove administrative debris (session name, hostname, time) in status bar.
+* Set prefix to `Ctrl+s`
+* Soften status bar color from harsh green to light gray.
+
+[git](http://git-scm.com/) configuration:
+
+* Adds a `create-branch` alias to create feature branches.
+* Adds a `delete-branch` alias to delete feature branches.
+* Adds a `merge-branch` alias to merge feature branches into master.
+* Adds an `up` alias to fetch and rebase `origin/master` into the feature
+  branch. Use `git up -i` for interactive rebases.
+* Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
+* Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
+  config.
+* Adds `trust-bin` alias to append a project's `bin/` directory to `$PATH`.
+
+Shell aliases and scripts:
+
+* `b` for `bundle`.
+* `g` with no arguments is `git status` and with arguments acts like `git`.
+* `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
+* `mcd` to make a directory and change into it.
+* `replace foo bar **/*.rb` to find and replace within a given list of files.
+* `tat` to attach to tmux session named the same as the current directory.
+* `v` for `$VISUAL`.
+
 Requirements
 ------------
 
@@ -156,44 +193,4 @@ can add the `virtualenv` file, another `keys`, and a third `chpwd`.
 
 The `~/dotfiles-local/zshrc.local` is loaded after `~/dotfiles-local/zsh/configs`.
 
-What's in it?
--------------
 
-[neovim](https://neovim.io) configuration:
-
-* Uses an updated LUA based setup with [LunarVim](https://github.com/LunarVim/Neovim-from-scratch) as a base
-
-[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
-configuration:
-
-* Improve color resolution.
-* Remove administrative debris (session name, hostname, time) in status bar.
-* Set prefix to `Ctrl+s`
-* Soften status bar color from harsh green to light gray.
-
-[git](http://git-scm.com/) configuration:
-
-* Adds a `create-branch` alias to create feature branches.
-* Adds a `delete-branch` alias to delete feature branches.
-* Adds a `merge-branch` alias to merge feature branches into master.
-* Adds an `up` alias to fetch and rebase `origin/master` into the feature
-  branch. Use `git up -i` for interactive rebases.
-* Adds `post-{checkout,commit,merge}` hooks to re-index your ctags.
-* Adds `pre-commit` and `prepare-commit-msg` stubs that delegate to your local
-  config.
-* Adds `trust-bin` alias to append a project's `bin/` directory to `$PATH`.
-
-[Ruby](https://www.ruby-lang.org/en/) configuration:
-
-* Add trusted binstubs to the `PATH`.
-* Load the ASDF version manager.
-
-Shell aliases and scripts:
-
-* `b` for `bundle`.
-* `g` with no arguments is `git status` and with arguments acts like `git`.
-* `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
-* `mcd` to make a directory and change into it.
-* `replace foo bar **/*.rb` to find and replace within a given list of files.
-* `tat` to attach to tmux session named the same as the current directory.
-* `v` for `$VISUAL`.

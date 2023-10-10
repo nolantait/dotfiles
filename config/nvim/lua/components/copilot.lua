@@ -1,3 +1,5 @@
+-- Component for copilot statusline to show its status
+
 local status_ok, api = prequire("copilot.api")
 local M = { init = false }
 

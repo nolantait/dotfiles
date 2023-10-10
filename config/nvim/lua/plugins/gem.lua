@@ -1,12 +1,14 @@
+-- Custom plugin to provide rails.vim style keybids to normal gem projects
+
 local M = {}
-gem = {}
+M.gem = {}
 
 function M.Detect()
     if vim.fn.empty(vim.fn.glob('*.gemspec')) == 1 then
         return
     end
 
-    gem.path = vim.fn.getcwd()
+    M.gem.path = vim.fn.getcwd()
 end
 
 local function lib2spec(file)

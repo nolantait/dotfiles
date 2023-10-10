@@ -1,6 +1,3 @@
-local augroup = vim.api.nvim_create_augroup
-local navic_status_ok, navic = prequire("nvim-navic")
-
 local M = {}
 
 M.setup = function()
@@ -59,9 +56,15 @@ local function lsp_highlight_document(client)
   end
 end
 
+-- Provides navigation for LSP symbols for barbecue.nvim
 local function lsp_attach_navic(client, bufnr)
+  local ok, navic = prequire("nvim-navic")
+  if not ok then
+    return
+  end
+
   -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities["documentSymbolProvider"] and navic_status_ok then
+  if navic and client.server_capabilities["documentSymbolProvider"] then
     navic.attach(client, bufnr)
   end
 end
@@ -69,7 +72,7 @@ end
 
 M.on_attach = function(client, buffer)
   local keymap = vim.keymap.set
-  local opts = { noremap = true, silent = true, buffer=buffer }
+  local opts = { noremap = true, silent = true, buffer = buffer }
 
   lsp_highlight_document(client)
   lsp_attach_navic(client, buffer)
@@ -82,34 +85,40 @@ M.on_attach = function(client, buffer)
   keymap("n", "K", vim.lsp.buf.hover, opts)
   keymap("n", "<C-k>", vim.lsp.buf.signature_help, opts)
   keymap("n", "gr", vim.lsp.buf.references, opts)
-  keymap('n', '<leader>f', function () vim.lsp.buf.format { async = true } end, opts)
+  keymap('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, opts)
   keymap("n", "<leader>D", vim.lsp.buf.type_definition, opts)
   keymap("n", "<leader>q", vim.diagnostic.setloclist, opts)
 end
 
-local cmp_nvim_lsp_ok, cmp_nvim_lsp = prequire("cmp_nvim_lsp")
-if cmp_nvim_lsp_ok then
-  M.capabilities = cmp_nvim_lsp.default_capabilities()
-else
-  M.capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+local cmp_ok, cmp_nvim_lsp = prequire("cmp_nvim_lsp")
+if cmp_ok and cmp_nvim_lsp then
+  capabilities = cmp_nvim_lsp.default_capabilities()
 end
 
-M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { "markdown", "plaintext" },
-  snippetSupport = true,
-  preselectSupport = true,
-  insertReplaceSupport = true,
-  labelDetailsSupport = true,
-  deprecatedSupport = true,
-  commitCharactersSupport = true,
-  tagSupport = { valueSet = { 1 } },
-  resolveSupport = {
-    properties = {
-      "documentation",
-      "detail",
-      "additionalTextEdits",
-    },
-  },
+capabilities.textDocument = {
+  completion = {
+    completionItem = {
+      documentationFormat = { "markdown", "plaintext" },
+      snippetSupport = true,
+      preselectSupport = true,
+      insertReplaceSupport = true,
+      labelDetailsSupport = true,
+      deprecatedSupport = true,
+      commitCharactersSupport = true,
+      tagSupport = { valueSet = { 1 } },
+      resolveSupport = {
+        properties = {
+          "documentation",
+          "detail",
+          "additionalTextEdits",
+        },
+      },
+    }
+  }
 }
+
+M.capabilities = capabilities
 
 return M

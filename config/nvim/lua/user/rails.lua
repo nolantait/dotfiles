@@ -1,3 +1,5 @@
+-- Configuration for rails.vim
+
 -- Set the g:rails_projections table
 vim.g.rails_projections = {
   ["app/components/*/component.rb"] = {

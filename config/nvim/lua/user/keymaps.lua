@@ -1,4 +1,6 @@
-local keybinds = require("keybinds")
+-- Sets up keymaps according to keybinds file
+
+local keybinds = require("user.keybinds")
 
 local opts = { noremap = true, silent = true }
 
