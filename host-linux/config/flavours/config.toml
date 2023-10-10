@@ -70,7 +70,6 @@ rewrite = false
 start = "-- Start flavours"
 end = "-- End flavours"
 
-
 [[item]]
 file = "~/dotfiles/tmux.conf"
 template = "tmux"

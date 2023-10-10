@@ -70,6 +70,7 @@ Layout/MultilineHashKeyLineBreaks:
   Enabled: true
 Layout/MultilineMethodArgumentLineBreaks:
   Enabled: true
+  AllowMultilineFinalElement: true
 Layout/MultilineMethodCallBraceLayout:
   EnforcedStyle: new_line
 Layout/MultilineMethodCallIndentation:
@@ -166,7 +167,7 @@ Metrics/CyclomaticComplexity:
   Max: 10
 Metrics/MethodLength:
   CountAsOne: ['array', 'hash']
-  Max: 10
+  Max: 20
 Metrics/ModuleLength:
   CountAsOne: ['array', 'hash']
   Max: 100
