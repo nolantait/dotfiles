@@ -1,0 +1,4 @@
+# Search which filenames contain given string in local dir subtree 
+where() {
+    find . -name "*${1}*"
+}

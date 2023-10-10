@@ -1,0 +1,87 @@
+# [[item]]
+# file = "~/dotfiles-local/vim/colors/base16.vim"
+# template = "vim"
+# subtemplate = "custom"
+# rewrite = true
+# hook = "rcup -KB linux"
+
+[[item]]
+file = "~/dotfiles/host-linux/config/dunst/dunstrc"
+template = "dunst"
+subtemplate = "custom"
+start = "# Start flavours"
+end = "# End flavours"
+hook = "pkill dunst && dunst &"
+
+[[item]]
+file = "~/dotfiles/host-linux/Xresources"
+template = "xresources"
+subtemplate = "default-256"
+start = "# Start flavours"
+end = "# End flavours"
+hook = "xrdb ~/.Xresources"
+
+[[item]]
+file = "~/dotfiles/host-linux/config/polybar/config.ini"
+template = "polybar"
+rewrite = false
+start = "# Start flavours"
+end = "# End flavours"
+hook = "polybar-msg cmd restart"
+
+[[item]]
+file = "~/dotfiles/host-linux/config/i3/config"
+template = "i3"
+subtemplate = "custom"
+rewrite = false
+start = "# Start flavours"
+end = "# End flavours"
+hook = "i3-msg reload"
+
+[[item]]
+file = "~/dotfiles/config/nvim/lua/user/colorscheme.lua"
+template = "nvim"
+subtemplate = "colorscheme"
+rewrite = false
+start = "-- Start flavours"
+end = "-- End flavours"
+
+[[item]]
+file = "~/dotfiles/config/nvim/lua/user/barbecue.lua"
+template = "nvim"
+subtemplate = "barbecue"
+rewrite = false
+start = "-- Start flavours"
+end = "-- End flavours"
+
+[[item]]
+file = "~/dotfiles/config/nvim/lua/user/lualine.lua"
+template = "nvim"
+subtemplate = "lualine"
+rewrite = false
+start = "-- Start flavours"
+end = "-- End flavours"
+
+[[item]]
+file = "~/dotfiles/host-linux/config/conky/conkyrc"
+template = "conky"
+subtemplate = "custom"
+rewrite = false
+start = "-- Start flavours"
+end = "-- End flavours"
+
+
+[[item]]
+file = "~/dotfiles/tmux.conf"
+template = "tmux"
+rewrite = false
+start = "# Start flavours"
+end = "# End flavours"
+
+[[item]]
+file = "~/dotfiles/config/alacritty/alacritty.yml"
+template = "alacritty"
+subtemplate = "default-256"
+rewrite = false
+start = "# Start flavours"
+end = "# End flavours"

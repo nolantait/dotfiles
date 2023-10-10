@@ -1,0 +1,145 @@
+conky.config = {
+    alignment = 'top_left',
+    background = true,
+    border_inner_margin = 20,
+    border_outer_margin = 20,
+    cpu_avg_samples = 2,
+    cpu_avg_samples = 2,
+    default_color = 'white',
+    default_outline_color = 'white',
+    default_shade_color = 'white',
+    diskio_avg_samples = 10,
+    double_buffer = true,
+    draw_borders = false,
+    draw_graph_borders = false,
+    draw_outline = false,
+    draw_shades = false,
+    extra_newline = false,
+    font = 'Hack Nerd Font Mono:size=9',
+    format_human_readable = true,
+    gap_x = 41,
+    gap_y = 71,
+    if_up_strictness = 'address',
+    imlib_cache_size = 0,
+    max_text_width = 0,
+    minimum_width = 280,
+    minimum_height = 2000,
+    net_avg_samples = 2,
+    no_buffers = true,
+    out_to_console = false,
+    out_to_stderr = false,
+    own_window = true,
+    own_window_transparent = false,
+    own_window_argb_visual = true,
+    own_window_argb_value = 240,
+    own_window_type = 'override',
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+    own_window_class = 'conky',
+    short_units = true,
+    show_graph_range = false,
+    show_graph_scale = false,
+    stippled_borders = 0,
+    temperature_unit = 'celsius',
+    update_interval = 1,
+    update_interval = 1.0,
+    uppercase = false,
+    use_spacer = 'none',
+    use_xft = true,
+    xftalpha = 1,
+
+    -- Start flavours
+    -- Base16 OneDark
+    -- Author: Lalit Magant (http://github.com/tilal6991)
+    -- Sets up the theme for base16 colors
+
+    own_window_colour = '#282c34', -- background color
+    color1 = '61afef', -- title color
+    color2 = '56b6c2', -- subtitle color
+    color3 = 'c8ccd4', -- text color
+    color4 = 'e5c07b', -- accent color
+    -- End flavours
+
+    font1 = 'Hack Nerd Font Mono:size=12:bold',
+}
+
+conky.text = [[
+${font}${color3}Date: ${alignr}${color3}${time %a, %d %B %Y}
+${color3}Kernel: ${alignr}${color3}${kernel}
+${color3}Distro: ${alignr}${color3}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4"" $5'}}
+${color3}Uptime: ${alignr}${color3}${uptime}
+#------------+
+#TEMPS
+#------------+
+${voffset 5}${color1}${font1}TEMPS ${hr 2}${font}
+${color3}CPU: ${color4}${hwmon 1 temp 1}°C ${alignr}${color3}GPU: ${color4}${nvidia gputemp 0}°C
+${alignr}${color3}GPU: ${color4}${nvidia gputemp 1}°C
+#------------+
+#CPU
+#------------+
+${voffset 5}${color1}${font1}CPU ${hr 2}${font}
+${voffset 5}${color3}Name: ${color3}${alignr}${execi 6000 cat /proc/cpuinfo | grep 'model name' | sed -e 's/model name.*: //'| uniq | cut -c 1-16}
+${color3}Freq: ${color3}${freq_g} GHz$alignr${color3}Usage: ${color3}${cpu}%
+#------------+
+#CPU CORES
+#------------+
+${voffset 5}${color3}1 ${goto 45} ${color4}${cpu cpu1}% ${goto 85} ${color2}${cpubar cpu1 13, 60} ${goto 170} ${color3} 2 ${goto 195}${color4}${cpu cpu2}% ${goto 235} ${color2}${cpubar cpu2 13, 60}
+${voffset 2}${color3}3 ${goto 45} ${color4}${cpu cpu3}% ${goto 85} ${color2}${cpubar cpu3 13, 60} ${goto 170} ${color3} 4 ${goto 195}${color4}${cpu cpu4}% ${goto 235} ${color2}${cpubar cpu4 13, 60}
+${voffset 2}${color3}5 ${goto 45} ${color4}${cpu cpu5}% ${goto 85} ${color2}${cpubar cpu5 13, 60} ${goto 170} ${color3} 6 ${goto 195}${color4}${cpu cpu6}% ${goto 235} ${color2}${cpubar cpu6 13, 60}
+${voffset 2}${color3}7 ${goto 45} ${color4}${cpu cpu7}% ${goto 85} ${color2}${cpubar cpu7 13, 60} ${goto 170} ${color3} 8 ${goto 195}${color4}${cpu cpu8}% ${goto 235} ${color2}${cpubar cpu8 13, 60}
+${color4}${cpugraph 20}
+#------------+
+#PROCESSES
+#------------+
+${voffset 5}${color3}Name${alignr}CPU%
+$color4${top name 1}$alignr${top cpu 1}${color3}
+${top name 2} ${alignr}${top cpu 2}
+${top name 3} ${alignr}${top cpu 3}
+${top name 4} ${alignr}${top cpu 4}
+${top name 5} ${alignr}${top cpu 5}
+${voffset 5}${color3}Threads: ${color3}$threads${alignr}${color3}Running: ${color3}${running_threads}
+${color3}Processes: ${color3}${processes}${alignr}${color3}Running:${color3} ${running_processes}
+#------------+
+#MEMORY
+#------------+
+${voffset 5}${color1}${font1}MEMORY ${hr 2}${font}
+${voffset 5}${color3}Used: ${color3}${mem} ($memperc%)${color3}${alignr}Free: ${color3}${memeasyfree}
+${color2}${membar}
+${voffset 5}${color3}Name${alignr}MEM%
+${color4}${top_mem name 1} ${alignr}${top_mem mem 1}${color3}
+${top_mem name 2} ${alignr}${top_mem mem 2}
+${top_mem name 3} ${alignr}${top_mem mem 3}
+${top_mem name 4} ${alignr}${top_mem mem 4}
+#------------+
+# GPU
+#------------+
+${voffset 5}${color1}${font1}VIDEO ${hr 2}${font}
+${voffset 5}${color1}GPU:
+${color3}- ${nvidia modelname 0}
+${color3}- ${nvidia modelname 1}
+${color1}Driver: 
+${color3}- ${nvidia driverversion 0}
+${color3}- ${nvidia driverversion 1}
+${voffset 5}${color4}${nvidia gpuutil 0}% ${color2}${nvidiabar 10 gpuutil 0}
+${color4}${nvidia gpuutil 0}% ${color2}${nvidiabar 10 gpuutil 1}
+#------------+
+# DISK
+#------------+
+${voffset 5}${color1}${font1}DISK ${hr 2}${font}
+# HDD
+${voffset 7}${color3}HDD ${stippled_hr 3 3}
+${voffset 5}${color3}Used: ${color4}${fs_used /}${color3}${goto 200}Free:${goto 250}${color4}${fs_free /}
+${color2}${fs_bar /}
+${color3}Read: ${color4}${diskio_read /dev/sdb2}${goto 200}${color3}Write:${goto 250}${color4}${diskio_write /dev/sdb2}
+${color2}${diskiograph_read 20,130} ${goto 200}${alignr}${diskiograph_write 20,130}
+
+#------------+
+#NETWORK
+#------------+
+${voffset 5}${color1}${font1}NETWORK ${hr 2}${font}
+${voffset 5}${color4}${addr enp10s0}${alignr}${if_existing /sys/class/net/enp10s0/operstate up}ONLINE${else}OFFLINE${endif}
+${color3}Down: ${color4}${downspeed enp10s0}/s  ${alignr}${color3}Total: ${color4}${totaldown enp10s0}
+${color2}${downspeedgraph enp10s0}
+${color3}Up: ${color4}${upspeed enp10s0}/s  ${alignr}${color3}Total: ${color4}${totalup enp10s0}
+${color2}${upspeedgraph enp10s0}
+]]
+

@@ -1,0 +1,21 @@
+# Unix
+alias mkdir="mkdir -p"
+
+# Rails
+alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+# Supress egrep warnings
+alias egrep="grep -E"
+
+# Use neovim if available over vim
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi
+
+# Include custom aliases
+if [[ -f ~/.aliases.local ]]; then
+  source ~/.aliases.local
+fi

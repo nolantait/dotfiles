@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Get the current branch name
+#
+# Example:
+#   git current-branch
+
+set -e
+
+git rev-parse --abbrev-ref HEAD

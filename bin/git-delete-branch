@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Delete a branch locally and remotely
+#
+# Example:
+#  git delete-branch new-feature-nt
+
+set -e
+
+git push origin :refs/heads/"$1"
+git branch --delete "$1"

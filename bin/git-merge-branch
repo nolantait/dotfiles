@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Merge the last branch into the current branch
+#
+# Example:
+#  git merge-branch
+
+set -e
+
+if git symbolic-ref --short refs/remotes/origin/HEAD >/dev/null; then
+  master_branch="$(git symbolic-ref --short refs/remotes/origin/HEAD | sed 's@^origin/@@')" "$@"
+else
+  echo "You don't have a primary branch reference set for your origin remote.
+  Use:
+  git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/{name_of_your_primary_branch}
+
+  to set the reference and then try merging again."
+
+  exit 1
+fi
+
+git fetch origin
+line_count=$(git diff origin/$master_branch..$master_branch | wc -l)
+
+if [ $line_count -gt 0 ]; then
+  printf "failed: $master_branch is not up to date with origin/$master_branch\n"
+  exit 1
+fi
+
+git checkout $master_branch
+git merge "@{-1}"

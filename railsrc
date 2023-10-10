@@ -1,0 +1,8 @@
+-T
+-d postgresql
+--javascript=webpack
+--css=tailwind
+--asset-pipeline=propshaft
+--skip-action-text
+--skip-active-storage
+--skip-jbuilder

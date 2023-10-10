@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Trust the current branch
+#
+# Example:
+#   git trust
+
+mkdir -p .git/safe

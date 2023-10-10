@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Amend the last commit with the current date
+#
+# Example:
+#  git ca
+
+git commit --amend -v --date="$(date +%Y-%m-%dT%H:%M:%S)"

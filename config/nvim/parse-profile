@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "debug"
+
+# Replace 'your_file.txt' with the actual filename containing the neovim profile output
+file_path = "profile.log"
+script = ""
+
+Script = Data.define(:name, :time)
+
+scripts = [].tap do |scripts|
+  File.foreach(file_path) do |line|
+    if line =~ /^SCRIPT\s+(\S+)/
+      script = $1
+    elsif line =~ /^ Self time:\s+(\S+)/
+      self_time = $1
+      scripts << Script.new(name: script, time: self_time.to_f)
+    end
+  end
+end
+
+scripts.sort_by(&:time).each do |script|
+  puts "#{script.name} -- #{script.time}"
+end
