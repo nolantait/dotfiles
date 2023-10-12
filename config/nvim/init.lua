@@ -30,6 +30,7 @@ require "user.telescope"
 require "user.treesitter"
 require "user.treesitter-context"
 require "user.whichkey"
+require "user.wilder"
 
 -- Ordering dependent
 require "user.cmp"

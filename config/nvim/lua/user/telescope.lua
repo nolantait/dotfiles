@@ -4,22 +4,40 @@ if not ok then
 end
 
 if telescope then
-  telescope.load_extension "ui-select"
-  telescope.load_extension "frecency"
-  telescope.load_extension "fzf"
-
   local actions = require "telescope.actions"
   local previewers = require "telescope.previewers"
   local themes = require "telescope.themes"
+  local sorters = require "telescope.sorters"
 
-  telescope.setup {
+  telescope.setup({
     defaults = {
-      prompt_prefix = " ",
-      selection_caret = " ",
-      path_display = { "truncate" },
-      layout_strategy = "flex",
+      border = {},
+      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      buffer_previewer_maker = previewers.buffer_previewer_maker,
+      color_devicons = true,
+      dynamic_preview_title = true,
+      file_sorter = sorters.get_fuzzy_file,
+      file_ignore_patterns = {
+        "node_modules/",
+        ".git/",
+        ".cache",
+        "build/",
+        "%.class",
+        "%.pdf",
+        "%.mkv",
+        "%.mp4",
+        "%.zip"
+      },
+      generic_sorter = sorters.get_generic_fuzzy_sorter,
+      file_previewer = previewers.vim_buffer_cat.new,
+      grep_previewer = previewers.vim_buffer_vimgrep.new,
       initial_mode = "insert",
+      layout_strategy = "flex",
+      path_display = { "truncate" },
+      prompt_prefix = " ",
+      results_title = false,
       scroll_strategy = "cycle",
+      selection_caret = " ",
       selection_strategy = "reset",
       sorting_strategy = "ascending",
       layout_config = {
@@ -34,18 +52,6 @@ if telescope then
         height = 0.80,
         preview_cutoff = 120,
       },
-      -- file_sorter = require("telescope.sorters").get_fuzzy_file,
-      file_ignore_patterns = { "node_modules" },
-      -- generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-      winblend = 0,
-      border = {},
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      color_devicons = true,
-      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-      file_previewer = previewers.vim_buffer_cat.new,
-      grep_previewer = previewers.vim_buffer_vimgrep.new,
-      qflist_previewer = previewers.vim_buffer_qflist.new,
-      buffer_previewer_maker = previewers.buffer_previewer_maker,
       mappings = {
         i = {
           ["<C-f>"] = actions.cycle_history_next,
@@ -77,7 +83,6 @@ if telescope then
           ["<C-Tab>"] = actions.complete_tag,
           ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
         },
-
         n = {
           ["<esc>"] = actions.close,
           ["q"] = actions.close,
@@ -111,6 +116,17 @@ if telescope then
           ["?"] = actions.which_key,
         },
       },
+      qflist_previewer = previewers.vim_buffer_qflist.new,
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+      winblend = 0,
+      vimgrep_arguments = {
+        "rg",
+        "--no-heading",
+        "--with-filename",
+        "--line-number",
+        "--column",
+        "--smart-case"
+      }
     },
     pickers = {
       lsp_references = { theme = "dropdown" },
@@ -126,6 +142,8 @@ if telescope then
     extensions = {
       frecency = {
         show_scores = true,
+        show_unindexed = true,
+        disable_devicons = false,
         ignore_patterns = {
           "*.git/*",
           "*/tmp/*",
@@ -143,6 +161,10 @@ if telescope then
       ["ui-select"] = {
         themes.get_dropdown {},
       },
-    },
-  }
+    }
+  })
+
+  telescope.load_extension "ui-select"
+  telescope.load_extension "frecency"
+  telescope.load_extension "fzf"
 end
