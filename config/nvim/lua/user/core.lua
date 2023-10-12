@@ -1,4 +1,8 @@
--- disable menu loading
+-- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
+vim.loader.enable()
+vim.api.nvim_set_var("loaded_perl_provider", 0)
+
+-- Disable menu loading
 vim.g.did_install_default_menus = 1
 vim.g.did_install_syntax_menu = 1
 
@@ -46,3 +50,21 @@ vim.g.editorconfig = 1
 -- NOTE: Disabling rplugin.vim will show error for `wilder.nvim` in :checkhealth,
 -- NOTE:  but since it's config doesn't require python rtp, it's fine to ignore.
 vim.g.loaded_remote_plugins = 1 -- Disable menu loading
+
+-- Disable markdown folding
+vim.g.vim_markdown_folding_disabled = 1
+
+-- Fenced languages syntax highlight in markdown
+vim.g.vim_markdown_fenced_languages = {
+  "c==cpp",
+  "viml=vim",
+  "bash=sh",
+  "ini=dosini",
+  "py=python",
+}
+
+-- Highlight YAML/TOML/JSON front matter.
+vim.g.vim_markdown_frontmatter = true
+
+-- Strikethrough uses two tildes.
+vim.g.vim_markdown_strikethrough = true

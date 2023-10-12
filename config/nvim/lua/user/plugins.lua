@@ -70,7 +70,8 @@ return packer.startup(function(use)
     }
   }
   use "nvim-treesitter/playground"
-  use "nvim-treesitter/nvim-treesitter-context"
+  use "nvim-treesitter/nvim-treesitter-context" -- Show context of current function
+  use "RRethy/vim-illuminate" -- Highlight other uses of the word under cusror
 
   -- UI
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim

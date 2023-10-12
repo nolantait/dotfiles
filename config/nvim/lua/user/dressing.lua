@@ -1,3 +1,5 @@
+-- Better UI for neovim, used by other plugins
+
 local ok, dressing = prequire("dressing")
 if not ok then
   return
