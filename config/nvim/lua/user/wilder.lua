@@ -5,15 +5,19 @@ end
 
 if wilder then
   local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-    max_height = "25%",
+    max_height = "50%",
     border = "rounded",
     highlights = {
-      default = "Pmenu",
+      default = "Normal",
       border = "PmenuBorder", -- highlight to use for the border
       accent = wilder.make_hl("WilderAccent", "CmpItemAbbr", "CmpItemAbbrMatch"),
     },
     empty_message = wilder.popupmenu_empty_message_with_spinner(),
-    highlighter = wilder.lua_fzy_highlighter(),
+    highlighter = {
+      wilder.basic_highlighter(),
+      -- wilder.lua_pcre2_highlighter(),
+      -- wilder.lua_fzy_highlighter(),
+    },
     left = {
       " ",
       wilder.popupmenu_devicons(),
