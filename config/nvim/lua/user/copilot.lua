@@ -5,10 +5,15 @@ end
 
 if copilot then
   copilot.setup({
-    panel = { enabled = false },
-    suggestion = { enabled = false },
+    cmp = {
+      enabled = true,
+      method = "getCompletionsCycling"
+    },
+    copilot_node_command = "node", -- Node.js version must be > 16.x
     filetypes = {
       yaml = false,
+      toml = false,
+      json = false,
       markdown = false,
       help = false,
       gitcommit = false,
@@ -17,8 +22,16 @@ if copilot then
       svn = false,
       cvs = false,
       ["."] = false,
+      ["dap-repl"] = false
     },
-    copilot_node_command = "node", -- Node.js version must be > 16.x
+    panel = {
+      -- Disabled to not interfere with copilot-cmp
+      enabled = false
+    },
+    suggestion = {
+      -- Disabled to not interfere with copilot-cmp
+      enabled = false
+    },
     server_opts_overrides = {},
   })
 end

@@ -53,34 +53,65 @@ if cmp then
   }
   -- find more here: https://www.nerdfonts.com/cheat-sheet
 
+  local compare = cmp.config.compare
+
+  compare.lsp_scores = function(entry_a, entry_b)
+    local score_a = entry_a.completion_item.score
+    local score_b = entry_b.completion_item.score
+    local diff = 0
+
+    if score_a and score_b then
+      diff = (score_b * entry_b.score) - (score_a * entry_a.score)
+    else
+      diff = entry_b.score - entry_a.score
+    end
+
+    return (diff < 0)
+  end
+
   local comparators = {
-    cmp.config.compare.exact,
-    cmp.config.compare.offset,
-    cmp.config.compare.score,
-    cmp.config.compare.recently_used,
-    cmp.config.compare.locality,
-    cmp.config.compare.kind,
-    cmp.config.compare.sort_text,
-    cmp.config.compare.length,
-    cmp.config.compare.order,
+    compare.offset,
+    compare.exact,
+    compare.lsp_scores,
+    compare.score,
+    compare.recently_used,
+    compare.locality,
+    compare.kind,
+    compare.sort_text,
+    compare.length,
+    compare.order,
   }
 
   -- Setup copilot cmp integration
   local copilot_ok, copilot_cmp = prequire("copilot_cmp")
   if copilot_ok and copilot_cmp then
-    copilot_cmp.setup()
-    local copilot_comparators = { require("copilot_cmp.comparators").prioritize }
+    copilot_cmp.setup({
+      method = "getCompletionsCycling"
+    })
+
+    local copilot_comparators = {
+      require("copilot_cmp.comparators").prioritize,
+      require("copilot_cmp.comparators").score
+    }
+    -- Insert copilot suggestions into the top priority
     table.insert(comparators, 1, copilot_comparators[1])
   end
 
+  -- Default implementation of on_tab
   local on_tab = function(fallback)
-    fallback()
+    if cmp.visible() then
+      cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+    else
+      fallback()
+    end
   end
 
+  -- Default implementation of on_shift_tab
   local on_shift_tab = function(fallback)
     fallback()
   end
 
+  -- Default implementation of expand_snippet
   local expand_snippet = function(args)
     return
   end
@@ -88,6 +119,7 @@ if cmp then
   -- Optionally load luasnip support
   local luasnip_ok, luasnip = prequire("luasnip")
   if luasnip then
+    -- Redefine on_tab to support luasnip
     on_tab = function(fallback)
       if cmp.visible() then
         cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
@@ -100,6 +132,7 @@ if cmp then
       end
     end
 
+    -- Redefine on_shift_tab to support luasnip
     on_shift_tab = function(fallback)
       if cmp.visible() then
         cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
@@ -110,6 +143,7 @@ if cmp then
       end
     end
 
+    -- Redefine expand_snippet to support luasnip
     expand_snippet = function(args)
       if not luasnip_ok then
         return
@@ -118,16 +152,36 @@ if cmp then
     end
   end
 
+  -- Setup cmp with everything above
   cmp.setup {
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     },
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+
+        vim_item.menu = ({
+          copilot = "[Copilot]",
+          nvim_lua = "[LUA]",
+          nvim_lsp = "[LSP]",
+          buffer = "[Buffer]",
+          path = "[Path]",
+          treesitter = "[TS]",
+          spell = "[Spell]",
+          luasnip = "[LuaSnip]",
+        })[entry.source.name]
+
+        return vim_item
+      end,
+    },
     mapping = {
       ["<C-k>"] = cmp.mapping.select_prev_item(),
       ["<C-j>"] = cmp.mapping.select_next_item(),
-      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+      ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
+      ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
       ["<C-e>"] = cmp.mapping {
@@ -143,28 +197,19 @@ if cmp then
       ["<Tab>"] = cmp.mapping(on_tab, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(on_shift_tab, { "i", "s" }),
     },
-    formatting = {
-      fields = { "kind", "abbr", "menu" },
-      format = function(entry, vim_item)
-        -- Kind icons
-        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-        vim_item.menu = ({
-          copilot = "[Copilot]",
-          nvim_lsp = "[LSP]",
-          buffer = "[Buffer]",
-          path = "[Path]",
-          luasnip = "[LuaSnip]",
-        })[entry.source.name]
-        return vim_item
-      end,
+    matching = {
+      disallow_partial_fuzzy_matching = false
     },
+    preselect = cmp.PreselectMode.Item,
     sources = cmp.config.sources({
       { name = "copilot" },
+      { name = "nvim_lua" },
       { name = "nvim_lsp" },
       { name = "buffer" },
       { name = "path" },
-      { name = "luasnip" }
+      { name = "luasnip" },
+      { name = "spell" },
+      { name = "treesitter" }
     }, {
       { name = "buffer" },
     }),
@@ -177,17 +222,20 @@ if cmp then
     },
     window = {
       completion = {
+        border = border("PmenuBorder"),
         side_padding = 1,
-        winhighlight = "Normal:CmpPmenu,CursorLine:CmpSel,Search:PmenuSel",
+        winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:PmenuSel",
         scrollbar = false
       },
       documentation = {
-        border = border "CmpDocBorder",
+        border = border("CmpDocBorder"),
         winhighlight = "Normal:CmpDoc",
       },
     },
     experimental = {
-      ghost_text = false,
+      ghost_text = {
+        hl_group = "Whitespace"
+      },
       native_menu = false,
     },
   }

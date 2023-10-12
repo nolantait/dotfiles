@@ -124,6 +124,16 @@ if telescope then
       },
     },
     extensions = {
+      frecency = {
+        show_scores = true,
+        ignore_patterns = {
+          "*.git/*",
+          "*/tmp/*",
+          "term://*"
+        },
+        db_safe_mode = false,
+        auto_validate = true
+      },
       fzf = {
         fuzzy = true,
         override_generic_sorter = true,
