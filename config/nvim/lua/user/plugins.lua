@@ -55,8 +55,7 @@ return packer.startup(function(use)
         run = "make"
       },
       {
-        "nvim-telescope/telescope-frecency.nvim",
-        requires = { "kkharji/sqlite.lua" }
+        "nvim-telescope/telescope-frecency.nvim"
       }
     }
   }

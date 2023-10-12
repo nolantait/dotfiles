@@ -2,17 +2,18 @@
 vim.loader.enable()
 vim.api.nvim_set_var("loaded_perl_provider", 0)
 
+require "user.core"
+require "user.plugins"
+
 require "user.utils"
 require "user.options"
 require "user.colorscheme"
 require "user.devicons"
-require "user.plugins"
 require "user.alpha"
 require "user.autocommands"
 require "user.bufferline"
 require "user.barbecue"
 require "user.colorizer"
-require "user.commands"
 require "user.copilot"
 require "user.dressing"
 require "user.rails"
