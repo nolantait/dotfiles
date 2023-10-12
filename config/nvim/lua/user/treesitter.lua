@@ -5,6 +5,11 @@ end
 
 if treesitter then
   treesitter.setup({
+    autotag = { enable = true },
+    context_commentstring = {
+      enable = true,
+      enable_autocmd = false
+    },
     ensure_installed = {
       "css",
       "elixir",
@@ -26,19 +31,14 @@ if treesitter then
       "vim",
       "yaml",
     },
-    autotag = { enable = true },
-    indent = {
-      enable = true,
-      disable = { "ruby" }
-    },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false
-    },
     highlight = {
       enable = true, -- false will disable the whole extension
       additional_vim_regex_highlighting = true,
       use_language_tree = true,
+    },
+    indent = {
+      enable = true,
+      disable = { "ruby" }
     },
     matchup = {
       enable = true

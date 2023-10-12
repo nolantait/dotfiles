@@ -7,7 +7,7 @@ local handlers = require("user.lsp.handlers")
 handlers.setup()
 
 -- textDocument/diagnostic support until 0.10.0 is released
-_timers = {}
+local _timers = {}
 local function setup_diagnostics(client, buffer)
   if require("vim.lsp.diagnostic")._enable then
     return

@@ -4,6 +4,12 @@ if not ok then
 end
 
 if luasnip then
+  luasnip.setup({
+    history = true,
+    update_events = "TextChanged,TextChangedI",
+    delete_check_events = "TextChanged,InsertLeave"
+  })
+
   -- Add Rails snippets
   luasnip.filetype_extend("ruby", {"rails"})
 

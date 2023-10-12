@@ -70,6 +70,7 @@ return packer.startup(function(use)
     }
   }
   use "nvim-treesitter/playground"
+  use "nvim-treesitter/nvim-treesitter-context"
 
   -- UI
   use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
@@ -119,6 +120,7 @@ return packer.startup(function(use)
       require("hlsearch").setup()
     end
   }
+  use "LunarVim/bigfile.nvim" -- Open large files faster
 
   -- Colorschemes
   use "RRethy/nvim-base16" -- Base 16 colorscheme

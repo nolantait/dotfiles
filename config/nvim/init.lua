@@ -29,6 +29,7 @@ require "user.profiling"
 require "user.snippets"
 require "user.telescope"
 require "user.treesitter"
+require "user.treesitter-context"
 require "user.whichkey"
 
 -- Ordering dependent

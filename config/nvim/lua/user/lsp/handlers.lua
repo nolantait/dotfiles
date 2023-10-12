@@ -38,10 +38,18 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
+
+  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+    signs = true,
+    underline = true,
+    virtual_text = {
+      severity_limit = "Hint",
+    },
+  })
 end
 
+-- Set autocommands conditional on server_capabilities
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
   if client.server_capabilities.document_highlight then
     vim.api.nvim_exec(
       [[
@@ -69,15 +77,11 @@ local function lsp_attach_navic(client, bufnr)
   end
 end
 
-
-M.on_attach = function(client, buffer)
+-- Setup LSP keybinds
+local function setup_lsp_keymaps(buffer)
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true, buffer = buffer }
 
-  lsp_highlight_document(client)
-  lsp_attach_navic(client, buffer)
-
-  -- LSP keybinds ---
   keymap("n", "gD", vim.lsp.buf.declaration, opts)
   keymap("n", "gd", vim.lsp.buf.definition, opts)
   keymap("n", "gi", vim.lsp.buf.implementation, opts)
@@ -90,11 +94,17 @@ M.on_attach = function(client, buffer)
   keymap("n", "<leader>q", vim.diagnostic.setloclist, opts)
 end
 
+M.on_attach = function(client, buffer)
+  lsp_highlight_document(client)
+  lsp_attach_navic(client, buffer)
+  setup_lsp_keymaps(buffer)
+end
+
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 local cmp_ok, cmp_nvim_lsp = prequire("cmp_nvim_lsp")
 if cmp_ok and cmp_nvim_lsp then
-  capabilities = cmp_nvim_lsp.default_capabilities()
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 end
 
 capabilities.textDocument = {
