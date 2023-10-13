@@ -131,6 +131,7 @@ return packer.startup(function(use)
       "lewis6991/gitsigns.nvim",
     }
   }
+  use "edluffy/specs.nvim" -- Keep an eye on your cursor
 
   -- Colorschemes
   use "RRethy/nvim-base16" -- Base 16 colorscheme
