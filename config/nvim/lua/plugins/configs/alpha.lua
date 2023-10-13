@@ -3,6 +3,7 @@
 return function()
   local alpha = require("alpha")
   local dashboard = require("alpha.themes.dashboard")
+  local icons = require("globals.icons")
 
   dashboard.section.header.val = {
     [[ ████████╗ █████╗ ██╗███╗   ██╗████████╗███████╗██████╗   ]],
@@ -12,21 +13,23 @@ return function()
     [[    ██║   ██║  ██║██║██║ ╚████║   ██║   ███████╗██████╔╝  ]],
     [[    ╚═╝   ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═════╝   ]],
     [[                                                          ]],
-    [[      ██████╗ ██████╗ ██████╗ ███████╗██████╗ ███████╗    ]],
-    [[     ██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝    ]],
-    [[     ██║     ██║   ██║██║  ██║█████╗  ██████╔╝███████╗    ]],
-    [[     ██║     ██║   ██║██║  ██║██╔══╝  ██╔══██╗╚════██║    ]],
-    [[     ╚██████╗╚██████╔╝██████╔╝███████╗██║  ██║███████║    ]],
-    [[      ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝    ]],
+    [[     ██████╗ ██████╗ ██████╗ ███████╗██████╗ ███████╗     ]],
+    [[    ██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔══██╗██╔════╝     ]],
+    [[    ██║     ██║   ██║██║  ██║█████╗  ██████╔╝███████╗     ]],
+    [[    ██║     ██║   ██║██║  ██║██╔══╝  ██╔══██╗╚════██║     ]],
+    [[    ╚██████╗╚██████╔╝██████╔╝███████╗██║  ██║███████║     ]],
+    [[     ╚═════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝     ]],
   }
 
   dashboard.section.buttons.val = {
-    dashboard.button("f", "󰱼  Find file", ":Telescope find_files<CR>"),
-    dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("r", "󰈮  Frequently used files", ":Telescope frecency workspace=CWD<CR>"),
-    dashboard.button("\\", "  Find text", ":Telescope live_grep <CR>"),
-    dashboard.button("c", "  Configuration", ":e ~/.config/nvim/init.lua <CR>"),
-    dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+    dashboard.button("f", icons.files.find .. " Find file", ":Telescope find_files<CR>"),
+    dashboard.button("e", icons.files.new .. " New file", ":ene <BAR> startinsert <CR>"),
+    dashboard.button("r", icons.files.code .. " Frequently used files", ":Telescope frecency workspace=CWD<CR>"),
+    dashboard.button("\\", icons.text .. " Find text", ":Telescope live_grep <CR>"),
+    dashboard.button("u", icons.download .. " Update plugins", "<cmd>Lazy sync<cr>"),
+    dashboard.button("U", icons.download .. " Update language servers", "<cmd>MasonUpdateAll<cr>"),
+    dashboard.button("c", icons.gear .. " Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+    dashboard.button("q", icons.cross .. " Quit Neovim", ":qa<CR>"),
   }
 
   -- Footer
@@ -62,6 +65,20 @@ return function()
   dashboard.section.footer.val = footer()
   dashboard.section.footer.opts.hl = "AlphaFooter"
   dashboard.section.header.opts.hl = "AlphaHeader"
+
+  local head_butt_padding = 1
+  local occu_height = #dashboard.section.header.val + 2 * #dashboard.section.buttons.val + head_butt_padding
+  local header_padding = math.max(0, math.ceil((vim.fn.winheight("$") - occu_height) * 0.25))
+  local foot_butt_padding = 0
+
+  dashboard.config.layout = {
+    { type = "padding", val = header_padding },
+    dashboard.section.header,
+    { type = "padding", val = head_butt_padding },
+    dashboard.section.buttons,
+    { type = "padding", val = foot_butt_padding },
+    dashboard.section.footer,
+  }
 
   dashboard.config.opts.noautocmd = true
 

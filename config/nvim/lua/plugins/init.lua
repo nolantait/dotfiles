@@ -39,7 +39,7 @@ local opts = {
       cmd = icons.code,
       config = icons.gear,
       event = icons.event,
-      ft = icons.files,
+      ft = icons.files.new,
       init = icons.manup,
       import = icons.import,
       keys = icons.keyboard,
@@ -75,6 +75,13 @@ local opts = {
 }
 
 local plugins = {
+  {
+    "nolantait/mason-update-all",
+    lazy = false,
+    config = function()
+      require("mason-update-all").setup()
+    end
+  },
   {
     "RRethy/nvim-base16",
     config = require("plugins.configs.colorscheme"),
