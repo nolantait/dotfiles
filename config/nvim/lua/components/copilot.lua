@@ -1,11 +1,10 @@
 -- Component for copilot statusline to show its status
 
-local status_ok, api = prequire("copilot.api")
-local M = { init = false }
+return function()
+  local ok, api = prequire("copilot.api")
 
-local status = ""
-local setup = function()
-  if status_ok then
+  local status = ""
+  if ok and api then
     api.register_status_notification_handler(function(data)
       -- customize your message however you want
       if data.status == "Normal" then
@@ -15,17 +14,9 @@ local setup = function()
       else
         status = data.status or "Offline" -- might never actually be nil but just in case
       end
-      status = " " .. status
+      status = "" .. " ".. status
     end)
   end
-end
 
-M.get_status = function()
-  if not M.init then
-    setup()
-    M.init = true
-  end
   return status
 end
-
-return M
