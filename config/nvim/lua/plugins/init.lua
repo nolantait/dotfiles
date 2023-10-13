@@ -105,6 +105,13 @@ local opts = {
 
 local plugins = {
   {
+    "klen/nvim-test",
+    config = require("plugins.configs.nvim-test"),
+    ft = {
+      "ruby"
+    }
+  },
+  {
     "nolantait/mason-update-all",
     lazy = false,
     config = function()
@@ -130,11 +137,6 @@ local plugins = {
     },
     event = "BufReadPre",
   },
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   lazy = false,
-  --   config = require("plugins.configs.colorizer"),
-  -- },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
