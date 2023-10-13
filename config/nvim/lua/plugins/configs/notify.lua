@@ -3,6 +3,7 @@
 return function()
   local notify = require("notify")
   local colors = require("globals.colors")
+  local icons = require("globals.icons")
 
   notify.setup({
     ---@usage Animation style one of { "fade", "slide", "fade_in_slide_out", "static" }
@@ -28,11 +29,11 @@ return function()
     level = "TRACE",
     ---@usage Icons for the different levels
     icons = {
-      ERROR = "",
-      WARN = "",
-      INFO = "",
-      DEBUG = "",
-      TRACE = "󰏫",
+      ERROR = icons.error,
+      WARN = icons.warn,
+      INFO = icons.info,
+      DEBUG = icons.bug,
+      TRACE = icons.pencil,
     },
   })
 

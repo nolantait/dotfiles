@@ -12,10 +12,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Load settings
 local settings = require("globals.settings")
 local icons = require("globals.icons")
 local clone_prefix = "https://github.com/%s.git"
-
 local opts = {
   defaults = {
     lazy = true

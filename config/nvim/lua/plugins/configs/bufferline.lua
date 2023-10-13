@@ -3,6 +3,7 @@
 return function()
   local bufferline = require("bufferline")
   local colors = require("globals.colors")
+  local icons = require("globals.icons")
 
   local hl_colors = {
     unselected = {
@@ -78,13 +79,12 @@ return function()
     end
   end
 
-  if bufferline then
     bufferline.setup {
       options = {
         always_show_bufferline = true,
-        buffer_close_icon = "󱎘",
+        buffer_close_icon = icons.cross,
         close_command = close_command, -- can be a string | function, see "Mouse actions"
-        close_icon = "",
+        close_icon = icons.cross,
         color_icons = true,
         diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
         diagnostics_update_in_insert = false,
@@ -94,11 +94,11 @@ return function()
           icon = "▎"
         },
         left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
-        left_trunc_marker = "",
+        left_trunc_marker = icons.arrow_left,
         max_name_length = 14,
         max_prefix_length = 8,      -- prefix used when a buffer is de-duplicated
         middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-        modified_icon = "●",
+        modified_icon = icons.circle,
         numbers = "none",           -- | "ordinal" | "buffer_id" | "both" | function({ ordinal, id, lower, raise }): string,
         offsets = {
           {
@@ -115,7 +115,7 @@ return function()
           }
         },
         right_mouse_command = close_command, -- can be a string | function, see "Mouse actions"
-        right_trunc_marker = "",
+        right_trunc_marker = icons.arrow_right,
         separator_style = "thin",            -- | "thick" | "thin" | { 'any', 'any' },
         show_buffer_icons = true,
         show_buffer_close_icons = true,
@@ -124,5 +124,4 @@ return function()
       },
       highlights = highlights
     }
-  end
 end

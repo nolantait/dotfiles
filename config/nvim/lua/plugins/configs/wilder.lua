@@ -1,5 +1,6 @@
 return function()
   local wilder = require("wilder")
+  local icons = require("globals.icons")
 
   local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
     max_height = "50%",
@@ -21,9 +22,9 @@ return function()
       wilder.popupmenu_buffer_flags({
         flags = " a + ",
         icons = {
-          ["+"] = "",
-          a = "➜",
-          h = ""
+          ["+"] = icons.pencil,
+          a = icons.arrow_right,
+          h = icons.files.new
         },
       }),
     },

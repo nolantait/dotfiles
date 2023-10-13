@@ -1,5 +1,6 @@
 return function()
   local neotree = require("neo-tree")
+  local icons = require("globals.icons")
 
   -- Remove deprecated commands from v1.x
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
@@ -15,15 +16,15 @@ return function()
       sources = {
         {
           source = "filesystem",
-          display_name = "  Files "
+          display_name = " " .. icons.folders.default .. " Files "
         },
         {
           source = "buffers",
-          display_name = "  Buffers "
+          display_name = " " .. icons.pencil .. " Buffers "
         },
         {
           source = "git_status",
-          display_name = "  Git "
+          display_name = " " .. icons.git.branch .. " Git "
         },
       },
       highlight_tab = "TabLine",
@@ -41,22 +42,22 @@ return function()
         indent_size = 2,
       },
       icon = {
-        folder_closed = "",
-        folder_open = "",
-        folder_empty = "",
-        default = "",
+        folder_closed = icons.folders.closed,
+        folder_open = icons.folders.open,
+        folder_empty = icons.folders.empty,
+        default = icons.folders.default,
       },
       git_status = {
         symbols = {
-          added = "",
-          deleted = "",
-          modified = "",
-          renamed = "➜",
-          untracked = "★",
-          ignored = "◌",
-          unstaged = "✗",
-          staged = "✓",
-          conflict = "",
+          added = icons.git.added,
+          deleted = icons.git.removed,
+          modified = icons.git.modified,
+          renamed = icons.git.renamed,
+          untracked = icons.git.untracked,
+          ignored = icons.git.ignored,
+          unstaged = icons.git.unstagged,
+          staged = icons.git.staged,
+          conflict = icons.git.conflict,
         },
       },
     },

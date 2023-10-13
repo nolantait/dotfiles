@@ -2,6 +2,7 @@
 
 return function()
   local cmp = require("cmp")
+  local icons = require("globals.icons")
 
   local check_backspace = function()
     local col = vim.fn.col "." - 1
@@ -23,32 +24,32 @@ return function()
 
   --   פּ ﯟ   some other good icons
   local kind_icons = {
-    Text = "",
-    Method = "m",
-    Function = "󰊕",
-    Constructor = "",
-    Field = "",
-    Variable = "󰫧",
-    Class = "",
-    Interface = "",
-    Module = "",
-    Property = "",
-    Unit = "",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
-    Reference = "",
-    Folder = "",
-    EnumMember = "",
-    Constant = "",
-    Struct = "",
-    Event = "",
-    Operator = "",
-    TypeParameter = "󰛦",
-    Copilot = ""
+    Text = icons.text,
+    Method = icons.coding.method,
+    Function = icons.coding.func,
+    Constructor = icons.coding.constructor,
+    Field = icons.coding.field,
+    Variable = icons.coding.variable,
+    Class = icons.coding.class,
+    Interface = icons.coding.interface,
+    Module = icons.coding.module,
+    Property = icons.coding.property,
+    Unit = icons.coding.unit,
+    Value = icons.coding.value,
+    Enum = icons.coding.enum,
+    Keyword = icons.coding.keyword,
+    Snippet = icons.coding.snippet,
+    Color = icons.coding.color,
+    File = icons.files.new,
+    Reference = icons.coding.reference,
+    Folder = icons.folders.default,
+    EnumMember = icons.coding.enum,
+    Constant = icons.coding.constant,
+    Struct = icons.coding.struct,
+    Event = icons.event,
+    Operator = icons.coding.operator,
+    TypeParameter = icons.coding.type,
+    Copilot = icons.copilot
   }
   -- find more here: https://www.nerdfonts.com/cheat-sheet
 

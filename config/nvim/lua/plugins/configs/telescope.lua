@@ -3,6 +3,7 @@
 
 return function()
   local telescope = require("telescope")
+  local icons = require("globals.icons")
 
   local actions = require "telescope.actions"
   local previewers = require "telescope.previewers"
@@ -34,10 +35,10 @@ return function()
       initial_mode = "insert",
       layout_strategy = "flex",
       path_display = { "truncate" },
-      prompt_prefix = " ",
+      prompt_prefix = icons.telescope .. " ",
       results_title = false,
       scroll_strategy = "cycle",
-      selection_caret = " ",
+      selection_caret = icons.selected .. " ",
       selection_strategy = "reset",
       sorting_strategy = "ascending",
       layout_config = {

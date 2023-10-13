@@ -3,6 +3,7 @@
 return function()
   local lualine = require("lualine")
   local colors = require("globals.colors")
+  local icons = require("globals.icons")
 
   local lualine_colors = {
     a = {
@@ -54,7 +55,7 @@ return function()
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "error" },
-    symbols = { error = " " },
+    symbols = { error = icons.error .. " " },
     update_in_insert = false,
     always_visible = true,
     diagnostics_color = { error = { bg = lualine_colors.b.bg, fg = colors.red } },
@@ -64,7 +65,7 @@ return function()
     "diagnostics",
     sources = { "nvim_diagnostic" },
     sections = { "warn" },
-    symbols = { warn = " " },
+    symbols = { warn = icons.warn .. " " },
     update_in_insert = false,
     always_visible = true,
     diagnostics_color = { warn = { bg = lualine_colors.b.bg, fg = colors.yellow } },
@@ -73,7 +74,11 @@ return function()
   local diff = {
     "diff",
     colored = true,
-    symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+    symbols = {
+      added = icons.git.added .. " ",
+      modified = icons.git.modified .. " ",
+      removed = icons.git.removed .. " "
+    }, -- changes diff symbols
     cond = has_enough_room
   }
 
@@ -95,7 +100,7 @@ return function()
   local branch = {
     "branch",
     icons_enabled = true,
-    icon = "",
+    icon = icons.git.branch,
   }
 
   local copilot_status = {
@@ -143,7 +148,10 @@ return function()
       icons_enabled = true,
       theme = theme,
       component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
+      section_separators = {
+        left = icons.separators.top_left_wedge,
+        right = icons.separators.left_semicircle
+      },
       disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
       always_divide_middle = true,
     },

@@ -4,6 +4,7 @@
 return function()
   local todo_comments = require("todo-comments")
   local colors = require("globals.colors")
+  local icons = require("globals.icons")
 
   todo_comments.setup({
     signs = true,        -- show icons in the signs column
@@ -11,17 +12,17 @@ return function()
     -- keywords recognized as todo comments
     keywords = {
       FIX = {
-        icon = "", -- icon used for the sign, and in search results
+        icon = icons.bug, -- icon used for the sign, and in search results
         color = colors.red, -- can be a hex color, or a named color (see below)
         alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
         -- signs = false, -- configure signs for some keywords individually
       },
-      TODO = { icon = "󰄬", color = colors.yellow, alt = { "TIP" } },
-      HACK = { icon = "󰈸", color = colors.red },
-      WARN = { icon = "", color = colors.orange, alt = { "WARNING", "XXX" } },
-      PERF = { icon = "󰡴", color = colors.purple, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-      NOTE = { icon = "", color = colors.blue, alt = { "INFO" } },
-      TEST = { icon = "󰙨", color = colors.green, alt = { "TESTING", "PASSED", "FAILED" } },
+      TODO = { icon = icons.check, color = colors.yellow, alt = { "TIP" } },
+      HACK = { icon = icons.fire, color = colors.red },
+      WARN = { icon = icons.warn, color = colors.orange, alt = { "WARNING", "XXX" } },
+      PERF = { icon = icons.performance, color = colors.purple, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
+      NOTE = { icon = icons.info, color = colors.blue, alt = { "INFO" } },
+      TEST = { icon = icons.test, color = colors.green, alt = { "TESTING", "PASSED", "FAILED" } },
     },
     gui_style = {
       fg = "NONE",           -- The gui style to use for the fg highlight group.
