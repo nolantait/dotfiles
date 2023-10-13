@@ -33,6 +33,7 @@ require "user.specs"
 require "user.telescope"
 require "user.treesitter"
 require "user.treesitter-context"
+require "user.todo_comments"
 require "user.whichkey"
 require "user.wilder"
 

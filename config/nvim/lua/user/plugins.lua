@@ -132,6 +132,10 @@ return packer.startup(function(use)
     }
   }
   use "edluffy/specs.nvim" -- Keep an eye on your cursor
+  use {
+    "folke/todo-comments.nvim",
+    requires = { "nvim-lua/plenary.nvim" }
+  }
 
   -- Colorschemes
   use "RRethy/nvim-base16" -- Base 16 colorscheme
