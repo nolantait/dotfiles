@@ -22,33 +22,15 @@ local highlights = {
   background = { bg = hl_colors.unselected.bg },
   buffer_visible = { fg = hl_colors.unselected.text, bg = hl_colors.unselected.bg },
   buffer_selected = { fg = hl_colors.selected.text, bg = hl_colors.selected.bg, bold = true, italic = true },  -- current
-  -- Duplicate
-  -- duplicate_selected = { fg = colors.red, bg = colors.green, bold = true, italic = true },
-  -- duplicate_visible = { fg = colors.red, bg = colors.green, bold = true, italic = true },
-  -- duplicate = { fg = colors.red, bg = colors.green, bold = true, italic = true },
-  -- tabs
-  -- tab = { fg = colors.red, bg = colors.red },
-  -- tab_selected = { bg = colors.red, fg = colors.red, bold = true },
-  -- tab_separator = { fg = colors.red, bg = colors.red },
-  -- tab_separator_selected = { fg = colors.red, bg = colors.red },
-
-  -- tab_close = { fg = colors.green, bg = colors.red },
   indicator_selected = { fg = hl_colors.unselected.bg, bg = hl_colors.selected.indicator },
   -- separators
   separator = { fg = hl_colors.unselected.bg, bg = hl_colors.unselected.bg },
-  -- separator_visible = { fg = colors.red, bg = colors.cyan },
-  -- separator_selected = { fg = colors.red, bg = colors.cyan },
-  -- offset_separator = { fg = colors.red, bg = colors.cyan },
   -- close buttons
   close_button = { fg = hl_colors.unselected.text, bg = hl_colors.unselected.bg },
   close_button_visible = { fg = hl_colors.unselected.text, bg = hl_colors.unselected.bg },
   close_button_selected = { fg = colors.red, bg = hl_colors.selected.bg },
   -- Empty fill
   fill = { bg = hl_colors.unselected.bg },
-  -- Numbers
-  -- numbers = { fg = colors.gray, bg = colors.black },
-  -- numbers_visible = { fg = colors.gray, bg = colors.black },
-  -- numbers_selected = { fg = colors.gray, bg = colors.light_gray, bold = true, italic = true },
   -- Errors
   error = { fg = colors.red, bg = hl_colors.unselected.bg },
   error_visible = { fg = colors.red, bg = hl_colors.unselected.bg },
