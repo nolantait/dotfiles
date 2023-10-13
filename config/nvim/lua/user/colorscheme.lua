@@ -28,5 +28,7 @@ if base16 then
   local set_hl = vim.api.nvim_set_hl
 
   set_hl(0, "AlphaFooter", { fg = colors.yellow, default = true })
+  set_hl(0, "AlphaHeader", { fg = colors.blue, default = true })
+
   set_hl(0, "MatchParen", { fg = colors.white, bg = colors.light_gray, bold = true })
 end

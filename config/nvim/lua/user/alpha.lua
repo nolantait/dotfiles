@@ -69,19 +69,18 @@ if alpha then
 
   dashboard.section.footer.val = footer()
   dashboard.section.footer.opts.hl = "AlphaFooter"
-  dashboard.section.header.opts.hl = "Include"
-  dashboard.section.buttons.opts.hl = "Keyword"
+  dashboard.section.header.opts.hl = "AlphaHeader"
 
-  dashboard.opts.opts.noautocmd = true
+  dashboard.config.opts.noautocmd = true
   -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
-  alpha.setup(dashboard.opts)
-
   vim.cmd([[
     augroup _alpha
       autocmd!
       autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
     augroup end
   ]])
+
+  alpha.setup(dashboard.config)
 
   -- vim.api.nvim_create_autocmd("User", {
   --   pattern = "LazyVimStarted",

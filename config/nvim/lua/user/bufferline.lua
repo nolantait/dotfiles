@@ -13,7 +13,7 @@ local hl_colors = {
   selected = {
     bg = colors.dark_gray,
     text = colors.white,
-    indicator = colors.green
+    indicator = colors.orange
   }
 }
 
