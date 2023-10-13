@@ -15,6 +15,7 @@ M.setup = function()
     vim.fn.sign_define(sign.name, sign)
   end
 
+  -- Global config for diagnostics
   vim.diagnostic.config({
     virtual_text = false,
     signs = {
@@ -33,20 +34,13 @@ M.setup = function()
     },
   })
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
-
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  })
-
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
     signs = true,
     underline = true,
     virtual_text = {
       severity_limit = "Hint",
     },
+    update_in_insert = false
   })
 end
 
