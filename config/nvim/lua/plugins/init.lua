@@ -69,7 +69,36 @@ local opts = {
     reset_packpath = true, -- Reset the package path to improve startup time
     rtp = {
       reset = true,        -- Reset the runtime path to $VIMRUNTIME and the config directory
-      paths = {}           -- Add any custom paths here that you want to include in the rtp
+      paths = {},           -- Add any custom paths here that you want to include in the rtp
+      disabled_plugins = {
+        "2html_plugin",
+        "tohtml",
+        "getscript",
+        "getscriptPlugin",
+        "gzip",
+        "logipat",
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "matchit",
+        "tar",
+        "tarPlugin",
+        "rrhelper",
+        "spellfile_plugin",
+        "vimball",
+        "vimballPlugin",
+        "zip",
+        "zipPlugin",
+        "tutor",
+        "rplugin",
+        "syntax",
+        "synmenu",
+        "optwin",
+        "compiler",
+        "bugreport",
+        "ftplugin",
+      }
     }
   }
 }
