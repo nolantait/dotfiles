@@ -72,7 +72,7 @@ local keybinds = {
   },
   {
     mode = "n",
-    key = "th",
+    key = "the",
     command = "<cmd>Telescope help_tags<CR>",
     description = "Search through help tags in man pages",
   },

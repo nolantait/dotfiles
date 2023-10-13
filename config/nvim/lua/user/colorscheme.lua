@@ -3,32 +3,9 @@ if not ok then
   return
 end
 
+local colors = require("user.colors")
+
 if base16 then
-  -- Start flavours
-  -- Base16 OneDark
-  -- Author: Lalit Magant (http://github.com/tilal6991)
-  -- Sets up the theme for base16-vim
-
-  local colors = {
-    black = '#282c34',
-    darker_gray = '#353b45',
-    dark_gray = '#3e4451',
-    gray = '#545862',
-    light_gray = '#565c64',
-    lighter_gray = '#abb2bf',
-    lightest_gray = '#b6bdca',
-    white = '#c8ccd4',
-    red = '#e06c75',
-    orange = '#d19a66',
-    yellow = '#e5c07b',
-    green = '#98c379',
-    cyan = '#56b6c2',
-    blue = '#61afef',
-    purple = '#c678dd',
-    magenta = '#be5046',
-  }
-  -- End flavours
-
   base16.setup({
     base00 = colors.black,
     base01 = colors.darker_gray,
@@ -37,7 +14,7 @@ if base16 then
     base04 = colors.light_gray,
     base05 = colors.lighter_gray,
     base06 = colors.lightest_gray,
-    base07 = colors.light,
+    base07 = colors.white,
     base08 = colors.red,
     base09 = colors.orange,
     base0A = colors.yellow,
@@ -53,5 +30,3 @@ if base16 then
   set_hl(0, "AlphaFooter", { fg = colors.yellow, default = true })
   set_hl(0, "MatchParen", { fg = colors.white, bg = colors.light_gray, bold = true })
 end
-
-
