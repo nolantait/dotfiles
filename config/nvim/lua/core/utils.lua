@@ -1,10 +1,6 @@
 -- Adds prequire function to global namespace
 
-local M = {}
-
-function M.error(msg, name)
-    vim.notify(msg, vim.log.levels.ERROR, { title = name })
-end
+local notify = require("core.messages")
 
 _G.prequire = function(plugin, verbose)
   local present, plug = pcall(require, plugin)
@@ -17,7 +13,7 @@ _G.prequire = function(plugin, verbose)
   if verbose then
       errmsg = string.format("%s\nError:%s", plug)
   end
-  M.error(errmsg, "Prequire failed")
+  notify.error(errmsg, "Prequire failed")
 
   return present, nil
 end
