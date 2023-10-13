@@ -31,4 +31,11 @@ if base16 then
   set_hl(0, "AlphaHeader", { fg = colors.blue, default = true })
 
   set_hl(0, "MatchParen", { fg = colors.white, bg = colors.light_gray, bold = true })
+
+  set_hl(0, "GitSignsAdd", { fg = colors.green, default = true })
+  set_hl(0, "GitSignsAddNr", { fg = colors.green, default = true })
+  set_hl(0, "GitSignsChange", { fg = colors.orange, default = true })
+  set_hl(0, "GitSignsChangeNr", { fg = colors.orange, default = true })
+  set_hl(0, "GitSignsDelete", { fg = colors.red, default = true })
+  set_hl(0, "GitSignsDeleteNr", { fg = colors.red, default = true })
 end
