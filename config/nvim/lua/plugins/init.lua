@@ -313,28 +313,29 @@ local plugins = {
     event = { "CursorHold", "CursorHoldI" },
     config = require("plugins.configs.which-key"),
   },
-  -- {
-  --   "mfussenegger/nvim-dap",
-  --   cmd = {
-  --     "DapSetLogLevel",
-  --     "DapShowLog",
-  --     "DapContinue",
-  --     "DapToggleBreakpoint",
-  --     "DapToggleRepl",
-  --     "DapStepOver",
-  --     "DapStepInto",
-  --     "DapStepOut",
-  --     "DapTerminate",
-  --   },
-  --   config = require("plugins.configs.dap"),
-  --   dependencies = {
-  --     "jay-babu/mason-nvim-dap.nvim",
-  --     {
-  --       "rcarriga/nvim-dap-ui",
-  --       config = require("plugins.configs.dapui"),
-  --     },
-  --   },
-  -- },
+  {
+    "mfussenegger/nvim-dap",
+    cmd = {
+      "DapSetLogLevel",
+      "DapShowLog",
+      "DapContinue",
+      "DapToggleBreakpoint",
+      "DapToggleRepl",
+      "DapStepOver",
+      "DapStepInto",
+      "DapStepOut",
+      "DapTerminate",
+    },
+    config = require("plugins.configs.dap"),
+    dependencies = {
+      "jay-babu/mason-nvim-dap.nvim",
+      "suketa/nvim-dap-ruby",
+      {
+        "rcarriga/nvim-dap-ui",
+        config = require("plugins.configs.dap.dapui"),
+      },
+    },
+  },
   {
     "goolord/alpha-nvim",
     event = "BufWinEnter",

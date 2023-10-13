@@ -1,6 +1,9 @@
 return {
   arrow_left = "",
   arrow_right = "",
+  open = "",
+  collapsed = "",
+  target = "",
   bug = "",
   check = "",
   chevron_left = "",
@@ -24,6 +27,7 @@ return {
   package = "",
   pencil = "",
   performance = "󰡴",
+  pause = "",
   play = "",
   selected = "",
   source = "",
@@ -34,6 +38,14 @@ return {
   vim = "",
   warn = "",
   x_mark = "✗",
+  dap = {
+    step_into = "",
+    step_over = "",
+    step_out = "",
+    step_back = "",
+    run_last = "",
+    terminate = "",
+  },
   git = {
     branch = "",
     added = "",

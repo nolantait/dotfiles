@@ -12,6 +12,12 @@
 return {
   {
     mode = "n",
+    key = "<Leader>;",
+    command = "<cmd>lua require'dap'.continue()<CR>",
+    description = "Continue debugging",
+  },
+  {
+    mode = "n",
     key = "<Leader><Leader>",
     command = "<C-^>",
     description = "Switch between the last two files",
