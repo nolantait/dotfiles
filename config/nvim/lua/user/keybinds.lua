@@ -265,7 +265,7 @@ local keybinds = {
   {
     mode = "n",
     key = "<leader>bd",
-    command = "<cmd>Bdelete<CR>",
+    command = "<cmd>lua require('bufdelete').bufdelete(0, true)<CR>",
     description = "Close buffer",
   },
 }
