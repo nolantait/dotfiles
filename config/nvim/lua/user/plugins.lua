@@ -123,6 +123,7 @@ return packer.startup(function(use)
   }
   use "LunarVim/bigfile.nvim" -- Open large files faster
   use "gelguy/wilder.nvim" -- Better wildmenu commands
+  use "rcarriga/nvim-notify" -- Better notifications
 
   -- Colorschemes
   use "RRethy/nvim-base16" -- Base 16 colorscheme
