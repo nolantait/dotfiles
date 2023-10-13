@@ -99,7 +99,7 @@ return function()
   }
 
   local copilot_status = {
-    require("components.copilot"),
+    require("components.copilot_status"),
     padding = 0,
     cond = has_enough_room
   }

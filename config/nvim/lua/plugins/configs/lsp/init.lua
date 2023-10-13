@@ -2,7 +2,7 @@ return function()
   local lspconfig = require("lspconfig")
   local mason = require("mason")
   local mason_config = require("mason-lspconfig")
-  local handlers = require("plugins.lsp.handlers")
+  local handlers = require("plugins.configs.lsp.handlers")
 
   handlers.setup()
 
@@ -44,7 +44,7 @@ return function()
   -- Function to load our lsp server setups in plugins.lsp.servers or
   -- fallback to a default
   local function mason_lsp_handler(lsp_name)
-    local __ok, custom_handler = pcall(require, "plugins.lsp.servers." .. lsp_name)
+    local __ok, custom_handler = pcall(require, "plugins.configs.lsp.servers." .. lsp_name)
     -- Use preset if there is no user definition
     if not __ok then
       -- Default to use factory config for server(s) that doesn't include a spec

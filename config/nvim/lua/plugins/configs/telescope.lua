@@ -142,7 +142,7 @@ return function()
     extensions = {
       frecency = {
         show_scores = true,
-        show_unindexed = true,
+        show_unindexed = false,
         disable_devicons = false,
         ignore_patterns = {
           "*.git/*",

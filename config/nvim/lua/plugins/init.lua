@@ -77,7 +77,7 @@ local opts = {
 local plugins = {
   {
     "RRethy/nvim-base16",
-    config = require("plugins.colorscheme"),
+    config = require("plugins.configs.colorscheme"),
     lazy = false,
   },
   {
@@ -87,7 +87,7 @@ local plugins = {
   },
   {
     "tpope/vim-rails",
-    config = require("plugins.rails"),
+    config = require("plugins.configs.rails"),
     ft = {
       "ruby",
       "erb",
@@ -97,17 +97,17 @@ local plugins = {
   -- {
   --   "NvChad/nvim-colorizer.lua",
   --   lazy = false,
-  --   config = require("plugins.colorizer"),
+  --   config = require("plugins.configs.colorizer"),
   -- },
   {
     "rcarriga/nvim-notify",
     event = "VeryLazy",
-    config = require("plugins.notify"),
+    config = require("plugins.configs.notify"),
   },
   {
     "gelguy/wilder.nvim",
     event = "CmdlineEnter",
-    config = require("plugins.wilder"),
+    config = require("plugins.configs.wilder"),
     dependencies = {
       "romgrk/fzy-lua-native",
     },
@@ -122,7 +122,7 @@ local plugins = {
   },
   {
     "stevearc/dressing.nvim",
-    config = require("plugins.dressing"),
+    config = require("plugins.configs.dressing"),
     event = "BufReadPre",
   },
   {
@@ -131,7 +131,7 @@ local plugins = {
   },
   {
     "utilyre/barbecue.nvim",
-    config = require("plugins.barbecue"),
+    config = require("plugins.configs.barbecue"),
     event = "BufReadPost",
     dependencies = {
       "SmiteshP/nvim-navic",
@@ -142,12 +142,12 @@ local plugins = {
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "BufReadPost",
-    config = require("plugins.indent-blankline")
+    config = require("plugins.configs.indent-blankline")
   },
   {
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
-    config = require("plugins.telescope"),
+    config = require("plugins.configs.telescope"),
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
@@ -166,30 +166,30 @@ local plugins = {
         vim.api.nvim_command("TSUpdate")
       end
     end,
-    config = require("plugins.treesitter"),
+    config = require("plugins.configs.treesitter"),
     dependencies = {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "p00f/nvim-ts-rainbow",
       "windwp/nvim-ts-autotag",
       {
         "andymass/vim-matchup",
-        config = require("plugins.matchup"),
+        config = require("plugins.configs.matchup"),
       },
       {
         "nvim-treesitter/nvim-treesitter-context",
-        config = require("plugins.treesitter-context")
+        config = require("plugins.configs.treesitter-context")
       },
       {
         "NvChad/nvim-colorizer.lua",
         lazy = false,
-        config = require("plugins.colorizer"),
+        config = require("plugins.configs.colorizer"),
       }
     },
     event = "BufReadPost",
   },
   {
     "RRethy/vim-illuminate",
-    config = require("plugins.illuminate"),
+    config = require("plugins.configs.illuminate"),
     dependencies = {
       "nvim-treesitter/nvim-treesitter"
     },
@@ -202,12 +202,12 @@ local plugins = {
   {
     "LunarVim/bigfile.nvim",
     lazy = false,
-    config = require("plugins.bigfile"),
+    config = require("plugins.configs.bigfile"),
   },
   {
     "neovim/nvim-lspconfig",
     event = { "CursorHold", "CursorHoldI" },
-    config = require("plugins.lsp"),
+    config = require("plugins.configs.lsp"),
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -217,12 +217,12 @@ local plugins = {
     "hrsh7th/nvim-cmp", -- Snippet support
     lazy = true,
     event = "InsertEnter",
-    config = require("plugins.cmp"),
+    config = require("plugins.configs.cmp"),
     dependencies = {
       {
         "L3MON4D3/LuaSnip",
         build = "make install_jsregexp",
-        config = require("plugins.luasnip"),
+        config = require("plugins.configs.luasnip"),
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "2.*",
       },
@@ -238,11 +238,11 @@ local plugins = {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    config = require("plugins.copilot"),
+    config = require("plugins.configs.copilot"),
     dependencies = {
       {
         "zbirenbaum/copilot-cmp",
-        config = require("plugins.copilot-cmp"),
+        config = require("plugins.configs.copilot-cmp"),
       },
     },
   },
@@ -256,7 +256,7 @@ local plugins = {
   },
   {
     "nvim-neo-tree/neo-tree.nvim",
-    config = require("plugins.neo-tree"),
+    config = require("plugins.configs.neo-tree"),
     cmd = {
       "NvimTreeToggle",
       "NvimTreeOpen",
@@ -275,7 +275,7 @@ local plugins = {
   {
     "folke/which-key.nvim",
     event = { "CursorHold", "CursorHoldI" },
-    config = require("plugins.which-key"),
+    config = require("plugins.configs.which-key"),
   },
   -- {
   --   "mfussenegger/nvim-dap",
@@ -290,55 +290,55 @@ local plugins = {
   --     "DapStepOut",
   --     "DapTerminate",
   --   },
-  --   config = require("plugins.dap"),
+  --   config = require("plugins.configs.dap"),
   --   dependencies = {
   --     "jay-babu/mason-nvim-dap.nvim",
   --     {
   --       "rcarriga/nvim-dap-ui",
-  --       config = require("plugins.dapui"),
+  --       config = require("plugins.configs.dapui"),
   --     },
   --   },
   -- },
   {
     "goolord/alpha-nvim",
     event = "BufWinEnter",
-    config = require("plugins.alpha"),
+    config = require("plugins.configs.alpha"),
   },
   {
     "akinsho/bufferline.nvim",
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    config = require("plugins.bufferline")
+    config = require("plugins.configs.bufferline")
   },
   {
     "j-hui/fidget.nvim",
     event = "LspAttach",
-    config = require("plugins.fidget"),
+    config = require("plugins.configs.fidget"),
     tag = "legacy",
   },
   {
     "lewis6991/gitsigns.nvim",
     event = { "CursorHold", "CursorHoldI" },
-    config = require("plugins.gitsigns")
+    config = require("plugins.configs.gitsigns")
   },
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     event = "BufReadPost",
-    config = require("plugins.indent-blankline")
+    config = require("plugins.configs.indent-blankline")
   },
   {
     "hoob3rt/lualine.nvim",
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
-    config = require("plugins.lualine")
+    config = require("plugins.configs.lualine")
   },
   {
     "petertriho/nvim-scrollbar",
-    config = require("plugins.scrollbar"),
+    config = require("plugins.configs.scrollbar"),
     dependencies = {
       "kevinhwang91/nvim-hlslens",
       {
         "lewis6991/gitsigns.nvim",
-        config = require("plugins.gitsigns")
+        config = require("plugins.configs.gitsigns")
       },
     },
     event = { "BufReadPost", "BufAdd", "BufNewFile" },
@@ -346,12 +346,12 @@ local plugins = {
   {
     "edluffy/specs.nvim",
     event = "CursorMoved",
-    config = require("plugins.specs")
+    config = require("plugins.configs.specs")
   },
   {
     "folke/todo-comments.nvim",
     event = "BufReadPost",
-    config = require("plugins.todo-comments"),
+    config = require("plugins.configs.todo-comments"),
     dependencies = {
       "nvim-lua/plenary.nvim",
     }
