@@ -146,6 +146,10 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/mason.nvim" -- LSP installer
   use "williamboman/mason-lspconfig.nvim" -- Support for lspconfig with mason
+  use {
+    "j-hui/fidget.nvim", -- LSP progress ui
+    tag = "legacy"
+  }
 
   -- Languages
   use "vim-crystal/vim-crystal"
