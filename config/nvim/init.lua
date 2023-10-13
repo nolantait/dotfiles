@@ -1,44 +1,9 @@
--- Load core plugins
-require "user.options"
-require "user.core"
-require "user.utils"
-require "user.plugins"
-require "user.lsp"
-require "user.colorscheme"
+-- Load core config
+require "core"
 
--- Load user plugins
-require "user.alpha"
-require "user.autocommands"
-require "user.barbecue"
-require "user.bufferline"
-require "user.colorizer"
-require "user.copilot"
-require "user.devicons"
-require "user.dressing"
-require "user.fidget"
-require "user.gitsigns"
-require "user.illuminate"
-require "user.indent_blankline"
-require "user.keymaps"
-require "user.lualine"
-require "user.matchup"
-require "user.neo-tree"
-require "user.notify"
-require "user.profiling"
-require "user.rails"
-require "user.ruby"
-require "user.scrollbar"
-require "user.snippets"
-require "user.specs"
-require "user.telescope"
-require "user.treesitter"
-require "user.treesitter-context"
-require "user.todo_comments"
-require "user.whichkey"
-require "user.wilder"
-
--- Ordering dependent
-require "user.cmp"
+-- Load plugins with lazy
+require "plugins"
 
 -- Personal plugins
-require "plugins.gem"
+require "custom.gem"
+require "custom.profiling"

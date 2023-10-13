@@ -39,25 +39,9 @@ end = "# End flavours"
 hook = "i3-msg reload"
 
 [[item]]
-file = "~/dotfiles/config/nvim/lua/user/colors.lua"
+file = "~/dotfiles/config/nvim/lua/globals/colors.lua"
 template = "nvim"
 subtemplate = "colors"
-rewrite = false
-start = "-- Start flavours"
-end = "-- End flavours"
-
-[[item]]
-file = "~/dotfiles/config/nvim/lua/user/barbecue.lua"
-template = "nvim"
-subtemplate = "barbecue"
-rewrite = false
-start = "-- Start flavours"
-end = "-- End flavours"
-
-[[item]]
-file = "~/dotfiles/config/nvim/lua/user/lualine.lua"
-template = "nvim"
-subtemplate = "lualine"
 rewrite = false
 start = "-- Start flavours"
 end = "-- End flavours"

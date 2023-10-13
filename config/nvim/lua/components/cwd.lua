@@ -1,5 +1,5 @@
 local abbreviate_path = function(path)
-  local home = require("user.globals").home
+  local home = require("globals.settings").home
   if path:find(home, 1, true) == 1 then
     path = "~" .. path:sub(#home + 1)
   end
