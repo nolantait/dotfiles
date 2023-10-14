@@ -99,11 +99,11 @@ return function()
       ["<S-Tab>"] = cmp.mapping(commands.previous_item, { "i", "s" }),
     },
     matching = {
-      disallow_prefix_unmatching = false,
-      disallow_fullfuzzy_matching = false,
-      disallow_fuzzy_matching = false,
-      disallow_partial_matching = true,
-      disallow_partial_fuzzy_matching = false
+      disallow_prefix_unmatching = true,
+      disallow_fullfuzzy_matching = true,
+      disallow_fuzzy_matching = true,
+      disallow_partial_matching = false,
+      disallow_partial_fuzzy_matching = true
     },
     preselect = cmp.PreselectMode.Item,
     performance = {
@@ -115,9 +115,16 @@ return function()
       max_view_entries = 200
     },
     sources = cmp.config.sources({
-      { name = "copilot" },
+      {
+        name = "copilot",
+        max_view_entries = 3,
+      },
       { name = "nvim_lua" },
-      { name = "nvim_lsp" },
+      {
+        name = "nvim_lsp",
+        keyword_length = 5,
+        entry_filter = utils.limit_lsp_types
+      },
       { name = "buffer" },
       { name = "path" },
       { name = "luasnip" },

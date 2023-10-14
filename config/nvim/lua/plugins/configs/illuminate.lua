@@ -15,10 +15,13 @@ return function()
       "NvimTree",
       "Outline",
       "TelescopePrompt",
+      "Trouble",
       "alpha",
       "help",
-      "toggleterm"
+      "toggleterm",
+      "Empty"
     },
-    under_cursor = false
+    under_cursor = true,
+    max_file_lines = 10000,
   })
 end

@@ -81,5 +81,26 @@ M.lsp_scores = function(entry_a, entry_b)
   return (diff < 0)
 end
 
+M.limit_lsp_types = function(entry, ctx)
+  local kind = entry:get_kind()
+  local line = ctx.cursor.line
+  local col = ctx.cursor.col
+  local char_before_cursor = string.sub(line, col - 1, col - 1)
+  local char_after_dot = string.sub(line, col, col)
+  local types = require("cmp.types")
+
+  if char_before_cursor == "." and char_after_dot:match "[a-zA-Z]" then
+    return kind == types.lsp.CompletionItemKind.Method
+      or kind == types.lsp.CompletionItemKind.Field
+      or kind == types.lsp.CompletionItemKind.Property
+  elseif string.match(line, "^%s+%w+$") then
+    return kind == types.lsp.CompletionItemKind.Function or kind == types.lsp.CompletionItemKind.Variable
+  elseif kind == require("cmp").lsp.CompletionItemKind.Text then
+    return false
+  end
+
+  return true
+end
+
 
 return M
