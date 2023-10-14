@@ -1,13 +1,14 @@
--- Used keymaps to set keybinds
+-- DOCS: This is our main file to set our always on keybinds.
+-- Used by core/keymaps.lua to set keybinds
 -- Used by whichkey to show keybinds on popup
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
+-- NOTE: These are the modes of commands
+-- - normal_mode = "n",
+-- - insert_mode = "i",
+-- - visual_mode = "v",
+-- - visual_block_mode = "x",
+-- - term_mode = "t",
+-- - command_mode = "c",
 
 return {
   {

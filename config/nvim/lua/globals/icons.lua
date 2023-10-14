@@ -1,4 +1,5 @@
-  -- find more here: https://www.nerdfonts.com/cheat-sheet
+-- DOCS: Sets up icons used everywhere else. These require a Nerd Font to be
+-- installed. Find more and customize from here: https://www.nerdfonts.com/cheat-sheet
 
 return {
   arrow_left = "",

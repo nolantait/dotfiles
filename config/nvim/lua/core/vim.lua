@@ -1,3 +1,5 @@
+-- DOCS: Sets up some vim global variables
+
 -- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
 vim.loader.enable()
 vim.api.nvim_set_var("loaded_perl_provider", 0)

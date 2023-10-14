@@ -13,7 +13,6 @@ return function()
   luasnip.setup()
   copilot_cmp.setup()
 
-  -- Here we apply our copilot comparators if and only if its loaded
   local compare = cmp.config.compare
   local comparators = {
     compare.offset,
@@ -27,15 +26,10 @@ return function()
     compare.length,
     compare.order,
   }
+
+  -- Apply copilot_cmp conditionally on it being loaded
   comparators = copilot_cmp.apply(comparators)
 
-  -- Here we are wrapping the default behavior we specify here with additional luasnip
-  -- functionality only if luasnip is loaded.
-  --
-  -- See the luasnip module for more information.
-  --
-  -- Doing this allows for other plugins to modify the behavior of our functions
-  -- conditionally on them being loaded: a(b(c(default)))
   local commands = {
     next_item = function(fallback)
       if cmp.visible() then
@@ -55,7 +49,15 @@ return function()
       -- Do nothing
     end
   }
-  -- commands = luasnip.apply(commands)
+
+  -- Here we are wrapping the default behavior we specify here with additional luasnip
+  -- functionality only if luasnip is loaded.
+  --
+  -- See the luasnip module for more information.
+  --
+  -- Doing this allows for other plugins to modify the behavior of our functions
+  -- conditionally on them being loaded: a(b(c(default)))
+  commands = luasnip.apply(commands)
 
   -- Setup cmp with everything above
   cmp.setup {

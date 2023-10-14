@@ -1,4 +1,4 @@
--- Sets up keybinds
+-- DOCS: Sets up keybinds
 
 local keymap = vim.api.nvim_set_keymap
 local options = {

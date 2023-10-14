@@ -1,3 +1,9 @@
+-- DOCS: This module provides a public API for notifications. We use it to make it
+-- easy to change how notifications are sent within our config later.
+--
+-- local notify = require("core.messages")
+-- notify.error("This is an error message")
+
 local M = {}
 
 function M.error(msg, title)

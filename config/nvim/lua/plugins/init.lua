@@ -1,3 +1,7 @@
+-- DOCS: This file gets loaded by init.lua in the root folder and is the main
+-- entrypoint for our plugins setup which uses lazy.nvim to load our plugins on
+-- demand and in the background to improve the performance of our editor.
+
 -- Install lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

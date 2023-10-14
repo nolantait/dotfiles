@@ -1,3 +1,6 @@
+-- DOCS: This is where we define our plugins which will get loaded in the
+-- background when needed by lazy.nvim
+
 return {
   {
     -- Prettier quickfix list

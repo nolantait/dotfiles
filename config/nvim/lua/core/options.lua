@@ -1,3 +1,5 @@
+-- DOCS: This sets some basic options for neovim such as tabs or spaces, etc
+
 local options = {
   backup = false,                                  -- Prevents creating a backup file
   backspace = "2",                                 -- Backspace deletes like most programs in insert mode

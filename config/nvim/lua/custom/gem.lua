@@ -1,8 +1,9 @@
--- Custom plugin to provide rails.vim style keybids to normal gem projects
+-- DOCS: Custom plugin to provide rails.vim style keybids to normal gem projects
 
 local M = {}
 M.gem = {}
 
+-- Detect if we are in a ruby project
 function M.Detect()
     if vim.fn.empty(vim.fn.glob('*.gemspec')) == 1 then
         return
@@ -11,6 +12,7 @@ function M.Detect()
     M.gem.path = vim.fn.getcwd()
 end
 
+-- Go from a file in lib/ and find the matching spec in spec/
 local function lib2spec(file)
     -- Check if the file starts with 'lib/' or contains '/lib/'
     if file:match('^lib/') or file:match('/lib/') then
@@ -21,6 +23,7 @@ local function lib2spec(file)
     end
 end
 
+-- Go from a file in spec/ and find the matching file in lib/
 local function spec2lib(file)
     -- Check if the file starts with 'spec/' or contains '/spec/'
     if file:match('^spec/') or file:match('/spec/') then
@@ -31,6 +34,8 @@ local function spec2lib(file)
     end
 end
 
+-- Allows usage of :A to navigate to alternative files depending on where
+-- we are.
 function M.Alternative()
     local file = vim.fn.expand('%')
     if vim.fn.match(file, '\\v^lib/|/lib/') ~= -1 then
@@ -44,10 +49,13 @@ function M.Alternative()
     vim.cmd('edit ' .. vim.fn.fnameescape(file))
 end
 
+-- Set up our command as :A
 vim.cmd([[
   command! -nargs=0 A :lua require('custom.gem').Alternative()
 ]])
 
+-- Run detection anytime we navigate to a file to see if we are in a ruby
+-- project
 vim.cmd([[
 augroup gemPluginDetect
   autocmd!

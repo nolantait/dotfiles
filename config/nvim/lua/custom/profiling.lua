@@ -1,4 +1,4 @@
--- Adds StartProfile and StopProfile commands to profile neovim plugins
+-- DOCS: Adds StartProfile and StopProfile commands to profile neovim plugins
 
 function StartProfile()
   vim.cmd("profile start ~/.config/nvim/profile.log")

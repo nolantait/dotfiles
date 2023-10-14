@@ -1,3 +1,5 @@
+-- DOCS: These are our global configuration values for our plugins.
+
 local os_name = vim.loop.os_uname().sysname
 local is_windows = os_name == "Windows_NT"
 local path_sep = is_windows and "\\" or "/"
