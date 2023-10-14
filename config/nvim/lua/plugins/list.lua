@@ -20,6 +20,20 @@ end
 
 return {
   {
+    -- Base16 colorscheme controlled with flavours in globals/colors.lua
+    "RRethy/nvim-base16",
+    config = require("plugins.configs.colorscheme"),
+    lazy = false,
+    -- Load before everything else, default is 50
+    priority = 1000
+  },
+  {
+    -- Unload plugins when opening large files
+    "LunarVim/bigfile.nvim",
+    lazy = false,
+    config = require("plugins.configs.bigfile"),
+  },
+  {
     -- Prettier quickfix list
     "folke/trouble.nvim",
     -- Only load upon the usage of these commands
@@ -28,33 +42,49 @@ return {
     config = require("plugins.configs.trouble"),
   },
   {
-    -- Test runner
-    "nvim-neotest/neotest",
-    keys = keymap(require("plugins.keybinds.neotest")),
-    event = "VeryLazy",
-    config = require("plugins.configs.neotest"),
+    -- Fuzzy file searching
+    "nvim-telescope/telescope.nvim",
+    cmd = "Telescope",
+    config = require("plugins.configs.telescope"),
+    keys = keymap(require("plugins.keybinds.telescope")),
     dependencies = {
+      "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-      "olimorris/neotest-rspec"
+      "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-telescope/telescope-frecency.nvim",
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        build = "make"
+      },
+    }
+  },
+  {
+    -- Improved syntax highlighting and code understanding for other plugins
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+      if #vim.api.nvim_list_uis() ~= 0 then
+        vim.api.nvim_command("TSUpdate")
+      end
+    end,
+    config = require("plugins.configs.treesitter"),
+    dependencies = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "p00f/nvim-ts-rainbow",
+      "windwp/nvim-ts-autotag",
+      {
+        "andymass/vim-matchup",
+        config = require("plugins.configs.matchup"),
+      },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = require("plugins.configs.treesitter-context")
+      },
+      {
+        "NvChad/nvim-colorizer.lua",
+        config = require("plugins.configs.colorizer"),
+      }
     },
-  },
-  {
-    -- Custom fork of mason-update-all which uses notifications instead of print
-    "nolantait/mason-update-all",
-    lazy = false,
-    -- Use the default calling of require(MAIN).setup(opts) which in this case
-    -- would call .setup({})
-    config = true
-  },
-  {
-    -- Base16 colorscheme controlled with flavours in globals/colors.lua
-    "RRethy/nvim-base16",
-    config = require("plugins.configs.colorscheme"),
-    lazy = false,
-    -- Load before everything else, default is 50
-    priority = 1000
+    event = "BufReadPost",
   },
   {
     -- Rust integration with LSP
@@ -72,13 +102,6 @@ return {
       "erb",
     },
     event = "BufReadPre",
-  },
-  {
-    -- Popup notifications on the top right of the screen
-    "rcarriga/nvim-notify",
-    -- Load later, after everything else, not important for initial UI paint
-    event = "VeryLazy",
-    config = require("plugins.configs.notify"),
   },
   {
     -- Completions for vim commands and paths
@@ -122,53 +145,6 @@ return {
     version = "*",
   },
   {
-    -- Fuzzy file searching
-    "nvim-telescope/telescope.nvim",
-    lazy = false,
-    cmd = "Telescope",
-    config = require("plugins.configs.telescope"),
-    keys = keymap(require("plugins.keybinds.telescope")),
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope-ui-select.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make"
-      },
-    }
-  },
-  {
-    -- Improved syntax highlighting and code understanding for other plugins
-    "nvim-treesitter/nvim-treesitter",
-    build = function()
-      if #vim.api.nvim_list_uis() ~= 0 then
-        vim.api.nvim_command("TSUpdate")
-      end
-    end,
-    config = require("plugins.configs.treesitter"),
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "p00f/nvim-ts-rainbow",
-      "windwp/nvim-ts-autotag",
-      {
-        "andymass/vim-matchup",
-        config = require("plugins.configs.matchup"),
-      },
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = require("plugins.configs.treesitter-context")
-      },
-      {
-        "NvChad/nvim-colorizer.lua",
-        lazy = false,
-        config = require("plugins.configs.colorizer"),
-      }
-    },
-    event = "BufReadPost",
-  },
-  {
     -- Highlighting of the word under the cursor
     "RRethy/vim-illuminate",
     config = require("plugins.configs.illuminate"),
@@ -183,10 +159,15 @@ return {
     cmd = { "BufDel", "BufDelAll", "BufDelOthers" }
   },
   {
-    -- Unload plugins when opening large files
-    "LunarVim/bigfile.nvim",
-    lazy = false,
-    config = require("plugins.configs.bigfile"),
+    -- Custom fork of mason-update-all which uses notifications instead of print
+    "nolantait/mason-update-all",
+    cmd = "MasonUpdateAll",
+    -- Use the default calling of require(MAIN).setup(opts) which in this case
+    -- would call .setup({})
+    config = true,
+    dependencies = {
+      "neovim/nvim-lspconfig",
+    }
   },
   {
     -- Setting up LSP servers for neovim
@@ -197,7 +178,7 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "folke/neodev.nvim"
+      "folke/neodev.nvim",
     },
   },
   {
@@ -246,6 +227,7 @@ return {
   {
     -- Filesystem tree on the left side of the screen
     "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
     config = require("plugins.configs.neo-tree"),
     cmd = {
       "NvimTreeToggle",
@@ -254,13 +236,12 @@ return {
       "NvimTreeFindFileToggle",
       "NvimTreeRefresh",
     },
-    branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
       "MunifTanjim/nui.nvim",        -- improved UI components
     },
-    lazy = false,
+    keys = keymap(require("plugins.keybinds.neo-tree")),
   },
   {
     -- Show keymaps on partial completion at the bottom of the screen
@@ -358,5 +339,25 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     }
-  }
+  },
+  {
+    -- Popup notifications on the top right of the screen
+    "rcarriga/nvim-notify",
+    -- Load later, after everything else, not important for initial UI paint
+    event = "VeryLazy",
+    config = require("plugins.configs.notify"),
+  },
+  {
+    -- Test runner
+    "nvim-neotest/neotest",
+    keys = keymap(require("plugins.keybinds.neotest")),
+    event = "VeryLazy",
+    config = require("plugins.configs.neotest"),
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "olimorris/neotest-rspec"
+    },
+  },
 }

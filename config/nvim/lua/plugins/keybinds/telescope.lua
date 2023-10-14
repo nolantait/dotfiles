@@ -13,12 +13,6 @@ return {
   },
   {
     mode = "n",
-    key = "<C-\\>",
-    command = "<cmd>Telescope frecency workspace=CWD<CR>",
-    description = "Search frequently used files with Telescope using frecency",
-  },
-  {
-    mode = "n",
     key = "\\",
     command = "<cmd>Telescope live_grep<CR>",
     description = "Grep files with '\\'",
@@ -61,26 +55,26 @@ return {
   },
   {
     mode = "n",
-    key = "tts",
-    command = "<cmd>Telescope treesitter<CR>",
-    description = "Navigate treesitter symbols in the current buffer",
-  },
-  {
-    mode = "n",
     key = "td",
     command = "<cmd>Telescope diagnostics<CR>",
     description = "Navigate through current diagnostics",
   },
   {
     mode = "n",
-    key = "tds",
-    command = "<cmd>Telescope lsp_document_symbols<CR>",
-    description = "Navigate through document symbols from LSP",
+    key = "tch",
+    command = "<cmd>Telescope command_history<CR>",
+    description = "Command history",
   },
   {
     mode = "n",
-    key = "tm",
-    command = "<cmd>Telescope marks<CR>",
-    description = "Navigate through marks (bookmarks for page position with V key)",
+    key = "ta",
+    command = "<cmd>Telescope autocommands<CR>",
+    description = "Autocommands finder",
+  },
+  {
+    mode = "n",
+    key = "bf",
+    command = "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+    description = "Buffer fuzzy finder",
   },
 }
