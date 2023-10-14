@@ -2,28 +2,9 @@
 vim.loader.enable()
 vim.api.nvim_set_var("loaded_perl_provider", 0)
 
--- Sets up keybinds
-local keybinds = require("globals.keybinds")
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
-
--- Unbind ?
-keymap("", "?", "<Nop>", opts)
-
 --Remap space as leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-
--- Sets up keymaps according to keybinds file
-for _, keybind in ipairs(keybinds) do
-  keymap(keybind.mode, keybind.key, keybind.command, opts)
-end
-
-vim.cmd([[
-  cnoreabbrev W w
-]])
--- Done setting up keybinds
-
 
 -- Disable menu loading
 vim.g.did_install_default_menus = 1

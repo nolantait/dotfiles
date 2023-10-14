@@ -1,4 +1,5 @@
+require "core.vim"
 require "core.utils"
 require "core.options"
-require "core.setup"
+require "core.keymaps"
 require "core.autocommands"

@@ -2,7 +2,7 @@ return {
   {
     -- Prettier quickfix list
     "folke/trouble.nvim",
-    lazy = true,
+    -- Only load upon the usage of these commands
     cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
     config = require("plugins.configs.trouble"),
   },
