@@ -69,7 +69,7 @@ local opts = {
     reset_packpath = true, -- Reset the package path to improve startup time
     rtp = {
       reset = true,        -- Reset the runtime path to $VIMRUNTIME and the config directory
-      paths = {},           -- Add any custom paths here that you want to include in the rtp
+      paths = {},          -- Add any custom paths here that you want to include in the rtp
       disabled_plugins = {
         "2html_plugin",
         "tohtml",
@@ -105,12 +105,32 @@ local opts = {
 
 local plugins = {
   {
-    "klen/nvim-test",
-    config = require("plugins.configs.nvim-test"),
-    ft = {
-      "ruby"
-    }
+    "folke/trouble.nvim",
+    lazy = true,
+    cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+    config = require("plugins.configs.trouble"),
   },
+  {
+    "nvim-neotest/neotest",
+    event = "VeryLazy",
+    config = require("plugins.configs.neotest"),
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "olimorris/neotest-rspec"
+    },
+    -- ft = {
+    --   "ruby"
+    -- }
+  },
+  -- {
+  --   "klen/nvim-test",
+  --   config = require("plugins.configs.nvim-test"),
+  --   ft = {
+  --     "ruby"
+  --   }
+  -- },
   {
     "nolantait/mason-update-all",
     lazy = false,
@@ -249,6 +269,7 @@ local plugins = {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
+      "folke/neodev.nvim"
     },
   },
   {

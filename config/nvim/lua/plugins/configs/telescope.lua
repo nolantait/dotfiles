@@ -4,6 +4,7 @@
 return function()
   local telescope = require("telescope")
   local icons = require("globals.icons")
+  local trouble = require("trouble.providers.telescope")
 
   local actions = require "telescope.actions"
   local previewers = require "telescope.previewers"
@@ -55,6 +56,7 @@ return function()
       },
       mappings = {
         i = {
+          ["<C-t"] = trouble.open_with_trouble,
           ["<C-f>"] = actions.cycle_history_next,
           ["<C-b>"] = actions.cycle_history_prev,
 
@@ -85,6 +87,7 @@ return function()
           ["<C-_>"] = actions.which_key,   -- keys from pressing <C-/>
         },
         n = {
+          ["<C-t"] = trouble.open_with_trouble,
           ["<esc>"] = actions.close,
           ["q"] = actions.close,
           ["<CR>"] = actions.select_default,

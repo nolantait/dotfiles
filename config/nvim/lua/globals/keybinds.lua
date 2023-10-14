@@ -12,6 +12,36 @@
 return {
   {
     mode = "n",
+    key = "T",
+    command = "<cmd>TestOutputPanel<CR>",
+    description = "Open test output panel"
+  },
+  {
+    mode = "n",
+    key = "<C-t>",
+    command = "<cmd>TestOutput<CR>",
+    description = "Open test output"
+  },
+  {
+    mode = "n",
+    key = "tt",
+    command = "<cmd>Trouble<CR>",
+    description = "Open trouble"
+  },
+  {
+    mode = "n",
+    key = "ts",
+    command = "<cmd>TestSummary<CR>",
+    description = "Toggle test summary",
+  },
+  {
+    mode = "n",
+    key = "<Leader>?",
+    command = "<cmd>TestDap<CR>",
+    description = "Test with dap",
+  },
+  {
+    mode = "n",
     key = "<Leader>;",
     command = "<cmd>lua require'dap'.continue()<CR>",
     description = "Continue debugging",
