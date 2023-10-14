@@ -1,7 +1,7 @@
 -- Component for copilot statusline to show its status
 
 return function()
-  local ok, api = prequire("copilot.api")
+  local ok, api = pcall(require, "copilot.api")
 
   local status = ""
   if ok and api then

@@ -83,7 +83,7 @@ return function()
   }
 
   -- Setup copilot cmp integration
-  local copilot_ok, copilot_cmp = prequire("copilot_cmp")
+  local copilot_ok, copilot_cmp = pcall(require, "copilot_cmp")
   if copilot_ok and copilot_cmp then
     local copilot_comparators = {
       require("copilot_cmp.comparators").prioritize,
