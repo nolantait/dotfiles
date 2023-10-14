@@ -120,31 +120,24 @@ local plugins = {
       "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec"
     },
-    -- ft = {
-    --   "ruby"
-    -- }
   },
-  -- {
-  --   "klen/nvim-test",
-  --   config = require("plugins.configs.nvim-test"),
-  --   ft = {
-  --     "ruby"
-  --   }
-  -- },
   {
     "nolantait/mason-update-all",
     lazy = false,
-    config = function()
-      require("mason-update-all").setup()
-    end
+    -- Use the default calling of require(MAIN).setup(opts) which in this case
+    -- would call .setup({})
+    config = true
   },
   {
     "RRethy/nvim-base16",
     config = require("plugins.configs.colorscheme"),
     lazy = false,
+    -- Load before everything else, default is 50
+    priority = 1000
   },
   {
     "simrat39/rust-tools.nvim",
+    -- Load only when opening a rust file
     ft = "rust",
     event = "BufReadPre",
   },
@@ -159,6 +152,7 @@ local plugins = {
   },
   {
     "rcarriga/nvim-notify",
+    -- Load later, after everything else, not important for initial UI paint
     event = "VeryLazy",
     config = require("plugins.configs.notify"),
   },
@@ -281,7 +275,6 @@ local plugins = {
       {
         "L3MON4D3/LuaSnip",
         build = "make install_jsregexp",
-        config = require("plugins.configs.luasnip"),
         dependencies = { "rafamadriz/friendly-snippets" },
         version = "2.*",
       },
@@ -300,8 +293,8 @@ local plugins = {
     config = require("plugins.configs.copilot"),
     dependencies = {
       {
-        "zbirenbaum/copilot-cmp",
-        config = require("plugins.configs.copilot-cmp"),
+        -- We will be loading this inside of the cmp config
+        "zbirenbaum/copilot-cmp"
       },
     },
   },

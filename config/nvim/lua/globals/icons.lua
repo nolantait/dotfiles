@@ -1,3 +1,5 @@
+  -- find more here: https://www.nerdfonts.com/cheat-sheet
+
 return {
   arrow_left = "",
   arrow_right = "",
