@@ -1,17 +1,36 @@
 -- DOCS: This is where we define our plugins which will get loaded in the
 -- background when needed by lazy.nvim
 
+local keymap = function(keybinds)
+  local result = {}
+
+  for _, keybind in ipairs(keybinds) do
+    table.insert(result, {
+      keybind.key,
+      keybind.command,
+      keybind.mode,
+      desc = keybind.description,
+      noremap = true,
+      silent = true
+    })
+  end
+
+  return result
+end
+
 return {
   {
     -- Prettier quickfix list
     "folke/trouble.nvim",
     -- Only load upon the usage of these commands
+    keys = keymap(require("plugins.keybinds.trouble")),
     cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
     config = require("plugins.configs.trouble"),
   },
   {
     -- Test runner
     "nvim-neotest/neotest",
+    keys = keymap(require("plugins.keybinds.neotest")),
     event = "VeryLazy",
     config = require("plugins.configs.neotest"),
     dependencies = {
@@ -105,8 +124,10 @@ return {
   {
     -- Fuzzy file searching
     "nvim-telescope/telescope.nvim",
+    lazy = false,
     cmd = "Telescope",
     config = require("plugins.configs.telescope"),
+    keys = keymap(require("plugins.keybinds.telescope")),
     dependencies = {
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
@@ -172,6 +193,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "CursorHold", "CursorHoldI" },
     config = require("plugins.configs.lsp"),
+    keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -249,6 +271,7 @@ return {
   {
     -- Debug Adapter Protocol setup for interactive debugging
     "mfussenegger/nvim-dap",
+    keys = keymap(require("plugins.keybinds.dap")),
     cmd = {
       "DapSetLogLevel",
       "DapShowLog",

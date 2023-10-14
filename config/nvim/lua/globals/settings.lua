@@ -7,6 +7,7 @@ local home = is_windows and os.getenv("USERPROFILE") or os.getenv("HOME")
 local vim_path = vim.fn.stdpath("config")
 
 return {
+  path_sep = path_sep,
   home = home,
   data_dir = vim.fn.stdpath("data"),
   vim_path = vim_path,

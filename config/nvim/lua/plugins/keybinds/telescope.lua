@@ -1,0 +1,86 @@
+return {
+  {
+    mode = "n",
+    key = "<C-p>",
+    command = "<cmd>Telescope find_files<CR>",
+    description = "Search files with Telescope using git-ls with fallback",
+  },
+  {
+    mode = "n",
+    key = "<C-\\>",
+    command = "<cmd>Telescope frecency workspace=CWD<CR>",
+    description = "Search frequently used files with Telescope using frecency",
+  },
+  {
+    mode = "n",
+    key = "<C-\\>",
+    command = "<cmd>Telescope frecency workspace=CWD<CR>",
+    description = "Search frequently used files with Telescope using frecency",
+  },
+  {
+    mode = "n",
+    key = "\\",
+    command = "<cmd>Telescope live_grep<CR>",
+    description = "Grep files with '\\'",
+  },
+  {
+    mode = "n",
+    key = "to",
+    command = "<cmd>Telescope oldfiles<CR>",
+    description = "View recently accessed files",
+  },
+  {
+    mode = "n",
+    key = "tmp",
+    command = "<cmd>Telescope man_pages<CR>",
+    description = "Find man pages",
+  },
+  {
+    mode = "n",
+    key = "thi",
+    command = "<cmd>Telescope highlights<CR>",
+    description = "Search through highlights",
+  },
+  {
+    mode = "n",
+    key = "tvo",
+    command = "<cmd>Telescope vim_options<CR>",
+    description = "Search through vim options",
+  },
+  {
+    mode = "n",
+    key = "the",
+    command = "<cmd>Telescope help_tags<CR>",
+    description = "Search through help tags in man pages",
+  },
+  {
+    mode = "n",
+    key = "tkm",
+    command = "<cmd>Telescope keymaps<CR>",
+    description = "Search through your keymaps",
+  },
+  {
+    mode = "n",
+    key = "tts",
+    command = "<cmd>Telescope treesitter<CR>",
+    description = "Navigate treesitter symbols in the current buffer",
+  },
+  {
+    mode = "n",
+    key = "td",
+    command = "<cmd>Telescope diagnostics<CR>",
+    description = "Navigate through current diagnostics",
+  },
+  {
+    mode = "n",
+    key = "tds",
+    command = "<cmd>Telescope lsp_document_symbols<CR>",
+    description = "Navigate through document symbols from LSP",
+  },
+  {
+    mode = "n",
+    key = "tm",
+    command = "<cmd>Telescope marks<CR>",
+    description = "Navigate through marks (bookmarks for page position with V key)",
+  },
+}

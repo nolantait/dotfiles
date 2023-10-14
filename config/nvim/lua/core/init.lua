@@ -3,7 +3,7 @@
 -- lua will look for a file named init.lua by default if the path is a folder
 
 require "core.vim"
-require "core.utils"
+require "core.prequire"
 require "core.options"
 require "core.keymaps"
 require "core.autocommands"
