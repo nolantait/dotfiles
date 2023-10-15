@@ -141,6 +141,11 @@ return {
     },
   },
   {
+    "echasnovski/mini.splitjoin",
+    config = require("plugins.configs.mini-splitjoin"),
+    event = "LazyFile"
+  },
+  {
     "echasnovski/mini.pairs",
     config = require("plugins.configs.mini-pairs"),
     event = "LazyFile"
