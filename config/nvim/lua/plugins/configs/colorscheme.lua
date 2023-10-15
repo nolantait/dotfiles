@@ -31,6 +31,7 @@ return function()
   set_hl(0, "FloatBorder", { fg = colors.light_gray })
   set_hl(0, "FloatBorderCmp", { fg = colors.light_gray })
   set_hl(0, "FloatBorderDocs", { fg = colors.blue })
+  set_hl(0, "TelescopeBorder", { fg = colors.lighter_gray })
 
   set_hl(0, "CmpPmenu", { bg = colors.black })
 

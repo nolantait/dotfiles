@@ -156,7 +156,8 @@ return function()
       },
     },
     view = {
-      entries = "native"
+      entries = "custom", -- One of: "native" | "wildmenu" | "custom"
+      docs = { auto_open = true },
     }
   }
 end
