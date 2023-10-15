@@ -1,3 +1,5 @@
+-- DOCS: Sets up Debugger Adapter Protocol
+
 return function()
   local dap = require("dap")
   local dapui = require("dapui")

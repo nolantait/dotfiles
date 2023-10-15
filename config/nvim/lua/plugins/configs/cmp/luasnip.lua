@@ -1,4 +1,4 @@
--- Snippet provider for cmp
+-- DOCS: Snippet provider for cmp
 
 local M = {
   loaded = false,
@@ -6,7 +6,6 @@ local M = {
 
 M.setup = function()
   local ok, luasnip = pcall(require, "luasnip")
-
   M.loaded = ok
 
   if M.loaded then
@@ -44,7 +43,9 @@ M.next_item = function(default)
 
     return function(fallback)
       if cmp.visible() then
-        cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+        cmp.select_next_item({
+          behavior = cmp.SelectBehavior.Select
+        })
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
       elseif utils.check_backspace() then
@@ -65,7 +66,9 @@ M.previous_item = function(default)
 
     return function(fallback)
       if cmp.visible() then
-        cmp.select_previous_item({ behavior = cmp.SelectBehavior.Select })
+        cmp.select_previous_item({
+          behavior = cmp.SelectBehavior.Select
+        })
       elseif luasnip.jumpable(-1) then
         luasnip.jump(-1)
       else

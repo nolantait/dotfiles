@@ -1,3 +1,5 @@
+-- DOCS: UI for DAP
+
 return function()
   local dapui = require("dapui")
   local icons = require("globals.icons")

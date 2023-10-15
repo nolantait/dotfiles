@@ -1,4 +1,4 @@
--- Provides copilot as a source to cmp
+-- DOCS: Provides copilot as a source to cmp
 
 local M = {
   loaded = false

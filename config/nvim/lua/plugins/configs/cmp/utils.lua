@@ -1,6 +1,8 @@
-local M = {}
+-- DOCS: Utils used throughout cmp
 
 local icons = require("globals.icons")
+
+local M = {}
 
 local kind_icons = {
   Text = icons.text,
@@ -83,18 +85,21 @@ end
 
 M.limit_lsp_types = function(entry, ctx)
   local kind = entry:get_kind()
-  local line = ctx.cursor.line
-  local col = ctx.cursor.col
-  local char_before_cursor = string.sub(line, col - 1, col - 1)
-  local char_after_dot = string.sub(line, col, col)
-  local types = require("cmp.types")
+  local cursor = {
+    line = ctx.cursor.line,
+    column = ctx.cursor.col,
+  }
+
+  local char_before_cursor = string.sub(cursor.line, cursor.column - 1, cursor.column - 1)
+  local char_after_dot = string.sub(cursor.line, cursor.column, cursor.column)
+  local types = require("cmp.types").lsp.CompletionItemKind
 
   if char_before_cursor == "." and char_after_dot:match "[a-zA-Z]" then
-    return kind == types.lsp.CompletionItemKind.Method
-      or kind == types.lsp.CompletionItemKind.Field
-      or kind == types.lsp.CompletionItemKind.Property
-  elseif string.match(line, "^%s+%w+$") then
-    return kind == types.lsp.CompletionItemKind.Function or kind == types.lsp.CompletionItemKind.Variable
+    return kind == types.Method
+        or kind == types.Field
+        or kind == types.Property
+  elseif string.match(cursor.line, "^%s+%w+$") then
+    return kind == types.Function or kind == types.Variable
   elseif kind == require("cmp").lsp.CompletionItemKind.Text then
     return false
   end

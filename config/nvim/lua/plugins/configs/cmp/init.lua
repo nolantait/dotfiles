@@ -1,4 +1,4 @@
--- Completions plugin
+-- DOCS: Completions plugin for code suggestions
 
 return function()
   local cmp = require("cmp")
