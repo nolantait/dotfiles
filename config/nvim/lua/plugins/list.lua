@@ -41,6 +41,12 @@ return {
     priority = 1000
   },
   {
+    "echasnovski/mini.sessions",
+    config = require("plugins.configs.mini-sessions"),
+    keys = keymap(require("plugins.keybinds.mini-sessions")),
+    lazy = false
+  },
+  {
     -- Unload plugins when opening large files
     "LunarVim/bigfile.nvim",
     config = require("plugins.configs.bigfile"),

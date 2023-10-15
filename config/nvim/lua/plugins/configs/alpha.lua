@@ -22,13 +22,14 @@ return function()
   }
 
   dashboard.section.buttons.val = {
-    dashboard.button("f", icons.files.find .. " Find file", ":Telescope find_files<CR>"),
+    dashboard.button("s", icons.source .. " Open session", "<cmd>lua MiniSessions.select()<CR>"),
+    dashboard.button("f", icons.files.find .. " Find file", "<cmd>Telescope find_files<CR>"),
     dashboard.button("e", icons.files.new .. " New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("r", icons.files.code .. " Frequently used files", ":Telescope frecency workspace=CWD<CR>"),
-    dashboard.button("\\", icons.text .. " Find text", ":Telescope live_grep <CR>"),
+    dashboard.button("r", icons.files.code .. " Frequently used files", "<cmd>Telescope frecency workspace=CWD<CR>"),
+    dashboard.button("\\", icons.text .. " Find text", "<cmd>Telescope live_grep <CR>"),
     dashboard.button("u", icons.download .. " Update plugins", "<cmd>Lazy sync<cr>"),
-    dashboard.button("U", icons.download .. " Update language servers", "<cmd>MasonUpdateAll<cr>"),
-    dashboard.button("c", icons.gear .. " Configuration", ":e ~/.config/nvim/init.lua <CR>"),
+    dashboard.button("U", icons.download .. " Update language servers", "<cmd>MasonUpdateAll<CR>"),
+    dashboard.button("c", icons.gear .. " Configuration", ":e ~/.config/nvim<CR>"),
     dashboard.button("q", icons.cross .. " Quit Neovim", ":qa<CR>"),
   }
 
