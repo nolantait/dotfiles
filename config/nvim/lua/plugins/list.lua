@@ -253,6 +253,13 @@ return {
     event = "LazyFile",
   },
   {
+    -- Delete buffers individually, fixes some of vim's quirks
+    "echasnovski/mini.bufremove",
+    config = true,
+    event = "LazyFile",
+    keys = keymap(require("plugins.keybinds.bufremove"))
+  },
+  {
     -- Improved syntax highlighting and code understanding for other plugins
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -276,11 +283,6 @@ return {
     dependencies = {
       "neovim/nvim-lspconfig",
     }
-  },
-  {
-    -- Delete buffers individually, fixes some of vim's quirks
-    "famiu/bufdelete.nvim",
-    cmd = { "BufDel", "BufDelAll", "BufDelOthers" }
   },
   {
     -- Prettier quickfix list

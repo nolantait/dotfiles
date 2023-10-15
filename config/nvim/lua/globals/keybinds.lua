@@ -150,10 +150,4 @@ return {
     command = "<Cmd>vertical resize -10<CR>",
     description = "Decrease window width by 10",
   },
-  {
-    mode = "n",
-    key = "<Leader>bd",
-    command = "<cmd>lua require('bufdelete').bufdelete(0, true)<CR>",
-    description = "Close buffer",
-  },
 }
