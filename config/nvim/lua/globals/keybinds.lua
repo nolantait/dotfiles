@@ -10,7 +10,6 @@
 -- - term_mode = "t",
 -- - command_mode = "c",
 
-
 return {
   {
     mode = { "i", "x" },

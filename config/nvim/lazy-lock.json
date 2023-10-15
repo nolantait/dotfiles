@@ -31,6 +31,7 @@
   "mini.clue": { "branch": "main", "commit": "1fdea5c84228a5a39fa5a784c5a4ddb41f9be40a" },
   "mini.indentscope": { "branch": "main", "commit": "cbc07203ca8faae952ca373c1f6cc5881ce97af0" },
   "mini.map": { "branch": "main", "commit": "abaebb9844b6f44e468a876a76acf845faf5d6e7" },
+  "mini.move": { "branch": "main", "commit": "b3bca8e493f8d1da343ff1be06c21a47e2fde1c0" },
   "mkdir.nvim": { "branch": "main", "commit": "c55d1dee4f099528a1853b28bb28caa802eba217" },
   "neo-tree.nvim": { "branch": "v3.x", "commit": "6f8c49956c89e9fefae6acdfe1d57c6293b0a03d" },
   "neodev.nvim": { "branch": "main", "commit": "18093bdfb6ac1a6e5789894eb65f394aefff620f" },

@@ -135,6 +135,11 @@ return {
     },
   },
   {
+    "echasnovski/mini.move",
+    config = require("plugins.configs.mini-move"),
+    event = "LazyFile"
+  },
+  {
     "echasnovski/mini.map",
     config = require("plugins.configs.mini-map"),
     event = "LazyFile"
