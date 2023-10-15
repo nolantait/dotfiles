@@ -135,6 +135,11 @@ return {
     },
   },
   {
+    "echasnovski/mini.pairs",
+    config = require("plugins.configs.mini-pairs"),
+    event = "LazyFile"
+  },
+  {
     "echasnovski/mini.move",
     config = require("plugins.configs.mini-move"),
     event = "LazyFile"
@@ -147,10 +152,7 @@ return {
   {
     "echasnovski/mini.indentscope",
     config = require("plugins.configs.mini-indentscope"),
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter"
-    },
-    event = { "CursorHold", "CursorHoldI" }
+    event = { "CursorMoved" }
   },
   {
     -- Highlighting of the word under the cursor
