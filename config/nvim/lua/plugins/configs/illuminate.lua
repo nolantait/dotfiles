@@ -21,7 +21,11 @@ return function()
       "toggleterm",
       "Empty"
     },
+    large_file_cutoff = 2000,
+    large_file_overrides = {
+      providers = { "lsp" }
+    },
+    max_file_lines = 2000,
     under_cursor = true,
-    max_file_lines = 10000,
   })
 end

@@ -1,3 +1,5 @@
+-- DOCS: This is the filesystem viewer that shows up on the left of the screen
+
 return function()
   local neotree = require("neo-tree")
   local icons = require("globals.icons")
@@ -7,9 +9,54 @@ return function()
 
   neotree.setup({
     close_if_last_window = true,
-    popup_border_style = "rounded",
+    default_component_configs = {
+      indent = {
+        padding = 0,
+        indent_size = 2,
+      },
+      icon = {
+        folder_closed = icons.folders.closed,
+        folder_open = icons.folders.open,
+        folder_empty = icons.folders.empty,
+        default = icons.folders.default,
+      },
+      git_status = {
+        symbols = {
+          added = icons.git.added,
+          deleted = icons.git.removed,
+          modified = icons.git.modified,
+          renamed = icons.git.renamed,
+          untracked = icons.git.untracked,
+          ignored = icons.git.ignored,
+          unstaged = icons.git.unstagged,
+          staged = icons.git.staged,
+          conflict = icons.git.conflict,
+        },
+      },
+    },
     enable_git_status = true,
     enable_diagnostics = true,
+    event_handlers = {
+      {
+        event = "neo_tree_buffer_enter",
+        handler = function(_)
+          vim.opt_local.signcolumn = "auto"
+        end
+      },
+    },
+    filesystem = {
+      follow_current_file = { enabled = true },
+      hijack_netrw_behavior = "open_current",
+      use_libuv_file_watcher = true,
+      window = { mappings = { h = "toggle_hidden" } },
+    },
+    open_files_do_not_replace_types = {
+      "terminal",
+      "Trouble",
+      "qf",
+      "Outline"
+    },
+    popup_border_style = "rounded",
     source_selector = {
       winbar = true,
       content_layout = "start",
@@ -36,53 +83,24 @@ return function()
       separator_active = false,
       tabs_layout = "focus"
     },
-    default_component_configs = {
-      indent = {
-        padding = 0,
-        indent_size = 2,
-      },
-      icon = {
-        folder_closed = icons.folders.closed,
-        folder_open = icons.folders.open,
-        folder_empty = icons.folders.empty,
-        default = icons.folders.default,
-      },
-      git_status = {
-        symbols = {
-          added = icons.git.added,
-          deleted = icons.git.removed,
-          modified = icons.git.modified,
-          renamed = icons.git.renamed,
-          untracked = icons.git.untracked,
-          ignored = icons.git.ignored,
-          unstaged = icons.git.unstagged,
-          staged = icons.git.staged,
-          conflict = icons.git.conflict,
-        },
-      },
-    },
     window = {
       width = 30,
       mappings = {
-        ["<space>"] = false,   -- disable space until we figure out which-key disabling
+        ["<space>"] = false, -- disable space until we figure out which-key disabling
         o = "open",
         H = "prev_source",
         L = "next_source",
       },
     },
-    filesystem = {
-      follow_current_file = { enabled = true },
-      hijack_netrw_behavior = "open_current",
-      use_libuv_file_watcher = true,
-      window = { mappings = { h = "toggle_hidden" } },
-    },
-    event_handlers = {
-      {
-        event = "neo_tree_buffer_enter",
-        handler = function(_)
-          vim.opt_local.signcolumn = "auto"
-        end
-      },
-    },
+  })
+
+  -- Refresh git status whenever we close another window
+  vim.api.nvim_create_autocmd("TermClose", {
+    pattern = "*lazygit",
+    callback = function()
+      if package.loaded["neo-tree.sources.git_status"] then
+        require("neo-tree.sources.git_status").refresh()
+      end
+    end,
   })
 end

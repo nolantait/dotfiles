@@ -16,6 +16,11 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Sets up LazyFile event as a catchall for file events
+local events = require("lazy.core.handler.event")
+events.mappings.LazyFile = { id = "LazyFile", event = { "BufReadPost", "BufNewFile", "BufWritePre" } }
+events.mappings["User LazyFile"] = events.mappings.LazyFile
+
 -- Load settings and list of plugins
 local options = require("plugins.options")
 local plugins = require("plugins.list")
