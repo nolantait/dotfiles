@@ -10,7 +10,20 @@
 -- - term_mode = "t",
 -- - command_mode = "c",
 
+
 return {
+  {
+    mode = { "i", "x" },
+    key = "<C-s>",
+    command = "<Esc><Cmd>silent! update | redraw<CR>",
+    description = "Save file and go to normal mode",
+  },
+  {
+    mode = "n",
+    key = "<C-s>",
+    command = "<Cmd>silent! update | redraw<CR>",
+    description = "Save file",
+  },
   {
     mode = "n",
     key = "<Leader><Leader>",

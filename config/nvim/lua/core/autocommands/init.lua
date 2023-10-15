@@ -9,6 +9,27 @@ local function augroup(name)
   return vim.api.nvim_create_augroup("_" .. name, { clear = true })
 end
 
+cmd("ModeChanged", {
+  desc = "Hide relative numbers when neither linewise/blockwise mode is on",
+  group = augroup("relative_numbers"),
+  pattern = "[V\x16]*:*",
+  callback = function() vim.wo.relativenumber = string.find(vim.fn.mode(), '^[V\22]') ~= nil end
+})
+
+cmd("ModeChanged", {
+  desc = "Show relative numbers only when they matter",
+  group = augroup("relative_numbers"),
+  pattern = "*:[V\x16]*",
+  callback = function() vim.wo.relativenumber = vim.wo.number end
+})
+
+cmd("TermOpen", {
+  desc = "Open terminal in insert mode",
+  group = augroup("terminal_insert_mode"),
+  pattern = "term://*",
+  callback = require("core.autocommands.terminal_insert_mode"),
+})
+
 cmd("TextYankPost", {
   desc = "Highlight yanked text",
   group = augroup("highlightyank"),

@@ -19,12 +19,23 @@ vim.cmd("command! W w")
 
 local bind_keys = function(keybinds)
   for _, keybind in ipairs(keybinds) do
-    keymap(
-      keybind.mode,
-      keybind.key,
-      keybind.command,
-      options
-    )
+    if type(keybind.mode) == "table" then
+      for _, mode in ipairs(keybind.mode) do
+        keymap(
+          mode,
+          keybind.key,
+          keybind.command,
+          options
+        )
+      end
+    else
+      keymap(
+        keybind.mode,
+        keybind.key,
+        keybind.command,
+        options
+      )
+    end
   end
 end
 
