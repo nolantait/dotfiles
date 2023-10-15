@@ -5,8 +5,8 @@ return function()
   local colors = require("globals.colors")
   local icons = require("globals.icons")
 
-  local highlights = {
-  }
+  -- Add any custom highlights here
+  local highlights = {}
 
   -- Optionally use bufdelete to close buffers with fallback
   local close_command = function(bufnum)
