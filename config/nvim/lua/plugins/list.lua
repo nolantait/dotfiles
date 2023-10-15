@@ -135,6 +135,11 @@ return {
     },
   },
   {
+    "echasnovski/mini.map",
+    config = require("plugins.configs.mini-map"),
+    event = "LazyFile"
+  },
+  {
     "echasnovski/mini.indentscope",
     config = require("plugins.configs.mini-indentscope"),
     dependencies = {

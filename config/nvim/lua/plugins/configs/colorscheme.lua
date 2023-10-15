@@ -34,6 +34,8 @@ return function()
   set_hl(0, "TelescopeBorder", { fg = colors.lighter_gray })
 
   set_hl(0, "MiniIndentscopeSymbol", { fg = colors.lighter_gray })
+  set_hl(0, "MiniMapSymbolLine", { fg = colors.white })
+  set_hl(0, "MiniMapSymbolView", { fg = colors.light_gray })
 
   set_hl(0, "CmpPmenu", { bg = colors.black })
 
