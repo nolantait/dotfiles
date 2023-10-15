@@ -135,6 +135,14 @@ return {
     },
   },
   {
+    "echasnovski/mini.indentscope",
+    config = require("plugins.configs.mini-indentscope"),
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter"
+    },
+    event = { "CursorHold", "CursorHoldI" }
+  },
+  {
     -- Highlighting of the word under the cursor
     "RRethy/vim-illuminate",
     config = require("plugins.configs.illuminate"),

@@ -33,6 +33,8 @@ return function()
   set_hl(0, "FloatBorderDocs", { fg = colors.blue })
   set_hl(0, "TelescopeBorder", { fg = colors.lighter_gray })
 
+  set_hl(0, "MiniIndentscopeSymbol", { fg = colors.lighter_gray })
+
   set_hl(0, "CmpPmenu", { bg = colors.black })
 
   set_hl(0, "AlphaFooter", { fg = colors.yellow })
