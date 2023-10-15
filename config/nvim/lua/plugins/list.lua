@@ -179,9 +179,9 @@ return {
   },
   {
     -- Show keymaps on partial completion at the bottom of the screen
-    "folke/which-key.nvim",
+    "echasnovski/mini.clue",
     event = { "CursorHold", "CursorHoldI" },
-    config = require("plugins.configs.which-key"),
+    config = require("plugins.configs.mini-clue"),
   },
   {
     -- Tab completions with suggestions from many sources (copilot, lsp, etc)

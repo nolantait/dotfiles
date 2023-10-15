@@ -86,7 +86,6 @@ return function()
     window = {
       width = 30,
       mappings = {
-        ["<space>"] = false, -- disable space until we figure out which-key disabling
         o = "open",
         H = "prev_source",
         L = "next_source",
