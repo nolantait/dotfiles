@@ -141,6 +141,11 @@ return {
     },
   },
   {
+    "echasnovski/mini.surround",
+    config = require("plugins.configs.mini-surround"),
+    event = "LazyFile"
+  },
+  {
     "echasnovski/mini.splitjoin",
     config = require("plugins.configs.mini-splitjoin"),
     event = "LazyFile"
