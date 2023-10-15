@@ -267,6 +267,17 @@ return {
     config = require("plugins.configs.trouble"),
   },
   {
+    -- Frecency search for telescope
+    "nvim-telescope/telescope-frecency.nvim",
+    cmd = "Telescope frecency",
+    depedneices = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("telescope").load_extension "frecency"
+    end
+  },
+  {
     -- Fuzzy file searching
     "nvim-telescope/telescope.nvim",
     cmd = "Telescope",
@@ -276,7 +287,6 @@ return {
       "nvim-tree/nvim-web-devicons",
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope-ui-select.nvim",
-      "nvim-telescope/telescope-frecency.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make"
