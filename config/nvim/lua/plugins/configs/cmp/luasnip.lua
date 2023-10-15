@@ -66,7 +66,7 @@ M.previous_item = function(default)
 
     return function(fallback)
       if cmp.visible() then
-        cmp.select_previous_item({
+        cmp.select_prev_item({
           behavior = cmp.SelectBehavior.Select
         })
       elseif luasnip.jumpable(-1) then

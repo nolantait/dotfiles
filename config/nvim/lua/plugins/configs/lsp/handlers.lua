@@ -2,6 +2,7 @@ local M = {}
 
 M.setup = function()
   local icons = require("globals.icons")
+  local utils = require("core.utils")
 
   local signs = {
     { name = "DiagnosticSignError", text = icons.error },
@@ -21,17 +22,20 @@ M.setup = function()
     signs = {
       active = signs,
     },
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {
       focused = false,
+      focusable = true,
       style = "minimal",
-      border = "rounded",
+      border = utils.border("FloatBorder"),
       source = "always",
-      header = "",
-      prefix = "",
     },
+  })
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = utils.border("FloatBorderDocs")
   })
 
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

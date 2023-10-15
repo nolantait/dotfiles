@@ -20,7 +20,7 @@ return function()
     },
     window = {
       relative = "win",
-      blend = 100,   -- catppuccin integration
+      blend = 0,   -- catppuccin integration
       zindex = nil,
       border = "rounded"
     },

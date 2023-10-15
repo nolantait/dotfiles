@@ -3,6 +3,7 @@
 return function()
   local cmp = require("cmp")
   local utils = require("plugins.configs.cmp.utils")
+  local core_utils = require("core.utils")
 
   -- Load our module for luasnip and copilot_cmp which we use to wrap functions below
   -- conditionally on it being available. Doing this so we can easily remove
@@ -40,7 +41,7 @@ return function()
     end,
     previous_item = function(fallback)
       if cmp.visible() then
-        cmp.select_previous_item({ behavior = cmp.SelectBehavior.Select })
+        cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
       else
         fallback()
       end
@@ -58,6 +59,11 @@ return function()
   -- Doing this allows for other plugins to modify the behavior of our functions
   -- conditionally on them being loaded: a(b(c(default)))
   commands = luasnip.apply(commands)
+
+  local float_style = {
+    border = core_utils.border("FloatBorderCmp"),
+    winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
+  }
 
   -- Setup cmp with everything above
   cmp.setup {
@@ -141,25 +147,16 @@ return function()
       expand = commands.expand_snippet
     },
     window = {
-      completion = {
-        border = utils.border("PmenuBorder"),
-        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
-        scrollbar = true,
-        scrolloff = 0,
-        col_offset = 0,
-        side_padding = 1
-      },
-      documentation = {
-        border = utils.border("CmpDocBorder"),
-        winhighlight = "FloatBorder:NormalFloat",
-        scrollbar = true,
-      },
+      completion = float_style,
+      documentation = float_style,
     },
     experimental = {
       ghost_text = {
         hl_group = "Whitespace"
       },
-      native_menu = false,
     },
+    view = {
+      entries = "native"
+    }
   }
 end

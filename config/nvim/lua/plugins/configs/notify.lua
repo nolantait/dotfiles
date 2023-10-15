@@ -10,13 +10,13 @@ return function()
     stages = "fade_in_slide_out",
     ---@usage Function called when a new window is opened, use for changing win settings/config
     on_open = function(win)
-      vim.api.nvim_set_option_value("winblend", 0, { scope = "local", win = win })
-      vim.api.nvim_win_set_config(win, { zindex = 90 })
+      -- vim.api.nvim_set_option_value("winblend", 0, { scope = "local", win = win })
+      vim.api.nvim_win_set_config(win, { zindex = 100 })
     end,
     ---@usage Function called when a window is closed
     on_close = nil,
     ---@usage timeout for notifications in ms, default 5000
-    timeout = 2000,
+    timeout = 3000,
     -- @usage User render fps value
     fps = 60,
     -- Render function for notifications. See notify-render()
@@ -38,5 +38,5 @@ return function()
   })
 
   -- Set our notifier as the default for neovim so it can work with other plugins
-  vim.notify = vim.schedule_wrap(notify)
+  vim.notify = notify
 end

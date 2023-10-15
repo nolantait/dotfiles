@@ -34,7 +34,7 @@ end
 return {
   {
     -- Base16 colorscheme controlled with flavours in globals/colors.lua
-    "RRethy/nvim-base16",
+    "echasnovski/mini.base16",
     config = require("plugins.configs.colorscheme"),
     lazy = false,
     -- Load before everything else, default is 50
@@ -57,34 +57,6 @@ return {
       "nvim-tree/nvim-web-devicons"
     },
     event = "VimEnter",
-  },
-  {
-    -- Improved syntax highlighting and code understanding for other plugins
-    "nvim-treesitter/nvim-treesitter",
-    build = function()
-      if #vim.api.nvim_list_uis() ~= 0 then
-        vim.api.nvim_command("TSUpdate")
-      end
-    end,
-    config = require("plugins.configs.treesitter"),
-    dependencies = {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      "p00f/nvim-ts-rainbow",
-      "windwp/nvim-ts-autotag",
-      {
-        "andymass/vim-matchup",
-        config = require("plugins.configs.matchup"),
-      },
-      {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = require("plugins.configs.treesitter-context")
-      },
-      {
-        "NvChad/nvim-colorizer.lua",
-        config = require("plugins.configs.colorizer"),
-      }
-    },
-    event = "LazyFile",
   },
   {
     -- Auto remove search highlight and rehighlight when using n or N
@@ -197,6 +169,15 @@ return {
     },
   },
   {
+    -- Auto close or change html tags
+    "windwp/nvim-ts-autotag",
+    config = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "InsertEnter"
+  },
+  {
     -- Show keymaps on partial completion at the bottom of the screen
     "folke/which-key.nvim",
     event = { "CursorHold", "CursorHoldI" },
@@ -238,6 +219,49 @@ return {
     config = require("plugins.configs.fidget"),
     event = "LspAttach",
     tag = "legacy",
+  },
+  {
+    "andymass/vim-matchup",
+    config = require("plugins.configs.matchup"),
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "LazyFile",
+  },
+  {
+    "NvChad/nvim-colorizer.lua",
+    config = require("plugins.configs.colorizer"),
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "LazyFile",
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "LazyFile"
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    config = require("plugins.configs.treesitter-context"),
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "LazyFile",
+  },
+  {
+    -- Improved syntax highlighting and code understanding for other plugins
+    "nvim-treesitter/nvim-treesitter",
+    build = function()
+      if #vim.api.nvim_list_uis() ~= 0 then
+        vim.api.nvim_command("TSUpdate")
+      end
+    end,
+    config = require("plugins.configs.treesitter"),
+    event = { "LazyFile", "VeryLazy" },
   },
   --
   -- NOTE: === Commands ===
@@ -381,6 +405,18 @@ return {
     "stevearc/dressing.nvim",
     config = require("plugins.configs.dressing"),
     event = "VeryLazy",
+    init = function()
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.select = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.select(...)
+      end
+      ---@diagnostic disable-next-line: duplicate-set-field
+      vim.ui.input = function(...)
+        require("lazy").load({ plugins = { "dressing.nvim" } })
+        return vim.ui.input(...)
+      end
+    end
   },
   {
     -- Popup notifications on the top right of the screen

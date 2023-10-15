@@ -6,7 +6,9 @@ return function()
   local icons = require("globals.icons")
 
   -- Add any custom highlights here
-  local highlights = {}
+  local highlights = {
+    -- fill = { bg = "#000000", fg = "#000000", guifg = "#000000", guibg = "#000000" },
+  }
 
   -- Optionally use bufdelete to close buffers with fallback
   local close_command = function(bufnum)

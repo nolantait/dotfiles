@@ -38,19 +38,6 @@ M.check_backspace = function()
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
 end
 
-M.border = function(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
-end
-
 M.format = function(entry, vim_item)
   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 
