@@ -9,5 +9,4 @@ require "plugins"
 
 -- Personal plugins
 require "custom.gem"
-require "custom.profiling"
 require "custom.hardmode"
