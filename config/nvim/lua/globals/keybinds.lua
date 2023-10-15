@@ -139,7 +139,7 @@ return {
   },
   {
     mode = "n",
-    key = "<leader>bd",
+    key = "bd",
     command = "<cmd>lua require('bufdelete').bufdelete(0, true)<CR>",
     description = "Close buffer",
   },

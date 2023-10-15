@@ -7,7 +7,10 @@ return function()
     name = "nvim-cmp",
     opts = { defer = true },
     disable = function()
-      require("cmp").setup.buffer({ enabled = false })
+      local ok, cmp = pcall(require, "cmp")
+      if ok then
+        cmp.setup.buffer({ enabled = false })
+      end
     end,
   }
 

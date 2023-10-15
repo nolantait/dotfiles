@@ -21,6 +21,7 @@ local options = {
   laststatus = 0,                                  -- Global status
   linebreak = true,                                -- Wrap lines at 'breakat'
   mouse = "a",                                     -- Allow the mouse to be used in neovim
+  mousemoveevent = true,                           -- Enable mouse events for bufferline reveal
   modeline = false,                                -- Disable modelines as security precaution
   number = true,                                   -- Set numbered lines
   numberwidth = 2,                                 -- Set number column width to 2 {default 4}

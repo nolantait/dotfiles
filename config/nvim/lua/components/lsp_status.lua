@@ -4,7 +4,9 @@ return function()
   local clients = vim.lsp.get_clients({ bufnr = bufnr })
 
   for _, client in ipairs(clients) do
-    return string.format("%s %s", "", client.name)
+    if not string.match(client.name, "copilot") then
+      return string.format("%s %s", "", client.name)
+    end
   end
 
   return ""  -- No server available
