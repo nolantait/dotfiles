@@ -1,6 +1,12 @@
 return function()
   local wilder = require("wilder")
   local icons = require("globals.icons")
+  
+  local highlighters = {
+    wilder.basic_highlighter(),
+    -- wilder.lua_pcre2_highlighter(),
+    -- wilder.lua_fzy_highlighter(),
+  }
 
   local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
     max_height = "50%",
@@ -11,11 +17,7 @@ return function()
       accent = wilder.make_hl("WilderAccent", "CmpItemAbbr", "CmpItemAbbrMatch"),
     },
     empty_message = wilder.popupmenu_empty_message_with_spinner(),
-    highlighter = {
-      wilder.basic_highlighter(),
-      -- wilder.lua_pcre2_highlighter(),
-      -- wilder.lua_fzy_highlighter(),
-    },
+    highlighter = highlighters,
     left = {
       " ",
       wilder.popupmenu_devicons(),
@@ -36,7 +38,7 @@ return function()
 
   local wildmenu_renderer = wilder.wildmenu_renderer({
     apply_incsearch_fix = false,
-    highlighter = wilder.lua_fzy_highlighter(),
+    highlighter = highlighters,
     separator = " · ",
     left = { " ", wilder.wildmenu_spinner(), " " },
     right = { " ", wilder.wildmenu_index() },

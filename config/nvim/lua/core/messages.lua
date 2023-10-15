@@ -6,16 +6,29 @@
 
 local M = {}
 
-function M.error(msg, title)
-    vim.notify(msg, vim.log.levels.ERROR, { title = title })
+local message = function(msg, level, opts)
+  vim.notify(msg, level, opts)
 end
 
-function M.warn(msg, title)
-    vim.notify(msg, vim.log.levels.WARN, { title = title })
+function M.error(msg, title, opts)
+  opts = opts or {}
+  table.insert(opts, { title = title })
+
+  message(msg, vim.log.levels.ERROR, opts)
 end
 
-function M.info(msg, title)
-    vim.notify(msg, vim.log.levels.INFO, { title = title })
+function M.warn(msg, title, opts)
+  opts = opts or {}
+  table.insert(opts, { title = title })
+
+  message(msg, vim.log.levels.WARN, opts)
+end
+
+function M.info(msg, title, opts)
+  opts = opts or {}
+  table.insert(opts, { title = title })
+
+  message(msg, vim.log.levels.INFO, opts)
 end
 
 return M

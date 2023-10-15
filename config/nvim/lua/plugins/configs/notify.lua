@@ -38,5 +38,5 @@ return function()
   })
 
   -- Set our notifier as the default for neovim so it can work with other plugins
-  vim.notify = notify
+  vim.notify = vim.schedule_wrap(notify)
 end
