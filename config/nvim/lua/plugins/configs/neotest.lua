@@ -45,7 +45,7 @@ return function()
       enabled = true,
       open = function()
         vim.cmd("Trouble quickfix")
-        vim.cmd("TestSummary")
+        -- vim.cmd("TestSummary")
       end,
     },
     status = {

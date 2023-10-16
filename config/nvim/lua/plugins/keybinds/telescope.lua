@@ -73,7 +73,7 @@ return {
   },
   {
     mode = "n",
-    key = "bf",
+    key = "<Leader>bf",
     command = "<cmd>Telescope current_buffer_fuzzy_find<CR>",
     description = "Buffer fuzzy finder",
   },
