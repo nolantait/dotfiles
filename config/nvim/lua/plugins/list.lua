@@ -310,6 +310,18 @@ return {
   -- NOTE: === Commands ===
   --
   {
+    "akinsho/toggleterm.nvim",
+    config = require("plugins.configs.toggleterm"),
+    cmd = {
+      "ToggleTerm",
+      "TermExec",
+      "ToggleTermToggleAll",
+      "ToggleTermSendCurrentLine",
+      "ToggleTermSendVisualLines",
+      "ToggleTermSendVisualSelection",
+    },
+  },
+  {
     -- Custom fork of mason-update-all which uses notifications instead of print
     "nolantait/mason-update-all",
     cmd = "MasonUpdateAll",

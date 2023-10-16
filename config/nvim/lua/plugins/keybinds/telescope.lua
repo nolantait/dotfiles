@@ -7,7 +7,7 @@ return {
   },
   {
     mode = "n",
-    key = "<C-\\>",
+    key = "<C-|>",
     command = "<cmd>Telescope frecency workspace=CWD<CR>",
     description = "Search frequently used files with Telescope using frecency",
   },
