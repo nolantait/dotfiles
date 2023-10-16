@@ -4,6 +4,12 @@ Nolan's Dotfiles
 These are my dotfiles I've maintained over the last 10 years. They originally 
 started as a fork of [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles).
 
+I've since taken inspiration from other dotfiles:
+
+- [https://github.com/CharlesChiuGit/nvimdots.lua](https://github.com/CharlesChiuGit/nvimdots.lua)
+- [https://github.com/LazyVim/LazyVim](https://github.com/LazyVim/LazyVim)
+- [https://github.com/LunarVim/LunarVim/tree/master](https://github.com/LunarVim/LunarVim/tree/master)
+
 What's in it?
 -------------
 
