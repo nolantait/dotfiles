@@ -1,19 +1,44 @@
 return function()
   local wilder = require("wilder")
   local icons = require("globals.icons")
-  
+
   local highlighters = {
     wilder.basic_highlighter(),
     -- wilder.lua_pcre2_highlighter(),
     -- wilder.lua_fzy_highlighter(),
   }
 
+  wilder.set_option("use_python_remote_plugin", 0)
+  wilder.set_option("pipeline", {
+    wilder.branch(
+      wilder.cmdline_pipeline({
+        language = "vim",
+        fuzzy = 1,
+        fuzzy_filter = wilder.lua_fzy_filter(),
+      }),
+      wilder.vim_search_pipeline(),
+      {
+        wilder.check(function(_, x)
+          return x == ""
+        end),
+        wilder.history(),
+        wilder.result({
+          draw = {
+            function(_, x)
+              return icons.calendar .. x
+            end,
+          },
+        }),
+      }
+    ),
+  })
+
   local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
     max_height = "50%",
     border = "rounded",
     highlights = {
       default = "Normal",
-      border = "PmenuBorder",   -- highlight to use for the border
+      border = "PmenuBorder", -- highlight to use for the border
       accent = wilder.make_hl("WilderAccent", "CmpItemAbbr", "CmpItemAbbrMatch"),
     },
     empty_message = wilder.popupmenu_empty_message_with_spinner(),

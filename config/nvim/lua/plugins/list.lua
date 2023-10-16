@@ -1,6 +1,8 @@
 -- DOCS: This is where we define our plugins which will get loaded in the
 -- background when needed by lazy.nvim
 
+local settings = require("globals.settings")
+
 local keymap = function(keybinds)
   local result = {}
 
@@ -51,6 +53,17 @@ return {
     "LunarVim/bigfile.nvim",
     config = require("plugins.configs.bigfile"),
     lazy = false,
+  },
+  --
+  -- NOTE: === Custom ===
+  --
+  {
+    config = function()
+      require("custom.profiling").setup()
+    end,
+    dir = settings.vim_path .. "/lua/custom/profiling",
+    lazy = false,
+    name = "custom.profiling",
   },
   --
   -- NOTE: === Events ===
@@ -256,14 +269,14 @@ return {
     event = "LspAttach",
     tag = "legacy",
   },
-  {
-    "andymass/vim-matchup",
-    config = require("plugins.configs.matchup"),
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    event = "LazyFile",
-  },
+  -- {
+  --   "andymass/vim-matchup",
+  --   config = require("plugins.configs.matchup"),
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   event = "LazyFile",
+  -- },
   {
     "NvChad/nvim-colorizer.lua",
     config = require("plugins.configs.colorizer"),
@@ -482,7 +495,6 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
       "olimorris/neotest-rspec"
     },
     event = "VeryLazy",

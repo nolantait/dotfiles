@@ -2,6 +2,7 @@
 -- installed. Find more and customize from here: https://www.nerdfonts.com/cheat-sheet
 
 return {
+  calendar = "",
   arrow_left = "",
   arrow_right = "",
   open = "",

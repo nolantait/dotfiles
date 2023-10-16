@@ -11,9 +11,7 @@ alias path='echo $PATH | tr -s ":" "\n"'
 alias egrep="grep -E"
 
 # Use neovim if available over vim
-if type nvim > /dev/null 2>&1; then
-  alias vim='nvim'
-fi
+alias vim='nvim'
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

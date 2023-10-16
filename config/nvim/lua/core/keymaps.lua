@@ -12,8 +12,10 @@ local options = {
   silent = true
 }
 
--- Unbind ?
+-- Unbind
 keymap("", "?", "<Nop>", options)
+keymap("", "<Leader>q", "<Nop>", options)
+
 -- Rebind :W to :w to make it easier to save files when fat fingering
 vim.cmd("command! W w")
 

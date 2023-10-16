@@ -8,6 +8,10 @@ return {
   defaults = {
     lazy = true
   },
+  dev = {
+    path = settings.vim_path .. "/lua/custom",
+    fallback = false -- fallback to git when local plugins don't exist
+  },
   git = {
     timeout = 300,
     url_format = clone_prefix
