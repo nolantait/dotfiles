@@ -40,7 +40,7 @@ return function()
       results_title = false,
       scroll_strategy = "cycle",
       selection_caret = icons.selected .. " ",
-      selection_strategy = "reset",
+      selection_strategy = "reset", -- How the cursor acts after each sort
       sorting_strategy = "ascending",
       layout_config = {
         horizontal = {
@@ -125,14 +125,20 @@ return function()
       winblend = 0,
       vimgrep_arguments = {
         "rg",
+        "--color=never",
         "--no-heading",
         "--with-filename",
         "--line-number",
         "--column",
-        "--smart-case"
+        "--smart-case",
+        "--hidden",
+        "--glob=!.git/"
       }
     },
     pickers = {
+      find_files = {
+        hidden = true
+      },
       lsp_references = { theme = "dropdown" },
       lsp_code_actions = { theme = "dropdown" },
       lsp_definitions = { theme = "dropdown" },

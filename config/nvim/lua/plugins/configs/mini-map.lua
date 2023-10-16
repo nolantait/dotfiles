@@ -22,7 +22,7 @@ return function()
       scroll_view = '┃',
     },
 
-    -- Window options
+    -- Window options (has a z-index of 10, no way to change currently)
     window = {
       -- Whether window is focusable in normal way (with `wincmd` or mouse)
       focusable = false,

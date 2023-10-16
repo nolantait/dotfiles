@@ -9,6 +9,6 @@ return function()
     multiline_threshold = 20,   -- Maximum number of lines to collapse for a single context line
     trim_scope = "outer",       -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
     mode = "cursor",            -- Line used to calculate context. Choices: 'cursor', 'topline'
-    zindex = 30,
+    zindex = 9,                 -- Needs to be 1 lower than mini.map (10) until we can change mini.map's z-index
   })
 end
