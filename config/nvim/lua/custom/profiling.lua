@@ -6,7 +6,7 @@ function M.start()
 end
 
 function M.stop()
-  vim.cmd("profile pause")
+  vim.cmd("profile stop")
 end
 
 function M.setup()
