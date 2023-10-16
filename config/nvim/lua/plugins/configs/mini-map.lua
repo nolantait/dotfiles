@@ -38,6 +38,9 @@ return function()
 
       -- Value of 'winblend' option
       winblend = 0,
+
+      -- Z-index of the window (default: 10)
+      zindex = 20
     },
   })
 

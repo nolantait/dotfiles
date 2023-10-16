@@ -161,7 +161,7 @@ return {
     event = "LazyFile"
   },
   {
-    "echasnovski/mini.map",
+    "nolantait/mini.map",
     config = require("plugins.configs.mini-map"),
     event = "LazyFile"
   },
