@@ -27,11 +27,16 @@ return function()
 
   local set_hl = vim.api.nvim_set_hl
 
+  set_hl(0, "LineNr", { bg = colors.black, fg = colors.light_gray })
+  set_hl(0, "LineNrAbove", { bg = colors.black, fg = colors.light_gray })
+  set_hl(0, "LineNrBelow", { bg = colors.black, fg = colors.light_gray })
+  set_hl(0, "SignColumn", { bg = colors.black })
+
   set_hl(0, "NormalFloat", { bg = colors.black })
   set_hl(0, "FloatBorder", { fg = colors.light_gray })
   set_hl(0, "FloatBorderCmp", { fg = colors.light_gray })
-  set_hl(0, "FloatBorderDocs", { fg = colors.blue })
   set_hl(0, "TelescopeBorder", { fg = colors.lighter_gray })
+  set_hl(0, "FloatBorderDocs", { fg = colors.blue })
 
   set_hl(0, "MiniIndentscopeSymbol", { fg = colors.lighter_gray })
   set_hl(0, "MiniMapSymbolLine", { fg = colors.white })

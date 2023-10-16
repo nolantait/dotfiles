@@ -48,22 +48,6 @@ M.setup = function()
   })
 end
 
--- Set autocommands conditional on server_capabilities
-local function lsp_highlight_document(client)
-  if client.server_capabilities.document_highlight then
-    vim.api.nvim_exec(
-      [[
-        augroup lsp_document_highlight
-          autocmd! * <buffer>
-          autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-          autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-      ]],
-      false
-    )
-  end
-end
-
 -- Provides navigation for LSP symbols for barbecue.nvim
 local function lsp_attach_navic(client, bufnr)
   local ok, navic = prequire("nvim-navic")
@@ -95,7 +79,6 @@ local function setup_lsp_keymaps(buffer)
 end
 
 M.on_attach = function(client, buffer)
-  lsp_highlight_document(client)
   lsp_attach_navic(client, buffer)
   setup_lsp_keymaps(buffer)
 end
