@@ -269,14 +269,14 @@ return {
     event = "LspAttach",
     tag = "legacy",
   },
-  -- {
-  --   "andymass/vim-matchup",
-  --   config = require("plugins.configs.matchup"),
-  --   dependencies = {
-  --     "nvim-treesitter/nvim-treesitter",
-  --   },
-  --   event = "LazyFile",
-  -- },
+  {
+    "andymass/vim-matchup",
+    config = require("plugins.configs.matchup"),
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "LazyFile",
+  },
   {
     "NvChad/nvim-colorizer.lua",
     config = require("plugins.configs.colorizer"),
