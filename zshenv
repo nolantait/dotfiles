@@ -1,3 +1,18 @@
+# DOCS: This is read first and read every time, regardless of the shell being
+# login, interactive, or none. This is the recommended place to set environment
+# variables needed on every shell, even the ones launching scripts
+#
+# NOTE: Why would you need this? Because, for example, if you have a script that
+# gets called by launchd, it will run under non-interactive non-login shell, so
+# neither .zshrc nor .zprofile will get loaded.
+#
+# .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
+
+# Set $PATH if ~/.local/bin exist
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH=$HOME/.local/bin:$PATH
+fi
+
 local _old_path="$PATH"
 
 # Local config

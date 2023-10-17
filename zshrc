@@ -1,27 +1,68 @@
-## Path section
-# Set $PATH if ~/.local/bin exist
-if [ -d "$HOME/.local/bin" ]; then
-    export PATH=$HOME/.local/bin:$PATH
-fi
+# DOCS: .zshrc sets the environment for interactive shells. .zshrc gets loaded
+# after .zprofile. It is a place where you “set and forget” things.
+#
+# NOTE: Since it’s loaded after .zprofile, in interactive shells, it will
+# override anything you set in .zprofile. Like the $PATH variable. It’s a good
+# place to define aliases and functions that you would like to have both in
+# login and interactive shells.
+#
+# .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
 
 # load custom executable functions
 for function in ~/.zsh/functions/*; do
   source $function
 done
 
-source ~/.zsh/configs/plugins.zsh
-source ~/.zsh/configs/color.zsh
-source ~/.zsh/configs/editor.zsh
-source ~/.zsh/configs/history.zsh
-source ~/.zsh/configs/homebrew.zsh
-source ~/.zsh/configs/keybindings.zsh
-source ~/.zsh/configs/options.zsh
-source ~/.zsh/configs/prompt.zsh
-source ~/.zsh/configs/post/completion.zsh
-source ~/.zsh/configs/post/path.zsh
+# .zshrc Configuration Script
 
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+# This is your main Zsh configuration script. It's used to load additional settings
+# from various files and directories within the ~/.zsh/configs directory.
+
+# Define a function to load Zsh configuration files.
+_load_settings() {
+  _dir="$1"
+
+  # Check if the specified directory exists.
+  if [ -d "$_dir" ]; then
+
+    # Check for a "pre" directory within the config directory.
+    if [ -d "$_dir/pre" ]; then
+      # Load configuration files from the "pre" directory, excluding compiled files (zwc).
+      for config in "$_dir"/pre/**/*~*.zwc(N-.); do
+        . $config
+      done
+    fi
+
+    # Load configuration files from the main directory and its subdirectories, excluding specific file types.
+    for config in "$_dir"/**/*(N-.); do
+      case "$config" in
+        "$_dir"/(pre|post)/*|*.zwc)
+          # Skip directories named "pre" or "post" and compiled files (zwc).
+          :
+          ;;
+        *)
+          # Load other configuration files.
+          . $config
+          ;;
+      esac
+    done
+
+    # Check for a "post" directory within the config directory.
+    if [ -d "$_dir/post" ]; then
+      # Load configuration files from the "post" directory, excluding compiled files (zwc).
+      for config in "$_dir"/post/**/*~*.zwc(N-.); do
+        . $config
+      done
+    fi
+  fi
+}
+
+# Call the _load_settings function with the path to the main configuration directory.
+# In this script, it's set to "$HOME/.zsh/configs."
+_load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases

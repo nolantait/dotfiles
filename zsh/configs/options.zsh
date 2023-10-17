@@ -20,6 +20,7 @@ setopt pushd_ignore_dups
 setopt pushdminus
 setopt menu_complete        # Automatically highlight first element of completion
 setopt auto_list            # Automatically list choices on ambiguous completion
+setopt complete_aliases     # Complete aliases
 
 
 # Allow [ or ] whereever you want
