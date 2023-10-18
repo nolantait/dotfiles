@@ -13,6 +13,12 @@ alias egrep="grep -E"
 # Use neovim if available over vim
 alias vim='nvim'
 
+# Brew upgrade command
+alias brewup="brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor"
+
+# Alias raw man to colorman function
+alias man="colorman"
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
