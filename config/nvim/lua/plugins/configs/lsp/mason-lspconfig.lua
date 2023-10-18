@@ -12,7 +12,6 @@ M.setup = function(handlers)
       "cssls",
       "crystalline",
       "elixirls",
-      "tsserver",
       "ruby_ls",
       "tailwindcss",
       "lua_ls"

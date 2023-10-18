@@ -37,9 +37,9 @@ return function()
       enable = true,
       disable = { "ruby" }
     },
-    matchup = {
-      enable = true
-    },
+    -- matchup = {
+    --   enable = false
+    -- },
     -- playground = {
     --   enable = true,
     --   disable = {},
