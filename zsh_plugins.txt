@@ -1,1 +1,2 @@
 zsh-users/zsh-autosuggestions
+akash329d/zsh-alias-finder
