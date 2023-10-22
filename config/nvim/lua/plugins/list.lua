@@ -411,6 +411,7 @@ return {
     branch = "v3.x",
     config = require("plugins.configs.neo-tree"),
     cmd = {
+      "Neotree",
       "NvimTreeToggle",
       "NvimTreeOpen",
       "NvimTreeFindFile",

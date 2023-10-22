@@ -29,7 +29,7 @@ return function()
     dashboard.button("\\", icons.text .. " Find text", "<cmd>Telescope live_grep <CR>"),
     dashboard.button("u", icons.download .. " Update plugins", "<cmd>Lazy sync<cr>"),
     dashboard.button("U", icons.download .. " Update language servers", "<cmd>MasonUpdateAll<CR>"),
-    dashboard.button("c", icons.gear .. " Configuration", ":e ~/.config/nvim<CR>"),
+    dashboard.button("c", icons.gear .. " Configuration", "<cmd>Neotree ~/.config/nvim<CR>"),
     dashboard.button("q", icons.cross .. " Quit Neovim", ":qa<CR>"),
   }
 
