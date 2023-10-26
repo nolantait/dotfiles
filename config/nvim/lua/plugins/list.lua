@@ -218,15 +218,6 @@ return {
     },
   },
   {
-    -- Auto close or change html tags
-    "windwp/nvim-ts-autotag",
-    config = true,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    event = "InsertEnter"
-  },
-  {
     -- Show keymaps on partial completion at the bottom of the screen
     "echasnovski/mini.clue",
     event = { "CursorHold", "CursorHoldI" },
