@@ -2,10 +2,6 @@ return function()
   local treesitter = require("nvim-treesitter.configs")
 
   treesitter.setup({
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false
-    },
     ensure_installed = {
       "css",
       "elixir",
