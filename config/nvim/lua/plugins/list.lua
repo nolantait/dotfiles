@@ -90,7 +90,8 @@ return {
   },
   {
     -- Automatic commenting with gc
-    "tpope/vim-commentary",
+    "echasnovski/mini.comment",
+    config = require("plugins.configs.mini-comment"),
     event = "LazyFile",
   },
   {
