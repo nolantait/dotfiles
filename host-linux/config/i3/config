@@ -10,6 +10,8 @@ exec --no-startup-id clipit
 exec --no-startup-id conky -c ~/.config/conky/conkyrc
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pa-applet
+# Swaps capslock and escape for better vim ergonomics
+exec --no-startup-id setxkbmap -option 'caps:swapescape'
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 # Apply .Xresource. As far as I know, only needed here if using starx (dont have a login manager)

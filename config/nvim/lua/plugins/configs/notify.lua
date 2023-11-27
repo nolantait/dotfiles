@@ -14,7 +14,7 @@ return function()
       vim.api.nvim_win_set_config(win, { zindex = 100 })
     end,
     ---@usage Function called when a window is closed
-    on_close = nil,
+    on_close = function() end,
     ---@usage timeout for notifications in ms, default 5000
     timeout = 3000,
     -- @usage User render fps value
@@ -25,6 +25,8 @@ return function()
     background_colour = colors.darker_gray,
     ---@usage minimum width for notification windows
     minimum_width = 10,
+    max_width = 50,
+    max_height = 50,
     ---@usage notifications with level lower than this would be ignored. [ERROR > WARN > INFO > DEBUG > TRACE]
     level = "TRACE",
     ---@usage Icons for the different levels
@@ -37,6 +39,33 @@ return function()
     },
   })
 
+
+  local buffered_messages = {
+    "Client %d+ quit",
+  }
+
+  local message_notifications = {}
+
   -- Set our notifier as the default for neovim so it can work with other plugins
-  vim.notify = notify
+  vim.notify = function(message, level, options)
+    options = options or {}
+
+    for _, pattern in ipairs(buffered_messages) do
+      if string.find(message, pattern) then
+        if message_notifications[pattern] then
+          options.replace = message_notifications[pattern]
+        end
+
+        options.on_close = function()
+          message_notifications[pattern] = nil
+        end
+
+        message_notifications[pattern] = notify.notify(message, level, options)
+
+        return
+      end
+    end
+
+    notify.notify(message, level, options)
+  end
 end
