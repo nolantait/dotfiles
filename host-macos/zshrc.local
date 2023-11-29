@@ -1,0 +1,3 @@
+export PATH="/usr/local/opt/libpq/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
