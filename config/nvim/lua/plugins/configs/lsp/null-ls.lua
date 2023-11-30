@@ -12,8 +12,7 @@ return function()
 
   null_ls.setup({
     sources = {
-      null_ls.builtins.diagnostics.erb_lint.with({}),
-      null_ls.builtins.formatting.erb_lint.with({}),
+      -- Anything not supported by mason goes here
     },
   })
 end
