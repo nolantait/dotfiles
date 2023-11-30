@@ -70,6 +70,8 @@ return function()
       end
     end
 
-    notify.notify(message, level, options)
+    vim.schedule(function()
+      notify.notify(message, level, options)
+    end)
   end
 end

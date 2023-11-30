@@ -6,11 +6,8 @@
 
 local M = {}
 
--- Schedule our messages to send in the background to not block the UI
 local message = function(msg, level, opts)
-  vim.schedule(function()
-    vim.notify(msg, level, opts)
-  end)
+  vim.notify(msg, level, opts)
 end
 
 function M.error(msg, title, opts)

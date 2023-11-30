@@ -487,6 +487,7 @@ return {
     -- Popup notifications on the top right of the screen
     "rcarriga/nvim-notify",
     config = require("plugins.configs.notify"),
+    keys = keymap(require("plugins.keybinds.notify")),
     -- Load later, after everything else, not important for initial UI paint
     event = "VeryLazy",
   },
