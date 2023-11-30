@@ -78,6 +78,26 @@ return {
     event = "VimEnter",
   },
   {
+    -- Setting up LSP servers for neovim
+    "neovim/nvim-lspconfig",
+    config = require("plugins.configs.lsp"),
+    event = { "BufReadPre", "BufNewFile" },
+    keys = keymap(require("plugins.keybinds.lsp")),
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
+  },
+  {
+      "jay-babu/mason-null-ls.nvim",
+      config = require("plugins.configs.lsp.null-ls"),
+      event = { "BufReadPre", "BufNewFile" },
+      dependencies = {
+        "williamboman/mason.nvim",
+        "jose-elias-alvarez/null-ls.nvim",
+      }
+  },
+  {
     -- Auto remove search highlight and rehighlight when using n or N
     "nvimdev/hlsearch.nvim",
     config = true,
@@ -142,17 +162,6 @@ return {
       "nvim-lua/plenary.nvim",
     },
     event = "LazyFile",
-  },
-  {
-    -- Setting up LSP servers for neovim
-    "neovim/nvim-lspconfig",
-    config = require("plugins.configs.lsp"),
-    event = { "CursorHold", "CursorHoldI" },
-    keys = keymap(require("plugins.keybinds.lsp")),
-    dependencies = {
-      "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-    },
   },
   {
     "echasnovski/mini.surround",

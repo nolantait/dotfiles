@@ -60,7 +60,11 @@ return function()
           message_notifications[pattern] = nil
         end
 
-        message_notifications[pattern] = notify.notify(message, level, options)
+        message_notifications[pattern] = notify.notify(
+          message,
+          level,
+          options
+        )
 
         return
       end
