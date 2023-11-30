@@ -11,6 +11,7 @@ return function()
   })
 
   null_ls.setup({
+    debounce = 2500,
     sources = {
       -- Anything not supported by mason goes here
     },
