@@ -55,7 +55,7 @@
 *color21:      base06
 # End flavours
 
-*.font: xft:Iosevka Nerd Font:size=12
+*.font: xft:Iosevka Nerd Font Propo:size=12
 
 Xft.dpi:                        96
 Xft.antialias:                  true

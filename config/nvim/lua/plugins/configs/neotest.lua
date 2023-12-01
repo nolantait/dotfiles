@@ -44,7 +44,7 @@ return function()
     quickfix = {
       enabled = true,
       open = function()
-        vim.cmd("Trouble quickfix")
+        -- vim.cmd("Trouble quickfix")
         -- vim.cmd("TestSummary")
       end,
     },
@@ -77,13 +77,8 @@ return function()
     },
   })
 
-  -- Disabling virtual text as it crashes popup window for now...
-  -- TODO: Fix this
-  --
-
   local neotest_ns = vim.api.nvim_create_namespace('neotest')
   vim.diagnostic.config({
-    -- virtual_text = false,
     virtual_text = {
       format = function(diagnostic)
         local message = diagnostic.message

@@ -17,7 +17,7 @@ exec_always --no-startup-id fix_xcursor
 # Apply .Xresource. As far as I know, only needed here if using starx (dont have a login manager)
 exec_always --no-startup-id xrdb ~/.Xresources
 # Apply the last colorscheme generated without changing the background by using -n
-exec_always --no-startup-id feh --bg-fill ~/Pictures/od_neon.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/wallpaper.png
 # Execute polybar on launch. Script kills current ones on i3 refresh, otherwise they duplicate
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -46,7 +46,6 @@ set $ws5 5
 set $ws6 6
 set $ws7 7
 set $ws8 8
-
 
 # ========== STYLE =============
 # Smart borders (draw borders around container only if it is not the only 
@@ -90,8 +89,6 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background       $base07
 # End flavours
-
-
 
 # ========== KEYBINDS =============
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
@@ -229,7 +226,7 @@ mode "$mode_system" {
     bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"  
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"

@@ -1,8 +1,8 @@
 Nolan's Dotfiles
 ===================
 
-These are my dotfiles I've maintained over the last 10 years. They originally 
-started as a fork of [thoughtbot dotfiles](https://github.com/thoughtbot/dotfiles).
+These are my dotfiles I've maintained over the last 12 years. They originally
+started as a fork of [thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles).
 
 I've since taken inspiration from other dotfiles:
 
@@ -10,12 +10,17 @@ I've since taken inspiration from other dotfiles:
 - [https://github.com/LazyVim/LazyVim](https://github.com/LazyVim/LazyVim)
 - [https://github.com/LunarVim/LunarVim/tree/master](https://github.com/LunarVim/LunarVim/tree/master)
 
+These dotfiles use [rcm](https://github.com/thoughtbot/rcm) to create system
+links from `~/dotfiles` to your `$HOME` folder. System linking these files makes
+it easy to add or remove configs and keep them updated from one place.
+
 What's in it?
 -------------
 
 [neovim](https://neovim.io) configuration:
 
 * Full LUA based configs
+* `config/nvim/lua/plugins/list.lua` for a list of all the plugins
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
 configuration:
@@ -47,6 +52,33 @@ Shell aliases and scripts:
 * `tat` to attach to tmux session named the same as the current directory.
 * `v` for `$VISUAL`.
 
+Dynamic color scheming across apps with [flavours](https://github.com/Misterio77/flavours)
+
+* Alacritty
+* Conky
+* Dunst
+* i3
+* nvim
+* Polybar
+* tmux
+* Xresources
+
+Dependencies
+------------
+
+**Linux (AUR)**
+
+- alacritty
+- firefox
+- ranger
+- asdf-vm-git
+- flavours
+- i3-scrot
+- neovim-git
+- rcm-git
+- slack-desktop
+- spotify-edge
+
 Requirements
 ------------
 
@@ -68,6 +100,11 @@ Install [rcm](https://github.com/thoughtbot/rcm):
 Install the dotfiles:
 
     env RCRC=$HOME/dotfiles/rcrc rcup
+
+Install for a specific `host-`:
+
+    env RCRC=$HOME/dotfiles/rcrc rcup -B linux
+    env RCRC=$HOME/dotfiles/rcrc rcup -B macos
 
 After the initial installation, you can run `rcup` without the one-time variable
 `RCRC` being set (`rcup` will symlink the repo's `rcrc` to `~/.rcrc` for future
