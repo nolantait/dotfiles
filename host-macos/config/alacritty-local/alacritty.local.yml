@@ -1,0 +1,24 @@
+window:
+  decorations: full
+# Font configuration
+font:
+  # Normal (roman) font face
+  normal:
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    family: Hack Nerd Font Mono
+
+shell:
+  program: /bin/zsh
+#   args:
+#   - --login
+
+# Startup directory
+#
+# Directory the shell is started in. If this is unset, or `None`, the working
+# directory of the parent process will be used.
+working_directory: Workspace

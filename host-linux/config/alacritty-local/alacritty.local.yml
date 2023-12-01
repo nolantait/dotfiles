@@ -1,0 +1,15 @@
+font:
+  # Normal (roman) font face
+  normal:
+    # Font family
+    #
+    # Default:
+    #   - (macOS) Menlo
+    #   - (Linux/BSD) monospace
+    #   - (Windows) Consolas
+    family: Iosevka Nerd Font Mono
+
+shell:
+  program: /bin/zsh
+  args:
+    - --login

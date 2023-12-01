@@ -9,7 +9,7 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/.config/alacritty/alacritty.local.yml
+  - ~/.config/alacritty-local/alacritty.local.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -107,16 +107,16 @@ scrolling:
   multiplier: 3
 
 # Font configuration
-font:
+# font:
   # Normal (roman) font face
-  normal:
+  #  normal:
     # Font family
     #
     # Default:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font Mono
+    # family: Iosevka Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     # style: Regular

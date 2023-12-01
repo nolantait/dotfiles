@@ -15,7 +15,7 @@ conky.config = {
     draw_outline = false,
     draw_shades = false,
     extra_newline = false,
-    font = 'Hack Nerd Font Mono:size=9',
+    font = 'Iosevka Nerd Font Mono:size=9',
     format_human_readable = true,
     gap_x = 41,
     gap_y = 71,
@@ -59,7 +59,7 @@ conky.config = {
     color4 = 'e5c07b', -- accent color
     -- End flavours
 
-    font1 = 'Hack Nerd Font Mono:size=12:bold',
+    font1 = 'Iosevka Nerd Font Mono:size=12:bold',
 }
 
 conky.text = [[
