@@ -17,16 +17,16 @@ hook = "pkill dunst && dunst &"
 file = "~/dotfiles/host-linux/Xresources"
 template = "xresources"
 subtemplate = "default-256"
-start = "# Start flavours"
-end = "# End flavours"
+start = "! Start flavours"
+end = "! End flavours"
 hook = "xrdb ~/.Xresources"
 
 [[item]]
 file = "~/dotfiles/host-linux/config/polybar/config.ini"
 template = "polybar"
 rewrite = false
-start = "# Start flavours"
-end = "# End flavours"
+start = "; Start flavours"
+end = "; End flavours"
 hook = "polybar-msg cmd restart"
 
 [[item]]

@@ -66,18 +66,20 @@ Dynamic color scheming across apps with [flavours](https://github.com/Misterio77
 Dependencies
 ------------
 
-**Linux (AUR)**
+## Linux (AUR)
 
-- alacritty
+- **alacritty**: OpenGL based terminal in Rust
 - firefox
-- ranger
-- asdf-vm-git
-- flavours
-- i3-scrot
+- **ranger**: Vim based file navigation
+- **asdf-vm-git**: Programming language manager
+- **flavours**: Dynamic theming
+- **i3-scrot**: Screenshot utility for i3
 - neovim-git
-- rcm-git
+- **rcm-git**: manage dotfiles with system links
 - slack-desktop
 - spotify-edge
+- **feh**: Sets wallpaper
+- **polybar**: Customizable topbar for i3
 
 Requirements
 ------------

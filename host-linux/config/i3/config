@@ -2,18 +2,20 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # ============== AUTOSTART ====================
+# Load picom for better window transparency and animation
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# Load nvidia configs
+exec --no-startup-id nvidia-settings --load-config-only
+# Automatically connect to network
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
-exec --no-startup-id clipit
+# Load conky
 exec --no-startup-id conky -c ~/.config/conky/conkyrc
+# Load audio with pulse audio
 exec --no-startup-id start-pulseaudio-x11
 exec --no-startup-id pa-applet
 # Swaps capslock and escape for better vim ergonomics
 exec --no-startup-id setxkbmap -option 'caps:swapescape'
-exec_always --no-startup-id ff-theme-util
-exec_always --no-startup-id fix_xcursor
 # Apply .Xresource. As far as I know, only needed here if using starx (dont have a login manager)
 exec_always --no-startup-id xrdb ~/.Xresources
 # Apply the last colorscheme generated without changing the background by using -n

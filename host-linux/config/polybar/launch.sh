@@ -8,6 +8,6 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 
 # Launch bar
 # Bar is the name set in the polybar config, so if you change it, you have to change it here too.
-polybar bar
+polybar main & polybar left & polybar right
 
 echo "Bars launched..."

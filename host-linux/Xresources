@@ -1,4 +1,4 @@
-# Start flavours
+! Start flavours
 ! Base16 OneDark
 ! Scheme: Lalit Magant (http://github.com/tilal6991)
 
@@ -53,9 +53,9 @@
 *color19:      base02
 *color20:      base04
 *color21:      base06
-# End flavours
+! End flavours
 
-*.font: xft:Iosevka Nerd Font Propo:size=12
+*.font: xft:Iosevka\ Nerd\ Font\ Propo:pixelsize=11
 
 Xft.dpi:                        96
 Xft.antialias:                  true
