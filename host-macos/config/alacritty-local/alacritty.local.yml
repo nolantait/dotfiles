@@ -1,8 +1,5 @@
-window:
-  decorations: full
 # Font configuration
 font:
-  # Normal (roman) font face
   normal:
     # Font family
     #
@@ -10,7 +7,9 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font Mono
+    family: Iosevka Nerd Font
+  size: 16.0
+  draw_bold_text_with_bright_colors: true
 
 shell:
   program: /bin/zsh
@@ -22,3 +21,8 @@ shell:
 # Directory the shell is started in. If this is unset, or `None`, the working
 # directory of the parent process will be used.
 working_directory: Workspace
+
+window:
+  decorations: full
+
+startup_mode: SimpleFullscreen
