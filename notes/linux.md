@@ -11,3 +11,6 @@
 - spotify-edge
 - firefox
 - nvidia
+- pavucontrol
+- i3-scrot
+- dmenu

@@ -32,8 +32,7 @@ default_border none
 default_floating_border normal
 new_window pixel 1
 hide_edge_borders true
-gaps inner 14
-gaps outer -2
+gaps inner 8
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 for_window [class="conky"] lower
@@ -57,7 +56,8 @@ set $ws8 8
 smart_borders on
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font xft:Iosevka Nerd Font Mono 11
+font xft:Iosevka Nerd Font Propo 11
+font pango:Isoveka Nerd Font Propo 11
 
 # Start flavours
 ## Base16 OneDark
