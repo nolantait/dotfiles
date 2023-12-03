@@ -25,6 +25,3 @@ setopt complete_aliases     # Complete aliases
 
 # Allow [ or ] whereever you want
 unsetopt nomatch
-
-# Replace yay with paru if installed
-[ ! -x /usr/bin/yay ] && [ -x /usr/bin/paru ] && alias yay='paru'
