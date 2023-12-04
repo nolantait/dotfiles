@@ -7,8 +7,8 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Iosevka Nerd Font
-  size: 16.0
+    family: Iosevka Nerd Font Mono
+  size: 14.0
   draw_bold_text_with_bright_colors: true
 
 shell:
