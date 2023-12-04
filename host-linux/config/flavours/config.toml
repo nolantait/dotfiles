@@ -1,9 +1,9 @@
-# [[item]]
-# file = "~/dotfiles-local/vim/colors/base16.vim"
-# template = "vim"
-# subtemplate = "custom"
-# rewrite = true
-# hook = "rcup -KB linux"
+[[item]]
+file = "~/dotfiles/host-linux/config/rofi/onedark.rasi"
+template = "rofi"
+subtemplate = "colors"
+start = "/* Start flavours */"
+end = "/* End flavours */"
 
 [[item]]
 file = "~/dotfiles/host-linux/config/dunst/dunstrc"

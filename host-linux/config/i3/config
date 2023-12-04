@@ -110,7 +110,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 # start program launcher
-bindsym $mod+d exec dmenu_run -fn 'Iosevka Nerd Font Mono:pixelsize=15' -l 3
+bindsym $mod+d exec --no-startup-id rofi -show combi -lines 30
 # Start Applications
 bindsym $mod+F2 exec firefox --profile ~/.mozilla/firefox/nolan
 bindsym $mod+F3 exec discord
