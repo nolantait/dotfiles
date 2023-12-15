@@ -25,7 +25,6 @@ return function()
     background_colour = colors.darker_gray,
     ---@usage minimum width for notification windows
     minimum_width = 10,
-    max_width = 50,
     max_height = 50,
     ---@usage notifications with level lower than this would be ignored. [ERROR > WARN > INFO > DEBUG > TRACE]
     level = "TRACE",

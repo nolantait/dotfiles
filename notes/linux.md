@@ -14,3 +14,4 @@
 - pavucontrol
 - i3-scrot
 - dmenu
+- lsof
