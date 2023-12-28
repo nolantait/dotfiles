@@ -1,0 +1,82 @@
+import = ["/home/nolan/.config/alacritty-local/alacritty.local.toml"]
+live_config_reload = true
+working_directory = "Workspace"
+
+[[colors.indexed_colors]]
+color = "0xd19a66"
+index = 16
+
+[[colors.indexed_colors]]
+color = "0xbe5046"
+index = 17
+
+[[colors.indexed_colors]]
+color = "0x353b45"
+index = 18
+
+[[colors.indexed_colors]]
+color = "0x3e4451"
+index = 19
+
+[[colors.indexed_colors]]
+color = "0x565c64"
+index = 20
+
+[[colors.indexed_colors]]
+color = "0xb6bdca"
+index = 21
+
+[colors.bright]
+black = "0x545862"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xc8ccd4"
+yellow = "0xe5c07b"
+
+[colors.cursor]
+cursor = "0xabb2bf"
+text = "0x282c34"
+
+[colors.normal]
+black = "0x282c34"
+blue = "0x61afef"
+cyan = "0x56b6c2"
+green = "0x98c379"
+magenta = "0xc678dd"
+red = "0xe06c75"
+white = "0xabb2bf"
+yellow = "0xe5c07b"
+
+[colors.primary]
+background = "0x282c34"
+foreground = "0xabb2bf"
+
+[cursor]
+blink_interval = 550
+unfocused_hollow = false
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[env]
+TERM = "xterm-256color"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+
+[window]
+dynamic_title = true
+opacity = 1.0
+title = "Alacritty"
+
+[window.padding]
+x = 0
+y = 0
