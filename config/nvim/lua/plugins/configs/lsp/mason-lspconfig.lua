@@ -13,7 +13,6 @@ M.setup = function(handlers)
       "crystalline",
       "elixirls",
       "ruby_ls",
-      "tailwindcss",
       "lua_ls"
     },
     automatic_installation = false,
