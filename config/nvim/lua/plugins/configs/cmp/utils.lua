@@ -70,6 +70,8 @@ M.lsp_scores = function(entry_a, entry_b)
   return (diff < 0)
 end
 
+-- Limit the types of LSP options shown depending on what we are typing
+-- For example, if we are typing a dot, only show methods, fields, and properties
 M.limit_lsp_types = function(entry, ctx)
   local kind = entry:get_kind()
   local cursor = {

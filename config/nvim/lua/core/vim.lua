@@ -21,7 +21,7 @@ vim.g.loaded_syntax_completion = 1
 -- Do not load spell files
 vim.g.loaded_spellfile_plugin = 1
 
--- Whether to load netrw by default
+-- Do not load netrw by default
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_netrwPlugin = 1
@@ -41,10 +41,6 @@ vim.g.loaded_vimball = 1
 vim.g.loaded_vimballPlugin = 1
 vim.g.loaded_zip = 1
 vim.g.loaded_zipPlugin = 1
-
--- Do not use builtin matchit.vim and matchparen.vim since the use of vim-matchup
-vim.g.loaded_matchit = 1
-vim.g.loaded_matchparen = 1
 
 -- Disable sql omni completion.
 vim.g.loaded_sql_completion = 1

@@ -3,6 +3,10 @@
 return function()
   local g = vim.g
 
+  -- Do not use builtin matchit.vim and matchparen.vim since the use of vim-matchup
+  g.loaded_matchit = 1
+  g.loaded_matchparen = 1
+
   g.matchup_matchparen_deferred = 1
   g.matchup_matchparen_deferred_show_delay = 100
   g.matchup_matchparen_hi_surround_always = 1
