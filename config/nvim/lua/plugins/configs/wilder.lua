@@ -33,33 +33,39 @@ return function()
     ),
   })
 
-  local popupmenu_renderer = wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
-    max_height = "50%",
-    border = "rounded",
-    highlights = {
-      default = "Normal",
-      border = "PmenuBorder", -- highlight to use for the border
-      accent = wilder.make_hl("WilderAccent", "CmpItemAbbr", "CmpItemAbbrMatch"),
-    },
-    empty_message = wilder.popupmenu_empty_message_with_spinner(),
-    highlighter = highlighters,
-    left = {
-      " ",
-      wilder.popupmenu_devicons(),
-      wilder.popupmenu_buffer_flags({
-        flags = " a + ",
-        icons = {
-          ["+"] = icons.pencil,
-          a = icons.arrow_right,
-          h = icons.files.new
-        },
-      }),
-    },
-    right = {
-      " ",
-      wilder.popupmenu_scrollbar(),
-    },
-  }))
+  local popupmenu_renderer = wilder.popupmenu_renderer(
+    wilder.popupmenu_border_theme({
+      max_height = "50%",
+      border = "rounded",
+      highlights = {
+        default = "Normal",
+        border = "PmenuBorder",
+        accent = wilder.make_hl(
+          "WilderAccent",
+          "CmpItemAbbr",
+          "CmpItemAbbrMatch"
+        ),
+      },
+      empty_message = wilder.popupmenu_empty_message_with_spinner(),
+      highlighter = highlighters,
+      left = {
+        " ",
+        wilder.popupmenu_devicons(),
+        wilder.popupmenu_buffer_flags({
+          flags = " a + ",
+          icons = {
+            ["+"] = icons.pencil,
+            a = icons.arrow_right,
+            h = icons.files.new
+          },
+        }),
+      },
+      right = {
+        " ",
+        wilder.popupmenu_scrollbar(),
+      },
+    })
+  )
 
   local wildmenu_renderer = wilder.wildmenu_renderer({
     apply_incsearch_fix = false,
