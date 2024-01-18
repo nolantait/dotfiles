@@ -42,3 +42,5 @@ MSG
 fi
 
 unset _old_path
+
+export PATH=$HOME/.foundry/bin:$PATH
