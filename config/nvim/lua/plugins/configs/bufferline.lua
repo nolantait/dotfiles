@@ -2,7 +2,6 @@
 
 return function()
   local bufferline = require("bufferline")
-  local colors = require("globals.colors")
   local icons = require("globals.icons")
 
   -- Add any custom highlights here
@@ -12,12 +11,15 @@ return function()
 
   -- Optionally use bufdelete to close buffers with fallback
   local close_command = function(bufnum)
-    local ok, bufdelete = prequire("bufdelete")
+    local ok, bufremove = prequire("mini.bufremove")
 
-    if ok and bufdelete then
-      bufdelete.bufdelete(bufnum, true)
+    if ok and bufremove then
+      bufremove.delete(bufnum, true)
     else
-      vim.cmd.bdelete { args = { bufnum }, bang = true }
+      vim.cmd.bdelete {
+        args = { bufnum },
+        bang = true
+      }
     end
   end
 
@@ -36,10 +38,6 @@ return function()
         delay = 50,
         reveal = { "close" }
       },
-      -- indicator = {
-      --   style = "icon",
-      --   icon = "▎"
-      -- },
       left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
       left_trunc_marker = icons.arrow_left,
       max_name_length = 14,
