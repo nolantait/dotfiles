@@ -1,3 +1,5 @@
+-- Keybind helper, pops up a window with all possible keybinds for a motion
+
 return function()
   local mini_clue = require("mini.clue")
 
@@ -13,6 +15,9 @@ return function()
       -- `g` key
       { mode = "n", keys = "g" },
       { mode = "x", keys = "g" },
+
+      -- `t` key
+      { mode = "n", keys = "t" },
 
       -- Marks
       { mode = 'n', keys = "'" },
@@ -54,7 +59,7 @@ return function()
       },
 
       -- Delay before showing clue window
-      delay = 1000,
+      delay = 750,
 
       -- Keys to scroll inside the clue window
       scroll_down = "<C-j>",

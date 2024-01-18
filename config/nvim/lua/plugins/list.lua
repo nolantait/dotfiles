@@ -186,7 +186,8 @@ return {
   {
     "nolantait/mini.map",
     config = require("plugins.configs.mini-map"),
-    event = "LazyFile"
+    event = "LazyFile",
+    keys = keymap(require("plugins.keybinds.mini-map")),
   },
   {
     "echasnovski/mini.indentscope",

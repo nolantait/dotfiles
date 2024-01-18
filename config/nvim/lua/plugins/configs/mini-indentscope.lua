@@ -1,3 +1,5 @@
+-- Animated highlighting of indents
+
 return function()
   local mini_indentscope = require("mini.indentscope")
 
