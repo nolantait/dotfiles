@@ -44,7 +44,7 @@ return {
   {
     mode = "n",
     key = "<leader>f",
-    command = "<cmd>lua vim.lsp.buf.formatting({async=true})<CR>",
+    command = "<cmd>lua vim.lsp.buf.format({async=true})<CR>",
     description = "LSP format"
   },
   {

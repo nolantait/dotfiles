@@ -441,7 +441,7 @@ return {
     config = require("plugins.configs.rails"),
     ft = {
       "ruby",
-      "erb",
+      "eruby",
     },
   },
   {
