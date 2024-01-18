@@ -1,3 +1,5 @@
+-- Animate cursor when jumping a large distance to keep eye focus
+
 return function()
   local specs = require("specs")
 
@@ -10,8 +12,8 @@ return function()
       blend = 10,     -- starting blend, between 0-100 (fully transparent), see :h winblend
       width = 10,
       winhl = "PmenuSbar",
-      fader = require("specs").pulse_fader,
-      resizer = require("specs").shrink_resizer,
+      fader = specs.pulse_fader,
+      resizer = specs.shrink_resizer,
     },
     ignore_filetypes = {},
     ignore_buftypes = { nofile = true },
