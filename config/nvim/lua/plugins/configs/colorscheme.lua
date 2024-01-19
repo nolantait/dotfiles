@@ -27,6 +27,9 @@ return function()
 
   local set_hl = vim.api.nvim_set_hl
 
+  set_hl(0, "Structure", { fg = colors.yellow })
+  set_hl(0, "SpecialChar", { fg = colors.purple })
+
   set_hl(0, "LineNr", { bg = colors.black, fg = colors.light_gray })
   set_hl(0, "LineNrAbove", { bg = colors.black, fg = colors.light_gray })
   set_hl(0, "LineNrBelow", { bg = colors.black, fg = colors.light_gray })
