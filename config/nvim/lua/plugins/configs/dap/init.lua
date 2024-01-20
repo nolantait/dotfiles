@@ -7,32 +7,24 @@ return function()
   local dap = require("dap")
   local dapui = require("dapui")
 
-  -- -- Initialize debug hooks
-  -- _G._debugging = false
-  -- local function debug_init_cb()
-  --   _G._debugging = true
-  --   dapui.open({ reset = true })
-  -- end
-  --
-  -- local function debug_terminate_cb()
-  --   if _debugging then
-  --     _G._debugging = false
-  --     dapui.close()
-  --   end
-  -- end
+  -- Initialize debug hooks
+  _G._debugging = false
+  local function debug_init()
+    _G._debugging = true
+    dapui.open({ reset = true })
+  end
 
-  dap.listeners.before.attach.dapui_config = function()
-    dapui.open()
+  local function debug_terminate()
+    if _debugging then
+      _G._debugging = false
+      dapui.close()
+    end
   end
-  dap.listeners.before.launch.dapui_config = function()
-    dapui.open()
-  end
-  dap.listeners.before.event_terminated.dapui_config = function()
-    dapui.close()
-  end
-  dap.listeners.before.event_exited.dapui_config = function()
-    dapui.close()
-  end
+
+  dap.listeners.before.attach.dapui_config = debug_init
+  dap.listeners.before.launch.dapui_config = debug_init
+  dap.listeners.before.event_terminated.dapui_config = debug_terminate
+  dap.listeners.before.event_exited.dapui_config = debug_terminate
 
   dap.adapters.ruby = function(callback, config)
     callback {
@@ -77,6 +69,37 @@ return function()
       script = "${file}",
     },
   }
+
+  -- Remap K to hover over variables only during debugging sessions
+  local api = vim.api
+  local keymap_restore = {}
+
+  dap.listeners.after['event_initialized']['me'] = function()
+    for _, buf in pairs(api.nvim_list_bufs()) do
+      local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+      for _, keymap in pairs(keymaps) do
+        if keymap.lhs == "K" then
+          table.insert(keymap_restore, keymap)
+          api.nvim_buf_del_keymap(buf, 'n', 'K')
+        end
+      end
+    end
+    api.nvim_set_keymap(
+      'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+  end
+
+  dap.listeners.after['event_terminated']['me'] = function()
+    for _, keymap in pairs(keymap_restore) do
+      api.nvim_buf_set_keymap(
+        keymap.buffer,
+        keymap.mode,
+        keymap.lhs,
+        keymap.rhs,
+        { silent = keymap.silent == 1 }
+      )
+    end
+    keymap_restore = {}
+  end
 
   -- We need to override nvim-dap's default highlight groups, AFTER requiring nvim-dap for catppuccin.
   vim.api.nvim_set_hl(0, "DapStopped", { fg = colors.green })
