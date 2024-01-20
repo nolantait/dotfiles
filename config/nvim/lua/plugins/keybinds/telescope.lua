@@ -25,7 +25,7 @@ return {
   },
   {
     mode = "n",
-    key = "tmp",
+    key = "tm",
     command = "<cmd>Telescope man_pages<CR>",
     description = "Find man pages",
   },
@@ -37,7 +37,7 @@ return {
   },
   {
     mode = "n",
-    key = "tvo",
+    key = "tv",
     command = "<cmd>Telescope vim_options<CR>",
     description = "Search through vim options",
   },
@@ -49,7 +49,7 @@ return {
   },
   {
     mode = "n",
-    key = "tkm",
+    key = "tk",
     command = "<cmd>Telescope keymaps<CR>",
     description = "Search through your keymaps",
   },
@@ -61,7 +61,7 @@ return {
   },
   {
     mode = "n",
-    key = "tch",
+    key = "tc",
     command = "<cmd>Telescope command_history<CR>",
     description = "Command history",
   },
