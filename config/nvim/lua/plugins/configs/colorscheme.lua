@@ -27,6 +27,8 @@ return function()
 
   local set_hl = vim.api.nvim_set_hl
 
+  set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
   set_hl(0, "Structure", { fg = colors.yellow })
   set_hl(0, "SpecialChar", { fg = colors.purple })
 

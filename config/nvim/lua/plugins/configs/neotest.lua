@@ -96,5 +96,6 @@ return function()
   vim.cmd("command! TestSummary lua require('neotest').summary.open()")
   vim.cmd("command! TestOutput lua require('neotest').output.open({ quiet = true, enter = true, last_run = true })")
   vim.cmd("command! TestOutputPanel lua require('neotest').output_panel.toggle()")
-  vim.cmd("command! TestDap lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})")
+  vim.cmd("command! TestAttach lua require('neotest').run.attach()")
+  vim.cmd("command! TestStop lua require('neotest').run.stop()")
 end

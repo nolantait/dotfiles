@@ -13,15 +13,21 @@ return {
   },
   {
     mode = "n",
-    key = "ts",
-    command = "<cmd>TestSummary<CR>",
-    description = "Toggle test summary",
+    key = "<C-T>",
+    command = "<cmd>TestStop<CR>",
+    description = "Stop a running test"
   },
   {
     mode = "n",
-    key = "<Leader>?",
-    command = "<cmd>TestDap<CR>",
-    description = "Test with dap",
+    key = "<A-t>",
+    command = "<cmd>TestAttach<CR>",
+    description = "Attach to a running test"
+  },
+  {
+    mode = "n",
+    key = "ts",
+    command = "<cmd>TestSummary<CR>",
+    description = "Toggle test summary",
   },
   {
     mode = "n",

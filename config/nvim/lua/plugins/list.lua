@@ -399,8 +399,10 @@ return {
     },
     config = require("plugins.configs.dap"),
     dependencies = {
-      "jay-babu/mason-nvim-dap.nvim",
-      "suketa/nvim-dap-ruby",
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        config = true
+      },
       {
         "rcarriga/nvim-dap-ui",
         config = require("plugins.configs.dap.dapui"),
