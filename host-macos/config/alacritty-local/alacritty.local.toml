@@ -3,5 +3,5 @@ normal = { family = "Iosevka Nerd Font Mono", style = "Regular" }
 size = 14
 
 [window]
-decorations = "Transparent"
-startup_mode = "SimpleFullscreen"
+decorations = "Full"
+startup_mode = "Windowed"

@@ -11,7 +11,9 @@ M.setup = function()
 
   if ok then
     copilot_cmp.setup({
-      method = "getCompletionsCycling"
+      method = "getCompletionsCycling",
+      event = { "InsertEnter", "LspAttach" },
+      fix_pairs = true
     })
   end
 end
