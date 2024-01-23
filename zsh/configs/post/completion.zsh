@@ -19,7 +19,7 @@ zstyle ':completion:*:descriptions' format '%U%F{red}%d%f%u'
 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'
-zstyle ':completion:*' use-cache on
+zstyle ':completion:*' use-cache true
 zstyle ':completion:*' cache-path ~/.cache/zcache
 
 # disable zsh bundled function mtools command mcd
