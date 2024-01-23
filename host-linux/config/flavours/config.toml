@@ -30,7 +30,7 @@ end = "; End flavours"
 hook = "polybar-msg cmd restart"
 
 [[item]]
-file = "~/dotfiles/host-linux/config/i3/config"
+file = "~/dotfiles/host-linux/config/i3/style.i3.config"
 template = "i3"
 subtemplate = "custom"
 rewrite = false
