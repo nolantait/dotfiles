@@ -87,3 +87,10 @@ cmd({ "FocusGained", "TermClose", "TermLeave" }, {
   group = augroup("checktime"),
   command = "checktime",
 })
+
+cmd({ "BufNewFile", "BufRead" }, {
+  desc = "Set the i3 filetype based on the file extension",
+  group = augroup("filetypes"),
+  pattern = "*.i3.config",
+  callback = function() vim.bo.filetype = "i3config" end,
+})

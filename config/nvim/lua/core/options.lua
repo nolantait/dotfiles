@@ -12,6 +12,7 @@ local options = {
   cursorline = true,                               -- Highlight the current line
   expandtab = true,                                -- Convert tabs to spaces
   fileencoding = "utf-8",                          -- The encoding written to a file
+  fileformats="unix,dos,mac",                      -- Prefer UNIX over Windows
   fillchars = "eob: ",
   formatoptions = "qjl1",                          -- Don't auto format comments
   history = 100,                                   -- Number of commands to remember in a history table
