@@ -89,13 +89,13 @@ return {
     },
   },
   {
-      "jay-babu/mason-null-ls.nvim",
-      config = require("plugins.configs.lsp.null-ls"),
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "nvimtools/none-ls.nvim",
-      }
+    "jay-babu/mason-null-ls.nvim",
+    config = require("plugins.configs.lsp.null-ls"),
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "williamboman/mason.nvim",
+      "nvimtools/none-ls.nvim",
+    }
   },
   {
     -- Auto remove search highlight and rehighlight when using n or N
@@ -335,6 +335,7 @@ return {
       "ToggleTermSendVisualLines",
       "ToggleTermSendVisualSelection",
     },
+    keys = keymap(require("plugins.keybinds.toggleterm")),
   },
   {
     -- Custom fork of mason-update-all which uses notifications instead of print

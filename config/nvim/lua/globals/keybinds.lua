@@ -11,14 +11,6 @@
 -- - command_mode = "c",
 
 return {
-  -- TODO: This one I want here so that we can lazily load ToggleTerm
-  -- using the command, not sure the best way to keep this out of globals
-  {
-    mode = "n",
-    key = "<C-\\>",
-    command = "<Cmd>ToggleTerm()<CR>",
-    description = "Toggle terminal"
-  },
   {
     mode = { "i", "x" },
     key = "<C-s>",
