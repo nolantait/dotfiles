@@ -28,9 +28,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 workspace_layout default
-default_border none
+default_border pixel 1
 default_floating_border normal
-new_window pixel 1
 hide_edge_borders true
 gaps inner 8
 # switch to workspace with urgent window automatically

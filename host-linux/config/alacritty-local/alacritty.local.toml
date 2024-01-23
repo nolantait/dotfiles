@@ -2,5 +2,4 @@
 family = "Iosevka Nerd Font Mono"
 
 [shell]
-args = ["--login"]
 program = "/bin/zsh"
