@@ -31,6 +31,12 @@ return {
   },
   {
     mode = "n",
+    key = "tn",
+    command = "<cmd>Telescope notify<CR>",
+    description = "See previous notifications",
+  },
+  {
+    mode = "n",
     key = "thi",
     command = "<cmd>Telescope highlights<CR>",
     description = "Search through highlights",
