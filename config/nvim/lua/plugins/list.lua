@@ -89,13 +89,9 @@ return {
     },
   },
   {
-    "jay-babu/mason-null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     config = require("plugins.configs.lsp.null-ls"),
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "williamboman/mason.nvim",
-      "nvimtools/none-ls.nvim",
-    }
+    event = { "BufReadPre", "BufNewFile" }
   },
   {
     -- Auto remove search highlight and rehighlight when using n or N
