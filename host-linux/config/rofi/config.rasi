@@ -1,19 +1,19 @@
 configuration {
-  font: "Iosevka Nerd Font Mono 12";
-  show-icons: true;
-  terminal: "alacritty";
-  sort: true;
-  sorting-method: "fzf";
-  sidebar-mode: true;
   combi-modes: "window,drun";
-  matching: "fuzzy";
-  timeout {
-      action: "kb-cancel";
-      delay:  0;
-  }
   filebrowser {
       directories-first: true;
       sorting-method:    "name";
+  }
+  font: "Iosevka Nerd Font Mono 12";
+  matching: "fuzzy";
+  show-icons: true;
+  show: "combi";
+  sort: true;
+  sorting-method: "fzf";
+  terminal: "alacritty";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
   }
 }
 
