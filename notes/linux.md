@@ -15,3 +15,4 @@
 - i3-scrot
 - dmenu
 - lsof
+- the_silver_searcher
