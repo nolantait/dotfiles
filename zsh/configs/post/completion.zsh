@@ -9,13 +9,18 @@ else
   compinit -C;
 fi;
 
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'       # Case insensitive tab completion
-zstyle ':completion:*' rehash true                              # automatically find new executables in path 
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+# Case insensitive tab completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+# Automatically find new executables in path
+zstyle ':completion:*' rehash true
+# Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
 zstyle ':completion:*' menu select
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*:descriptions' format '%U%F{red}%d%f%u'
+# Pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
 
 # Speed up completions
 zstyle ':completion:*' accept-exact '*(N)'

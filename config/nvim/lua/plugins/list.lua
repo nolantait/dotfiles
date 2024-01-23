@@ -356,7 +356,7 @@ return {
     -- Frecency search for telescope
     "nvim-telescope/telescope-frecency.nvim",
     cmd = "Telescope frecency",
-    depedneices = {
+    dependencies = {
       "nvim-telescope/telescope.nvim",
     },
     config = function()

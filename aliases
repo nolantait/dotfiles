@@ -11,13 +11,16 @@ alias path='echo $PATH | tr -s ":" "\n"'
 alias egrep="grep -E"
 
 # Use neovim if available over vim
-alias vim='nvim'
+alias vim="nvim"
 
 # Brew upgrade command
 alias brewup="brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor"
 
 # Alias raw man to colorman function
 alias man="colorman"
+
+# Reload zshrc like a rails console
+alias reload!=". ~/.zshrc"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
