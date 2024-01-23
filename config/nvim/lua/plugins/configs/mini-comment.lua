@@ -1,4 +1,4 @@
--- Smart comments with gc
+-- DOCS: Smart comments with gc
 
 return function()
   vim.g.skip_ts_context_commentstring_module = true

@@ -1,4 +1,4 @@
--- Buffers at the very top of the screen
+-- DOCS: Buffers at the very top of the screen
 
 return function()
   local bufferline = require("bufferline")
@@ -6,7 +6,12 @@ return function()
 
   -- Add any custom highlights here
   local highlights = {
-    -- fill = { bg = "#000000", fg = "#000000", guifg = "#000000", guibg = "#000000" },
+    -- fill = {
+    --   bg = "#000000",
+    --   fg = "#000000",
+    --   guifg = "#000000",
+    --   guibg = "#000000"
+    -- },
   }
 
   -- Optionally use bufdelete to close buffers with fallback

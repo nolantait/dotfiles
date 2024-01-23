@@ -1,4 +1,4 @@
--- NOTE: This provides the special highlighting for various comments
+-- DOCS: This provides the special highlighting for various comments
 -- such as this one
 
 return function()

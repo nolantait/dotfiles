@@ -1,3 +1,5 @@
+-- DOCS: Diagnostics list
+
 return function()
   local trouble = require("trouble")
   local icons = require("globals.icons")

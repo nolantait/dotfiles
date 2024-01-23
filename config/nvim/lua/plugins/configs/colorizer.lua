@@ -1,4 +1,4 @@
--- Color hex codes and other colors are highlighted automatically
+-- DOCS: Color hex codes and other colors are highlighted automatically
 
 return function()
   local colorizer = require("colorizer")

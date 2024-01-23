@@ -1,3 +1,6 @@
+-- DOCS: Codemap to the right of the screen. Only shows up on files that exceed
+-- the window height.
+
 return function()
   local mini_map = require("mini.map")
   local icons = require("globals.icons")

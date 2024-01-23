@@ -1,3 +1,6 @@
+-- DOCS: Shows commands in the command line popup menu as you type starting with
+-- a colon (:)
+
 return function()
   local wilder = require("wilder")
   local icons = require("globals.icons")

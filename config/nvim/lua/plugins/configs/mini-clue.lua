@@ -1,4 +1,4 @@
--- Keybind helper, pops up a window with all possible keybinds for a motion
+-- DOCS: Keybind helper, pops up a window with all possible keybinds for a motion
 
 return function()
   local mini_clue = require("mini.clue")

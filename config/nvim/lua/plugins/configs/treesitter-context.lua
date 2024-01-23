@@ -1,3 +1,5 @@
+-- DOCS: This provides text object context to commenting plugins
+
 return function()
   local treesitter_context = require("treesitter-context")
 

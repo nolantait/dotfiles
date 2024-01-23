@@ -1,4 +1,4 @@
--- Barbecue is a VS Code-like winbar for Neovim written in Lua.
+-- DOCS: Barbecue is a VS Code-like winbar for Neovim written in Lua.
 -- Uses nvim-navic in order to get LSP context from your language server.
 
 return function()

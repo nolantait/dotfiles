@@ -1,3 +1,5 @@
+-- DOCS: Move lines and visual selections with Alt+{h,j,k,l}
+
 return function()
   local mini_move = require("mini.move")
 

@@ -1,3 +1,5 @@
+-- DOCS: Split and join arguments using gs
+
 return function()
   local mini_splitjoin = require("mini.splitjoin")
 

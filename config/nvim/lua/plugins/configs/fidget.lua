@@ -1,4 +1,4 @@
--- Loading status for LSP and other plugins that do work in the background
+-- DOCS: Loading status for LSP and other plugins that do work in the background
 
 return function()
   local fidget = require("fidget")

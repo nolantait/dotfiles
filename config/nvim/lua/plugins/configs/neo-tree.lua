@@ -48,7 +48,11 @@ return function()
       follow_current_file = { enabled = true },
       hijack_netrw_behavior = "open_current",
       use_libuv_file_watcher = true,
-      window = { mappings = { h = "toggle_hidden" } },
+      window = {
+        mappings = {
+          h = "toggle_hidden"
+        }
+      },
     },
     open_files_do_not_replace_types = {
       "terminal",

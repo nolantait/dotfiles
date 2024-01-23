@@ -1,3 +1,5 @@
+-- DOCS: Minimal and fast autopairs
+
 return function()
   local mini_pairs = require("mini.pairs")
 
@@ -21,9 +23,24 @@ return function()
       [']'] = { action = 'close', pair = '[]', neigh_pattern = '[^\\].' },
       ['}'] = { action = 'close', pair = '{}', neigh_pattern = '[^\\].' },
 
-      ['"'] = { action = 'closeopen', pair = '""', neigh_pattern = '[^\\].', register = { cr = false } },
-      ["'"] = { action = 'closeopen', pair = "''", neigh_pattern = '[^%a\\].', register = { cr = false } },
-      ['`'] = { action = 'closeopen', pair = '``', neigh_pattern = '[^\\].', register = { cr = false } },
+      ['"'] = {
+        action = 'closeopen',
+        pair = '""',
+        neigh_pattern = '[^\\].',
+        register = { cr = false }
+      },
+      ["'"] = {
+        action = 'closeopen',
+        pair = "''",
+        neigh_pattern = '[^%a\\].',
+        register = { cr = false }
+      },
+      ['`'] = {
+        action = 'closeopen',
+        pair = '``',
+        neigh_pattern = '[^\\].',
+        register = { cr = false }
+      },
     },
   })
 end

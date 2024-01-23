@@ -1,3 +1,5 @@
+-- DOCS: Surround text with quotes etc using sa
+
 return function()
   local mini_surround = require("mini.surround")
 

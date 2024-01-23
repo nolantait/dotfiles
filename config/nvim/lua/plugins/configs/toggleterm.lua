@@ -1,3 +1,5 @@
+-- DOCS: Opens a terminal instance from within neovim with <C-\>
+
 return function()
   local toggleterm = require("toggleterm")
 
@@ -38,7 +40,7 @@ return function()
       winblend = 0,
     },
     hide_numbers = true, -- Hide the number column in toggleterm buffers
-    open_mapping = [[<c-\>]],
+    open_mapping = [[<C-\>]],
     shade_terminals = false,
     shading_factor = "1",   -- The degree to darken the terminal color, 1 for dark, 3 for light
     start_in_insert = true,

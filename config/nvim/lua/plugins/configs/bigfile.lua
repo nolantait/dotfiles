@@ -1,4 +1,4 @@
--- Makes editing big files faster by disabling certain features
+-- DOCS: Makes editing big files faster by disabling certain features
 
 return function()
   local bigfile = require("bigfile")

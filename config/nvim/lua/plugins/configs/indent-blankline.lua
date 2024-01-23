@@ -1,4 +1,4 @@
--- Shows indent levels with a vertical line on the left of the buffer
+-- DOCS: Shows indent levels with a vertical line on the left of the buffer
 
 return function()
   local ibl = require("ibl")

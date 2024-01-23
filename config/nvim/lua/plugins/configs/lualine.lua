@@ -1,4 +1,4 @@
--- Powerline on the bottom of the screen
+-- DOCS: Powerline on the bottom of the screen
 
 return function()
   local lualine = require("lualine")

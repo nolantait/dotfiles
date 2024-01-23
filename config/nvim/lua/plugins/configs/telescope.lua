@@ -1,5 +1,5 @@
--- Telescope provide fuzzy finding for many different aspects of your editor
--- This provides your ctrl+p searching functionality
+-- DOCS: Telescope provide fuzzy finding for many different aspects of your editor
+-- This provides your <C-p> searching functionality
 
 return function()
   local telescope = require("telescope")

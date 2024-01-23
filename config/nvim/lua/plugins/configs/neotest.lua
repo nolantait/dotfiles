@@ -1,3 +1,5 @@
+-- DOCS: Test runner with <Leader>t
+
 return function()
   local neotest = require("neotest")
   local icons = require("globals.icons")

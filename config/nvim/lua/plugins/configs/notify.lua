@@ -1,4 +1,4 @@
--- Provides better popup notifications
+-- DOCS: Provides better popup notifications
 
 return function()
   local notify = require("notify")

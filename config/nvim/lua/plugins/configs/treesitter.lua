@@ -1,3 +1,6 @@
+-- DOCS: Sets up treesitter which provides better syntax highlighting and
+-- information about text objects to other plugins.
+
 return function()
   local treesitter = require("nvim-treesitter.configs")
 

@@ -1,3 +1,5 @@
+-- DOCS: Setting up custom colors and highlights through mini.base16
+
 return function()
   local base16 = require("mini.base16")
   local colors = require("globals.colors")

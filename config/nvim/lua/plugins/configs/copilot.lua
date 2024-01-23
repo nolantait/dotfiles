@@ -1,3 +1,5 @@
+-- DOCS: Copilot setup
+
 return function()
   local copilot = require("copilot")
 

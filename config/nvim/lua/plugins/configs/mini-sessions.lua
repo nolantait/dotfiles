@@ -1,3 +1,5 @@
+-- DOCS: Save and restore sessions with :mksession
+
 return function()
   local mini_sessions = require("mini.sessions")
   local settings = require("globals.settings")

@@ -1,4 +1,4 @@
--- Better UI for neovim, used by other plugins
+-- DOCS: Better UI for neovim, used by other plugins
 
 return function()
   local dressing = require("dressing")

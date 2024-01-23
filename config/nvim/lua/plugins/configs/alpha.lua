@@ -1,4 +1,4 @@
--- Startup dashboard screen when you open neovim
+-- DOCS: Startup dashboard screen when you open neovim
 
 return function()
   local alpha = require("alpha")

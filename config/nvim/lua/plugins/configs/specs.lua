@@ -1,4 +1,4 @@
--- Animate cursor when jumping a large distance to keep eye focus
+-- DOCS: Animate cursor when jumping a large distance to keep eye focus
 
 return function()
   local specs = require("specs")

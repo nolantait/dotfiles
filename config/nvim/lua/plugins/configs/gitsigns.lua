@@ -1,4 +1,4 @@
--- Provides gitsigns on the left side of the buffer, and as a source
+-- DOCS: Provides gitsigns on the left side of the buffer, and as a source
 -- to other plugins
 
 return function()

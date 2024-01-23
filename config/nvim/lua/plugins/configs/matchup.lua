@@ -1,4 +1,4 @@
--- Customization for vim-matchup
+-- DOCS: Customization for vim-matchup
 
 return function()
   local g = vim.g

@@ -475,6 +475,8 @@ return {
     config = require("plugins.configs.dressing"),
     event = "VeryLazy",
     init = function()
+      -- Init functions are always executed during startup.
+      -- We can use this to override the default vim.ui functions
       ---@diagnostic disable-next-line: duplicate-set-field
       vim.ui.select = function(...)
         require("lazy").load({ plugins = { "dressing.nvim" } })

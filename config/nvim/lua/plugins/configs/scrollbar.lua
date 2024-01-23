@@ -1,4 +1,5 @@
--- Provides scrollbar on the right of the buffer
+-- DOCS: Provides scrollbar on the right of the buffer. This is hidden when
+-- mini.map is active when the file exceeds window height.
 
 return function()
   local scrollbar = require("scrollbar")

@@ -1,4 +1,4 @@
--- Highlight related words under the cursor
+-- DOCS: Highlight related words under the cursor
 
 return function()
   local illuminate = require("illuminate")
