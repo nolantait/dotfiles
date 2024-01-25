@@ -7,13 +7,13 @@ M.setup = function(handlers)
 
   mason_config.setup({
     ensure_installed = {
-      "rust_analyzer",
-      "bashls",
-      "cssls",
-      "crystalline",
-      "elixirls",
-      "ruby_ls",
-      "lua_ls"
+      -- "rust_analyzer",
+      -- "bashls",
+      -- "cssls",
+      -- "crystalline",
+      -- "elixirls",
+      -- "ruby_ls",
+      -- "lua_ls"
     },
     automatic_installation = false,
   })
