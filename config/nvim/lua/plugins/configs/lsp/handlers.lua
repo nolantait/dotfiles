@@ -6,9 +6,9 @@ M.setup = function()
 
   local signs = {
     { name = "DiagnosticSignError", text = icons.error },
-    { name = "DiagnosticSignWarn", text = icons.warn },
-    { name = "DiagnosticSignHint", text = icons.hint },
-    { name = "DiagnosticSignInfo", text = icons.info },
+    { name = "DiagnosticSignWarn",  text = icons.warn },
+    { name = "DiagnosticSignHint",  text = icons.hint },
+    { name = "DiagnosticSignInfo",  text = icons.info },
   }
 
   for _, sign in ipairs(signs) do

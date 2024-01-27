@@ -13,7 +13,7 @@ return {
   },
   {
     mode = "n",
-    key = "<C-T>",
+    key = "tS",
     command = "<cmd>TestStop<CR>",
     description = "Stop a running test"
   },
