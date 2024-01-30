@@ -22,6 +22,9 @@ alias man="colorman"
 # Reload zshrc like a rails console
 alias reload!=". ~/.zshrc"
 
+# Alias to update neovim with asdf
+alias update-nvim="asdf uninstall neovim nightly && asdf install neovim nightly"
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
