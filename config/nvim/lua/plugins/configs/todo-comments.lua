@@ -38,7 +38,7 @@ return function()
       },
       NOTE = {
         icon = icons.info,
-        color = colors.blue,
+        color = colors.green,
         alt = { "INFO" }
       },
       TEST = {

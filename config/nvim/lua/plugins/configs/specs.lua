@@ -5,7 +5,6 @@ return function()
 
   specs.setup({
     show_jumps = true,
-    min_jump = 5,
     popup = {
       delay_ms = 0,   -- delay before popup displays
       inc_ms = 10,    -- time increments used for fade/resize effects
