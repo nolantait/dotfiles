@@ -24,7 +24,6 @@ M.setup = function()
     },
     update_in_insert = false,
     underline = true,
-    severity_sort = true,
     float = {
       focused = false,
       focusable = true,
@@ -46,7 +45,7 @@ M.setup = function()
     {
       signs = true,
       underline = true,
-      virtual_text = { severity_limit = "Hint", },
+      virtual_text = { severity = { min = vim.diagnostic.severity.HINT } },
       update_in_insert = false
     }
   )

@@ -5,6 +5,11 @@ return function()
   local treesitter = require("nvim-treesitter.configs")
 
   treesitter.setup({
+    auto_install = false,
+    ignore_install = {
+      "help",
+      "vimdoc"
+    },
     ensure_installed = {
       "css",
       "elixir",
