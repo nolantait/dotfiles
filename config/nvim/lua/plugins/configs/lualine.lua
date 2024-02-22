@@ -105,9 +105,20 @@ return function()
 
   local copilot_status = {
     "copilot",
-    color = { fg = colors.light_gray },
     cond = has_enough_room,
-    padding = { left = 1 }
+    padding = { left = 1 },
+    symbols = {
+      status = {
+        hl = {
+          enabled = colors.green,
+          sleep = colors.light_gray,
+          disabled = colors.red,
+          warning = colors.yellow,
+          unknown = colors.blue
+        }
+      }
+    },
+    show_colors = true
   }
 
   local file_location = {
