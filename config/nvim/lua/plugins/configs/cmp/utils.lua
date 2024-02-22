@@ -39,6 +39,16 @@ M.check_backspace = function()
 end
 
 M.format = function(entry, vim_item)
+  -- Use tailwindcss-colorizer-cmp formatter if our kind is a tailwind color
+  local ok, tw_colorizer = pcall(require, "tailwindcss-colorizer-cmp")
+  if ok then
+    local tw_item = tw_colorizer.formatter(entry, vim_item)
+    if tw_item.kind == "XX" then
+      return tw_item
+    end
+  end
+
+  -- Otherwise use the default formatter
   vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 
   vim_item.menu = ({

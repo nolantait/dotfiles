@@ -250,6 +250,10 @@ return {
       "hrsh7th/cmp-path",
       "f3fora/cmp-spell",
       "hrsh7th/cmp-buffer",
+      {
+        "roobert/tailwindcss-colorizer-cmp.nvim",
+        config = true
+      }
     },
   },
   {
