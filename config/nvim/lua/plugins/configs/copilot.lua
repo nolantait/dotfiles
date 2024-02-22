@@ -10,6 +10,7 @@ return function()
     },
     copilot_node_command = "node", -- Node.js version must be > 16.x
     filetypes = {
+      alpha = false,
       yaml = false,
       toml = false,
       json = false,
