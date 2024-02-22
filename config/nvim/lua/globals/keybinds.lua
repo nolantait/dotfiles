@@ -12,6 +12,12 @@
 
 return {
   {
+    mode = "n",
+    key = "<C-c>",
+    command = "ciw",
+    description = "Remove word and go to insert mode",
+  },
+  {
     mode = { "i", "x" },
     key = "<C-s>",
     command = "<Esc><Cmd>silent! update | redraw<CR>",
