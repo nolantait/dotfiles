@@ -16,4 +16,13 @@ return function()
       try_as_border = true,
     }
   })
+
+  -- Create an autocommand to disable the plugin on certain filetypes
+  vim.cmd([[
+    augroup mini_indentscope
+      autocmd!
+      autocmd FileType alpha, lazy
+      autocmd VimEnter * vim.b.miniindentscope_disable = true
+    augroup END
+  ]])
 end
