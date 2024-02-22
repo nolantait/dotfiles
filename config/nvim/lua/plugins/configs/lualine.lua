@@ -114,7 +114,7 @@ return function()
           sleep = colors.light_gray,
           disabled = colors.red,
           warning = colors.yellow,
-          unknown = colors.blue
+          unknown = colors.yellow
         }
       },
       spinner_color = colors.blue
