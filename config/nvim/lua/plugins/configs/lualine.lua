@@ -116,7 +116,8 @@ return function()
           warning = colors.yellow,
           unknown = colors.blue
         }
-      }
+      },
+      spinner_color = colors.blue
     },
     show_colors = true
   }
