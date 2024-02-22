@@ -1,6 +1,12 @@
 return {
   {
     mode = "n",
+    key = ";",
+    command = "<cmd>Telescope resume<CR>",
+    description = "Resume the last telescope list",
+  },
+  {
+    mode = "n",
     key = "<C-p>",
     command = "<cmd>Telescope find_files<CR>",
     description = "Search files with Telescope using git-ls with fallback",
