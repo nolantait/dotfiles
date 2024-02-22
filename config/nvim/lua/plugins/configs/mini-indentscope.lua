@@ -11,7 +11,7 @@ return function()
         unit = "total"
       })
     },
-    symbol = "|",
+    symbol = "╎",
     options = {
       try_as_border = true,
     }

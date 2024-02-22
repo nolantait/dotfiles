@@ -188,7 +188,11 @@ return {
   {
     "echasnovski/mini.indentscope",
     config = require("plugins.configs.mini-indentscope"),
-    event = { "CursorMoved" }
+    event = { "FileType" },
+    cond = function()
+      -- Only run this plugin if the filetype is not "alpha" (our startup page)
+      return vim.bo.filetype ~= "alpha"
+    end
   },
   {
     -- Highlighting of the word under the cursor
