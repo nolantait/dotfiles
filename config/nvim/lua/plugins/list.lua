@@ -213,12 +213,6 @@ return {
     event = { "CursorHold", "CursorHoldI" },
   },
   {
-    -- Animated cursor movements
-    "edluffy/specs.nvim",
-    event = "CursorMoved",
-    config = require("plugins.configs.specs")
-  },
-  {
     -- Auto completion using Github's copilot
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
