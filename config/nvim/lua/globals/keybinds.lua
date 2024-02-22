@@ -12,6 +12,12 @@
 
 return {
   {
+    mode = "v",
+    key = "y",
+    command = "ygv<Esc>",
+    description = "Yank visual selection and keep cursor at the end",
+  },
+  {
     mode = "n",
     key = "<C-c>",
     command = "ciw",
