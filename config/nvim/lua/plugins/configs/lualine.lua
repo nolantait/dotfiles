@@ -104,9 +104,10 @@ return function()
   }
 
   local copilot_status = {
-    require("components.copilot_status"),
-    padding = 0,
-    cond = has_enough_room
+    "copilot",
+    color = { fg = colors.light_gray },
+    cond = has_enough_room,
+    padding = { left = 1 }
   }
 
   local file_location = {
@@ -123,9 +124,9 @@ return function()
 
   local lsp_status = {
     require("components.lsp_status"),
-    padding = 1,
     color = { fg = colors.light_gray },
-    cond = has_enough_room
+    cond = has_enough_room,
+    padding = 1
   }
 
   local encoding = {

@@ -139,6 +139,9 @@ return {
     "hoob3rt/lualine.nvim",
     config = require("plugins.configs.lualine"),
     event = "LazyFile",
+    dependencies = {
+      "AndreM222/copilot-lualine"
+    }
   },
   {
     -- Scrollbar on right side of bufffer
