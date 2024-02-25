@@ -22,7 +22,7 @@ return function()
     augroup mini_indentscope
       autocmd!
       autocmd FileType alpha, lazy
-      autocmd VimEnter * vim.b.miniindentscope_disable = true
+      autocmd VimEnter * lua vim.b.miniindentscope_disable = true
     augroup END
   ]])
 end
