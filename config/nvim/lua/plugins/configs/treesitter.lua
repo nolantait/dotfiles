@@ -8,7 +8,6 @@ return function()
     auto_install = false,
     ignore_install = {
       "help",
-      "vimdoc"
     },
     ensure_installed = {
       "css",
@@ -29,6 +28,7 @@ return function()
       "sql",
       "typescript",
       "vim",
+      "vimdoc",
       "yaml",
     },
     matchup = {
