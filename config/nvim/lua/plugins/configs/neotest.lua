@@ -12,6 +12,7 @@ return function()
             "bundle",
             "exec",
             "rspec",
+            "--fail-fast"
           })
         end
       }
