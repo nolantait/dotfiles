@@ -7,13 +7,21 @@ return function()
   neotest.setup({
     adapters = {
       require("neotest-rspec") {
-        rspec_cmd = function()
-          return vim.tbl_flatten({
-            "bundle",
-            "exec",
-            "rspec",
-            "--fail-fast"
-          })
+        rspec_cmd = function(position_type)
+          if position_type == "test" then
+            return vim.tbl_flatten({
+              "bundle",
+              "exec",
+              "rspec",
+              "--fail-fast"
+            })
+          else
+            return vim.tbl_flatten({
+              "bundle",
+              "exec",
+              "rspec",
+            })
+          end
         end
       }
     },

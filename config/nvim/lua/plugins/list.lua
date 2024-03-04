@@ -501,7 +501,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-rspec"
+      "nolantait/neotest-rspec"
     },
     event = "VeryLazy",
     keys = keymap(require("plugins.keybinds.neotest")),
