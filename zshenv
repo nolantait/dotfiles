@@ -13,11 +13,12 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH=$HOME/.local/bin:$PATH
 fi
 
+# Load cargo env if it exists
+if [ -d "$HOME/.cargo" ]; then
+  . "$HOME/.cargo/env"
+fi
+
 local _old_path="$PATH"
-
-# Local config
-[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
-
 if [[ $PATH != $_old_path ]]; then
   # `colors` isn't initialized yet, so define a few manually
   typeset -AHg fg fg_bold
@@ -40,6 +41,7 @@ Please move that configuration to \`.zshrc.local' like so:
 
 MSG
 fi
-
 unset _old_path
-. "$HOME/.cargo/env"
+
+# Local config
+[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

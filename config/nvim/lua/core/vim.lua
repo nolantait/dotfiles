@@ -63,6 +63,8 @@ vim.g.vim_markdown_fenced_languages = {
   "bash=sh",
   "ini=dosini",
   "py=python",
+  "rb=ruby",
+  "ruby"
 }
 
 -- Highlight YAML/TOML/JSON front matter.
