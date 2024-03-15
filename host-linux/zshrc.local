@@ -2,3 +2,5 @@
 
 export CUDA_VISIBLE_DEVICES=0,1
 export XLA_FLAGS=--xla_gpu_cuda_data_dir=/opt/cuda
+
+eval `dircolors ~/.dir_colors`
