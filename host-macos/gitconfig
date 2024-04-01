@@ -4,8 +4,12 @@
 [push]
   default = current
 [color]
+  diff = auto
+  status = auto
+  branch = auto
   ui = auto
 [alias]
+  l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   aa = add --all
   ap = add --patch
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
@@ -32,6 +36,6 @@
   email = nolanjtait@gmail.com
   name = Nolan J Tait
 [credential "https://github.com"]
-  helper = !/usr/local/bin/gh auth git-credential
+  helper = !/opt/homebrew/bin/gh auth git-credential
 [credential "https://gist.github.com"]
-  helper = !/usr/local/bin/gh auth git-credential
+  helper = !/opt/homebrew/bin/gh auth git-credential

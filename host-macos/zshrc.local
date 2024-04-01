@@ -1,5 +1,11 @@
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@15/bin:$PATH"
-export PKG_CONFIG_PATH="/usr/local/opt/postgresql@15/lib/pkgconfig"
-export LDFLAGS="-L/usr/local/opt/postgresql@15/lib"
-export CPPFLAGS="-I/usr/local/opt/postgresql@15/include"
+# Load homebrew so brew is available
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# Load asdf installed from homebrew
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+# Have postgresql@16 first in our path
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"

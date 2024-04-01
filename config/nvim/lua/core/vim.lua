@@ -2,7 +2,12 @@
 
 -- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
 vim.loader.enable()
-vim.api.nvim_set_var("loaded_perl_provider", 0)
+
+-- Disable providers
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
 
 --Remap space as leader key
 vim.g.mapleader = " "
@@ -50,7 +55,7 @@ vim.g.editorconfig = 1
 
 -- Disable remote plugins
 -- NOTE: Disabling rplugin.vim will show error for `wilder.nvim` in :checkhealth,
--- NOTE:  but since it's config doesn't require python rtp, it's fine to ignore.
+--       but since it's config doesn't require python rtp, it's fine to ignore.
 vim.g.loaded_remote_plugins = 1 -- Disable menu loading
 
 -- Disable markdown folding

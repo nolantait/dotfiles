@@ -25,9 +25,6 @@ alias reload!=". ~/.zshrc"
 # Alias to update neovim with asdf
 alias update-nvim="asdf uninstall neovim nightly && asdf install neovim nightly"
 
-# Alias ls to use colors
-alias ls="ls --color --classify --group-directories-first"
-
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local
