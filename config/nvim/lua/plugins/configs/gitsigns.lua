@@ -7,37 +7,22 @@ return function()
   gitsigns.setup {
     signs = {
       add = {
-        hl = "GitSignsAdd",
         text = "▎",
-        numhl = "GitSignsAddNr",
-        linehl = "GitSignsAddLn"
       },
       change = {
-        hl = "GitSignsChange",
         text = "▎",
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn"
       },
       delete = {
-        hl = "GitSignsDelete",
         text = "▁",
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn"
       },
       topdelete = {
-        hl = "GitSignsDelete",
         text = "▔",
-        numhl = "GitSignsDeleteNr",
-        linehl = "GitSignsDeleteLn"
       },
       changedelete = {
-        hl = "GitSignsChange",
         text = "▎",
-        numhl = "GitSignsChangeNr",
-        linehl = "GitSignsChangeLn"
       },
     },
-    attach_to_untracked = true,
+    attach_to_untracked = false,
     current_line_blame = false,   -- Toggle with `:Gitsigns toggle_current_line_blame`
     current_line_blame_opts = {
       virt_text = false,
@@ -64,13 +49,6 @@ return function()
     signcolumn = true,        -- Toggle with `:Gitsigns toggle_signs`
     status_formatter = nil,   -- Use default
     update_debounce = 100,
-    watch_gitdir = {
-      interval = 1000,
-      follow_files = true,
-    },
-    word_diff = false,   -- Toggle with `:Gitsigns toggle_word_diff`
-    yadm = {
-      enable = false,
-    },
+    word_diff = false   -- Toggle with `:Gitsigns toggle_word_diff`
   }
 end
