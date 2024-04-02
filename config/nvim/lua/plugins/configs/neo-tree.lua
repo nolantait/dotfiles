@@ -46,6 +46,7 @@ return function()
       {
         event = 'neo_tree_buffer_leave',
         -- HACK: Workaround for https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1415
+        --       Waiting for https://github.com/nvim-neo-tree/neo-tree.nvim/pull/1418 to be merged
         handler = function()
           local shown_buffers = {}
           for _, win in ipairs(vim.api.nvim_list_wins()) do
@@ -73,6 +74,7 @@ return function()
       },
     },
     open_files_do_not_replace_types = {
+      "_neotest",
       "terminal",
       "Trouble",
       "qf",
