@@ -61,6 +61,10 @@ local options = {
   winblend = 10,                                   -- Make floating windows blend
 }
 
+for k, v in pairs(options) do
+  vim.opt[k] = v
+end
+
 local border_fillchars = {
   bold   = 'vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣',
   dot    = 'vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·',
@@ -84,10 +88,6 @@ vim.opt.fillchars:append(border_fillchars.bold)
 -- c: don't give ins-completion-menu messages
 -- W: don't give "written" or "[w]" when writing a file
 vim.opt.shortmess:append "WcC"
-
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
 
 vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 vim.cmd("set whichwrap+=<,>,[,],h,l")
