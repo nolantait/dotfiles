@@ -4,7 +4,7 @@ return function()
   local illuminate = require("illuminate")
 
   illuminate.configure({
-    delay = 100,
+    delay = 200,
     providers = {
       "lsp",
       "treesitter",
@@ -26,6 +26,7 @@ return function()
       providers = { "lsp" }
     },
     max_file_lines = 2000,
+    min_count_to_highlight = 1,
     under_cursor = true,
   })
 end

@@ -8,18 +8,41 @@ return function()
   vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
   neotree.setup({
+    auto_clean_after_session_restore = true,
     close_if_last_window = true,
+    commands = {
+      -- https://github.com/AstroNvim/AstroNvim/blob/9054fa4c767f0327340d82411d4e7f10307d9aca/lua/astronvim/plugins/neo-tree.lua#L116C1-L131C13
+      child_or_open = function(state)
+        local node = state.tree:get_node()
+        if node:has_children() then
+          if not node:is_expanded() then -- if unexpanded, expand
+            state.commands.toggle_node(state)
+          else -- if expanded and has children, seleect the next child
+            if node.type == "file" then
+              state.commands.open(state)
+            else
+              require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+            end
+          end
+        else -- if has no children
+          state.commands.open(state)
+        end
+      end,
+    },
     default_component_configs = {
       indent = {
         padding = 0,
-        indent_size = 2,
+        expander_collapsed = icons.folders.closed,
+        expander_expanded = icons.folders.open,
       },
       icon = {
         folder_closed = icons.folders.closed,
         folder_open = icons.folders.open,
         folder_empty = icons.folders.empty,
+        folder_empty_open = icons.folders.empty,
         default = icons.folders.default,
       },
+      modified = { symbol = icons.pencil },
       git_status = {
         symbols = {
           added = icons.git.added,
@@ -41,6 +64,7 @@ return function()
         event = "neo_tree_buffer_enter",
         handler = function(_)
           vim.opt_local.signcolumn = "auto"
+          vim.opt_local.foldcolumn = "0"
         end
       },
       {
@@ -53,7 +77,9 @@ return function()
             shown_buffers[vim.api.nvim_win_get_buf(win)] = true
           end
           for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if not shown_buffers[buf] and vim.api.nvim_buf_get_option(buf, 'buftype') == 'nofile' and vim.api.nvim_buf_get_option(buf, 'filetype') == 'neo-tree' then
+            local is_nofile = vim.api.nvim_get_option_value('buftype', {buf=buf}) == 'nofile'
+            local is_neotree = vim.api.nvim_get_option_value('filetype', {buf=buf}) == 'neo-tree'
+            if not shown_buffers[buf] and is_nofile and is_neotree then
               vim.api.nvim_buf_delete(buf, {})
             end
           end
@@ -63,10 +89,10 @@ return function()
     filesystem = {
       follow_current_file = {
         enabled = true,
-        leave_dirs_open = true,
+        leave_dirs_open = false
       },
       hijack_netrw_behavior = "open_current",
-      use_libuv_file_watcher = true,
+      use_libuv_file_watcher = vim.fn.has "win32" ~= 1,
       window = {
         mappings = {
           h = "toggle_hidden"
@@ -83,7 +109,7 @@ return function()
     popup_border_style = "rounded",
     source_selector = {
       winbar = true,
-      content_layout = "start",
+      content_layout = "center",
       sources = {
         {
           source = "filesystem",
@@ -113,6 +139,7 @@ return function()
         o = "open",
         H = "prev_source",
         L = "next_source",
+        l = "child_or_open"
       },
     },
   })

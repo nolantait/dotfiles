@@ -13,25 +13,30 @@ return function()
     exclude = {
       buftypes = {
         "nofile",
-        "terminal",
+        "prompt",
+        "quickfix",
+        "terminal"
       },
       filetypes = {
-        "NvimTree",
-        "TelescopePrompt",
-        "TelescopeResults",
-        "Trouble",
         "aerial",
         "alpha",
         "dashboard",
         "help",
+        "lazy",
         "lspinfo",
         "mason",
         "neo-tree",
+        "NvimTree",
         "neogitstatus",
+        "notify",
         "packer",
         "startify",
+        "toggleterm",
         "terminal",
-        ""
+        "NvimTree",
+        "TelescopePrompt",
+        "TelescopeResults",
+        "Trouble",
       },
     },
     indent = { char = "|" }

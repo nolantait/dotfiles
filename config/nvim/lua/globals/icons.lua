@@ -55,9 +55,9 @@ return {
   },
   git = {
     branch = "",
-    added = "",
-    modified = "",
-    removed = "",
+    added = "",
+    modified = "",
+    removed = "",
     renamed = "➜",
     untracked = "★",
     ignored = "◌",

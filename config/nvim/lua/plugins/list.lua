@@ -316,7 +316,23 @@ return {
       end
     end,
     config = require("plugins.configs.treesitter"),
-    event = { "LazyFile", "VeryLazy" },
+    cmd = {
+      "TSBufDisable",
+      "TSBufEnable",
+      "TSBufToggle",
+      "TSDisable",
+      "TSEnable",
+      "TSToggle",
+      "TSInstall",
+      "TSInstallInfo",
+      "TSInstallSync",
+      "TSModuleInfo",
+      "TSUninstall",
+      "TSUpdate",
+      "TSUpdateSync",
+    },
+    -- Disabling lazy loading so new files work without error
+    lazy = false
   },
   --
   -- NOTE: === Commands ===
