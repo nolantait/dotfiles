@@ -5,9 +5,9 @@
 set $mod Mod4
 
 # Workspace names
-set $ws1 1
-set $ws2 2
-set $ws3 3
+set $ws1 main
+set $ws2 web
+set $ws3 chat
 set $ws4 4
 set $ws5 5
 set $ws6 6
@@ -22,3 +22,4 @@ include $HOME/.config/i3/floating.i3.config
 include $HOME/.config/i3/resize.i3.config
 include $HOME/.config/i3/shutdown.i3.config
 include $HOME/.config/i3/gaps.i3.config
+include $HOME/.config/i3/assignments.i3.config
