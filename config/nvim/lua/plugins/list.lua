@@ -84,7 +84,17 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
-      "williamboman/mason.nvim",
+      {
+        "williamboman/mason.nvim",
+        build = ":MasonUpdate",
+        cmd = {
+          "Mason",
+          "MasonInstall",
+          "MasonUninstall",
+          "MasonUninstallAll",
+          "MasonLog",
+        }
+      },
       "williamboman/mason-lspconfig.nvim",
     },
   },
