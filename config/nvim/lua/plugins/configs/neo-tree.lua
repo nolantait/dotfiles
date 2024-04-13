@@ -68,7 +68,7 @@ return function()
         end
       },
       {
-        event = 'neo_tree_buffer_leave',
+        event = "neo_tree_buffer_leave",
         -- HACK: Workaround for https://github.com/nvim-neo-tree/neo-tree.nvim/issues/1415
         --       Waiting for https://github.com/nvim-neo-tree/neo-tree.nvim/pull/1418 to be merged
         handler = function()
@@ -77,8 +77,8 @@ return function()
             shown_buffers[vim.api.nvim_win_get_buf(win)] = true
           end
           for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            local is_nofile = vim.api.nvim_get_option_value('buftype', {buf=buf}) == 'nofile'
-            local is_neotree = vim.api.nvim_get_option_value('filetype', {buf=buf}) == 'neo-tree'
+            local is_nofile = vim.api.nvim_get_option_value("buftype", {buf=buf}) == "nofile"
+            local is_neotree = vim.api.nvim_get_option_value("filetype", {buf=buf}) == "neo-tree"
             if not shown_buffers[buf] and is_nofile and is_neotree then
               vim.api.nvim_buf_delete(buf, {})
             end
@@ -133,6 +133,7 @@ return function()
       separator_active = false,
       tabs_layout = "focus"
     },
+    update_in_insert = false,
     window = {
       width = 30,
       mappings = {
