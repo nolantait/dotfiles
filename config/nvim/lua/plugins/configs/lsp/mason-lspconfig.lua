@@ -12,7 +12,7 @@ M.setup = function(handlers)
       -- "cssls",
       -- "crystalline",
       -- "elixirls",
-      -- "ruby_ls",
+      -- "ruby_lsp",
       -- "lua_ls"
     },
     automatic_installation = false,
