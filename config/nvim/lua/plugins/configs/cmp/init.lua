@@ -5,13 +5,10 @@ return function()
   local utils = require("plugins.configs.cmp.utils")
   local core_utils = require("core.utils")
 
-  -- Load our module for luasnip and copilot_cmp which we use to wrap functions below
+  -- Load our module for copilot_cmp which we use to wrap functions below
   -- conditionally on it being available. Doing this so we can easily remove
   -- without breaking.
-  local luasnip = require("plugins.configs.cmp.luasnip")
   local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
-
-  luasnip.setup()
   copilot_cmp.setup()
 
   local compare = cmp.config.compare
@@ -50,15 +47,6 @@ return function()
       -- Do nothing
     end
   }
-
-  -- Here we are wrapping the default behavior we specify here with additional luasnip
-  -- functionality only if luasnip is loaded.
-  --
-  -- See the luasnip module for more information.
-  --
-  -- Doing this allows for other plugins to modify the behavior of our functions
-  -- conditionally on them being loaded: a(b(c(default)))
-  commands = luasnip.apply(commands)
 
   local float_style = {
     border = core_utils.border("FloatBorderCmp"),
@@ -133,7 +121,6 @@ return function()
       },
       { name = "buffer" },
       { name = "path" },
-      { name = "luasnip" },
       { name = "spell" },
       { name = "treesitter" }
     }, {

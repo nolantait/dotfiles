@@ -59,7 +59,6 @@ M.format = function(entry, vim_item)
     path = "[Path]",
     treesitter = "[TS]",
     spell = "[Spell]",
-    luasnip = "[LuaSnip]",
   })[entry.source.name]
 
   return vim_item

@@ -244,12 +244,6 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     config = require("plugins.configs.cmp"),
     dependencies = {
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-        dependencies = { "rafamadriz/friendly-snippets" },
-        version = "2.*",
-      },
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",
       "andersevenrud/cmp-tmux",
