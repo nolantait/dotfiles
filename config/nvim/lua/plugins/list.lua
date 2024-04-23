@@ -82,6 +82,9 @@ return {
     "neovim/nvim-lspconfig",
     config = require("plugins.configs.lsp"),
     event = { "BufReadPre", "BufNewFile" },
+    cmd = {
+      "Mason"
+    },
     keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
       {
