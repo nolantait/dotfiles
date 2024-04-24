@@ -549,7 +549,7 @@ return {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "nolantait/neotest-rspec"
+      "olimorris/neotest-rspec"
     },
     event = "VeryLazy",
     keys = keymap(require("plugins.keybinds.neotest")),
