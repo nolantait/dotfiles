@@ -137,6 +137,9 @@ return {
   {
     -- Buffer tabs at the top of screen
     "akinsho/bufferline.nvim",
+    branch = "main",
+    -- Waiting for https://github.com/akinsho/bufferline.nvim/pull/896
+    commit = "f6f00d9ac1a51483ac78418f9e63126119a70709",
     config = require("plugins.configs.bufferline"),
     event = "LazyFile",
   },
