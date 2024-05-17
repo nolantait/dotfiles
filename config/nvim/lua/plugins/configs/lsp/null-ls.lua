@@ -5,6 +5,7 @@ return function()
     update_in_insert = false,
     debounce = 5000,
     sources = {
+      null_ls.builtins.formatting.prettier,
       -- null_ls.builtins.diagnostics.erb_lint.with({
       --   method = null_ls.methods.DIAGNOSTICS_ON_SAVE,
       -- }),

@@ -139,7 +139,7 @@ return {
     "akinsho/bufferline.nvim",
     branch = "main",
     -- Waiting for https://github.com/akinsho/bufferline.nvim/pull/896
-    commit = "f6f00d9ac1a51483ac78418f9e63126119a70709",
+    commit = "73540cb",
     config = require("plugins.configs.bufferline"),
     event = "LazyFile",
   },
