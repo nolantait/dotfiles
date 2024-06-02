@@ -5,10 +5,6 @@ vim.loader.enable()
 
 local g = vim.g
 
--- Skip backwards compatability checks with commentstring
--- Putting it here so it loads early
-g.skip_ts_context_commentstring_module = true
-
 -- Disable providers
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0

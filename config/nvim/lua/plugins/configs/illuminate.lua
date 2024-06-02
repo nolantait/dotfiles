@@ -6,8 +6,6 @@ return function()
   illuminate.configure({
     delay = 200,
     providers = {
-      "lsp",
-      "treesitter",
       "regex"
     },
     filetypes_denylist = {
