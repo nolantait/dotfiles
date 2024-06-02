@@ -43,6 +43,12 @@ return {
   },
   {
     mode = "n",
+    key = "<leader>rn",
+    command = "<cmd>lua vim.lsp.buf.rename()<CR>",
+    description = "LSP rename"
+  },
+  {
+    mode = "n",
     key = "<leader>f",
     command = "<cmd>lua vim.lsp.buf.format({async=true})<CR>",
     description = "LSP format"

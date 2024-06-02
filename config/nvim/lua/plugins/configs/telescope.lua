@@ -143,6 +143,7 @@ return function()
       lsp_code_actions = { theme = "dropdown" },
       lsp_definitions = { theme = "dropdown" },
       lsp_implementations = { theme = "dropdown" },
+      lsp_document_symbols = { theme = "dropdown" },
       buffers = {
         ignore_current_buffer = true,
         sort_mru = true,
