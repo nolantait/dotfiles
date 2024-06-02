@@ -283,8 +283,7 @@ return {
     config = require("plugins.configs.matchup"),
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-    },
-    event = "LazyFile",
+    }
   },
   {
     "NvChad/nvim-colorizer.lua",

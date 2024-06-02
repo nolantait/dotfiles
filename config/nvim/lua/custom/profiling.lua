@@ -3,6 +3,7 @@ local M = {}
 function M.start()
   vim.cmd("profile start ~/dotfiles/config/nvim/profile.log")
   vim.cmd("profile func *")
+  vim.cmd("profile file *")
 end
 
 function M.stop()

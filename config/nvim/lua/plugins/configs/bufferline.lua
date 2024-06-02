@@ -31,6 +31,7 @@ return function()
   bufferline.setup {
     options = {
       always_show_bufferline = true,
+      auto_toggle_bufferline = false,
       buffer_close_icon = icons.cross,
       close_command = close_command, -- can be a string | function, see "Mouse actions"
       close_icon = icons.cross,

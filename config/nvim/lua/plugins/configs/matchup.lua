@@ -13,4 +13,6 @@ return function()
   g.matchup_override_vimtex = 1
   g.matchup_delim_start_plaintext = 0
   g.matchup_transmute_enabled = 0
+  g.matchup_delim_stopline = 500
+  g.matchup_matchparen_stopline = 500
 end

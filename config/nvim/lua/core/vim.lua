@@ -3,66 +3,72 @@
 -- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
 vim.loader.enable()
 
+local g = vim.g
+
+-- Skip backwards compatability checks with commentstring
+-- Putting it here so it loads early
+g.skip_ts_context_commentstring_module = true
+
 -- Disable providers
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_ruby_provider = 0
-vim.g.loaded_python3_provider = 0
-vim.g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded_python3_provider = 0
+g.loaded_node_provider = 0
 
 --Remap space as leader key
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+g.mapleader = " "
+g.maplocalleader = " "
 
 -- Disable menu loading
-vim.g.did_install_default_menus = 1
-vim.g.did_install_syntax_menu = 1
+g.did_install_default_menus = 1
+g.did_install_syntax_menu = 1
 
 -- Uncomment this if you define your own filetypes in `after/ftplugin`
--- vim.g.did_load_filetypes = 1
+-- g.did_load_filetypes = 1
 
 -- Do not load native syntax completion
-vim.g.loaded_syntax_completion = 1
+g.loaded_syntax_completion = 1
 
 -- Do not load spell files
-vim.g.loaded_spellfile_plugin = 1
+g.loaded_spellfile_plugin = 1
 
 -- Do not load netrw by default
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwFileHandlers = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_netrwSettings = 1
+g.loaded_netrw = 1
+g.loaded_netrwFileHandlers = 1
+g.loaded_netrwPlugin = 1
+g.loaded_netrwSettings = 1
 -- newtrw liststyle: https://medium.com/usevim/the-netrw-style-options-3ebe91d42456
--- vim.g.netrw_liststyle = 3
+-- g.netrw_liststyle = 3
 
 -- Do not load tohtml.vim
-vim.g.loaded_2html_plugin = 1
+g.loaded_2html_plugin = 1
 
 -- Do not load zipPlugin.vim, gzip.vim and tarPlugin.vim (all these plugins are
 -- related to checking files inside compressed files)
-vim.g.loaded_gzip = 1
-vim.g.loaded_tar = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_vimball = 1
-vim.g.loaded_vimballPlugin = 1
-vim.g.loaded_zip = 1
-vim.g.loaded_zipPlugin = 1
+g.loaded_gzip = 1
+g.loaded_tar = 1
+g.loaded_tarPlugin = 1
+g.loaded_vimball = 1
+g.loaded_vimballPlugin = 1
+g.loaded_zip = 1
+g.loaded_zipPlugin = 1
 
 -- Disable sql omni completion.
-vim.g.loaded_sql_completion = 1
+g.loaded_sql_completion = 1
 
 -- Disable EditorConfig support
-vim.g.editorconfig = 1
+g.editorconfig = 1
 
 -- Disable remote plugins
 -- NOTE: Disabling rplugin.vim will show error for `wilder.nvim` in :checkhealth,
 --       but since it's config doesn't require python rtp, it's fine to ignore.
-vim.g.loaded_remote_plugins = 1 -- Disable menu loading
+g.loaded_remote_plugins = 1 -- Disable menu loading
 
 -- Disable markdown folding
-vim.g.vim_markdown_folding_disabled = 1
+g.vim_markdown_folding_disabled = 1
 
 -- Fenced languages syntax highlight in markdown
-vim.g.vim_markdown_fenced_languages = {
+g.vim_markdown_fenced_languages = {
   "c==cpp",
   "viml=vim",
   "bash=sh",
@@ -73,7 +79,7 @@ vim.g.vim_markdown_fenced_languages = {
 }
 
 -- Highlight YAML/TOML/JSON front matter.
-vim.g.vim_markdown_frontmatter = true
+g.vim_markdown_frontmatter = true
 
 -- Strikethrough uses two tildes.
-vim.g.vim_markdown_strikethrough = true
+g.vim_markdown_strikethrough = true
