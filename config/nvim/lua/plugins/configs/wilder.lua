@@ -8,14 +8,13 @@ return function()
   local highlighters = {
     wilder.basic_highlighter(),
     -- wilder.lua_pcre2_highlighter(),
-    -- wilder.lua_fzy_highlighter(),
+    wilder.lua_fzy_highlighter(),
   }
 
   wilder.set_option("use_python_remote_plugin", 0)
   wilder.set_option("pipeline", {
     wilder.branch(
       wilder.cmdline_pipeline({
-        language = "vim",
         fuzzy = 1,
         fuzzy_filter = wilder.lua_fzy_filter(),
       }),
