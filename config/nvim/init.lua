@@ -2,7 +2,7 @@
 -- first and this file is responsible for loading everything else
 
 -- Load core config
-require "core"
+require("core").setup()
 
 -- Load plugins with lazy
 require "plugins"
