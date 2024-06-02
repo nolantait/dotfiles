@@ -491,13 +491,13 @@ local filetypes = {
     },
   },
   {
-    "folke/neodev.nvim",
+    "folke/lazydev.nvim",
+    config = require("plugins.configs.lazydev"),
     dependencies = {
-      "neovim/nvim-lspconfig"
+      "Bilal2453/luvit-meta",
+      "hrsh7th/nvim-cmp"
     },
-    ft = {
-      "lua"
-    },
+    ft = { "lua" },
   },
   {
     -- Colored log highlighting
