@@ -41,7 +41,8 @@ return function()
     name = "bufferline",
     opts = { defer = false },
     disable = function()
-      vim.opt.showtabline = 0
+      local bufnr = vim.api.nvim_get_current_buf()
+      vim.bo[bufnr].showtabline = 0
     end
   }
 
