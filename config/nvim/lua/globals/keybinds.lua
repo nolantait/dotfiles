@@ -12,6 +12,12 @@
 
 return {
   {
+    mode = "n",
+    key = "<Leader>w",
+    command = "<cmd>w<CR>",
+    description = "Save file",
+  },
+  {
     mode = "v",
     key = "y",
     command = "ygv<Esc>",
@@ -26,13 +32,13 @@ return {
   {
     mode = { "i", "x" },
     key = "<C-s>",
-    command = "<Esc><Cmd>silent! update | redraw<CR>",
+    command = "<Esc><cmd>silent! update | redraw<CR>",
     description = "Save file and go to normal mode",
   },
   {
     mode = "n",
     key = "<C-s>",
-    command = "<Cmd>silent! update | redraw<CR>",
+    command = "<cmd>silent! update | redraw<CR>",
     description = "Save file",
   },
   {
@@ -152,13 +158,13 @@ return {
   {
     mode = "n",
     key = "<Leader>=",
-    command = "<Cmd>vertical resize +10<CR>",
+    command = "<cmd>vertical resize +10<CR>",
     description = "Increase window width by 10",
   },
   {
     mode = "n",
     key = "<Leader>-",
-    command = "<Cmd>vertical resize -10<CR>",
+    command = "<cmd>vertical resize -10<CR>",
     description = "Decrease window width by 10",
   },
 }
