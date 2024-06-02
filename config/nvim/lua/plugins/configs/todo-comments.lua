@@ -50,6 +50,10 @@ return function()
         icon = icons.info,
         color = colors.lighter_gray
       },
+      PRIVATE = {
+        icon = icons.lock,
+        color = colors.blue
+      }
     },
     gui_style = {
       fg = "NONE",           -- The gui style to use for the fg highlight group.

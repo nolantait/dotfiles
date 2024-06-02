@@ -58,12 +58,25 @@ return {
   -- NOTE: === Custom ===
   --
   {
-    config = function()
-      require("custom.profiling").setup()
-    end,
+    config = true,
     dir = settings.vim_path .. "/lua/custom/profiling",
     lazy = false,
+    main = "custom.profiling",
     name = "custom.profiling",
+  },
+  {
+    config = true,
+    dir = settings.vim_path .. "/lua/custom/hardmode",
+    lazy = false,
+    main = "custom.hardmode",
+    name = "custom.hardmode",
+  },
+  {
+    config = true,
+    dir = settings.vim_path .. "/lua/custom/gem",
+    lazy = false,
+    main = "custom.gem",
+    name = "custom.gem",
   },
   --
   -- NOTE: === Events ===

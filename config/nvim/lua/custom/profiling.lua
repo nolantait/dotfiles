@@ -11,10 +11,23 @@ function M.stop()
 end
 
 function M.setup()
-  vim.cmd([[
-    command! -nargs=0 ProfileStart :lua require('custom.profiling').start()
-    command! -nargs=0 ProfileStop :lua require('custom.profiling').stop()
-  ]])
+  local command = vim.api.nvim_create_user_command
+
+  command(
+    "ProfileStart",
+    function()
+      M.start()
+    end,
+    { nargs = 0 }
+  )
+
+  command(
+    "ProfileStop",
+    function()
+      M.stop()
+    end,
+    { nargs = 0 }
+  )
 
   local keymap = vim.api.nvim_set_keymap
   local opts = {

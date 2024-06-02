@@ -60,12 +60,16 @@ M.toggle_hard_mode = function()
   M.hard_mode = not M.hard_mode
 end
 
-vim.api.nvim_create_user_command(
-  "ToggleHardMode",
-  "lua require('custom.hardmode').toggle_hard_mode()",
-  {
-    nargs = 0,
-  }
-)
+M.setup = function()
+  vim.api.nvim_create_user_command(
+    "HardModeToggle",
+    function()
+      M.toggle_hard_mode()
+    end,
+    {
+      nargs = 0,
+    }
+  )
+end
 
 return M
