@@ -2,23 +2,8 @@
 -- background when needed by lazy.nvim
 
 local settings = require("globals.settings")
-
-local keymap = function(keybinds)
-  local result = {}
-
-  for _, keybind in ipairs(keybinds) do
-    table.insert(result, {
-      keybind.key,
-      keybind.command,
-      keybind.mode,
-      desc = keybind.description,
-      noremap = true,
-      silent = true
-    })
-  end
-
-  return result
-end
+local plugins = require("plugins")
+local keymap = plugins.convert_keymap
 
 -- NOTE: These are roughly in order of their execution
 -- Typical execution would go in the following order:
@@ -33,7 +18,7 @@ end
 -- 3. By cmd option
 -- 4. By filetype
 
-return {
+local high_priority = {
   {
     -- Base16 colorscheme controlled with flavours in globals/colors.lua
     "echasnovski/mini.base16",
@@ -54,9 +39,9 @@ return {
     config = require("plugins.configs.bigfile"),
     lazy = false,
   },
-  --
-  -- NOTE: === Custom ===
-  --
+}
+
+local custom = {
   {
     config = true,
     dir = settings.vim_path .. "/lua/custom/profiling",
@@ -78,9 +63,9 @@ return {
     main = "custom.gem",
     name = "custom.gem",
   },
-  --
-  -- NOTE: === Events ===
-  --
+}
+
+local events = {
   {
     -- Startup dashboard greeting when opening vim
     "goolord/alpha-nvim",
@@ -356,11 +341,11 @@ return {
       "TSUpdateSync",
     },
     -- Disabling lazy loading so new files work without error
-    lazy = false
+    lazy = "LazyFile"
   },
-  --
-  -- NOTE: === Commands ===
-  --
+}
+
+local commands = {
   {
     "akinsho/toggleterm.nvim",
     config = require("plugins.configs.toggleterm"),
@@ -377,14 +362,10 @@ return {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      {
-        "tpope/vim-dadbod",
-        lazy = true
-      },
+      "tpope/vim-dadbod",
       {
         "kristijanhusak/vim-dadbod-completion",
-        ft = { "sql", "mysql", "plsql" },
-        lazy = true
+        ft = { "sql", "mysql", "plsql" }
       },
     },
     cmd = {
@@ -491,9 +472,9 @@ return {
     },
     keys = keymap(require("plugins.keybinds.neo-tree")),
   },
-  --
-  -- NOTE: === Filetypes ===
-  --
+}
+
+local filetypes = {
   {
     -- Rust integration with LSP
     "simrat39/rust-tools.nvim",
@@ -527,9 +508,9 @@ return {
       "log"
     }
   },
-  --
-  -- NOTE: === VeryLazy ===
-  --
+}
+
+local very_lazy = {
   {
     -- Better UI elements for neovim
     "stevearc/dressing.nvim",
@@ -571,4 +552,13 @@ return {
     event = "VeryLazy",
     keys = keymap(require("plugins.keybinds.neotest")),
   },
+}
+
+return {
+  high_priority,
+  custom,
+  events,
+  commands,
+  filetypes,
+  very_lazy
 }

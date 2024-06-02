@@ -3,6 +3,5 @@
 
 -- Load core config
 require("core").setup()
-
 -- Load plugins with lazy
-require "plugins"
+require("plugins").setup()
