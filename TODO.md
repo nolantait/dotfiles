@@ -1,0 +1,2 @@
+- https://github.com/stevearc/aerial.nvim
+- https://github.com/uga-rosa/ccc.nvim
