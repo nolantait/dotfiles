@@ -49,8 +49,5 @@ return function()
       logging = false,   -- whether to enable logging, for debugging
       strict = false,    -- whether to interpret LSP strictly
     },
-    -- sources = {
-    --   ["null-ls"] = { ignore = true },
-    -- },
   })
 end

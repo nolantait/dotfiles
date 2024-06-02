@@ -102,9 +102,11 @@ return {
     },
   },
   {
-    "nvimtools/none-ls.nvim",
-    config = require("plugins.configs.lsp.null-ls"),
-    event = { "BufReadPre", "BufNewFile" }
+    "stevearc/conform.nvim",
+    event = { "BufWritePre" },
+    cmd = { "ConformInfo" },
+    keys = keymap(require("plugins.keybinds.conform")),
+    config = require("plugins.configs.conform")
   },
   {
     -- Auto remove search highlight and rehighlight when using n or N
