@@ -7,6 +7,7 @@ return function()
     formatters_by_ft = {
       ruby = { "rubocop" },
       javascript = { "prettier" },
+      javascriptreact = { "prettier" },
       lua = { "stylua" },
     }
   })

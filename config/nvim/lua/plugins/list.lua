@@ -246,7 +246,6 @@ local events = {
   {
     -- Tab completions with suggestions from many sources (copilot, lsp, etc)
     "hrsh7th/nvim-cmp",
-    lazy = true,
     event = { "InsertEnter", "CmdlineEnter" },
     config = require("plugins.configs.cmp"),
     dependencies = {

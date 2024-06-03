@@ -37,15 +37,6 @@ return function()
     end
   }
 
-  local bufferline = {
-    name = "bufferline",
-    opts = { defer = false },
-    disable = function()
-      local bufnr = vim.api.nvim_get_current_buf()
-      vim.bo[bufnr].showtabline = 0
-    end
-  }
-
   local tscontext = {
     name = "tscontext",
     opts = { defer = false },
@@ -91,7 +82,6 @@ return function()
       cmp,
       syntax,
       barbeque,
-      bufferline,
       tscontext,
       lualine,
       miniMap
