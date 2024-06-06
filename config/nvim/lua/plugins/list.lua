@@ -160,16 +160,6 @@ local events = {
     }
   },
   {
-    -- Scrollbar on right side of bufffer
-    "petertriho/nvim-scrollbar",
-    config = require("plugins.configs.scrollbar"),
-    dependencies = {
-      "kevinhwang91/nvim-hlslens",
-      "lewis6991/gitsigns.nvim",
-    },
-    event = "LazyFile"
-  },
-  {
     -- Todo comment highlighting
     "folke/todo-comments.nvim",
     config = require("plugins.configs.todo-comments"),
@@ -200,6 +190,7 @@ local events = {
   },
   {
     "nolantait/mini.map",
+    enabled = false,
     config = require("plugins.configs.mini-map"),
     event = "LazyFile",
     keys = keymap(require("plugins.keybinds.mini-map")),
@@ -342,6 +333,11 @@ local events = {
     -- Disabling lazy loading so new files work without error
     lazy = "LazyFile"
   },
+  {
+    "lewis6991/satellite.nvim",
+    config = require("plugins.configs.satellite"),
+    event = "LazyFile",
+  }
 }
 
 local commands = {

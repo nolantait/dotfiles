@@ -62,7 +62,6 @@ return function()
 
       local bufnr = vim.api.nvim_get_current_buf()
 
-      local buffer_name = vim.fn.expand('%:t')
       local buftype = vim.api.nvim_get_option_value("buftype", { buf = bufnr })
 
       if buftype == "nofile" then

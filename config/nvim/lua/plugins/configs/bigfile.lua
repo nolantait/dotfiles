@@ -83,8 +83,7 @@ return function()
       syntax,
       barbeque,
       tscontext,
-      lualine,
-      miniMap
+      lualine
     },
   })
 end
