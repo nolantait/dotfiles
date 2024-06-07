@@ -45,23 +45,49 @@ if [[ -z "$os" ]]; then
   exit 1
 fi
 
+declare -A package_names
+package_names=(
+  [bat]="bat"
+  [eza]="eza"
+  [asdf]="asdf"
+  [gh]="gh"
+  [nvim]="neovim"
+)
+
+# Define OS-specific package mappings
+declare -A macos_package_names
+macos_package_names=(
+)
+
+declare -A linux_package_names
+linux_package_names=(
+)
+
+# List of required commands
+required_commands=("bat" "eza" "asdf" "gh" "nvim")
+
 # Function to check if a command exists
 check_command() {
   command_name=$1
+  package_name=${package_names[$command_name]:-$command_name}
+
+    # Check for OS-specific package names
+  if [[ "$os" == "macOS" ]]; then
+    package_name=${macos_package_names[$command_name]:-$package_name}
+  elif [[ "$os" == "Linux" ]]; then
+    package_name=${linux_package_names[$command_name]:-$package_name}
+  fi
 
   if ! command -v $command_name &> /dev/null; then
     if [[ "$os" == "macOS" ]]; then
-      echo "Warning: $command_name is not installed. Please install it with \`brew install $command_name\`" >&2
+      echo "Warning: $command_name is not installed. Please install it with \`brew install $package_name\`" >&2
     elif [[ "$os" == "Linux" ]]; then
-      echo "Warning: $command_name is not installed. Please install it with \`paru -S $command_name\` or \`yay -S $command_name\`" >&2
+      echo "Warning: $command_name is not installed. Please install it with \`paru -S $package_name\` or \`yay -S $package_name\`" >&2
     else
       echo "Warning: $command_name is not installed. Please install it" >&2
     fi
   fi
 }
-
-# List of required commands
-required_commands=("bat" "eza")
 
 # Check each required command
 echo "Checking for dependencies that need installing..."
