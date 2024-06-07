@@ -5,10 +5,9 @@ return function()
   local icons = require("globals.icons")
 
   -- Remove deprecated commands from v1.x
-  vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
+  vim.g.neo_tree_remove_legacy_commands = 1
 
   neotree.setup({
-    auto_clean_after_session_restore = true,
     close_if_last_window = true,
     commands = {
       -- https://github.com/AstroNvim/AstroNvim/blob/9054fa4c767f0327340d82411d4e7f10307d9aca/lua/astronvim/plugins/neo-tree.lua#L116C1-L131C13
