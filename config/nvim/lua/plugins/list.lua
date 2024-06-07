@@ -85,17 +85,20 @@ local events = {
     },
     keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
-      {
-        "williamboman/mason.nvim",
-        build = ":MasonUpdate",
-        cmd = {
-          "Mason",
-          "MasonInstall",
-          "MasonUninstall",
-          "MasonUninstallAll",
-          "MasonLog",
-        }
-      },
+      "williamboman/mason-lspconfig.nvim",
+    },
+  },
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    cmd = {
+      "Mason",
+      "MasonInstall",
+      "MasonUninstall",
+      "MasonUninstallAll",
+      "MasonLog",
+    },
+    dependencies = {
       "williamboman/mason-lspconfig.nvim",
     },
   },
@@ -245,12 +248,15 @@ local events = {
       "andersevenrud/cmp-tmux",
       "hrsh7th/cmp-path",
       "f3fora/cmp-spell",
-      "hrsh7th/cmp-buffer",
-      {
-        "roobert/tailwindcss-colorizer-cmp.nvim",
-        config = true
-      }
+      "hrsh7th/cmp-buffer"
     },
+  },
+  {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    config = true,
+    dependencies = {
+      "hrsh7th/nvim-cmp",
+    }
   },
   {
     -- Completions for vim commands and paths
@@ -358,10 +364,6 @@ local commands = {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
       "tpope/vim-dadbod",
-      {
-        "kristijanhusak/vim-dadbod-completion",
-        ft = { "sql", "mysql", "plsql" }
-      },
     },
     cmd = {
       "DBUI",
@@ -373,6 +375,13 @@ local commands = {
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
+  },
+  {
+    "kristijanhusak/vim-dadbod-completion",
+    dependencies = {
+      "kristijanhusak/vim-dadbod-ui",
+    },
+    ft = { "sql", "mysql", "plsql" },
   },
   {
     -- Custom fork of mason-update-all which uses notifications instead of print
