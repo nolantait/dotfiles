@@ -68,10 +68,10 @@ return function()
           ["<Down>"] = actions.move_selection_next,
           ["<Up>"] = actions.move_selection_previous,
 
-          ["<CR>"] = actions.select_tab,
+          ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
-          ["<C-t>"] = actions.select_default,
+          ["<C-t>"] = actions.select_tab,
 
           ["<C-u>"] = actions.preview_scrolling_up,
           ["<C-d>"] = actions.preview_scrolling_down,
@@ -90,10 +90,10 @@ return function()
           ["<C-t"] = trouble.open,
           ["<esc>"] = actions.close,
           ["q"] = actions.close,
-          ["<CR>"] = actions.select_tab,
+          ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
-          ["<C-t>"] = actions.select_default,
+          ["<C-t>"] = actions.select_tab,
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
           ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
