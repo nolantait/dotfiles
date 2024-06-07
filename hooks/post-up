@@ -52,6 +52,8 @@ package_names=(
   [asdf]="asdf"
   [gh]="gh"
   [nvim]="neovim"
+  [jq]="jq"
+  [fzf]="fzf"
 )
 
 # Define OS-specific package mappings
@@ -64,7 +66,7 @@ linux_package_names=(
 )
 
 # List of required commands
-required_commands=("bat" "eza" "asdf" "gh" "nvim")
+required_commands=("bat" "eza" "asdf" "gh" "nvim" "jq" "fzf")
 
 # Function to check if a command exists
 check_command() {

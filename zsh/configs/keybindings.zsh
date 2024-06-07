@@ -15,6 +15,9 @@ bindkey "^Y" accept-and-hold
 bindkey "^N" insert-last-word
 bindkey "^Q" push-line-or-edit
 
+# Plugin keybinds
+bindkey "^j" jq-complete
+
 # ctrl+space key binding for auto-suggestion
 bindkey "^ " autosuggest-accept
 
