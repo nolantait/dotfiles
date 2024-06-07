@@ -31,6 +31,16 @@ function M.check()
       type = "warn",
       msg = "Used for various plugins"
     },
+    {
+      cmd = { "bat" },
+      type = "warn",
+      msg = "Used by aliases for `cat` for previewing files"
+    },
+    {
+      cmd = { "eza" },
+      type = "warn",
+      msg = "Used by aliases for `ls`"
+    }
   }
 
   for _, program in ipairs(programs) do

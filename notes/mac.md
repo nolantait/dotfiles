@@ -28,6 +28,8 @@ brew install bitwarden-cli
 brew install ranger
 brew install gh
 brew install vips
+brew install bat
+brew install eza
 
 brew install --cask alacritty
 brew install --cask firefox
@@ -76,4 +78,11 @@ Setup git
 ```
 git clone https://github.com/nolantait/dotfiles.git
 gh auth
+```
+
+Then run rcup
+
+```
+cd ~/dotfiles
+env RCRC=$HOME/dotfiles/rcrc rcup -B macos
 ```

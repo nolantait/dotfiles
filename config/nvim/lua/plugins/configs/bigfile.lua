@@ -18,8 +18,6 @@ return function()
     name = "syntax",
     opts = { defer = false },
     disable = function()
-      vim.cmd("syntax off")
-      vim.cmd("filetype off")
       vim.opt.undofile = false
       vim.opt.swapfile = false
       vim.g.loaded_plugins = 1
@@ -56,14 +54,6 @@ return function()
       if ok then
         lualine.hide({ unhide = false })
       end
-    end
-  }
-
-  local miniMap = {
-    name = "minimap",
-    opts = { defer = false },
-    disable = function()
-      vim.b.minimap_disable = true
     end
   }
 

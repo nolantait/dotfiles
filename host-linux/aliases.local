@@ -1,2 +1,0 @@
-# Alias ls to use colors
-alias ls="ls --color --classify --group-directories-first"
