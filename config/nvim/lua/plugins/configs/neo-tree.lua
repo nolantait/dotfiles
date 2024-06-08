@@ -72,8 +72,8 @@ return function()
         enabled = true,
         leave_dirs_open = false
       },
-      hijack_netrw_behavior = "open_current",
-      use_libuv_file_watcher = vim.fn.has "win32" ~= 1,
+      hijack_netrw_behavior = "open_default",
+      use_libuv_file_watcher = true,
       window = {
         mappings = {
           h = "toggle_hidden"

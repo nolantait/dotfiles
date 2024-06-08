@@ -7,6 +7,7 @@
 -- Sets up the theme for base16-vim
 
 return {
+  background = "#16181d",
   black = "#282c34",
   darker_gray = "#353b45",
   dark_gray = "#3e4451",

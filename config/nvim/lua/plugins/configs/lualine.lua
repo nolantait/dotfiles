@@ -7,15 +7,15 @@ return function()
 
   local lualine_colors = {
     a = {
-      bg = colors.dark_gray,
+      bg = colors.background,
       fg = colors.white,
     },
     b = {
-      bg = colors.darker_gray,
+      bg = colors.background,
       fg = colors.white,
     },
     c = {
-      bg = colors.black,
+      bg = colors.background,
       fg = colors.white,
     },
   }
@@ -26,15 +26,15 @@ return function()
       b = { fg = lualine_colors.b.fg, bg = lualine_colors.b.bg },
       c = { fg = lualine_colors.c.fg, bg = lualine_colors.c.bg },
     },
-    command = { a = { fg = colors.black, bg = colors.orange, gui = "bold" } },
-    insert = { a = { fg = colors.black, bg = colors.blue, gui = "bold" } },
-    visual = { a = { fg = colors.black, bg = colors.yellow, gui = "bold" } },
-    replace = { a = { fg = colors.black, bg = colors.green, gui = "bold" } },
-    terminal = { a = { fg = colors.black, bg = colors.cyan, gui = "bold" } },
+    command = { a = { fg = colors.background, bg = colors.orange, gui = "bold" } },
+    insert = { a = { fg = colors.background, bg = colors.blue, gui = "bold" } },
+    visual = { a = { fg = colors.background, bg = colors.yellow, gui = "bold" } },
+    replace = { a = { fg = colors.background, bg = colors.green, gui = "bold" } },
+    terminal = { a = { fg = colors.background, bg = colors.cyan, gui = "bold" } },
     inactive = {
-      a = { fg = colors.white, bg = colors.black, gui = "bold" },
-      b = { fg = colors.white, bg = colors.black },
-      c = { fg = colors.white, bg = colors.black },
+      a = { fg = colors.white, bg = colors.background, gui = "bold" },
+      b = { fg = colors.white, bg = colors.background },
+      c = { fg = colors.white, bg = colors.background },
     }
   }
 

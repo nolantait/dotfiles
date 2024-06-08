@@ -157,7 +157,12 @@ return function()
       -- List of filetypes to ignore.
       filetypes = {
         "TelescopePrompt",
-        "alpha"
+        "alpha",
+        "_neotest",
+        "terminal",
+        "Trouble",
+        "qf",
+        "Outline"
       },
 
       -- Ignored buftypes.

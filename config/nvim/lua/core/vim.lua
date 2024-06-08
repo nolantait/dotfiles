@@ -131,10 +131,8 @@ function M.setup_globals()
   -- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
   vim.loader.enable()
 
-  local g = vim.g
-
   for k, v in pairs(M.globals) do
-    g[k] = v
+    vim.g[k] = v
   end
 end
 
@@ -168,5 +166,7 @@ function M.setup_options()
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 end
+
+_G._vim_opts = M
 
 return M
