@@ -14,16 +14,6 @@ return function()
     end,
   }
 
-  local syntax = {
-    name = "syntax",
-    opts = { defer = false },
-    disable = function()
-      vim.opt.undofile = false
-      vim.opt.swapfile = false
-      vim.g.loaded_plugins = 1
-    end,
-  }
-
   local barbeque = {
     name = "barbeque",
     opts = { defer = false },
@@ -57,6 +47,17 @@ return function()
     end
   }
 
+  local colorizer = {
+    name = "nvim-highlight-colors",
+    opts = { defer = false },
+    disable = function()
+      local ok, colorizer = pcall(require, "nvim-highlight-colors")
+      if ok then
+        colorizer.turnOff()
+      end
+    end
+  }
+
   bigfile.setup({
     filesize = 1,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
     pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
@@ -70,10 +71,10 @@ return function()
       "vimopts",
       "filetype",
       cmp,
-      syntax,
       barbeque,
       tscontext,
-      lualine
+      lualine,
+      colorizer
     },
   })
 end

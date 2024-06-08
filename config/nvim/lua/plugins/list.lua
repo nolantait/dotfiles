@@ -282,12 +282,9 @@ local events = {
     }
   },
   {
-    "NvChad/nvim-colorizer.lua",
-    config = require("plugins.configs.colorizer"),
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
-    event = "LazyFile",
+    "brenoprata10/nvim-highlight-colors",
+    config = require("plugins.configs.highlight-colors"),
+    event = "LazyFile"
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
