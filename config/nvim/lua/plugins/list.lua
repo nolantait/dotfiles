@@ -392,6 +392,16 @@ local commands = {
     }
   },
   {
+    'stevearc/aerial.nvim',
+    config = require("plugins.configs.aerial"),
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons"
+    },
+    keys = keymap(require("plugins.keybinds.aerial")),
+  },
+  {
     -- Prettier quickfix list
     "folke/trouble.nvim",
     -- Only load upon the usage of these commands
