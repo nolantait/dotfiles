@@ -287,6 +287,12 @@ local events = {
     event = "LazyFile"
   },
   {
+    "uga-rosa/ccc.nvim",
+    config = require("plugins.configs.ccc"),
+    keys = keymap(require("plugins.keybinds.ccc")),
+    event = "LazyFile"
+  },
+  {
     "JoosepAlviste/nvim-ts-context-commentstring",
     config = true,
     dependencies = {
