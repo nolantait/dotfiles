@@ -3,7 +3,13 @@
 # Template author: Tinted Theming: (https://github.com/tinted-theming)
 
 # default statusbar colors
-set-option -g status-style "fg=#{{base04-hex}},bg=#{{base01-hex}}"
+set-option -g status-style "fg=#{{base04-hex}},bg=#{{base00-hex}}"
+
+# nolan-linux-desktop window:1 pane:1
+set -g status-left " #[fg=#{{base05-hex}}]#H #[fg=#{{base0D-hex}}]window:#[fg=#{{base05-hex}}]#I #[fg=#{{base0D-hex}}]pane:#[fg=#{{base05-hex}}]#P "
+# Status line right side
+# 15% | 28 Nov 18:15
+set -g status-right " #[fg=#{{base0B-hex}}]%d %b %R "
 
 # default window title colors
 set-window-option -g window-status-style "fg=#{{base04-hex}},bg=default"
