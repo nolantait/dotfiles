@@ -164,7 +164,7 @@ function M.setup_options()
   -- c: don't give ins-completion-menu messages
   -- W: don't give "written" or "[w]" when writing a file
   vim.opt.shortmess:append "WcC"
-  vim.opt.whichwrap:append { "<", ">", "[", "]", "h", "l" }
+  vim.opt.whichwrap:append "<,>,[,],h,l"
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 end

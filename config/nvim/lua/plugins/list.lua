@@ -493,12 +493,6 @@ local commands = {
 
 local filetypes = {
   {
-    -- Rust integration with LSP
-    "simrat39/rust-tools.nvim",
-    -- Load only when opening a rust file
-    ft = "rust"
-  },
-  {
     -- Easier navigation through rails apps with shortcuts
     "tpope/vim-rails",
     config = require("plugins.configs.rails"),
