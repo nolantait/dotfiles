@@ -25,9 +25,9 @@ local high_priority = {
     config = require("plugins.configs.colorscheme"),
     lazy = false,
     -- Load before everything else, default is 50
-    priority = 1000,
     dependencies = {
       "tjdevries/colorbuddy.nvim",
+      "rktjmp/lush.nvim"
     },
   },
   {

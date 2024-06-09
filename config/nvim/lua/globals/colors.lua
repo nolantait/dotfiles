@@ -1,13 +1,11 @@
 -- DOCS: Sets up colors used everywhere else. This is the entrypoint for
 -- flavours to switch colorschemes and have it apply to all of our setup
 
--- Start flavours
--- Base16 OneDark
--- Author: Lalit Magant (http://github.com/tilal6991)
--- Sets up the theme for base16-vim
-
-return {
-  background = "#16181d",
+local colors = {
+  -- Start flavours
+  -- Base16 OneDark
+  -- Author: Lalit Magant (http://github.com/tilal6991)
+  -- Sets up the theme for base16-vim
   black = "#282c34",
   darker_gray = "#353b45",
   dark_gray = "#3e4451",
@@ -24,5 +22,7 @@ return {
   blue = "#61afef",
   purple = "#c678dd",
   magenta = "#be5046",
+  -- End flavours
 }
--- End flavours
+
+return colors

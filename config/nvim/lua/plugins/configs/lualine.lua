@@ -7,15 +7,15 @@ return function()
 
   local lualine_colors = {
     a = {
-      bg = colors.background,
+      bg = nil,
       fg = colors.white,
     },
     b = {
-      bg = colors.background,
-      fg = colors.white,
+      bg = nil,
+      fg = colors.green,
     },
     c = {
-      bg = colors.background,
+      bg = nil,
       fg = colors.white,
     },
   }
@@ -38,14 +38,14 @@ return function()
     }
   }
 
-  local empty = require("lualine.component"):extend()
-  function empty:draw(default_highlight)
-    self.status = ""
-    self.applied_separator = ""
-    self:apply_highlights(default_highlight)
-    self:apply_section_separators()
-    return self.status
-  end
+  -- local empty = require("lualine.component"):extend()
+  -- function empty:draw(default_highlight)
+  --   self.status = ""
+  --   self.applied_separator = ""
+  --   self:apply_highlights(default_highlight)
+  --   self:apply_section_separators()
+  --   return self.status
+  -- end
 
   local has_enough_room = function()
     return vim.o.columns > 100
@@ -124,7 +124,7 @@ return function()
 
   local file_location = {
     require("components.file_location"),
-    padding = 0
+    padding = 1
   }
 
   local cwd = {
@@ -165,14 +165,27 @@ return function()
         left = icons.separators.top_left_wedge,
         right = icons.separators.left_semicircle
       },
-      disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
-      always_divide_middle = true,
+      disabled_filetypes = {
+        "alpha",
+        "dashboard",
+        "NvimTree",
+        "Outline",
+        "neo-tree"
+      },
+      always_divide_middle = false,
     },
     sections = {
       lualine_a = { mode, error, warn },
       lualine_b = { branch },
       lualine_c = { "filename" },
-      lualine_x = { diff, encoding, fileformat, filetype, copilot_status, lsp_status },
+      lualine_x = {
+        diff,
+        encoding,
+        fileformat,
+        filetype,
+        copilot_status,
+        lsp_status
+      },
       lualine_y = { cwd },
       lualine_z = { file_location },
     },
