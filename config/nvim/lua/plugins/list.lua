@@ -41,7 +41,6 @@ local custom = {
     main = "custom.colorscheme",
     name = "custom.colorscheme",
     dependencies = {
-      "tjdevries/colorbuddy.nvim",
       "rktjmp/lush.nvim"
     },
   },
