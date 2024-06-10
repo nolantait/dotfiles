@@ -52,7 +52,7 @@ function M.setup()
       MsgArea { bg = colors.background },                              -- Area for messages and cmdline
       MsgSeparator { bg = colors.gray },                               -- Separator for scrolled messages, `msgsep` flag of "display"
       NormalFloat { bg = colors.black },                               -- Normal text in floating windows.
-      FloatBorder { fg = colors.foreground, bg = colors.black },       -- Border of floating windows.
+      FloatBorder { fg = colors.gray, bg = colors.black },       -- Border of floating windows.
       FloatBorderCmp { FloatBorder },                                  -- Border of floating windows.
       FloatBorderDocs { FloatBorder },                                 -- Border of floating windows.
       TelescopeBorder { FloatBorder },                                 -- Border of floating windows.
