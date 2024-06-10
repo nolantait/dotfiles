@@ -88,7 +88,7 @@ local M = {
     modeline = false,                                    -- Disable modelines as security precaution
     number = true,                                       -- Set numbered lines
     numberwidth = 2,                                     -- Set number column width to 2 {default 4}
-    pumblend = 10,                                       -- Make popup windows blend
+    pumblend = 0,                                        -- Make popup windows blend
     pumheight = 10,                                      -- Pop up menu height
     preserveindent = true,                               -- Preserve indent structure as much as possible
     relativenumber = false,                              -- Set relative numbered lines
@@ -118,7 +118,7 @@ local M = {
     wildmode = { "longest:full", "full" },               -- Command-line completion mode
     wrap = false,                                        -- Display lines as one long line
     writebackup = false,                                 -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-    winblend = 10,                                       -- Make floating windows blend
+    winblend = 0,                                        -- Make floating windows blend
   }
 }
 
@@ -131,10 +131,8 @@ function M.setup_globals()
   -- Replaces impatient.nvim: https://github.com/neovim/neovim/pull/22668
   vim.loader.enable()
 
-  local g = vim.g
-
   for k, v in pairs(M.globals) do
-    g[k] = v
+    vim.g[k] = v
   end
 end
 
@@ -168,5 +166,7 @@ function M.setup_options()
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 end
+
+_G._vim_opts = M
 
 return M

@@ -7,15 +7,15 @@ return function()
 
   local lualine_colors = {
     a = {
-      bg = colors.dark_gray,
+      bg = colors.background,
       fg = colors.white,
     },
     b = {
-      bg = colors.darker_gray,
-      fg = colors.white,
+      bg = colors.background,
+      fg = colors.green,
     },
     c = {
-      bg = colors.black,
+      bg = colors.background,
       fg = colors.white,
     },
   }
@@ -26,26 +26,26 @@ return function()
       b = { fg = lualine_colors.b.fg, bg = lualine_colors.b.bg },
       c = { fg = lualine_colors.c.fg, bg = lualine_colors.c.bg },
     },
-    command = { a = { fg = colors.black, bg = colors.orange, gui = "bold" } },
-    insert = { a = { fg = colors.black, bg = colors.blue, gui = "bold" } },
-    visual = { a = { fg = colors.black, bg = colors.yellow, gui = "bold" } },
-    replace = { a = { fg = colors.black, bg = colors.green, gui = "bold" } },
-    terminal = { a = { fg = colors.black, bg = colors.cyan, gui = "bold" } },
+    command = { a = { fg = colors.background, bg = colors.orange, gui = "bold" } },
+    insert = { a = { fg = colors.background, bg = colors.blue, gui = "bold" } },
+    visual = { a = { fg = colors.background, bg = colors.yellow, gui = "bold" } },
+    replace = { a = { fg = colors.background, bg = colors.green, gui = "bold" } },
+    terminal = { a = { fg = colors.background, bg = colors.cyan, gui = "bold" } },
     inactive = {
-      a = { fg = colors.white, bg = colors.black, gui = "bold" },
-      b = { fg = colors.white, bg = colors.black },
-      c = { fg = colors.white, bg = colors.black },
+      a = { fg = colors.white, bg = colors.background, gui = "bold" },
+      b = { fg = colors.white, bg = colors.background },
+      c = { fg = colors.white, bg = colors.background },
     }
   }
 
-  local empty = require("lualine.component"):extend()
-  function empty:draw(default_highlight)
-    self.status = ""
-    self.applied_separator = ""
-    self:apply_highlights(default_highlight)
-    self:apply_section_separators()
-    return self.status
-  end
+  -- local empty = require("lualine.component"):extend()
+  -- function empty:draw(default_highlight)
+  --   self.status = ""
+  --   self.applied_separator = ""
+  --   self:apply_highlights(default_highlight)
+  --   self:apply_section_separators()
+  --   return self.status
+  -- end
 
   local has_enough_room = function()
     return vim.o.columns > 100
@@ -124,7 +124,7 @@ return function()
 
   local file_location = {
     require("components.file_location"),
-    padding = 0
+    padding = 1
   }
 
   local cwd = {
@@ -165,14 +165,27 @@ return function()
         left = icons.separators.top_left_wedge,
         right = icons.separators.left_semicircle
       },
-      disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
-      always_divide_middle = true,
+      disabled_filetypes = {
+        "alpha",
+        "dashboard",
+        "NvimTree",
+        "Outline",
+        "neo-tree"
+      },
+      always_divide_middle = false,
     },
     sections = {
       lualine_a = { mode, error, warn },
       lualine_b = { branch },
       lualine_c = { "filename" },
-      lualine_x = { diff, encoding, fileformat, filetype, copilot_status, lsp_status },
+      lualine_x = {
+        diff,
+        encoding,
+        fileformat,
+        filetype,
+        copilot_status,
+        lsp_status
+      },
       lualine_y = { cwd },
       lualine_z = { file_location },
     },

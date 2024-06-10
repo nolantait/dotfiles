@@ -11,7 +11,7 @@ IRB.conf[:AUTO_INDENT]  = true
 
 ### Rails
 # Some features that make using irb for rails much nicer.
-if rails_env = ENV["RAILS_ENV"]
+if ENV["RAILS_ENV"]
   rails_root = File.basename(Dir.pwd)
   IRB.conf[:PROMPT] ||= {}
   IRB.conf[:PROMPT][:RAILS] = {

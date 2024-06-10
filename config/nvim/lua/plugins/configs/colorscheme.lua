@@ -1,81 +1,35 @@
 -- DOCS: Setting up custom colors and highlights through mini.base16
 
 return function()
-  local base16 = require("mini.base16")
+  local theme = require("colorschemes.tainted")
   local colors = require("globals.colors")
 
-  -- base00 = #282c34
-  -- base01 = #353b45
-  -- base02 = #3e4451
-  -- base03 = #545862
-  -- base04 = #565c64
-  -- base05 = #abb2bf
-  -- base06 = #b6bdca
-  -- base07 = #c8ccd4
-  -- base08 = #e06c75
-  -- base09 = #d19a66
-  -- base0A = #e5c07b
-  -- base0B = #98c379
-  -- base0C = #56b6c2
-  -- base0D = #61afef
-  -- base0E = #c678dd
-  -- base0F = #be5046
+  -- Clear any other highlights
+  vim.cmd("hi clear")
+  vim.opt.background = "dark"
+  -- lush(theme)
+  vim.cmd("colorscheme tainted")
 
+  local globals = {
+    terminal_color_0 = colors.black,
+    terminal_color_1 = colors.darker_gray,
+    terminal_color_2 = colors.dark_gray,
+    terminal_color_3 = colors.gray,
+    terminal_color_4 = colors.light_gray,
+    terminal_color_5 = colors.lighter_gray,
+    terminal_color_6 = colors.lightest_gray,
+    terminal_color_7 = colors.white,
+    terminal_color_8 = colors.red,
+    terminal_color_9 = colors.orange,
+    terminal_color_10 = colors.yellow,
+    terminal_color_12 = colors.green,
+    terminal_color_11 = colors.cyan,
+    terminal_color_13 = colors.blue,
+    terminal_color_14 = colors.purple,
+    terminal_color_15 = colors.magenta
+  }
 
-  base16.setup({
-    palette = {
-      base00 = colors.black,
-      base01 = colors.darker_gray,
-      base02 = colors.dark_gray,
-      base03 = colors.gray,
-      base04 = colors.light_gray,
-      base05 = colors.lighter_gray,
-      base06 = colors.lightest_gray,
-      base07 = colors.white,
-      base08 = colors.red,
-      base09 = colors.orange,
-      base0A = colors.yellow,
-      base0B = colors.green,
-      base0C = colors.cyan,
-      base0D = colors.blue,
-      base0E = colors.purple,
-      base0F = colors.magenta,
-    },
-    use_cterm = true,
-    plugins = { default = true }
-  })
-
-  local set_hl = vim.api.nvim_set_hl
-
-  set_hl(0, "AlphaFooter", { fg = colors.yellow })
-  set_hl(0, "AlphaHeader", { fg = colors.blue })
-  set_hl(0, "BufferLineFill", { bg = colors.background, fg = colors.background })
-  set_hl(0, "CmpPmenu", { bg = colors.black })
-  set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
-  set_hl(0, "FloatBorder", { fg = colors.light_gray })
-  set_hl(0, "FloatBorderCmp", { fg = colors.light_gray })
-  set_hl(0, "FloatBorderDocs", { fg = colors.blue })
-  set_hl(0, "GitSignsAdd", { fg = colors.green })
-  set_hl(0, "GitSignsAddNr", { fg = colors.green })
-  set_hl(0, "GitSignsChange", { fg = colors.orange })
-  set_hl(0, "GitSignsChangeNr", { fg = colors.orange })
-  set_hl(0, "GitSignsDelete", { fg = colors.red })
-  set_hl(0, "GitSignsDeleteNr", { fg = colors.red })
-  set_hl(0, "IlluminatedWordText", { bg = colors.darker_gray })
-  set_hl(0, "IlluminatedWordRead", { bg = colors.darker_gray })
-  set_hl(0, "IlluminatedWordWrite", { bg = colors.darker_gray })
-  set_hl(0, "LineNr", { bg = colors.black, fg = colors.light_gray })
-  set_hl(0, "LineNrAbove", { bg = colors.black, fg = colors.light_gray })
-  set_hl(0, "LineNrBelow", { bg = colors.black, fg = colors.light_gray })
-  set_hl(0, "MatchParen", { fg = colors.lightest_gray, bg = colors.light_gray, bold = true })
-  set_hl(0, "MiniIndentscopeSymbol", { fg = colors.lighter_gray })
-  set_hl(0, "MiniMapSymbolLine", { fg = colors.white })
-  set_hl(0, "MiniMapSymbolView", { fg = colors.light_gray })
-  set_hl(0, "NormalFloat", { bg = colors.black })
-  set_hl(0, "SatelliteBar", { bg = colors.dark_gray })
-  set_hl(0, "SatelliteBackground", { bg = colors.black })
-  set_hl(0, "SignColumn", { bg = colors.black })
-  set_hl(0, "Structure", { fg = colors.yellow })
-  set_hl(0, "SpecialChar", { fg = colors.purple })
-  set_hl(0, "TelescopeBorder", { fg = colors.lighter_gray })
+  for name, color in pairs(globals) do
+    vim.g[name] = color
+  end
 end

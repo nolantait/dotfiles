@@ -69,15 +69,15 @@ Dependencies
 ## Linux (AUR)
 
 - **alacritty**: OpenGL based terminal in Rust
-- firefox
+- **firefox**
 - **ranger**: Vim based file navigation
 - **asdf-vm-git**: Programming language manager
 - **flavours**: Dynamic theming
 - **i3-scrot**: Screenshot utility for i3
-- neovim-git
+- **neovim-git**
 - **rcm-git**: manage dotfiles with system links
-- slack-desktop
-- spotify-edge
+- **slack-desktop**
+- **spotify-edge**
 - **feh**: Sets wallpaper
 - **polybar**: Customizable topbar for i3
 
