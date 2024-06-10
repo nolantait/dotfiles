@@ -105,11 +105,11 @@ return function()
           display_name = " " .. icons.git.branch .. " Git "
         },
       },
-      highlight_tab = "TabLine",
+      highlight_tab = "NeoTreeTab",
       highlight_tab_active = "NeoTreeTabActive",
-      highlight_background = "TabLine",
-      highlight_separator = "TabLineFill",
-      highlight_separator_active = "IncSearch",
+      highlight_background = "NeoTreeBackground",
+      highlight_separator = "NeoTreeSeparator",
+      highlight_separator_active = "NeoTreeSeparatorActive",
       show_separator_on_edge = false,
       separator_active = false,
       tabs_layout = "focus"

@@ -48,11 +48,6 @@ return function()
     end
   }
 
-  local float_style = {
-    border = core_utils.border("FloatBorderCmp"),
-    winhighlight = "Normal:CmpPmenu,CursorLine:PmenuSel,Search:None",
-  }
-
   -- Setup cmp with everything above
   cmp.setup {
     completion = {
@@ -134,12 +129,16 @@ return function()
       expand = commands.expand_snippet
     },
     window = {
-      completion = float_style,
-      documentation = float_style,
+      completion = {
+        border = core_utils.border("FloatBorderCmp"),
+      },
+      documentation = {
+        border = core_utils.border("FloatBorderCmp"),
+      },
     },
     experimental = {
       ghost_text = {
-        hl_group = "Whitespace"
+        hl_group = "NonText"
       },
     },
     view = {

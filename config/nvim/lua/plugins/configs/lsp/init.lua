@@ -4,8 +4,6 @@ return function()
   local handlers = require("plugins.configs.lsp.handlers")
   local cmp = require("plugins.configs.lsp.cmp-nvim-lsp")
 
-  require("lspconfig.ui.windows").default_options.border = "rounded"
-
   mason.setup()
   handlers.setup()
   cmp.setup(handlers)

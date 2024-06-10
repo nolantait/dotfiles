@@ -7,15 +7,15 @@ return function()
 
   local lualine_colors = {
     a = {
-      bg = nil,
+      bg = colors.background,
       fg = colors.white,
     },
     b = {
-      bg = nil,
+      bg = colors.background,
       fg = colors.green,
     },
     c = {
-      bg = nil,
+      bg = colors.background,
       fg = colors.white,
     },
   }

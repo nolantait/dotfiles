@@ -20,17 +20,6 @@ local keymap = plugins.convert_keymap
 
 local high_priority = {
   {
-    -- Base16 colorscheme controlled with flavours in globals/colors.lua
-    "echasnovski/mini.base16",
-    config = require("plugins.configs.colorscheme"),
-    lazy = false,
-    -- Load before everything else, default is 50
-    dependencies = {
-      "tjdevries/colorbuddy.nvim",
-      "rktjmp/lush.nvim"
-    },
-  },
-  {
     "echasnovski/mini.sessions",
     config = require("plugins.configs.mini-sessions"),
     keys = keymap(require("plugins.keybinds.mini-sessions")),
@@ -45,6 +34,17 @@ local high_priority = {
 }
 
 local custom = {
+  {
+    config = true,
+    dir = settings.vim_path .. "/lua/custom/colorscheme",
+    lazy = false,
+    main = "custom.colorscheme",
+    name = "custom.colorscheme",
+    dependencies = {
+      "tjdevries/colorbuddy.nvim",
+      "rktjmp/lush.nvim"
+    },
+  },
   {
     config = true,
     dir = settings.vim_path .. "/lua/custom/profiling",

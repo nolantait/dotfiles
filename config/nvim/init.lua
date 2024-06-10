@@ -5,3 +5,6 @@
 require("core.init").setup()
 -- Load plugins with lazy
 require("plugins").setup()
+
+-- Use our custom colorscheme
+vim.cmd("colorscheme tainted")
