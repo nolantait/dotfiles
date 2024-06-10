@@ -46,7 +46,7 @@ function M.setup()
       LineNr { fg = colors.light_gray },                               -- Line number for ":number" and ":#" commands, and when "number" or "relativenumber" option is set.
       LineNrAbove { LineNr },                                          -- Line number for when the "relativenumber" option is set, above the cursor line
       LineNrBelow { LineNr },                                          -- Line number for when the "relativenumber" option is set, below the cursor line
-      CursorLineNr { gui = "bold" },                 -- Like LineNr when "cursorline" or "relativenumber" is set for the cursor line.
+      CursorLineNr { gui = "bold" },                                   -- Like LineNr when "cursorline" or "relativenumber" is set for the cursor line.
       MatchParen { bg = colors.gray },                                 -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
       ModeMsg { fg = colors.green },                                   -- "showmode" message (e.g., "-- INSERT -- ")
       MsgArea { bg = colors.background },                              -- Area for messages and cmdline
@@ -104,6 +104,7 @@ function M.setup()
       Statement { fg = colors.purple },                                -- (*) Any statement
       PreProc { Identifier },                                          -- (*) Generic Preprocessor
       Type { fg = colors.yellow },                                     -- (*) int, long, char, etc.
+      Structure { Type },
       Typedef { Type },                                                --  A typedef
       Struct { Type },                                                 --  struct, union, enum, etc.
       Special { fg = colors.cyan },                                    -- (*) Any special symbol
@@ -121,8 +122,18 @@ function M.setup()
       DiagnosticUnderlineHint { gui = "undercurl" },                   -- Used to underline "Hint" diagnostics.
       DiagnosticUnderlineOk { gui = "undercurl" },                     -- Used to underline "Ok" diagnostics.
       sym "@string.special" { Statement },                             -- SpecialChar
-      sym "@variable" { Identifier },                                  -- Identifier
+      sym "@variable" { g = colors.lighter_gray },                     -- Identifier
       sym "@keyword.return" { fg = colors.red },                       -- Return keyword
+      sym "@text.strong" { gui = "bold" },                             -- Strong text
+      sym "@text.emphasis" { gui = "italic" },                         -- Emphasized text
+      sym "@text.strike" { gui = "strikethrough" },                    -- Strike-through text
+      sym "@lsp.type.variable" { fg = colors.lighter_gray },           -- LSP variable type
+      sym "@lsp.mod.defaultLibrary" { Special },                       -- LSP default library
+      sym "@lsp.mod.deprecated" { fg = colors.red },                   -- LSP deprecated module
+      sym "@markup.strong" { gui = "bold" },                           -- Strong text
+      sym "@markup.italic" { gui = "italic" },                         -- Italic text
+      sym "@markup.strikethrough" { gui = "strikethrough" },           -- Strike-through text
+      sym "@markup.underline" { gui = "underline" },                   -- Underlined text
       AlphaHeader { Title },
       AlphaFooter { fg = colors.yellow },
       DevIcon { fg = colors.foreground },
@@ -225,8 +236,11 @@ function M.setup()
       NeoTreeNormalNC { Background },
       NeoTreeNormalEndOfBuffer { Background },
       NeoTreeDimText { NonText },
+      NeoTreeFadeText1 { NonText },
+      NeoTreeFadeText2 { fg = colors.dark_gray },
       NeoTreeWinSeparator { Winseparator },
       NeoTreeModified { fg = colors.yellow },
+      NeoTreeGitAdded { Added },
       NeoTreeGitConflict { Removed },
       NeoTreeGitUnstaged { fg = colors.yellow },
       NeoTreeGitUntracked { fg = colors.yellow },
@@ -262,11 +276,13 @@ function M.setup()
       NeotestFile { fg = colors.blue },
       NeotestDirectory { fg = colors.blue },
       NeoTestIndent { NonText },
-      MiniIndentscopeSymbol { fg = colors.light_gray.lighten(20) },
       SatelliteBar { bg = colors.dark_gray },
       SatelliteBackground { Background },
       TelescopeTitle { Title },
       TelescopeMatching { fg = colors.yellow },
+      TelescoeBorder { fg = colors.magenta },
+      TelescopeMultiSelection { bg = colors.darker_gray, gui = "bold" },
+      TelescopeSelection { bg = colors.darker_gray, gui = "bold" },
       barbecue_normal { bg = colors.background },
       DapStoppedLine { CursorLine },
       NotifyBackground { NormalFloat },
@@ -297,6 +313,107 @@ function M.setup()
       GitSignsChangeNr { fg = colors.orange }, -- Diff mode: Changed line |diff.txt
       GitSignsDelete { fg = colors.red },      -- Diff mode: Deleted line |diff.txt
       GitSignsDeleteNr { fg = colors.red },    -- Diff mode: Deleted line |diff.txt
+      MiniClueBorder { FloatBorder },
+      MiniClueDescGroup { DiagnosticWarn },
+      MiniClueDescSingle { NormalFloat },
+      MiniClueNextKey { DiagnosticHint },
+      MiniClueNextKeyWithPostkeys { DiagnosticError },
+      MiniClueSeparator { DiagnosticInfo },
+      MiniClueTitle { Title },
+      MiniIndentscopeSymbol { fg = colors.light_gray.lighten(20) },
+      MiniIndentscopeSymbolOff { fg = colors.red },
+      MiniSurround { IncSearch },
+      LazyButton { bg = colors.darker_gray },
+      LazyButtonActive { bg = colors.dark_gray },
+      LazyDimmed { Comment },
+      LazyH1 { bg = colors.dark_gray },
+      NoiceCmdlinePopupBorder { fg = colors.blue },
+      NoiceConfirmBorder { fg = colors.purple },
+      TroubleCount { fg = colors.green, gui = "bold" },
+      TroubleFoldIcon { fg = colors.lighter_Gray },
+      TroubleIndent { fg = colors.dark_gray },
+      TroubleLocation { fg = colors.light_gray },
+      TroubleSignError { DiagnosticError },
+      TroubleSignHint { DiagnosticHint },
+      TroubleSignInformation { DiagnosticInfo },
+      TroubleSignOther { DiagnosticInfo },
+      TroubleSignWarning { DiagnosticWarn },
+      TroubleText { fg = colors.lighter_gray },
+      TroubleTextError { TroubleText },
+      TroubleTextHint { TroubleText },
+      TroubleTextInformation { TroubleText },
+      TroubleTextWarning { TroubleText },
+      CmpItemAbbr { fg = colors.lighter_gray },
+      CmpItemAbbrDeprecated { fg = colors.gray },
+      CmpItemAbbrMatch { fg = colors.yellow },
+      CmpItemAbbrMatchFuzzy { fg = colors.yellow },
+      CmpItemKind { fg = colors.magenta, bg = colors.darker_gray },
+      CmpItemMenu { fg = colors.lighter_gray, bg = colors.darker_gray },
+      CmpItemKindClass { Type },
+      CmpItemKindColor { Special },
+      CmpItemKindConstant { Constant },
+      CmpItemKindConstructor { Type },
+      CmpItemKindEnum { Structure },
+      CmpItemKindEnumMember { Structure },
+      CmpItemKindEvent { Exception },
+      CmpItemKindField { Structure },
+      CmpItemKindFile { link = "Tag" },
+      CmpItemKindFolder { Directory },
+      CmpItemKindFunction { Function },
+      CmpItemKindInterface { Structure },
+      CmpItemKindKeyword { Identifier },
+      CmpItemKindMethod { Method },
+      CmpItemKindModule { Structure },
+      CmpItemKindOperator { link = "Operator" },
+      CmpItemKindProperty { Structure },
+      CmpItemKindReference { link = "Tag" },
+      CmpItemKindSnippet { Special },
+      CmpItemKindStruct { Structure },
+      CmpItemKindText { Statement },
+      CmpItemKindTypeParameter { Type },
+      CmpItemKindUnit { Special },
+      CmpItemKindValue { Identifier },
+      CmpItemKindVariable { Delimiter },
+      IndentBlanklineChar { fg = colors.dark_gray, gui = "nocombine" },
+      IndentBlanklineContextChar { fg = colors.magenta, gui = "nocombine" },
+      IndentBlanklineContextStart { sp = colors.magenta, gui = "underline,nocombine" },
+      IndentBlanklineIndent1 { fg = colors.green },
+      IndentBlanklineIndent2 { fg = colors.blue },
+      IndentBlanklineIndent3 { fg = colors.yellow },
+      IndentBlanklineIndent4 { fg = colors.orange },
+      IndentBlanklineIndent5 { fg = colors.purple },
+      IndentBlanklineIndent6 { fg = colors.red },
+      IndentBlanklineIndent7 { fg = colors.cyan },
+      IndentBlanklineIndent8 { fg = colors.magenta },
+      DapUIScope { Title },
+      DapUIType { Type },
+      DapUIModifiedValue { fg = colors.purple, gui = "bold" },
+      DapUIDecoration { Title },
+      DapUIThread { String },
+      DapUIStoppedThread { Title },
+      DapUISource { Directory },
+      DapUILineNumber { Title },
+      DapUIFloatBorder { FloatBorder },
+      DapUIWatchesEmpty { ErrorMsg },
+      DapUIWatchesValue { String },
+      DapUIWatchesError { DiagnosticError },
+      DapUIBreakpointsPath { Directory },
+      DapUIBreakpointsInfo { DiagnosticInfo },
+      DapUIBreakpointsCurrentLine { fg = colors.green, gui = "bold" },
+      DapUIBreakpointsDisabledLine { Comment },
+      MasonError { ErrorMsg },
+      MasonHeader { fg = colors.black, bg = colors.blue },
+      MasonHeaderSecondary { fg = colors.black, bg = colors.magenta },
+      MasonHeading { gui = "bold" },
+      MasonHighlight { fg = colors.magenta },
+      MasonHighlightBlock { fg = colors.black, bg = colors.magenta },
+      MasonHighlightBlockBold { MasonHeaderSecondary },
+      MasonHighlightBlockBoldSecondary { MasonHeader },
+      MasonHighlightBlockSecondary { fg = colors.black, bg = colors.blue },
+      MasonLink { MasonHighlight },
+      MasonMuted { Comment },
+      MasonMutedBlock { fg = colors.black, bg = colors.gray },
+      MasonMutedBlockBold { MasonMutedBlock, gui = "bold" }
     }
   end)
 
