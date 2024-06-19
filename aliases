@@ -31,6 +31,11 @@ alias ls="eza --color --classify --group-directories-first"
 # A better cat
 alias cat="bat"
 
+# Updating neovim with asdf
+alias update-nvim-stable="asdf uninstall neovim stable && asdf install neovim stable"
+alias update-nvim-nightly="asdf uninstall neovim nightly && asdf install neovim nightly"
+alias update-nvim-master="asdf uninstall neovim ref:master && asdf install neovim ref:master"
+
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
   source ~/.aliases.local

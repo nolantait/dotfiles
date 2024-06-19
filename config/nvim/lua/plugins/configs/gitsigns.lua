@@ -30,9 +30,6 @@ return function()
       delay = 1000,
       ignore_whitespace = false,
     },
-    current_line_blame_formatter_opts = {
-      relative_time = false,
-    },
     diff_opts = { internal = true },
     linehl = false,   -- Toggle with `:Gitsigns toggle_linehl`
     max_file_length = 40000,
