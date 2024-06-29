@@ -1,0 +1,7 @@
+# Here’s what happens:
+#   - pacman will remove package_name.
+#   - It will also remove any dependencies that were installed only for package_name and are not required by any other packages.
+#   - It will delete all configuration files associated with package_name.
+#   - Additionally, if there are any packages that depend on package_name, they will be removed as well.
+#   - Ask if it should be removed before removing
+alias yeet="paru -Rsncp"
