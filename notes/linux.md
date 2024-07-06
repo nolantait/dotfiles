@@ -6,7 +6,6 @@ Programs to install:
 - **rcm**: Dotfile management with system links
 - **htop**: Better `top`
 - **polybar**: Top bar with widgets
-- **picom**: Pretty window transitions and opacity
 - **dunst**: Desktop notifications
 - **conky**: Lightweight system monitor
 - **alacritty**: GPU accelerated terminal
