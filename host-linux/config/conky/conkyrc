@@ -18,7 +18,7 @@ conky.config = {
     font = 'Iosevka Nerd Font Mono:size=9',
     format_human_readable = true,
     gap_x = 41,
-    gap_y = 71,
+    gap_y = 30,
     if_up_strictness = 'address',
     imlib_cache_size = 0,
     max_text_width = 0,
@@ -40,7 +40,6 @@ conky.config = {
     show_graph_scale = false,
     stippled_borders = 0,
     temperature_unit = 'celsius',
-    update_interval = 1,
     update_interval = 1.0,
     uppercase = false,
     use_spacer = 'none',
@@ -63,6 +62,8 @@ conky.config = {
 }
 
 conky.text = [[
+
+
 ${font}${color3}Date: ${alignr}${color3}${time %a, %d %B %Y}
 ${color3}Kernel: ${alignr}${color3}${kernel}
 ${color3}Distro: ${alignr}${color3}${execi 6000 lsb_release -d | grep 'Descr'|awk {'print $2 " " $3" " $4"" $5'}}
