@@ -560,7 +560,8 @@ local very_lazy = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
-      "olimorris/neotest-rspec"
+      "olimorris/neotest-rspec",
+      "nvim-neotest/neotest-python"
     },
     event = "VeryLazy",
     keys = keymap(require("plugins.keybinds.neotest")),
