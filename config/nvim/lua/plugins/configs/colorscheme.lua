@@ -1,7 +1,6 @@
 -- DOCS: Setting up custom colors and highlights through mini.base16
 
 return function()
-  local theme = require("colorschemes.tainted")
   local colors = require("globals.colors")
 
   -- Clear any other highlights

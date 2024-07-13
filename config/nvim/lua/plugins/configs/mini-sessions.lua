@@ -9,7 +9,7 @@ return function()
     autoread = false,
 
     -- Whether to write current session before quitting Neovim
-    autowrite = true,
+    autowrite = false,
 
     -- Directory where global sessions are stored (use `''` to disable)
     directory = settings.cache_dir .. "/sessions", --<"session" subdir of user data directory from |stdpath()|>,
