@@ -1,11 +1,6 @@
 -- DOCS: This is where we define our plugins which will get loaded in the
 -- background when needed by lazy.nvim
-
-local settings = require("globals.settings")
-local plugins = require("plugins")
-local keymap = plugins.convert_keymap
-
--- NOTE: These are roughly in order of their execution
+--
 -- Typical execution would go in the following order:
 -- 1. Lazy false (by priority)
 -- 2. Events when they fire
@@ -17,6 +12,21 @@ local keymap = plugins.convert_keymap
 --  - LspAttach
 -- 3. By cmd option
 -- 4. By filetype
+--
+-- Plugins are grouped into locals and then merged into the full list:
+--
+-- local high_priority
+-- local custom
+-- local events
+-- local commands
+-- local filetypes
+-- local very_lazy
+
+
+local settings = require("globals.settings")
+local plugins = require("plugins")
+local keymap = plugins.convert_keymap
+
 
 local high_priority = {
   {

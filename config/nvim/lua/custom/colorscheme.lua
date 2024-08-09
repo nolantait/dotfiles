@@ -7,6 +7,7 @@ function M.setup()
   local lush = require("lush")
   local hsl = lush.hsl
 
+  -- Map our colors into hsl objects that are easier to lighten/darken
   local colors = {}
   for k, v in pairs(base16) do
     colors[k] = hsl(v)
@@ -21,7 +22,7 @@ function M.setup()
   local theme = lush(function(injected_functions)
     local sym = injected_functions.sym
     return {
-      Background { fg = colors.foreground, bg = colors.background },   -- normal background color
+      Background { bg = colors.background },   -- normal background color
       ColorColumn { bg = colors.darker_gray },                         -- Columns set with "colorcolumn"
       Conceal { fg = colors.light_gray },                              -- Placeholder characters substituted for concealed text (see "conceallevel")
       Cursor { fg = colors.black, bg = colors.foreground },            -- Character under the cursor
@@ -250,8 +251,8 @@ function M.setup()
       NeoTreeSeparator { fg = colors.background, bg = colors.background },
       BufferLineFill { Background },
       BufferLineSeparator { fg = colors.background, bg = colors.black.darken(10) },
-      BufferLineBackground { NonText, bg = colors.black.darken(10) },
-      BufferLineBuffer { Normal },
+      BufferLineBackground { bg = colors.black.darken(10) }, -- Inactive buffer
+      BufferLineBuffer { Normal }, -- Active buffer
       BufferLineBufferVisible { BufferLineBuffer },
       BufferLineTabSeparatorVisible { fg = colors.background, bg = colors.black },
       BufferLineSeparatorVisible { BufferLineTabSeparatorVisible },

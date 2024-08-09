@@ -149,7 +149,11 @@ function M.setup_options()
     solid  = 'vert: ,horiz: ,horizdown: ,horizup: ,verthoriz: ,vertleft: ,vertright: ',
   }
 
+  -- Shortmess is a comma separated list of flags that change the way messages 
+  -- are displayed. These flags can be used to suppress unwanted messages.
+  --
   -- Default is "ltToOCF"
+  --
   -- l: use "999L, 888B" instead of "999 lines, 888 bytes"
   -- t: truncate file message at the start if it is too long
   --    to fit on the command-line, "<" will appear in the left most
