@@ -5,3 +5,4 @@ size = 14
 [window]
 decorations = "Full"
 startup_mode = "Windowed"
+option_as_alt = "Both"
