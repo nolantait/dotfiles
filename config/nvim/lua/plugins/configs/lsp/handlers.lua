@@ -4,24 +4,23 @@ M.setup = function()
   local icons = require("globals.icons")
   local utils = require("core.utils")
 
-  local signs = {
-    { name = "DiagnosticSignError", text = icons.error },
-    { name = "DiagnosticSignWarn",  text = icons.warn },
-    { name = "DiagnosticSignHint",  text = icons.hint },
-    { name = "DiagnosticSignInfo",  text = icons.info },
-  }
-
-  for _, sign in ipairs(signs) do
-    if not sign.texthl then sign.texthl = sign.name end
-    vim.fn.sign_define(sign.name, sign)
-  end
-
   -- Global config for diagnostics
   vim.diagnostic.config({
+    document_highlight = { enable = true },
     virtual_text = false,
-    signs = {
-      active = signs,
+    inlay_hints = {
+      enabled = true,
+      exclude = {},
     },
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = icons.error,
+        [vim.diagnostic.severity.WARN] = icons.warn,
+        [vim.diagnostic.severity.HINT] = icons.hint,
+        [vim.diagnostic.severity.INFO] = icons.info,
+      },
+    },
+    severity_sort = true,
     update_in_insert = false,
     underline = true,
     float = {
@@ -32,6 +31,15 @@ M.setup = function()
       source = true,
     },
   })
+
+  vim.lsp.handlers["textDocument/inlayHint"] = vim.lsp.with(
+    vim.lsp.handlers.inlay_hints,
+    {
+      prefix = " » ",
+      highlight = "Comment",
+      enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
+    }
+  )
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,

@@ -19,9 +19,15 @@ return {
   },
   {
     mode = "n",
-    key = "ca",
+    key = "<leader>ca",
     command = "<cmd>lua vim.lsp.buf.code_action()<CR>",
     description = "LSP code action"
+  },
+  {
+    mode = "n",
+    key = "<leader>cl",
+    command = "<cmd>lua vim.lsp.codelens.run()<CR>",
+    description = "LSP code lens"
   },
   {
     mode = "n",
