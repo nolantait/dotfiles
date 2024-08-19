@@ -21,11 +21,6 @@ M.setup = function(handlers)
   -- Function to load our lsp server setups in plugins.lsp.servers or
   -- fallback to a default
   local function mason_lsp_handler(lsp_name)
-    -- Temporary rename until lspconfig 2.0
-    if lsp_name == "ruby_ls" then
-      lsp_name = "ruby_lsp"
-    end
-
     local ok, custom_handler = pcall(require, "plugins.configs.lsp.servers." .. lsp_name)
     -- Use preset if there is no user definition
     if not ok then
