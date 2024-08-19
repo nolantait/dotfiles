@@ -92,7 +92,8 @@ return function()
       disallow_fullfuzzy_matching = true,
       disallow_fuzzy_matching = true,
       disallow_partial_matching = false,
-      disallow_partial_fuzzy_matching = true
+      disallow_partial_fuzzy_matching = true,
+      disallow_symbol_nonprefix_matching = true,
     },
     preselect = cmp.PreselectMode.Item,
     performance = {
@@ -116,8 +117,6 @@ return function()
       },
       { name = "buffer" },
       { name = "path" },
-      { name = "spell" },
-      { name = "treesitter" }
     }, {
       { name = "buffer" },
     }),
