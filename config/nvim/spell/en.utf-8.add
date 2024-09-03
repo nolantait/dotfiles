@@ -36,3 +36,9 @@ env
 scriptable
 Gemfile
 bundler
+rubocop
+AST
+embeddings
+dropdowns
+tablist
+css

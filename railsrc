@@ -1,8 +1,11 @@
--T
--d postgresql
+--database postgresql
 --javascript=webpack
---css=tailwind
---asset-pipeline=propshaft
 --skip-action-text
 --skip-active-storage
 --skip-jbuilder
+--skip-test
+--skip-system-test
+--skip-action-cable
+--skip-asset-pipeline
+--skip-ci
+--skip-bundle

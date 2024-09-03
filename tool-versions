@@ -1,6 +1,6 @@
 ruby 3.3.4
-nodejs 22.3.0
-python 3.12.2
+nodejs 22.6.0
+python 3.10.6
 lua 5.4.6
-neovim stable
+neovim nightly
 php 8.3.8
