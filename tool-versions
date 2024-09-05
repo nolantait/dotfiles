@@ -2,5 +2,5 @@ ruby 3.3.4
 nodejs 22.6.0
 python 3.10.6
 lua 5.4.6
-neovim nightly
+neovim stable
 php 8.3.8

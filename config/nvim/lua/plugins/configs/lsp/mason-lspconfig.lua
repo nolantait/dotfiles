@@ -21,6 +21,11 @@ M.setup = function(handlers)
   -- Function to load our lsp server setups in plugins.lsp.servers or
   -- fallback to a default
   local function mason_lsp_handler(lsp_name)
+    -- Temporary rename until they move to the new naming
+    if lsp_name == "tsserver" then
+      lsp_name = "ts_ls"
+    end
+
     local ok, custom_handler = pcall(require, "plugins.configs.lsp.servers." .. lsp_name)
     -- Use preset if there is no user definition
     if not ok then
