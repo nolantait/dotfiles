@@ -47,6 +47,7 @@ fi
 
 declare -A package_names
 package_names=(
+  [delta]="delta"
   [bat]="bat"
   [eza]="eza"
   [asdf]="asdf"
@@ -66,7 +67,7 @@ linux_package_names=(
 )
 
 # List of required commands
-required_commands=("bat" "eza" "asdf" "gh" "nvim" "jq" "fzf")
+required_commands=("bat" "eza" "asdf" "gh" "nvim" "jq" "fzf" "delta")
 
 # Function to check if a command exists
 check_command() {

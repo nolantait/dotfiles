@@ -18,9 +18,20 @@
   pf = push --force-with-lease
   st = status
 [core]
+  pager = delta
   excludesfile = ~/.gitignore
   autocrlf = input
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  dark = true
+  features = decorations
+  syntax-theme = base16
+  line-numbers = true
+  zero-style = dim syntax
 [merge]
+  conflictstyle = diff3
   ff = only
 [commit]
   template = ~/.gitmessage
@@ -31,7 +42,7 @@
 [include]
   path = ~/.gitconfig.local
 [diff]
-  colorMoved = zebra
+  colorMoved = default
 [user]
   email = nolanjtait@gmail.com
   name = Nolan J Tait
@@ -40,4 +51,4 @@
 [credential "https://gist.github.com"]
   helper = !/opt/homebrew/bin/gh auth git-credential
 [http]
-	postBuffer = 524288000
+  postBuffer = 524288000

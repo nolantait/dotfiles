@@ -23,6 +23,7 @@ local M = {
       missing = true,
     },
     root = settings.data_dir .. "/lazy/",
+    lockfile = settings.data_dir .. "/lazy/lazy-lock.json",
     ui = {
       -- a number <1 is a percentage., >1 is a fixed size
       size = { width = 0.88, height = 0.8 },
