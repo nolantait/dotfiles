@@ -14,7 +14,7 @@ configuration {
   hide-scrollbar: true;
   font: "Iosevka Nerd Font Mono 12";
   matching: "fuzzy";
-  location: 0
+  location: 0;
   sidebar-mode: true;
   show-icons: true;
   show: "combi";
