@@ -92,27 +92,10 @@ local events = {
     "neovim/nvim-lspconfig",
     config = require("plugins.configs.lsp"),
     event = { "BufReadPre", "BufNewFile" },
-    cmd = {
-      "Mason"
-    },
     keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    },
-  },
-  {
-    "williamboman/mason.nvim",
-    build = ":MasonUpdate",
-    cmd = {
-      "Mason",
-      "MasonInstall",
-      "MasonUninstall",
-      "MasonUninstallAll",
-      "MasonLog",
-    },
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    },
+      "VonHeikemen/lsp-zero.nvim"
+    }
   },
   {
     "stevearc/conform.nvim",
@@ -397,17 +380,6 @@ local commands = {
       "kristijanhusak/vim-dadbod-ui",
     },
     ft = { "sql", "mysql", "plsql" },
-  },
-  {
-    -- Custom fork of mason-update-all which uses notifications instead of print
-    "nolantait/mason-update-all",
-    cmd = "MasonUpdateAll",
-    -- Use the default calling of require(MAIN).setup(opts) which in this case
-    -- would call .setup({})
-    config = true,
-    dependencies = {
-      "neovim/nvim-lspconfig",
-    }
   },
   {
     'stevearc/aerial.nvim',
