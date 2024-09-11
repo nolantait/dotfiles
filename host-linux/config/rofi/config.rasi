@@ -1,21 +1,21 @@
 configuration {
-  modi = "run,drun,window";
+  modi: "run,drun,window";
   combi-modes: "window,drun";
   filebrowser {
     directories-first: true;
     sorting-method: "name";
   }
-  disable-history = false;
-  display-drun = "   Apps ";
-  display-run = "   Run ";
-  display-window = " 﩯  Window";
-  display-Network = " 󰤨  Network";
-  drun-display-format = "{icon} {name}";
-  hide-scrollbar = true;
+  disable-history: false;
+  display-drun: "   Apps ";
+  display-run: "   Run ";
+  display-window: " 﩯  Window";
+  display-Network: " 󰤨  Network";
+  drun-display-format: "{icon} {name}";
+  hide-scrollbar: true;
   font: "Iosevka Nerd Font Mono 12";
   matching: "fuzzy";
-  location = 0
-  sidebar-mode = true;
+  location: 0
+  sidebar-mode: true;
   show-icons: true;
   show: "combi";
   sort: true;
@@ -26,5 +26,4 @@ configuration {
     delay:  0;
   }
 }
-
 @theme "onedark"
