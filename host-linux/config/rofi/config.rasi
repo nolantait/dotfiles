@@ -1,19 +1,29 @@
 configuration {
-  combi-modes: "window,drun";
+  modi = [run,drun,window];
+  combi-modes: [window,drun];
   filebrowser {
-      directories-first: true;
-      sorting-method:    "name";
+    directories-first: true;
+    sorting-method: "name";
   }
+  disable-history = false;
+  display-drun = "   Apps ";
+  display-run = "   Run ";
+  display-window = " 﩯  Window";
+  display-Network = " 󰤨  Network";
+  drun-display-format = "{icon} {name}";
+  hide-scrollbar = true;
   font: "Iosevka Nerd Font Mono 12";
   matching: "fuzzy";
+  location = 0
+  sidebar-mode = true;
   show-icons: true;
   show: "combi";
   sort: true;
   sorting-method: "fzf";
   terminal: "alacritty";
   timeout {
-      action: "kb-cancel";
-      delay:  0;
+    action: "kb-cancel";
+    delay:  0;
   }
 }
 

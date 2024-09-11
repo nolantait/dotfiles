@@ -8,13 +8,13 @@
  */
 
 * {
-    red:                         rgba ( 224, 108, 117, 100 % );
+    red:                         rgba ( 239, 89, 111, 100 % );
     blue:                        rgba ( 97, 175, 239, 100 % );
     lightfg:                     rgba ( 182, 189, 202, 100 % );
-    lightbg:                     rgba ( 53, 59, 69, 100 % );
+    lightbg:                     rgba ( 28, 31, 36, 100 % );
     foreground:                  rgba ( 171, 178, 191, 100 % );
-    background:                  rgba ( 40, 44, 52, 100 % );
-    background-color:            rgba ( 40, 44, 52, 0 % );
+    background:                  rgba ( 0, 0, 0, 100 % );
+    background-color:            rgba ( 0, 0, 0, 0 % );
     separatorcolor:              @foreground;
     border-color:                @foreground;
     selected-normal-foreground:  @lightbg;
@@ -35,8 +35,8 @@
     alternate-active-background: @lightbg;
     alternate-urgent-foreground: @red;
     alternate-urgent-background: @lightbg;
+    spacing:                     2;
 }
-/* End flavours */
 window {
     background-color: @background;
     border:           1;
@@ -149,4 +149,3 @@ textbox-prompt-colon {
     margin:           0px 0.3000em 0.0000em 0.0000em ;
     text-color:       inherit;
 }
-
