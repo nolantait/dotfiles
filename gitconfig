@@ -47,6 +47,6 @@
   email = nolanjtait@gmail.com
   name = Nolan J Tait
 [credential "https://github.com"]
-  helper = !/usr/bin/gh auth git-credential
+  helper = !gh auth git-credential
 [credential "https://gist.github.com"]
-  helper = !/usr/bin/gh auth git-credential
+  helper = !gh auth git-credential
