@@ -1,6 +1,6 @@
 configuration {
-  modi = [run,drun,window];
-  combi-modes: [window,drun];
+  modi = "run,drun,window";
+  combi-modes: "window,drun";
   filebrowser {
     directories-first: true;
     sorting-method: "name";
