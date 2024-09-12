@@ -1,8 +1,11 @@
-. /opt/asdf-vm/asdf.sh
+# Load rust
+[[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
 
+# Load ASDF which manages versions of programing languages and neovim
+[[ -r /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+
+[[ -r "$HOME/.dir_colors" ]] && eval `dircolors ~/.dir_colors`
+
+# Export variables for CUDA
 export CUDA_VISIBLE_DEVICES=0,1
 export XLA_FLAGS=--xla_gpu_cuda_data_dir=/opt/cuda
-
-eval `dircolors ~/.dir_colors`
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
