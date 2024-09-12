@@ -28,11 +28,9 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
-# Swap escape and capslock
-setxkbmap -option 'caps:swapescape'
-
-# Increase the keyboard repeat rate
-xset r rate 300 50
+xrandr --output DP-2 --auto --primary --pos 0x0
+xrandr --output HDMI-0 --auto --left-of DP-2
+xrandr --output DP-0 --auto --right-of DP-2 --rotate left
 
 # Set environment variables if needed
 # export DISPLAY=:0
@@ -42,4 +40,8 @@ xset r rate 300 50
 # picom &
 
 # Execute i3 as the window manager
+# Increase the keyboard repeat rate
+xset r rate 300 50 &
+# Swap escape and capslock
+setxkbmap -option 'caps:swapescape' &
 exec i3
