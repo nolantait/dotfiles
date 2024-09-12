@@ -6,6 +6,6 @@
 
 [[ -r "$HOME/.dir_colors" ]] && eval `dircolors ~/.dir_colors`
 
-# Export variables for CUDA
 export CUDA_VISIBLE_DEVICES=0,1
 export XLA_FLAGS=--xla_gpu_cuda_data_dir=/opt/cuda
+export BROWSER=/usr/bin/firefox
