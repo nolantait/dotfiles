@@ -4,4 +4,4 @@
 #   - It will delete all configuration files associated with package_name.
 #   - Additionally, if there are any packages that depend on package_name, they will be removed as well.
 #   - Ask if it should be removed before removing
-alias yeet="paru -Rsncp"
+alias yeet="paru -Rns"
