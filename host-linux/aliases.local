@@ -6,6 +6,12 @@
 #   - Ask if it should be removed before removing
 alias yeet="paru -Rns"
 
+# Clean out old and unused caches and packages
 alias paclean="sudo pacman -Sc"
 alias pacfind="pacman -Qi"
 alias pacsearch="pacman -Qs"
+alias paccacheclear="sudo pacman -Scc"
+# Kills orphaned packages
+alias pacmurder="sudo pacman -Rs $(pacman -Qtdq)"
+# Shows which package owns a file
+alias pacown="pacman -Qo"
