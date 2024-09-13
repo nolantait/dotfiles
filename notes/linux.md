@@ -6,7 +6,16 @@
    `grub-install` the boot directory. Then reboot.
 2. Sign in, change password with `passwd`. Install `sudo` and edit `/etc/sudoers` to enable `wheel`
 3. Install `openssh`. Start the service `systemctl sshd.servivce`. Add keys to the root `mkdir -p ~/.ssh && curl https://github.com/nolantait.keys > ~/.ssh/authorized_keys`
-4. Install `networkmanager` and start `NetworkManager.service`
+4. Install `networkmanager` and start `NetworkManager.service` then configure:
+```
+hostname=homelab
+
+echo "${hostname}" >> /etc/hostname
+echo "127.0.0.1 localhost" >> /etc/hosts
+echo "::1  localhost" >> /etc/hosts
+echo "127.0.1.1 ${hostname}.local ${hostname}" >> /etc/hosts
+```
+
 6. Add user, set group to `wheel`. Edit `/etc/ssh_config` to disable password,
    only public key authorization.
 
@@ -103,6 +112,7 @@ vm.swappiness = 10
 
 16. Install sound stuff and ensure services are running under --user namespace
 ```
-paru -S pipewire pipewire-pulse pavucontrol wireplumber pipewire-jack
+paru -S pipewire pipewire-pulse pavucontrol wireplumber pipewire-jack \
+        headsetcontrol rtkit
 systemctl --user status pipewire pipewire-pulse pipewire-jack wireplumber
 ```
