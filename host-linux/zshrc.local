@@ -8,10 +8,13 @@
 
 export CUDA_VISIBLE_DEVICES=0,1
 export XLA_FLAGS=--xla_gpu_cuda_data_dir=/opt/cuda
-export BROWSER=/usr/bin/firefox
 export GOROOT=$HOME/.go
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
 export MANROFFOPT="-c"
+
+export BROWSER=/usr/bin/firefox
+export VISUAL=nvim
+export EDITOR=nvim
 
 br_path=/home/nolan/.config/broot/launcher/bash/br
 [[ -r $br_path ]] && . $br_path
