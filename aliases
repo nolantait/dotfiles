@@ -7,8 +7,7 @@ alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-# Supress egrep warnings
-alias egrep="grep -E"
+alias grep="grep --color"
 
 # Use neovim if available over vim
 alias vim="nvim"
@@ -26,7 +25,7 @@ alias reload!=". ~/.zshrc"
 alias update-nvim="asdf uninstall neovim nightly && asdf install neovim nightly"
 
 # Alias ls to something better
-alias ls="eza --color --classify --group-directories-first"
+alias ls="eza -h --color --classify --group-directories-first --icons=auto"
 
 # A better cat
 alias cat="bat"
