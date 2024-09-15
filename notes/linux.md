@@ -27,16 +27,19 @@ mkdir -p ~/.ssh && curl https://github.com/nolantait.keys > ~/.ssh/authorized_ke
 
 ## Setup networking
 
-Install `networkmanager` and start `NetworkManager.service` then configure:
+Install `networkmanager` and start `NetworkManager.service` then configure
+`/etc/hosts`:
 
 ```
 hostname=homelab
 
-echo "${hostname}" >> /etc/hostname
+hostnamectl hosstname $hostname
 echo "127.0.0.1 localhost" >> /etc/hosts
 echo "::1  localhost" >> /etc/hosts
 echo "127.0.1.1 ${hostname}.local ${hostname}" >> /etc/hosts
 ```
+
+Then start and enable the `systemd-resolved.service`
 
 ## Manage users
 
@@ -106,7 +109,7 @@ paru -S \
 ## Install i3
 
 ```
-paru -S i3-wm xorg-xinit xorg-server startx xset xrandr \
+paru -S i3-wm xorg-xinit xclip xorg-server startx xset xrandr \
         alacritty feh polybar conky rofi dunst
 ```
 
@@ -208,3 +211,10 @@ paru -S steam
 
 paru -S lutris
 ```
+
+# Troubleshooting
+
+## Time
+
+Install `ntp` and run `ntpd -qg` after setting the timezone. Then sync that
+value to the hwclock with `hwclock --systohc`.
