@@ -4,7 +4,7 @@ configuration {
       directories-first: true;
       sorting-method:    "name";
   }
-  font: "Iosevka Nerd Font Mono 12";
+  font: "IosevkaTerm Nerd Font Mono 12";
   matching: "fuzzy";
   show-icons: true;
   show: "combi";

@@ -12,4 +12,4 @@
 # the same virtual terminal where the login occurred.[1] Therefore it is
 # recommended to specify vt$XDG_VTNR in the ~/.xserverrc file:
 
-exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR
+exec /usr/bin/Xorg -nolisten tcp -keeptty "$@" vt$XDG_VTNR

@@ -3,6 +3,13 @@
 # https://wiki.manjaro.org/index.php?title=Proper_~/.xinitrc_File
 # https://wiki.archlinux.org/title/Xinit
 
+if [ -d /etc/X11/xinit/xinitrc.d ]; then
+  for f in /etc/X11/xinit/xinitrc.d/*; do
+    [ -x "$f" ] && . "$f"
+  done
+  unset f
+fi
+
 # Our configs inside our dotfiles
 userresources=$XDG_CONFIG_HOME/.Xresources
 usermodmap=$XDG_CONFIG_HOME/.Xmodmap
@@ -28,20 +35,29 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
+xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --output DP-2 --auto --primary --pos 0x0
 xrandr --output HDMI-0 --auto --left-of DP-2
 xrandr --output DP-0 --auto --right-of DP-2 --rotate left
 
+# Increase the keyboard repeat rate
+xset r rate 300 50
+# Swap escape and capslock
+setxkbmap -option 'caps:swapescape'
+
 # Set environment variables if needed
 # export DISPLAY=:0
+
+export PROTON_NOD3D9=true
+export PROTON_NO_D3D10=true
+export PROTON_NO_D3D11=true
+export PROTON_ENABLE_NVAPI=true
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+# export __NV_PRIME_RENDER_OFFLOAD=1
 
 # Start background programs if necessary (optional)
 # Example: start a background compositor or input method
 # picom &
-
 # Execute i3 as the window manager
-# Increase the keyboard repeat rate
-xset r rate 300 50 &
-# Swap escape and capslock
-setxkbmap -option 'caps:swapescape' &
+nvidia-settings --load-profile-only &
 exec i3
