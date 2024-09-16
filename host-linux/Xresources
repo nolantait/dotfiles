@@ -57,6 +57,8 @@
 
 *.font: xft:IosevkaTerm\ Nerd\ Font\ Propo:pixelsize=11
 
+Xcursor.size: 14
+
 Xft.dpi:                        96
 Xft.antialias:                  true
 Xft.autohint:                   true

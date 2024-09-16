@@ -1,5 +1,6 @@
 DIRSTACKSIZE=5
 # Show time taken for the command to finish if it takes longer than 6 seconds
+export TIMEFMT="%U user %S system %P cpu %*E total, running %J"
 REPORTTIME=6
 # awesome cd movements from zshkit
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
@@ -23,7 +24,6 @@ setopt extendedglob         # Extended globbing. Allows using regular expression
 setopt glob                 # Enable globbing (i.e. the use of the '*' operator).
 setopt glob_complete        # Tab completion expands globs.
 setopt hash_list_all        # Ensure the command path is hashed before completion.
-setopt histignorealldups    # If a new command is a duplicate, remove the older one
 setopt ignoreeof            # Ignore EOF
 setopt mark_dirs            # Mark directories resulting from globs with trailing slashes.
 setopt menu_complete        # Automatically highlight first element of completion

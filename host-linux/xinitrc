@@ -28,7 +28,7 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-  xrdb -merge "$userresources"
+  xrdb -load "$userresources"
 fi
 
 if [ -f "$usermodmap" ]; then
@@ -39,11 +39,6 @@ xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --output DP-2 --auto --primary --pos 0x0
 xrandr --output HDMI-0 --auto --left-of DP-2
 xrandr --output DP-0 --auto --right-of DP-2 --rotate left
-
-# Increase the keyboard repeat rate
-xset r rate 300 50
-# Swap escape and capslock
-setxkbmap -option 'caps:swapescape'
 
 # Set environment variables if needed
 # export DISPLAY=:0
@@ -59,5 +54,12 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 # Example: start a background compositor or input method
 # picom &
 # Execute i3 as the window manager
-nvidia-settings --load-profile-only &
+nvidia-settings --load-profile-only
+# Increase the keyboard repeat rate
+xset r rate 300 50
+# Swap escape and capslock
+setxkbmap -option 'caps:swapescape'
+# Enable killing Xorg with ctrl+alt+backspace
+setxkbmap -option terminate:ctrl_alt_bksp
+
 exec i3

@@ -15,3 +15,5 @@ alias paccacheclear="sudo pacman -Scc"
 alias pacmurder="sudo pacman -Rs $(pacman -Qtdq)"
 # Shows which package owns a file
 alias pacown="pacman -Qo"
+
+alias journalctl-error='sudo journalctl -b --priority 0..3'

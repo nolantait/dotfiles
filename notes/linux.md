@@ -109,7 +109,7 @@ paru -S \
 ## Install i3
 
 ```
-paru -S i3-wm xorg-xinit xclip xorg-server startx xset xrandr \
+paru -S i3-wm i3-scrot xorg-xinit xclip xorg-server startx xset xrandr \
         alacritty feh polybar conky rofi dunst
 ```
 
@@ -194,7 +194,7 @@ yarn set version stable
 ## Install applications
 
 ```
-paru -S slack-desktop discord
+paru -S slack-desktop discord vlc
 ```
 
 ## Setup gaming
