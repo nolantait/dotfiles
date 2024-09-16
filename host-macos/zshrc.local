@@ -6,7 +6,6 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Have postgresql@16 first in our path
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
 export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
 
