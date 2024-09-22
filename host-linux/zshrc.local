@@ -9,6 +9,9 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+
 
 # Load rust
 [[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"

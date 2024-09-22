@@ -212,6 +212,15 @@ paru -S steam
 paru -S lutris
 ```
 
+# Install docker
+
+```
+paru -S docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker ps -a
+```
+
 # Troubleshooting
 
 ## Time

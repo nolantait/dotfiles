@@ -68,3 +68,5 @@ url
 wgpu
 wifi
 dotfiles
+getters
+subclassing
