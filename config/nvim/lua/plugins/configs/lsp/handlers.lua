@@ -32,14 +32,14 @@ M.setup = function()
     },
   })
 
-  vim.lsp.handlers["textDocument/inlayHint"] = vim.lsp.with(
-    vim.lsp.handlers.inlay_hints,
-    {
-      prefix = " » ",
-      highlight = "Comment",
-      enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
-    }
-  )
+  -- vim.lsp.handlers["textDocument/inlayHint"] = vim.lsp.with(
+  --   vim.lsp.handlers.inlay_hints,
+  --   {
+  --     prefix = " » ",
+  --     highlight = "Comment",
+  --     enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
+  --   }
+  -- )
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
