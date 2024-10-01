@@ -17,3 +17,24 @@ sudo passwd postgres
 ```
 
 Then sign in as normal and `initdb`
+
+# Adding the system user
+
+Open a session to the `postgres` user through `psql`
+
+```
+psql -U postgres
+```
+
+Add the role for the system user
+
+```
+CREATE USER nolan;
+ALTER USER nolan SUPERUSER CREATEDB;
+```
+
+Then we can confirm the state inside the `psql` session:
+
+```
+\du
+```
