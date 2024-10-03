@@ -4,20 +4,22 @@ M.setup = function()
   local icons = require("globals.icons")
   local utils = require("core.utils")
 
+  local severity = vim.diagnostic.severity
+
   -- Global config for diagnostics
   vim.diagnostic.config({
     document_highlight = { enable = true },
-    virtual_text = false,
+    virtual_text = { prefix = "" },
     inlay_hints = {
       enabled = true,
       exclude = {},
     },
     signs = {
       text = {
-        [vim.diagnostic.severity.ERROR] = icons.error,
-        [vim.diagnostic.severity.WARN] = icons.warn,
-        [vim.diagnostic.severity.HINT] = icons.hint,
-        [vim.diagnostic.severity.INFO] = icons.info,
+        [severity.ERROR] = icons.error,
+        [severity.WARN] = icons.warn,
+        [severity.HINT] = icons.hint,
+        [severity.INFO] = icons.info,
       },
     },
     severity_sort = true,
@@ -44,6 +46,8 @@ M.setup = function()
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
     {
+      focusable = false,
+      max_height = 7,
       border = utils.border("FloatBorderDocs"),
       silent = true
     }

@@ -20,7 +20,7 @@ return {
   empty_circle = "",
   error = "",
   event = "",
-  hint = "",
+  hint = "󰌵",
   fire = "󰈸",
   gear = "",
   ghost = "󰊠",
