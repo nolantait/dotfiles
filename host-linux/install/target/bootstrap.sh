@@ -12,11 +12,11 @@ systemctl start sshd
 
 echo "Disabling password authentication"
 if ! grep -q "^PasswordAuthentication no" /etc/ssh/sshd_config; then
-    sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-    systemctl restart sshd
-    echo "Password authentication disabled."
+  sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
+  systemctl restart sshd
+  echo "Password authentication disabled."
 else
-    echo "SSH password authentication is already disabled."
+  echo "SSH password authentication is already disabled."
 fi
 
 echo "Installing keys"

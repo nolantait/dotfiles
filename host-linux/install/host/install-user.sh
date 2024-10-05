@@ -16,5 +16,5 @@ TARGET=$2
 
 {
   echo "Setting up root on target..."
-  ssh -t $TARGET "cd ~/target && chmod +x ./*.sh && . ./init-user.sh $USERNAME"
+  ssh -t "$TARGET" "cd ~/target && chmod +x ./*.sh && . ./init-user.sh $USERNAME"
 }  >> ~/install-script.log 2>&1

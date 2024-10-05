@@ -45,7 +45,7 @@ install_zsh() {
         echo "zsh and font already installed."
     else
         sudo pacman -S --noconfirm zsh ttf-iosevka-nerd
-        chsh -s $(which zsh) "$USERNAME"
+        chsh -s "$(which zsh)" "$USERNAME"
         echo "zsh and font installed."
     fi
 }
@@ -91,7 +91,7 @@ install_dotfiles() {
     fi
 
     cd ~/dotfiles
-    env RCRC=$HOME/dotfiles/rcrc rcup -B linux
+    env RCRC="$HOME/dotfiles/rcrc" rcup -B linux
     echo "Dotfiles installed."
 }
 
@@ -209,7 +209,7 @@ install_programming_languages() {
 ## Install applications
 install_applications() {
     apps=(
-      slack-desktop discord vlc firefox neovim
+      slack-desktop discord vlc firefox neovim tmux
     )
     for app in "${apps[@]}"; do
         if ! is_installed "$app"; then
