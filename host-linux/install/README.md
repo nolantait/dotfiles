@@ -1,5 +1,7 @@
 # Minimal Arch Install
 
+Reworked for my own needs from: https://github.com/ih8d8/minimal-arch-install-scripts
+
 ## Installation
 
 1. **Boot into Arch Live Environment:** Start by booting into your live Arch environment. You can use a USB drive with Arch installation or similar methods.
