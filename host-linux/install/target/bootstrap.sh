@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Sets up a new machine to be ssh-able from a live ISO
 
 KEYS_URL="https://github.com/nolantait.keys"
