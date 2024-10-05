@@ -22,16 +22,22 @@ read -r BLOCK_DEVICE
 echo -n "Do you want to do partitioning manually with cfdisk? [y/N]: "
 read -r PARTITIONING
 
-# If the user wants to create [one] LUKS partition manually with cfdisk (in case there are already other OS's installed)
-if [ "${PARTITIONING}" == "y" ]; then
+# If the user wants to create a partition manually with cfdisk (in case there are already other OS's installed)
+if [ "${PARTITIONING}" = "y" ]; then
     # partition the block device with cfdisk
     cfdisk "${BLOCK_DEVICE}"
 else
+    sudo sgdisk --zap-all "${BLOCK_DEVICE}"
     # Make a standard arch partition:
     # 1. EFI partition: 1GB
     # 2. Swap partition: 4GB
     # 3. Root partition: remaining space
-    sgdisk --clear --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300
+    # Clear and create partitions
+    sgdisk --new=1:0:+1G --typecode=1:ef00 "${BLOCK_DEVICE}"
+    sgdisk --new=2:0:+4G --typecode=2:8200 "${BLOCK_DEVICE}"
+    sgdisk --new=3:0:0 --typecode=3:8300 "${BLOCK_DEVICE}"
+    sgdisk --change-name=1:EFI --change-name=2:SWAP --change-name=3:ROOT "${BLOCK_DEVICE}"
+    sgdisk --print "${BLOCK_DEVICE}"
 
     # format EFI partition
     mkfs.fat -F32 "${BLOCK_DEVICE}p1"
@@ -43,6 +49,8 @@ fi
 
 # Show partitions
 lsblk
+
+sleep 5
 
 # Mount the root partition
 mount "${BLOCK_DEVICE}p3" /mnt
@@ -60,7 +68,7 @@ swapon "${BLOCK_DEVICE}p2"
 lsblk
 
 # Install necessary packages
-pacstrap -K /mnt base base-devel linux linux-headers linux-firmware lvm2 vim git networkmanager os-prober efibootmgr intel-ucode
+pacstrap -K /mnt base base-devel linux linux-headers linux-firmware vim git networkmanager efibootmgr intel-ucode
 
 # Generate an fstab config
 genfstab -U /mnt >>/mnt/etc/fstab
@@ -68,10 +76,16 @@ genfstab -U /mnt >>/mnt/etc/fstab
 # Copy chroot-script.sh to /mnt
 cp chroot-script.sh /mnt
 
-# chroot into the new system and run the chroot-script.sh script
-arch-chroot /mnt ./chroot-script.sh
+# Copy ssh keys to /mnt
+cp -r ~/.ssh /mnt/root
+
+# Copy over installation scripts
+cp -r /root/target /mnt/root
+
+# chroot into the new system and run the chroot-script.sh script passing in the
+# BLOCK_DEVICE
+arch-chroot /mnt ./chroot-script.sh "${BLOCK_DEVICE}"
 
 # unmount partitions
-umount /mnt/home
 umount /mnt/boot
 umount /mnt

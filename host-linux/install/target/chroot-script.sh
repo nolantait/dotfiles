@@ -2,20 +2,20 @@
 
 set -euo pipefail
 
+DEVICE=/dev/nvme0n1p3
+TIME_ZONE=America/Vancouver
+HOSTNAME=arch-desktop
+
 # set settings related to locale
 sed -i -e 's|#en_US.UTF-8 UTF-8|en_US.UTF-8 UTF-8|' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >/etc/locale.conf
 
 # set the time zone
-echo -n "Enter Time Zone: "
-read -r TIME_ZONE
 ln -sf /usr/share/zoneinfo/${TIME_ZONE} /etc/localtime
 hwclock --systohc
 
 # set hostname
-echo -n "Enter hostname: "
-read -r HOSTNAME
 echo "${HOSTNAME}" >/etc/hostname
 
 # configure hosts file
@@ -47,6 +47,14 @@ mkinitcpio -p linux
 # Install boot manager
 bootctl install
 
+# Create boot entry
+cat <<EOF >>/boot/loader/entries/arch.conf
+title    Arch Linux
+linux    /vmlinuz-linux
+initrd   /initramfs-linux.img
+options  root=PARTUUID=$(blkid -s PARTUUID -o value $DEVICE) rw
+EOF
+
 # Add pacman hook
 mkdir -p /etc/pacman.d/hooks
 cat <<EOF >>/etc/pacman.d/hooks/95-systemd-boot.hook
@@ -63,3 +71,6 @@ EOF
 
 # enable NetworkManager systemd service
 systemctl enable NetworkManager
+
+# Add ssh from bootstrap script on the new file system
+~/target/bootstrap.sh

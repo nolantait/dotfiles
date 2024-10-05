@@ -1,16 +1,9 @@
 #!/bin/bash
 
+set -euo pipefail
+
 KEYS_URL="https://github.com/nolantait.keys"
 DOTFILES_URL= "https://github.com/nolantait/dotfiles"
-
-# Function to handle errors
-handle_error() {
-    echo "Error on line $1"
-    exit 1
-}
-
-# Trap errors
-trap 'handle_error $LINENO' ERR
 
 log_file="setup_arch.log"
 exec > >(tee -i "$log_file") 2>&1
