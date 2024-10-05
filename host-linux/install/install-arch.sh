@@ -2,33 +2,35 @@
 
 set -euo pipefail
 
-# check if boot type is UEFI
+# Check if boot type is UEFI
 ls /sys/firmware/efi/efivars || { echo "Boot Type Is Not UEFI!; "exit 1; }
 
-# check if internet connection exists
+# Check if internet connection exists
 ping -q -c 1 archlinux.org >/dev/null || { echo "No Internet Connection!; "exit 1; }
 
 # Set font for HiDPI screens
 setfont ter-132b
 
-# update system clock
+# Update system clock
 timedatectl set-ntp true
 
-# read the block device path you want to install Arch on
+# Read the block device path you want to install Arch on
 echo -n "Enter the block device path you want to install Arch on: "
 read -r BLOCK_DEVICE
 
-# ask if the user wants default partitioning or wants to do partitioning manually with cfdisk?
+# Ask if the user wants default partitioning or wants to do partitioning manually with cfdisk?
 echo -n "Do you want to do partitioning manually with cfdisk? [y/N]: "
 read -r PARTITIONING
 
-# if the user wants to create [one] LUKS partition manually with cfdisk (in case there are already other OS's installed)
+# If the user wants to create [one] LUKS partition manually with cfdisk (in case there are already other OS's installed)
 if [ "${PARTITIONING}" == "y" ]; then
     # partition the block device with cfdisk
     cfdisk "${BLOCK_DEVICE}"
 else
-    # make a 550 MB EFI partition along with a 170GB LUKS partition, leave the rest of the space unallocated
-    sgdisk --clear -n 1:0:+550M -t 1:ef00 -n 2:0:+170G -t 2:8e00 "${BLOCK_DEVICE}"
+    # Make a standard arch partition:
+    # 1. EFI partition: 1GB
+    # 2. Swap partition: 4GB
+    # 3. Root partition: remaining space
     sgdisk --clear --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300
 
     # format EFI partition
@@ -39,31 +41,31 @@ else
     mkfs.ext4 "${BLOCK_DEVICE}p3"
 fi
 
-# show partitions
+# Show partitions
 lsblk
 
-# mount the root partition
+# Mount the root partition
 mount "${BLOCK_DEVICE}p3" /mnt
 
-# create boot directory
+# Create boot directory
 mkdir -p /mnt/boot
 
-# mount the EFI partiton
+# Mount the EFI partiton
 mount "${BLOCK_DEVICE}p1" /mnt/boot
 
-# activate the swap
+# Activate the swap
 swapon "${BLOCK_DEVICE}p2"
 
-# show the mounted partitions
+# Show the mounted partitions
 lsblk
 
-# install necessary packages
+# Install necessary packages
 pacstrap -K /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware lvm2 vim git networkmanager refind os-prober efibootmgr iwd intel-ucode
 
 # Generate an fstab config
 genfstab -U /mnt >>/mnt/etc/fstab
 
-# copy chroot-script.sh to /mnt
+# Copy chroot-script.sh to /mnt
 cp chroot-script.sh /mnt
 
 # chroot into the new system and run the chroot-script.sh script
