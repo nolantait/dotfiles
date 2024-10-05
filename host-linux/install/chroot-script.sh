@@ -48,6 +48,7 @@ mkinitcpio -p linux
 bootctl install
 
 # Add pacman hook
+mkdir -p /etc/pacman.d/hooks
 cat <<EOF >>/etc/pacman.d/hooks/95-systemd-boot.hook
 [Trigger]
 Type = Package
