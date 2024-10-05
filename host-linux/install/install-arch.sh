@@ -60,7 +60,7 @@ swapon "${BLOCK_DEVICE}p2"
 lsblk
 
 # Install necessary packages
-pacstrap -K /mnt base base-devel linux linux-headers linux-lts linux-lts-headers linux-firmware lvm2 vim git networkmanager refind os-prober efibootmgr iwd intel-ucode
+pacstrap -K /mnt base base-devel linux linux-headers linux-firmware lvm2 vim git networkmanager refind os-prober efibootmgr iwd intel-ucode
 
 # Generate an fstab config
 genfstab -U /mnt >>/mnt/etc/fstab

@@ -10,6 +10,7 @@ handle_error() {
 trap 'handle_error $LINENO' ERR
 
 $keys_url = "https://github.com/nolantait.keys"
+$dotfiles_url = "https://github.com/nolantait/dotfiles"
 
 # Update system
 sudo pacman -Syu
@@ -84,7 +85,9 @@ vm.swappiness = 10
 EOF
 
 # Clone dotfiles
-git clone https://github.com/nolantait/dotfiles ~/dotfiles
+if [ -d "$HOME/dotfiles" ]; then
+  git clone $dotfiles_url $HOME/dotfiles
+fi
 cd ~/dotfiles
 env RCRC=$HOME/dotfiles/rcrc rcup -B linux
 
