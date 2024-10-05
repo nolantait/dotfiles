@@ -1,8 +1,7 @@
 #!/bin/bash
 
-$keys_url = "https://github.com/nolantait.keys"
-$dotfiles_url = "https://github.com/nolantait/dotfiles"
-
+KEYS_URL="https://github.com/nolantait.keys"
+DOTFILES_URL= "https://github.com/nolantait/dotfiles"
 
 # Function to handle errors
 handle_error() {
@@ -38,7 +37,7 @@ configure_ssh() {
 add_keys() {
   if [ ! -f "$HOME/.ssh/authorized_keys" ]; then
     mkdir -p "$HOME/.ssh"
-    curl -sSL "$keys_url" > "$HOME/.ssh/authorized_keys"
+    curl -sSL "$KEYS_URL" > "$HOME/.ssh/authorized_keys"
     chmod 600 "$HOME/.ssh/authorized_keys"
     echo "SSH keys added."
   else
@@ -102,7 +101,7 @@ install_dotfiles() {
         echo "Dotfiles already cloned."
     else
         paru -S --noconfirm rcm bat eza jq fzf delta asdf-vm github-cli
-        git clone $dotfiles_url ~/dotfiles
+        git clone $DOTFILES_URL ~/dotfiles
         rm -rf "$HOME"/.{bashrc,zshrc,gitconfig}
         echo "Dotfiles cloned."
     fi

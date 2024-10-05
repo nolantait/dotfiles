@@ -1,6 +1,6 @@
 # Sets up a new machine to be ssh-able from a live ISO
 
-$keys_url = "https://github.com/nolantait.keys"
+KEYS_URL="https://github.com/nolantait.keys"
 
 set -euo pipefail # Exit on error
 
@@ -21,6 +21,6 @@ fi
 
 echo "Installing keys"
 mkdir -p ~/.ssh
-curl $keys_url >> ~/.ssh/authorized_keys
+curl $KEYS_URL >> ~/.ssh/authorized_keys
 chmod 600 ~/.ssh/authorized_keys
 echo "Keys installed"

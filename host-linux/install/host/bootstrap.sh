@@ -1,7 +1,6 @@
-$target=$1
-
-$target_files=$HOME/dotfiles/host-linux/install/target
+TARGET=$1
+TARGET_FILES=$HOME/dotfiles/host-linux/install/target
 
 echo "Copying files to target machine"
-scp -r $target_files root@$target:~
+scp -r $TARGET_FILES root@$TARGET:~
 echo "Files copied"
