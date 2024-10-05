@@ -11,9 +11,10 @@ handle_error() {
 # Trap errors
 trap 'handle_error $LINENO' ERR
 
-TARGET=$1
+USERNAME=$1
+TARGET=$2
 
 {
   echo "Setting up root on target..."
-  ssh -t $TARGET "cd ~/target && chmod +x ./*.sh && . ./init-user.sh"
+  ssh -t $TARGET "cd ~/target && chmod +x ./*.sh && . ./init-user.sh $USERNAME"
 }  >> ~/install-script.log 2>&1

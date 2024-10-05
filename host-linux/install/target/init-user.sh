@@ -2,8 +2,9 @@
 
 set -euo pipefail
 
+USERNAME=$1
 KEYS_URL="https://github.com/nolantait.keys"
-DOTFILES_URL= "https://github.com/nolantait/dotfiles"
+DOTFILES_URL="https://github.com/nolantait/dotfiles"
 
 log_file="setup_arch.log"
 exec > >(tee -i "$log_file") 2>&1
@@ -44,18 +45,8 @@ install_zsh() {
         echo "zsh and font already installed."
     else
         sudo pacman -S --noconfirm zsh ttf-iosevka-nerd
-        chsh -s /usr/bin/zsh "$username"
+        chsh -s $(which zsh) "$USERNAME"
         echo "zsh and font installed."
-    fi
-}
-
-## Install rust
-install_rust() {
-    if ! command -v rustc &>/dev/null; then
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        echo "Rust installed."
-    else
-        echo "Rust is already installed."
     fi
 }
 
@@ -93,7 +84,7 @@ install_dotfiles() {
     if [ -d "$HOME/dotfiles" ]; then
         echo "Dotfiles already cloned."
     else
-        paru -S --noconfirm rcm bat eza jq fzf delta asdf-vm github-cli
+        paru -S --noconfirm rcm bat eza jq fzf git-delta asdf-vm github-cli
         git clone $DOTFILES_URL ~/dotfiles
         rm -rf "$HOME"/.{bashrc,zshrc,gitconfig}
         echo "Dotfiles cloned."
@@ -120,11 +111,24 @@ install_modern_tools() {
     done
 }
 
+install_xorg() {
+    xorg_packages=(
+        xorg-xinit xclip xorg-server
+    )
+    for pkg in "${xorg_packages[@]}"; do
+        if ! is_installed "$pkg"; then
+            paru -S --noconfirm "$pkg"
+            echo "$pkg installed."
+        else
+            echo "$pkg is already installed."
+        fi
+    done
+}
+
 ## Install i3
 install_i3() {
     i3_packages=(
-        i3-wm i3-scrot xorg-xinit xclip xorg-server startx xset xrandr
-        alacritty feh polybar conky rofi dunst
+        i3-wm alacritty feh polybar conky rofi dunst
     )
     for pkg in "${i3_packages[@]}"; do
         if ! is_installed "$pkg"; then
@@ -138,17 +142,28 @@ install_i3() {
 
 ## Install NVIDIA drivers
 install_nvidia() {
-    if is_installed nvidia; then
-        echo "NVIDIA drivers already installed."
+  if is_installed nvidia; then
+      echo "NVIDIA drivers already installed."
+  else
+    # Path to the config file
+    CONFIG_FILE="/boot/loader/entries/arch.conf"
+
+    # Define the string to append to the options line
+    OPTION="nvidia-drm.modeset=1"
+
+    paru -S --noconfirm nvidia nvidia-utils nvidia-settings
+    # Check if the options line already contains the option
+    if grep -q "$OPTION" "$CONFIG_FILE"; then
+      echo "Option '$OPTION' already exists in $CONFIG_FILE"
     else
-        paru -S --noconfirm nvidia nvidia-utils nvidia-settings
-        sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="nvidia-drm.modeset=1 /' /etc/default/grub
-        sudo grub-mkconfig -o /boot/grub/grub.cfg
-        sudo sed -i 's/^MODULES=(.*)/MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)/' /etc/mkinitcpio.conf
-        sudo sed -i 's/\(HOOKS=.*\)kms/\1/' /etc/mkinitcpio.conf
-        sudo mkinitcpio -P
-        echo "NVIDIA drivers installed and configured."
+      # Use sed to append the option to the options line
+      sed -i "/^options / s/$/ $OPTION/" "$CONFIG_FILE"
+      echo "Option '$OPTION' added to the options line in $CONFIG_FILE"
     fi
+
+    sudo mkinitcpio -P
+    echo "NVIDIA drivers installed and configured."
+  fi
 }
 
 ## Reduce swappiness
@@ -178,6 +193,7 @@ install_postgresql() {
 install_programming_languages() {
     if ! command -v asdf &>/dev/null; then
         paru -S --noconfirm asdf-vm unzip libyaml
+        zsh -c "source ~/.zshrc"
         asdf plugin add nodejs
         asdf plugin add ruby
         asdf plugin add python
@@ -193,7 +209,7 @@ install_programming_languages() {
 ## Install applications
 install_applications() {
     apps=(
-      slack-desktop discord vlc firefox
+      slack-desktop discord vlc firefox neovim
     )
     for app in "${apps[@]}"; do
         if ! is_installed "$app"; then
@@ -210,9 +226,8 @@ install_docker() {
       paru -S --noconfirm docker
       sudo systemctl enable docker
       sudo systemctl start docker
-      sudo usermod -aG docker "$username"
+      sudo usermod -aG docker "$USERNAME"
       newgrp docker
-      docker ps -a
       echo "Docker installed."
   fi
 }
@@ -221,11 +236,11 @@ install_docker() {
 add_keys
 configure_ssh
 install_zsh
-install_rust
 install_paru
 configure_xdg
 install_dotfiles
 install_modern_tools
+install_xorg
 install_i3
 install_nvidia
 reduce_swappiness
