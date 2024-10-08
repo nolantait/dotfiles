@@ -13,13 +13,10 @@ export __GLX_VENDOR_LIBRARY_NAME=nvidia
 export GBM_BACKEND=nvidia-drm
 
 
-# Load rust
-[[ -r "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"
-
 # Load ASDF which manages versions of programing languages and neovim
-[[ -r /opt/asdf-vm/asdf.sh ]] && . /opt/asdf-vm/asdf.sh
+[ -r /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 
-[[ -r "$HOME/.dir_colors" ]] && eval `dircolors ~/.dir_colors`
+[ -r "$HOME/.dir_colors" ] && eval `dircolors ~/.dir_colors`
 
-br_path=/home/nolan/.config/broot/launcher/bash/br
-[[ -r $br_path ]] && . $br_path
+br_path=$XDG_CONFIG_HOME/broot/launcher/bash/br
+[ -r $br_path ] && . $br_path
