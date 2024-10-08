@@ -140,27 +140,48 @@ install_i3() {
     done
 }
 
+install_nvidia_boot_options() {
+  local CONFIG_FILE="/boot/loader/entries/arch.conf"
+  local OPTION="nvidia-drm.modeset=1"
+
+  # Check if the options line already contains the option
+  if grep -q "$OPTION" "$CONFIG_FILE"; then
+    echo "Option '$OPTION' already exists in $CONFIG_FILE"
+  else
+    # Use sed to append the option to the options line
+    sed -i "/^options / s/$/ $OPTION/" "$CONFIG_FILE"
+    echo "Option '$OPTION' added to the options line in $CONFIG_FILE"
+  fi
+}
+
+install_nvidia_mkinitcpio() {
+  local MODULES="nvidia nvidia_modeset nvidia_uvm nvidia_drm"
+  local CONFIG_FILE="/etc/mkinitcpio.conf"
+  local HOOK="HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)"
+
+  if grep -q "$MODULES" "$CONFIG_FILE"; then
+    echo "NVIDIA hook already exists in $CONFIG_FILE"
+  else
+    sed -i "/^MODULES=/ s/\"$/ $MODULES\"/" "$CONFIG_FILE"
+    echo "NVIDIA modules added to $CONFIG_FILE"
+  fi
+
+  if grep -q "$HOOK" "$CONFIG_FILE"; then
+    echo "NVIDIA hook already exists in $CONFIG_FILE"
+  else
+    sed -i "/^HOOKS=/ s/\"$/ $HOOK\"/" "$CONFIG_FILE"
+    echo "NVIDIA hook added to $CONFIG_FILE"
+  fi
+}
+
 ## Install NVIDIA drivers
 install_nvidia() {
   if is_installed nvidia; then
       echo "NVIDIA drivers already installed."
   else
-    # Path to the config file
-    CONFIG_FILE="/boot/loader/entries/arch.conf"
-
-    # Define the string to append to the options line
-    OPTION="nvidia-drm.modeset=1"
-
     paru -S --noconfirm nvidia nvidia-utils nvidia-settings
-    # Check if the options line already contains the option
-    if grep -q "$OPTION" "$CONFIG_FILE"; then
-      echo "Option '$OPTION' already exists in $CONFIG_FILE"
-    else
-      # Use sed to append the option to the options line
-      sed -i "/^options / s/$/ $OPTION/" "$CONFIG_FILE"
-      echo "Option '$OPTION' added to the options line in $CONFIG_FILE"
-    fi
-
+    install_nvidia_boot_options
+    install_nvidia_mkinitcpio
     sudo mkinitcpio -P
     echo "NVIDIA drivers installed and configured."
   fi
