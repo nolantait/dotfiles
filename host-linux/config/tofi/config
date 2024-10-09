@@ -13,7 +13,7 @@
 # characters not in the chosen font will fail to render.
 #
 # Otherwise, fonts are interpreted in Pango format.
-font = "Iosevka Nerd Font Mono"
+font = "IosevkaTerm Nerd Font Mono"
 
 # Point size of text.
 font-size = 16

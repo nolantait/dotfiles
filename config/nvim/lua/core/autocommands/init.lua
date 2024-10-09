@@ -95,11 +95,18 @@ function M.setup()
     desc = "Check if we need to reload the file when it changed",
     group = augroup("checktime"),
   })
-
   command({ "BufNewFile", "BufRead" }, {
     desc = "Set the i3 filetype based on the file extension",
     group = augroup("filetypes"),
     pattern = "*.i3.config",
+    callback = function()
+      vim.bo.filetype = "i3config"
+    end,
+  })
+  command({ "BufNewFile", "BufRead" }, {
+    desc = "Set the sway filetype based on the file extension",
+    group = augroup("filetypes"),
+    pattern = "*.sway.config",
     callback = function()
       vim.bo.filetype = "i3config"
     end,

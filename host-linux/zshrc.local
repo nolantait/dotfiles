@@ -12,6 +12,7 @@ export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
 export WLR_NO_HARDWARE_CURSORS=1
 export XDG_SESSION_TYPE=wayland
 export GDK_BACKEND=wayland
+export XDG_CURRENT_DESKTOP=sway:wlroots
 
 # Load ASDF which manages versions of programing languages and neovim
 [ -r /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
