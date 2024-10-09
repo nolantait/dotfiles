@@ -18,4 +18,4 @@ alias pacown="pacman -Qo"
 
 alias journalctl-error='sudo journalctl -b --priority 0..3'
 
-alias sway="sway --unsupported-gpu"
+alias pacmirrors="sudo reflector --country Canada,US --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
