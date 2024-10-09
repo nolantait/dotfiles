@@ -1,16 +1,15 @@
 # Unix
 alias mkdir="mkdir -p"
 
-# Rails
-alias migrate="bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare"
-
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
 alias grep="grep --color"
 
 # Use neovim if available over vim
-alias vim="nvim"
+if [ command -v nvim &> /dev/null ]; then
+  alias vim="nvim"
+fi
 
 # Alias raw man to colorman function
 alias man="colorman"
@@ -18,19 +17,20 @@ alias man="colorman"
 # Reload zshrc like a rails console
 alias reload!=". ~/.zshrc"
 
-# Alias to update neovim with asdf
-alias update-nvim="asdf uninstall neovim nightly && asdf install neovim nightly"
-
 # Alias ls to something better
-alias ls="eza -h --color --classify --group-directories-first --icons=auto"
+if [ command -v exa &> /dev/null ]; then
+  alias ls="exa -h --color=auto --group-directories-first"
+fi
 
 # A better cat
-alias cat="bat"
+if [ command -v bat &> /dev/null ]; then
+  alias cat="bat"
+fi
 
 # Updating neovim with asdf
-alias update-nvim-stable="asdf uninstall neovim stable && asdf install neovim stable"
-alias update-nvim-nightly="asdf uninstall neovim nightly && asdf install neovim nightly"
-alias update-nvim-master="asdf uninstall neovim ref:master && asdf install neovim ref:master"
+alias asdf-update-nvim-stable="asdf uninstall neovim stable && asdf install neovim stable"
+alias asdf-update-nvim-nightly="asdf uninstall neovim nightly && asdf install neovim nightly"
+alias asdf-update-nvim-master="asdf uninstall neovim ref:master && asdf install neovim ref:master"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

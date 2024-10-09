@@ -106,11 +106,11 @@ paru -S \
   sd viddy
 ```
 
-## Install i3
+## Install desktop environment
 
 ```
-paru -S i3-wm i3-scrot xorg-xinit xclip xorg-server startx xset xrandr \
-        alacritty feh polybar conky rofi dunst
+paru -S i3-wm i3-scrot xorg-xinit xclip xorg-server xorg-xset \
+              xorg-xrandr alacritty feh polybar conky rofi dunst
 ```
 
 ## Install NVIDIA drivers
@@ -138,12 +138,6 @@ MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)
 ```
 
 Also remove `kms` from `HOOKS`. Then reinit the initramfs `sudo mkinitcpio -P`
-
-## Setup Xorg
-
-```
-paru -S xorg-xinit xorg-server startx xrandr
-```
 
 ## Reduce swapiness 
 
