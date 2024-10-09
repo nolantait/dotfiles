@@ -6,6 +6,7 @@
 # Term Section
 TERM xterm-256color
 TERM tmux-256color
+TERM screen-256color
 
 # Black         40;44;52        #282c34
 # White         171;178;191     #abb2bf

@@ -1,23 +1,4 @@
-export GOROOT=$HOME/.go
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
-export MANROFFOPT="-c"
-
-export BROWSER=/usr/bin/firefox
-export VISUAL=nvim
-export EDITOR=nvim
-
-export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
-
-# Enable certain env variables for wayland
-export WLR_NO_HARDWARE_CURSORS=1
-export XDG_SESSION_TYPE=wayland
-export GDK_BACKEND=wayland
-export XDG_CURRENT_DESKTOP=sway:wlroots
-
 # Load ASDF which manages versions of programing languages and neovim
 [ -r /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 
-[ -r "$HOME/.dir_colors" ] && eval `dircolors ~/.dir_colors`
-
-br_path=$XDG_CONFIG_HOME/broot/launcher/bash/br
-[ -r $br_path ] && . $br_path
+[ -r "$HOME/.dir_colors" ] && eval `dircolors $HOME/.dir_colors`
