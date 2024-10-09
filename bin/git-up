@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Update your current branch with the latest changes from the remote.
 #
