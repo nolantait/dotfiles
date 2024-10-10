@@ -4,7 +4,7 @@ alias mkdir="mkdir -p"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
-alias grep="grep --color"
+alias grep="grep --color=auto"
 
 # Use neovim if available over vim
 if command -v nvim >/dev/null 2>&1; then
@@ -31,6 +31,11 @@ fi
 alias asdf-update-nvim-stable="asdf uninstall neovim stable && asdf install neovim stable"
 alias asdf-update-nvim-nightly="asdf uninstall neovim nightly && asdf install neovim nightly"
 alias asdf-update-nvim-master="asdf uninstall neovim ref:master && asdf install neovim ref:master"
+
+# Lists files (including dot files) sorted by size (biggest last) in long and
+# human readable output format. 
+alias dir="ls -lSrah"
+
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then

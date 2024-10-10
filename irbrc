@@ -1,3 +1,7 @@
+# we want to be able to use tab-completion in irb:
+require 'irb/completion'
+ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
+
 home = ENV["HOME"]
 
 unless File.exist?(path = "#{home}/.irb/history")
