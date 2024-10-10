@@ -1,2 +1,6 @@
+[font]
+size = 11.0
+
 [font.normal]
 family = "IosevkaTerm Nerd Font Mono"
+style = "Regular"
