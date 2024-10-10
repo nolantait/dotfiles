@@ -58,6 +58,7 @@
 *.font: xft:IosevkaTerm\ Nerd\ Font\ Mono:pixelsize=11
 
 Xcursor.size: 14
+Xcursor.theme: Bibata-Modern-Ice
 
 Xft.dpi:                        96
 Xft.antialias:                  true

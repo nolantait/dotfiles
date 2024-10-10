@@ -1,4 +1,6 @@
 zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+zdharma-continuum/fast-syntax-highlighting
 akash329d/zsh-alias-finder
 greymd/docker-zsh-completion
 chrishrb/zsh-kubectl

@@ -21,3 +21,8 @@ alias journalctl-error='sudo journalctl -b --priority 0..3'
 alias pacmirrors="sudo reflector --country Canada,US --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
 
 alias firefox="firefox-developer-edition"
+
+alias services="systemctl list-units --type=service --all --no-legend | awk '{print $1}' | sed 's/\.service//' | more"
+alias enabled_services="systemctl list-unit-files --type=service --state=enabled --no-legend | awk '{print $1}' | sed 's/\.service//' | more"
+alias disabled_services="systemctl list-unit-files --type=service --state=disabled --no-legend | awk '{print $1}' | sed 's/\.service//' | more"
+alias started_services="systemctl list-units --type=service --state=running --no-pager | head -n -6 | awk 'NR>1 {print $1}' | more"
