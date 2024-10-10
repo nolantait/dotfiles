@@ -86,7 +86,6 @@ local M = {
     mouse = "a",                                         -- Allow the mouse to be used in neovim
     mousemoveevent = true,                               -- Enable mouse events for bufferline reveal
     modeline = false,                                    -- Disable modelines as security precaution
-    nocompatible = true,                                 -- Disable compatibility with old-time vi
     number = true,                                       -- Set numbered lines
     numberwidth = 2,                                     -- Set number column width to 2 {default 4}
     pumblend = 0,                                        -- Make popup windows blend
