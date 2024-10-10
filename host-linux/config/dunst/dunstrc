@@ -29,19 +29,19 @@
     width = 300
 
     # The maximum height of a single notification, excluding the frame.
-    height = 300
+    height = (0,300)
 
     # Position the notification in the top right corner
-    origin = bottom-right
+    origin = top-center
 
     # Offset from the origin
-    offset = 30x40
+    offset = 30x30
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
 
     # Maximum number of notification (0 means no limit)
-    notification_limit = 5
+    notification_limit = 20
 
     ### Progress bar ###
 
@@ -62,6 +62,7 @@
     # Set the maximum width for the progress bar
     progress_bar_max_width = 300
 
+    progress_bar_corner_radius = 10
 
     # Show how many messages are currently hidden (because of
     # notification_limit).
@@ -70,7 +71,7 @@
     # The transparency of the window.  Range: [0; 100].
     # This option will only work if a compositing window manager is
     # present (e.g. xcompmgr, compiz, etc.). (X11 only)
-    transparency = 16
+    transparency = 0
 
     # Draw a line of "separator_height" pixel height between two
     # notifications.
@@ -168,15 +169,25 @@
     stack_duplicates = true
 
     # Hide the count of stacked notifications with the same content
-    hide_duplicate_count = true
+    hide_duplicate_count = false
 
     # Display indicators for URLs (U) and actions (A).
     show_indicators = yes
 
     ### Icons ###
 
+    # Recursive icon lookup. You can set a single theme, instead of having to
+    # define all lookup paths.
+    enable_recursive_icon_lookup = true
+
+    # Set icon theme (only used for recursive icon lookup)
+    icon_theme = "Papirus-Dark,Adwaita"
+
     # Align icons left/right/off
     icon_position = left
+
+    # Corner radius for icons, 0 disables
+    icon_corner_radius = 0
 
     # Scale small icons up to this size, set to 0 to disable. Helpful
     # for e.g. small files or high-dpi screens. In case of conflict,
@@ -186,18 +197,17 @@
     # Scale larger icons down to this size, set to 0 to disable
     max_icon_size = 32
 
-    # Paths to default icons.
-    #icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    icon_path = /usr/share/icons/Qogir/16/status:/usr/share/icons/Qogir/16/devices/:/usr/share/icons/Qogir/16/apps/:/usr/share/pixmaps/
+    # Paths to default icons. Only used with no recursive lookup
+    icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
 
     ### History ###
 
     # Should a notification popped up from history be sticky or timeout
     # as if it would normally do.
-    sticky_history = false
+    sticky_history = yes
 
     # Maximum amount of notifications kept in history
-    history_length = 0
+    history_length = 20
 
     ### Misc/Advanced ###
 
@@ -205,7 +215,7 @@
     dmenu = /usr/bin/dmenu -p dunst:
 
     # Browser for opening urls in context menu.
-    browser = /usr/bin/firefox
+    browser = /usr/bin/xdg-open
 
     # Always run rule-defined scripts, even if the notification is suppressed
     always_run_script = true
@@ -221,7 +231,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 7
+    corner_radius = 10
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
