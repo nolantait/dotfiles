@@ -6,3 +6,6 @@ colors
 export CLICOLOR=1
 # Set colors for terminal in mac
 export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Activate dircolors
+[[ -f ~/.dircolors ]] && eval "$(dircolors -b ~/.dircolors)"

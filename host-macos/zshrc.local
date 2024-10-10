@@ -1,20 +1,18 @@
 # Load homebrew so brew is available
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Load asdf installed from homebrew
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+asdf_dir="/opt/homebrew/opt/asdf/libexec"
+
+if [ -d "$asdf_dir" ]; then
+  # Load asdf installed from homebrew
+  . $asdf_dir/asdf.sh
+fi
 
 # Have postgresql@16 first in our path
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@16/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@16/include"
-
-# pnpm
-export PNPM_HOME="/Users/nolan/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
+path=(
+  "/opt/homebrew/opt/postgresql@16/bin"
+  "/opt/homebrew/opt/coreutils/libexec/gnubin"
+  $path
+)
 
 source /Users/nolan/.config/broot/launcher/bash/br

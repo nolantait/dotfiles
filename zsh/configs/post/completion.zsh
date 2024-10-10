@@ -9,25 +9,24 @@ else
   compinit -C;
 fi;
 
+# Enable completions
+zstyle ':completion:*' menu select=2
 # Case insensitive tab completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 # Automatically find new executables in path
 zstyle ':completion:*' rehash true
+# Pasting with tabs doesn't perform completion
+zstyle ':completion:*' insert-tab pending
 # Colored completion (different colors for dirs/files/etc)
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+# Speed up completions
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*' cache-path ~/.cache/zcache
 zstyle ':completion:*' completer _expand _complete _ignored _approximate
-zstyle ':completion:*' menu select=2
 zstyle ':completion:*' select-prompt '%SScrolling active: current selection at %p%s'
 zstyle ':completion:*:descriptions' format '%U%F{red}%d%f%u'
 zstyle ':completion:*:manuals' separate-sections true
-# Pasting with tabs doesn't perform completion
-zstyle ':completion:*' insert-tab pending
-
-# Speed up completions
 zstyle ':completion:*:paths' accept-exact '*(N)'
-zstyle ':completion:*' use-cache true
-zstyle ':completion:*' cache-path ~/.cache/zcache
-
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $(whoami) -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*:*:killall:*' menu yes select

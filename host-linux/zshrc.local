@@ -1,4 +1,2 @@
 # Load ASDF which manages versions of programing languages and neovim
 [ -r /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
-
-[ -r "$HOME/.dir_colors" ] && eval `dircolors $HOME/.dir_colors`

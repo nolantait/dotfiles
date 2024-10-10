@@ -31,6 +31,7 @@ setopt no_bg_nice           # Run background jobs at normal priority
 setopt no_hup               # Don't kill jobs when shell exits
 setopt no_list_beep         # No beep on ambiguous completions
 setopt nobeep               # No beep
+setopt list_types           # List types with completion
 setopt nocaseglob           # Case insensitive globbing
 setopt nocheckjobs          # Don't warn about running processes when exiting
 setopt numericglobsort      # Sort filenames numerically when it makes sense
