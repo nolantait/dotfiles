@@ -1,11 +1,20 @@
 configuration {
-  combi-modes: "window,drun";
+  combi-modes: "window,drun,run";
+  display-drun: "APPS |->";
+  display-run: "RUN |->";
+  display-filebrowser: "FILES |->";
+  display-window: "WINDOW |->";
+  drun-display-format: "{name}";
+  hover-select: false;
   filebrowser {
       directories-first: true;
       sorting-method:    "name";
   }
   font: "IosevkaTerm Nerd Font Mono 12";
   matching: "fuzzy";
+  me-select-entry: "";
+  me-accept-entry: "MousePrimary";
+  scroll-method: 1;
   show-icons: true;
   show: "combi";
   sort: true;
@@ -15,6 +24,7 @@ configuration {
       action: "kb-cancel";
       delay:  0;
   }
+  window-format: "{w} | {c} | {t}";
 }
 
 @theme "onedark"
