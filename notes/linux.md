@@ -110,7 +110,7 @@ paru -S \
 
 ```
 paru -S i3-wm i3-scrot xorg-xinit xclip xorg-server xorg-xset \
-              xorg-xrandr alacritty feh polybar conky rofi dunst
+              xorg-xrandr alacritty feh polybar conky rofi dunst autocutsel
 ```
 
 ## Install NVIDIA drivers
@@ -188,7 +188,7 @@ yarn set version stable
 ## Install applications
 
 ```
-paru -S slack-desktop discord vlc
+paru -S slack-desktop discord vlc firefox-developer-edition
 ```
 
 ## Setup gaming
