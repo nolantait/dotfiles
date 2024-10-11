@@ -31,7 +31,7 @@ return function()
         },
       },
       marks = {
-        enable = true,
+        enable = false,
         key = "m",
         show_builtins = false, -- shows the builtin marks like [ ] < >
       },
