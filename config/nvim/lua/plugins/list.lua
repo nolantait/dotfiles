@@ -45,6 +45,12 @@ local high_priority = {
 
 local custom = {
   {
+    "stevearc/profile.nvim",
+    enabled = true,
+    lazy = false,
+    config = require("plugins.configs.profiler")
+  },
+  {
     config = true,
     dir = settings.vim_path .. "/lua/custom/colorscheme",
     lazy = false,
@@ -56,6 +62,7 @@ local custom = {
   },
   {
     config = true,
+    enabled = false,
     dir = settings.vim_path .. "/lua/custom/profiling",
     lazy = false,
     main = "custom.profiling",
@@ -161,6 +168,7 @@ local events = {
   {
     -- Indentations on left side of lines
     "lukas-reineke/indent-blankline.nvim",
+    enabled = true,
     config = require("plugins.configs.indent-blankline"),
     event = "LazyFile",
     main = "ibl",

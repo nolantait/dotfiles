@@ -39,6 +39,8 @@ return function()
         "Trouble",
       },
     },
-    indent = { char = "|" }
+    indent = { char = "|" },
+    scope = { enabled = false },
+    debounce = 500
   })
 end

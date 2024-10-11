@@ -35,7 +35,7 @@ return function()
       enable = true
     },
     highlight = {
-      enable = true, -- false will disable the whole extension
+      enable = false, -- false will disable the whole extension
       additional_vim_regex_highlighting = true,
       use_language_tree = true,
     },
