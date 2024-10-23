@@ -71,3 +71,7 @@ dotfiles
 getters
 subclassing
 minified
+enum
+struct
+Gamepads
+haptic

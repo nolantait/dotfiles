@@ -167,6 +167,16 @@ sudo passwd postgres
 su - postgres
 initdb -D /var/lib/postgres/data
 exit
+systemctl enable --now postgresql
+```
+
+## Install VIPS
+
+Needed as a dependency for Rails
+
+```
+paru -S vips
+paru -S --asdeps openslide poppler-glib libheif
 ```
 
 ## Install programming languages

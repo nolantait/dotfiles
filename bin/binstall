@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# Runs bundle install with make env for speedup
+# https://x.com/rubycademy/status/1847211035054178673?t=6zjBl1slfGiUQHE00cIbFA
+#
+# binstall
+
+MAKE="make --jobs $(nproc)" bundle install

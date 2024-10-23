@@ -8,10 +8,9 @@
 # subsequent shells that are opened are only interactive; thus .zprofile will
 # not be loaded.
 
-export BROWSER=firefox
+export BROWSER="firefox-developer-edition"
 export VISUAL=nvim
 export EDITOR=nvim
-export GOROOT=$HOME/.go
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
 export MANROFFOPT="-c"
 export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
