@@ -8,6 +8,13 @@
 #
 # .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
 
+export BROWSER=firefox
+export VISUAL=nvim
+export EDITOR=nvim
+export GOROOT=$HOME/.go
+export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
+export MANROFFOPT="-c"
+
 typeset -U path
 
 # Set $PATH if ~/.local/bin exist

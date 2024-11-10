@@ -34,15 +34,6 @@ M.setup = function()
     },
   })
 
-  -- vim.lsp.handlers["textDocument/inlayHint"] = vim.lsp.with(
-  --   vim.lsp.handlers.inlay_hints,
-  --   {
-  --     prefix = " » ",
-  --     highlight = "Comment",
-  --     enabled = { "TypeHint", "ChainingHint", "ParameterHint" },
-  --   }
-  -- )
-
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
     vim.lsp.handlers.signature_help,
     {
@@ -90,28 +81,6 @@ M.on_attach = function(client, buffer)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument = {
-  completion = {
-    completionItem = {
-      documentationFormat = { "markdown", "plaintext" },
-      snippetSupport = true,
-      preselectSupport = true,
-      insertReplaceSupport = true,
-      labelDetailsSupport = true,
-      deprecatedSupport = true,
-      commitCharactersSupport = true,
-      tagSupport = { valueSet = { 1 } },
-      resolveSupport = {
-        properties = {
-          "documentation",
-          "detail",
-          "additionalTextEdits",
-        },
-      },
-    }
-  }
-}
 
 M.capabilities = capabilities
 
