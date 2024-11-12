@@ -1,6 +1,7 @@
 import = [
   "~/.config/alacritty-local/alacritty.local.toml"
 ]
+
 live_config_reload = true
 working_directory = "Workspace"
 

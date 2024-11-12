@@ -2,6 +2,7 @@
 3D
 AST
 CLI
+CPUs
 CSS
 DNS
 DOM
@@ -56,6 +57,7 @@ filesystem
 frontends
 frustrum
 getters
+getters
 grapheme
 graphemes
 haptic
@@ -71,6 +73,7 @@ kubectl
 localhost
 maximalists
 metadata
+metadata
 minified
 monomorphization
 namespace
@@ -79,7 +82,9 @@ namespaces
 nginx
 nixfiles
 ourself
+param
 params
+performant
 phlex
 procedurally
 protos
@@ -89,6 +94,7 @@ repo
 resizable
 rubocop
 runtime
+runtime
 scriptable
 shaders
 specular
@@ -97,14 +103,17 @@ spritesheet
 stateful
 struct
 struct's
+structs
 subclassing
 subgraph
 systemd
 tablist
 taintedcoders
+taxonomically
 tilemap
 tilemaps
 url
+variadic
 variadic
 vectorized
 viewport
