@@ -204,7 +204,7 @@ local events = {
   {
     "echasnovski/mini.pairs",
     config = require("plugins.configs.mini-pairs"),
-    event = "LazyFile"
+    lazy = false
   },
   {
     "echasnovski/mini.move",

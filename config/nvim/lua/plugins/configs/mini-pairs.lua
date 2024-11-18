@@ -72,12 +72,11 @@ return function()
     return open(pair, neigh_pattern)
   end
 
-  vim.api.nvim_create_autocmd("FileType", {
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    group = vim.api.nvim_create_augroup("rust_disable_single_quote_pairs", { clear = true }),
     pattern = "rust",
-    group = vim.api.nvim_create_augroup("Rust_disable_single_quote", { clear = true }),
     callback = function()
-      mini_pairs.unmap("i", "'", "''")
+      vim.keymap.set("i", "'", "'", { buffer = 0 })
     end,
-    desc = "Disable single quote Rust",
   })
 end
