@@ -8,9 +8,9 @@ if [ -d "$asdf_dir" ]; then
   . $asdf_dir/asdf.sh
 fi
 
-# Have postgresql@16 first in our path
+# Have postgresql@17 first in our path
 path=(
-  "/opt/homebrew/opt/postgresql@16/bin"
+  "/opt/homebrew/opt/postgresql@17/bin"
   "/opt/homebrew/opt/coreutils/libexec/gnubin"
   $path
 )

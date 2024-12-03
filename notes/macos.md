@@ -37,8 +37,8 @@ brew install --cask firefox
 brew install redis
 brew services start redis
 
-brew install postgresql@16
-brew services start postgresql@16
+brew install postgresql@17
+brew services start postgresql@17
 ```
 
 Install fonts
