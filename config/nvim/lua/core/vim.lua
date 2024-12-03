@@ -55,7 +55,7 @@ local M = {
     vim_markdown_frontmatter = true,
     -- Strikethrough uses two tildes.
     vim_markdown_strikethrough = true,
-    rust_recommended_style = 0,
+    rust_recommended_style = 1,
   },
   options = {
     backup = false,                                      -- Prevents creating a backup file

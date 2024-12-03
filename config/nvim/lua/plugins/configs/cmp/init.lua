@@ -43,9 +43,6 @@ return function()
         fallback()
       end
     end,
-    expand_snippet = function(args)
-      -- Do nothing
-    end
   }
 
   -- Setup cmp with everything above
@@ -96,14 +93,14 @@ return function()
       disallow_symbol_nonprefix_matching = true,
     },
     preselect = cmp.PreselectMode.Item,
-    performance = {
-      debounce = 60,
-      throttle = 30,
-      fetching_timeout = 1000,
-      confirm_resolve_timeout = 80,
-      async_budget = 1,
-      max_view_entries = 200
-    },
+    -- performance = {
+    --   debounce = 60,
+    --   throttle = 30,
+    --   fetching_timeout = 1000,
+    --   confirm_resolve_timeout = 80,
+    --   async_budget = 1,
+    --   max_view_entries = 200
+    -- },
     sources = cmp.config.sources({
       {
         name = "copilot",
@@ -123,9 +120,6 @@ return function()
     sorting = {
       priority_weight = 2,
       comparators = comparators,
-    },
-    snippet = {
-      expand = commands.expand_snippet
     },
     window = {
       completion = {

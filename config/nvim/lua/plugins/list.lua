@@ -243,6 +243,7 @@ local events = {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     config = require("plugins.configs.copilot"),
+    keys = keymap(require("plugins.keybinds.copilot")),
     event = "InsertEnter",
     dependencies = {
       {
