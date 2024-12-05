@@ -6,15 +6,7 @@ M.setup = function(handlers)
   local notify = require("core.messages")
 
   mason_config.setup({
-    ensure_installed = {
-      -- "rust_analyzer",
-      -- "bashls",
-      -- "cssls",
-      -- "crystalline",
-      -- "elixirls",
-      -- "ruby_lsp",
-      -- "lua_ls"
-    },
+    ensure_installed = {},
     automatic_installation = false,
   })
 
@@ -24,6 +16,10 @@ M.setup = function(handlers)
     -- Temporary rename until they move to the new naming
     if lsp_name == "tsserver" then
       lsp_name = "ts_ls"
+    end
+
+    if lsp_name == "rust_analyzer" then
+      return
     end
 
     local ok, custom_handler = pcall(require, "plugins.configs.lsp.servers." .. lsp_name)

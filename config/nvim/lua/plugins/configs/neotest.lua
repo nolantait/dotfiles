@@ -7,6 +7,7 @@ return function()
   neotest.setup({
     adapters = {
       require("neotest-python"),
+      require("rustaceanvim.neotest"),
       require("neotest-rspec") {
         rspec_cmd = function(position_type)
           if position_type == "test" then

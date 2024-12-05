@@ -41,6 +41,11 @@ local high_priority = {
     config = require("plugins.configs.bigfile"),
     lazy = false,
   },
+  {
+    "mrcjkb/rustaceanvim",
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  }
 }
 
 local custom = {
