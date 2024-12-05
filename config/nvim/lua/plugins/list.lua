@@ -44,7 +44,7 @@ local high_priority = {
   {
     "mrcjkb/rustaceanvim",
     version = '^5', -- Recommended
-    lazy = false, -- This plugin is already lazy
+    lazy = false,   -- This plugin is already lazy
   }
 }
 
@@ -56,33 +56,34 @@ local custom = {
     config = require("plugins.configs.profiler")
   },
   {
+    "rktjmp/lush.nvim",
+    lazy = false,
+  },
+  {
     config = true,
-    dir = settings.vim_path .. "/lua/custom/colorscheme",
+    dir = settings.vim_path .. "/lua/custom",
     lazy = false,
     main = "custom.colorscheme",
-    name = "custom.colorscheme",
-    dependencies = {
-      "rktjmp/lush.nvim"
-    },
+    name = "custom.colorscheme"
   },
   {
     config = true,
     enabled = false,
-    dir = settings.vim_path .. "/lua/custom/profiling",
+    dir = settings.vim_path .. "/lua/custom",
     lazy = false,
     main = "custom.profiling",
     name = "custom.profiling",
   },
   {
     config = true,
-    dir = settings.vim_path .. "/lua/custom/hardmode",
+    dir = settings.vim_path .. "/lua/custom",
     lazy = false,
     main = "custom.hardmode",
     name = "custom.hardmode",
   },
   {
     config = true,
-    dir = settings.vim_path .. "/lua/custom/gem",
+    dir = settings.vim_path .. "/lua/custom",
     lazy = false,
     main = "custom.gem",
     name = "custom.gem",
