@@ -8,6 +8,8 @@ return function()
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
       lua = { "stylua" },
+      html = { "htmlbeautifier" },
+      svg = { "htmlbeautifier" },
     }
   })
 

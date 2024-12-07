@@ -15,6 +15,7 @@ export GOROOT=$HOME/.go
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
 export MANROFFOPT="-c"
 export CLIPPY_CONF_DIR=$HOME/.config/clippy
+export DOCKER_BUILDKIT=1
 
 typeset -U path
 

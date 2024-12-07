@@ -223,6 +223,7 @@ paru -S docker
 sudo usermod -aG docker $USER
 newgrp docker
 docker ps -a
+paru -S docker-buildx
 ```
 
 # Troubleshooting

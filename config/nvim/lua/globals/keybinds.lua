@@ -13,6 +13,11 @@
 return {
   {
     mode = "n",
+    key = "<Leader>a",
+    command = "<cmd>%s/>\\s*</>\\r</g<CR>"
+  },
+  {
+    mode = "n",
     key = "<Leader>w",
     command = "<cmd>w<CR>",
     description = "Save file",
