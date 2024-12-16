@@ -15,4 +15,4 @@ path=(
   $path
 )
 
-source /Users/nolan/.config/broot/launcher/bash/br
+source ~/.config/broot/launcher/bash/br

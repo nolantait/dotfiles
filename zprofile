@@ -18,3 +18,8 @@ export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
 
 # As recommended in https://wiki.archlinux.org/title/Zsh
 emulate sh -c 'source /etc/profile'
+
+if [ -d "~/.zprofile.local" ]; then
+  # Load asdf installed from homebrew
+  . ~/.zprofile.local
+fi
