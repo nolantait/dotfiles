@@ -1,0 +1,21 @@
+[tools]
+ruby = "3.3.6"
+lua = "5.4.7"
+node = "23.3.0"
+python = "3.12"
+
+[hooks]
+# Enabling corepack will install the `pnpm` package manager specified in your
+# package.json alternatively, you can also install `pnpm` with mise
+postinstall = "npx corepack enable"
+
+[settings]
+always_keep_download = false
+always_keep_install = false
+auto_install = true
+env_file = ".env"
+http_timeout = "30s"
+jobs = 8
+plugin_autoupdate_last_check_duration = "1 week"
+verbose = false
+status = { missing_tools = "always", show_env = false, show_tools = false }

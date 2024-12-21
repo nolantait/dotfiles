@@ -92,7 +92,7 @@ First, remove any remaining original configs in the home folder.
 Then install `rcm`, clone dotfiles:
 
 ```
-paru -S rcm bat eza jq fzf delta asdf-vm github-cli
+paru -S rcm bat eza jq fzf delta mise github-cli
 git clone https://github.com/nolantait/dotfiles ~/dotfiles
 cd ~/dotfiles
 env RCRC=$HOME/dotfiles/rcrc rcup -B linux

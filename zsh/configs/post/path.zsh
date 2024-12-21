@@ -6,9 +6,14 @@
 [[ -f '/etc/profile' ]] && emulate sh -c '. /etc/profile'
 [[ -f '~/.profile'   ]] && emulate sh -c '. ~/.profile'
 
-# ensure dotfiles bin directory is loaded first
-PATH="$HOME/.bin:/usr/local/sbin:/usr/local/bin:$PATH"
-# mkdir .git/safe in the root of repositories you trust
-PATH=".git/safe/../../bin:$PATH"
+typeset -gxU path PATH
 
-export -U PATH
+# ensure dotfiles bin directory is loaded first
+path=($HOME/.bin /usr/local/sbin /usr/local/bin $path)
+# mkdir .git/safe in the root of repositories you trust
+path=($HOME/.git/safe/../../bin $path)
+
+# Set $PATH if ~/.local/bin exist
+if [ -d "$HOME/.local/bin" ]; then
+    path=($HOME/.local/bin $path)
+fi

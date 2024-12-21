@@ -26,11 +26,6 @@ if command -v bat >/dev/null 2>&1; then
   alias cat="bat"
 fi
 
-# Updating neovim with asdf
-alias asdf-update-nvim-stable="asdf uninstall neovim stable && asdf install neovim stable"
-alias asdf-update-nvim-nightly="asdf uninstall neovim nightly && asdf install neovim nightly"
-alias asdf-update-nvim-master="asdf uninstall neovim ref:master && asdf install neovim ref:master"
-
 # Lists files (including dot files) sorted by size (biggest last) in long and
 # human readable output format. 
 alias dir="ls -lSrah"

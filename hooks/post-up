@@ -50,11 +50,12 @@ package_names=(
   [delta]="delta"
   [bat]="bat"
   [eza]="eza"
-  [asdf]="asdf"
+  [mise]="mise"
   [gh]="gh"
   [nvim]="neovim"
   [jq]="jq"
   [fzf]="fzf"
+  [broot]="broot"
 )
 
 # Define OS-specific package mappings

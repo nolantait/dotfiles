@@ -17,17 +17,5 @@ export MANROFFOPT="-c"
 export CLIPPY_CONF_DIR=$HOME/.config/clippy
 export DOCKER_BUILDKIT=1
 
-typeset -U path
-
-# Set $PATH if ~/.local/bin exist
-if [ -d "$HOME/.local/bin" ]; then
-    path=($HOME/.local/bin $path)
-fi
-
-# Load cargo env if it exists
-if [ -d "$HOME/.cargo" ]; then
-  . "$HOME/.cargo/env"
-fi
-
 # Local config
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local

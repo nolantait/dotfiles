@@ -14,12 +14,10 @@ export EDITOR=nvim
 export GOROOT=$HOME/.go
 export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
 export MANROFFOPT="-c"
-export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf
 
 # As recommended in https://wiki.archlinux.org/title/Zsh
 emulate sh -c 'source /etc/profile'
 
 if [ -d "~/.zprofile.local" ]; then
-  # Load asdf installed from homebrew
   . ~/.zprofile.local
 fi

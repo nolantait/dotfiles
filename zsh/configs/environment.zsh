@@ -1,1 +1,0 @@
-export ASDF_DATA_DIR=$XDG_DATA_HOME/.asdf

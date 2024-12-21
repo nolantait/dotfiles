@@ -14,5 +14,3 @@ path=(
   "/opt/homebrew/opt/coreutils/libexec/gnubin"
   $path
 )
-
-source ~/.config/broot/launcher/bash/br
