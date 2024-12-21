@@ -15,6 +15,17 @@ M.setup = function()
       event = { "InsertEnter", "LspAttach" },
       fix_pairs = true
     })
+
+    local utils = require("utils.cmp")
+
+    utils.actions.ai_accept = function()
+      local suggestion = require("copilot.suggestion")
+      if suggestion.is_visible() then
+        utils.create_undo()
+        suggestion.accept()
+        return true
+      end
+    end
   end
 end
 

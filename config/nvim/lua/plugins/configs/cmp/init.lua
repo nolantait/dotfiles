@@ -4,12 +4,15 @@ return function()
   local cmp = require("cmp")
   local utils = require("plugins.configs.cmp.utils")
   local core_utils = require("core.utils")
+  local tainted = require("utils.cmp")
 
   -- Load our module for copilot_cmp which we use to wrap functions below
   -- conditionally on it being available. Doing this so we can easily remove
   -- without breaking.
   local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
   copilot_cmp.setup()
+
+  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
   local compare = cmp.config.compare
   local comparators = {
@@ -51,7 +54,7 @@ return function()
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
       },
-      completeopt = 'menu,menuone,noselect',
+      completeopt = "menu,menuone,noinsert,noselect",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
     },
@@ -77,10 +80,8 @@ return function()
       },
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = cmp.mapping.confirm({
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
-      }),
+      ["<CR>"] = tainted.confirm({ select = false }),
+      ["<S-CR>"] = tainted.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
       ["<Tab>"] = cmp.mapping(commands.next_item, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(commands.previous_item, { "i", "s" }),
     },
@@ -112,7 +113,6 @@ return function()
         keyword_length = 5,
         entry_filter = utils.limit_lsp_types
       },
-      { name = "buffer" },
       { name = "path" },
     }, {
       { name = "buffer" },
@@ -131,7 +131,7 @@ return function()
     },
     experimental = {
       ghost_text = {
-        hl_group = "NonText"
+        hl_group = "CmpGhostText"
       },
     },
     view = {
