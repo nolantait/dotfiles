@@ -99,3 +99,9 @@ echo "Checking for dependencies that need installing..."
 for cmd in $required_commands; do
   check_command $cmd
 done
+
+if [ -x "$(command -v mise)" ]; then
+  echo "Installing mise (hip new asdf plugin manager) plugins..."
+  mise install
+fi
+
