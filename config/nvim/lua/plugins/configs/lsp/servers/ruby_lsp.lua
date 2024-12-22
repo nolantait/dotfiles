@@ -38,5 +38,10 @@ return function(default_handlers)
     end
   end
 
+  handlers.init_options = {
+    formatter = "rubocop",
+    linters = { "rubocop" }
+  }
+
   require("lspconfig")["ruby_lsp"].setup(handlers)
 end
