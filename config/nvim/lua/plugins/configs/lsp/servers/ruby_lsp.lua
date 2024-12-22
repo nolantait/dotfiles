@@ -40,7 +40,33 @@ return function(default_handlers)
 
   handlers.init_options = {
     formatter = "rubocop",
-    linters = { "rubocop" }
+    linters = { "rubocop" },
+    indexing = {
+      excludedGems = {
+        "bootsnap",
+        "pg",
+        "sqlite3",
+        "stimulus-rails",
+        "turbo-rails",
+        "tzinfo-data",
+        "title",
+        "aws-sdk-s3",
+        "debug",
+        "rubocop-inhouse",
+        "launchy",
+        "phlex-testing-capybara",
+        "shoulda-matchers",
+        "brakeman",
+        "bundler-audit",
+        "database_consistency",
+        "dockerfile-rails",
+        "letter_opener_web",
+        "overcommit",
+        "prism",
+        "syntax_suggest",
+        "web-console"
+      },
+    }
   }
 
   require("lspconfig")["ruby_lsp"].setup(handlers)
