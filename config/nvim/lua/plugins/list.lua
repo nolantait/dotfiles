@@ -115,7 +115,6 @@ local events = {
   },
   {
     "williamboman/mason.nvim",
-    build = ":MasonUpdate",
     cmd = {
       "Mason",
       "MasonInstall",
@@ -346,11 +345,6 @@ local events = {
   {
     -- Improved syntax highlighting and code understanding for other plugins
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      if #vim.api.nvim_list_uis() ~= 0 then
-        vim.api.nvim_command("TSUpdate")
-      end
-    end,
     config = require("plugins.configs.treesitter"),
     cmd = {
       "TSBufDisable",
