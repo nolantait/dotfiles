@@ -1,13 +1,6 @@
 # Load homebrew so brew is available
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-asdf_dir="/opt/homebrew/opt/asdf/libexec"
-
-if [ -d "$asdf_dir" ]; then
-  # Load asdf installed from homebrew
-  . $asdf_dir/asdf.sh
-fi
-
 # Have postgresql@17 first in our path
 path=(
   "/opt/homebrew/opt/postgresql@17/bin"

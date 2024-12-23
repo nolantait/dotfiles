@@ -30,8 +30,9 @@
   syntax-theme = base16
   line-numbers = true
   zero-style = dim syntax
+  true-color = always
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
   ff = only
 [commit]
   template = ~/.gitmessage
