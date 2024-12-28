@@ -7,6 +7,12 @@ These are some notes about my latest arch install.
 Format disks with a boot/root/swap split using `fdisk`, use `gdisk` if you
    need to set EFI permissions from an existing drive.
 
+For example for BIOS/GPT:
+
+```
+sgdisk --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300 /dev/nvme0n1
+```
+
 ## Mount the drives
 
 Mount the drives and format the root for `mkfs.ext4 /mnt`. Install `grub` and
