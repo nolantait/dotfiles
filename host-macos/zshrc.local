@@ -7,3 +7,8 @@ path=(
   "/opt/homebrew/opt/coreutils/libexec/gnubin"
   $path
 )
+
+# Load mise if available
+if [ command -v mise > /dev/null 2>&1 ]; then
+  eval "$(mise activate zsh)"
+fi

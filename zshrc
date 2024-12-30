@@ -66,5 +66,3 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
-
-eval "$(mise activate zsh)"
