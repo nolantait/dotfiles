@@ -36,7 +36,7 @@ swapon /dev/sdb2
 Pacstrap that shit
 
 ```
-pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode
+pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode grub
 ```
 
 Generate fstab to connect the drives on reboot automatically
@@ -75,6 +75,7 @@ Install `grub` and `grub-install` the boot directory.
 
 ```
 grub-install --target=i386-pc /dev/sdb
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 Exit and reboot
