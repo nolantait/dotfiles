@@ -16,7 +16,7 @@ sgdisk --zap-all /dev/sdb
 For example for BIOS/GPT:
 
 ```
-sgdisk --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300 /dev/sdb
+sgdisk --new=1:0:+1G --typecode=1:ef02 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300 /dev/sdb
 ```
 
 ## Mount the drives
