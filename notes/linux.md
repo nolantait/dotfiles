@@ -33,6 +33,12 @@ mount /dev/sdb3 /mnt
 swapon /dev/sdb2
 ```
 
+Pacstrap that shit
+
+```
+pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode
+```
+
 Generate fstab to connect the drives on reboot automatically
 
 ```
