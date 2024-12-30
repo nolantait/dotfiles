@@ -9,6 +9,6 @@ path=(
 )
 
 # Load mise if available
-if [ command -v mise > /dev/null 2>&1 ]; then
+if [ -x "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
 fi
