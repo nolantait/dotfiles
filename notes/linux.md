@@ -7,16 +7,77 @@ These are some notes about my latest arch install.
 Format disks with a boot/root/swap split using `fdisk`, use `gdisk` if you
    need to set EFI permissions from an existing drive.
 
+Wipe any old stuff from the target:
+
+```
+sgdisk --zap-all /dev/sdb
+```
+
 For example for BIOS/GPT:
 
 ```
-sgdisk --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300 /dev/nvme0n1
+sgdisk --new=1:0:+1G --typecode=1:ef00 --new=2:0:+4G --typecode=2:8200 --new=3:0:0 --typecode=3:8300 /dev/sdb
 ```
 
 ## Mount the drives
 
-Mount the drives and format the root for `mkfs.ext4 /mnt`. Install `grub` and
-`grub-install` the boot directory. Then reboot.
+```
+mkfs.ext4 /dev/sdb3
+mkswap /dev/sdb2
+```
+
+Then we can mount the drives and toggle the swap
+
+```
+mount /dev/sdb3 /mnt
+swapon /dev/sdb2
+```
+
+Generate fstab to connect the drives on reboot automatically
+
+```
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+Chroot to the mounted arch install
+
+```
+arch-chroot /mnt
+ln -sf /usr/share/zoneinfo/america/vancouver /etc/localtime
+```
+
+Edit /etc/locale.gen and uncomment en_US.UTF-8 UTF-8 and other needed UTF-8 locales. Generate the locales by running:
+```
+locale-gen
+```
+
+Create `locale.conf` file
+
+```
+# /etc/locale.conf
+
+LANG=en_US.UTF-8
+```
+
+Set root password:
+
+```
+passwd
+```
+
+Install `grub` and `grub-install` the boot directory.
+
+```
+grub-install --target=i386-pc /dev/sdb
+```
+
+Exit and reboot
+
+```
+exit
+umount /mnt
+reboot
+```
 
 ## Setup password
 
