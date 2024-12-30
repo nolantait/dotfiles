@@ -36,7 +36,7 @@ swapon /dev/sdb2
 Pacstrap that shit
 
 ```
-pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode grub
+pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode grub openssh
 ```
 
 Generate fstab to connect the drives on reboot automatically
@@ -50,6 +50,7 @@ Chroot to the mounted arch install
 ```
 arch-chroot /mnt
 systemctl enable NetworkManager
+systemctl enable sshd.service
 ln -sf /usr/share/zoneinfo/america/vancouver /etc/localtime
 ```
 
