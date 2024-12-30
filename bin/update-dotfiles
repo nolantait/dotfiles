@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+env RCRC=$HOME/dotfiles/rcrc rcdn "$*"
+env RCRC=$HOME/dotfiles/rcrc rcup "$*"

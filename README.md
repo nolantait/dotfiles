@@ -101,12 +101,12 @@ Install [rcm](https://github.com/thoughtbot/rcm):
 
 Install the dotfiles:
 
-    env RCRC=$HOME/dotfiles/rcrc rcup
+    env RCRC=$HOME/dotfiles/rcrc rcup -t git -t nvim
 
 Install for a specific `host-`:
 
-    env RCRC=$HOME/dotfiles/rcrc rcup -B linux
-    env RCRC=$HOME/dotfiles/rcrc rcup -B macos
+    env RCRC=$HOME/dotfiles/rcrc rcup -B linux -t git -t nvim
+    env RCRC=$HOME/dotfiles/rcrc rcup -B macos -t git -t nvim
 
 After the initial installation, you can run `rcup` without the one-time variable
 `RCRC` being set (`rcup` will symlink the repo's `rcrc` to `~/.rcrc` for future
