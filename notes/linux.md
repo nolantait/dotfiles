@@ -49,6 +49,7 @@ Chroot to the mounted arch install
 
 ```
 arch-chroot /mnt
+systemctl enable NetworkManager
 ln -sf /usr/share/zoneinfo/america/vancouver /etc/localtime
 ```
 
