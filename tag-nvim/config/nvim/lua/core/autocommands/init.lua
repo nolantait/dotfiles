@@ -111,6 +111,12 @@ function M.setup()
       vim.bo.filetype = "i3config"
     end,
   })
+  command({ "BufNewFile", "BufRead" }, {
+    desc = "Set the ansible filetype based on the project",
+    group = augroup("filetypes"),
+    pattern = "*.yml,*.yaml",
+    callback = require("core.autocommands.ansible_filetype"),
+  })
 end
 
 return M
