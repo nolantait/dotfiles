@@ -68,7 +68,7 @@ linux_package_names=(
 )
 
 # List of required commands
-required_commands=("bat" "eza" "asdf" "gh" "nvim" "jq" "fzf" "delta")
+required_commands=("bat" "eza" "mise" "gh" "nvim" "jq" "fzf" "delta")
 
 # Function to check if a command exists
 check_command() {
