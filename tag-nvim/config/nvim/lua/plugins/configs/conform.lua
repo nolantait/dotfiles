@@ -7,6 +7,7 @@ return function()
     formatters_by_ft = {
       javascript = { "prettier" },
       javascriptreact = { "prettier" },
+      typescriptreact = { "prettier" },
       lua = { "stylua" },
       html = { "htmlbeautifier" },
       svg = { "htmlbeautifier" },

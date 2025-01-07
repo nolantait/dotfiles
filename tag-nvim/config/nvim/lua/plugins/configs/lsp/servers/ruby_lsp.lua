@@ -62,7 +62,6 @@ return function(default_handlers)
         "dockerfile-rails",
         "letter_opener_web",
         "overcommit",
-        "prism",
         "syntax_suggest",
         "web-console"
       },
