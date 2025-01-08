@@ -16,7 +16,7 @@ return function()
       comment = "gc",
       comment_line = "gcc",
       comment_visual = "gc",
-      textobject = "gc"
-    }
+      textobject = "gc",
+    },
   })
 end

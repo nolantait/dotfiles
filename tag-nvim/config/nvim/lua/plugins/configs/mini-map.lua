@@ -22,7 +22,7 @@ return function()
 
       -- Scrollbar parts for view and line. Use empty string to disable any.
       scroll_line = icons.circle,
-      scroll_view = '┃',
+      scroll_view = "┃",
     },
 
     -- Window options (has a z-index of 10, no way to change currently)
@@ -31,7 +31,7 @@ return function()
       focusable = false,
 
       -- Side to stick ('left' or 'right')
-      side = 'right',
+      side = "right",
 
       -- Whether to show count of multiple integration highlights
       show_integration_count = false,
@@ -43,7 +43,7 @@ return function()
       winblend = 0,
 
       -- Z-index of the window (default: 10)
-      zindex = 20
+      zindex = 20,
     },
   })
 
@@ -53,7 +53,7 @@ return function()
     desc = "Swaps scrollbar for mini map if file is bigger than window",
     callback = function()
       -- Get the number of lines in the buffer
-      local total_lines = vim.fn.line('$')
+      local total_lines = vim.fn.line("$")
 
       -- Get the number of lines that can be displayed in the current window
       local window_height = vim.fn.winheight(0)
@@ -76,6 +76,6 @@ return function()
         vim.cmd("lua MiniMap.close()")
         vim.cmd("ScrollbarShow")
       end
-    end
+    end,
   })
 end

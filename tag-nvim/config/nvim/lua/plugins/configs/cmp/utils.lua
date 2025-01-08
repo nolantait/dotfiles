@@ -30,12 +30,12 @@ local kind_icons = {
   Event = icons.event,
   Operator = icons.coding.operator,
   TypeParameter = icons.coding.type,
-  Copilot = icons.copilot
+  Copilot = icons.copilot,
 }
 
 M.check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+  local col = vim.fn.col(".") - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
 M.format = function(entry, vim_item)
@@ -64,7 +64,6 @@ M.format = function(entry, vim_item)
   return vim_item
 end
 
-
 M.lsp_scores = function(entry_a, entry_b)
   local score_a = entry_a.completion_item.score
   local score_b = entry_b.completion_item.score
@@ -88,14 +87,13 @@ M.limit_lsp_types = function(entry, ctx)
     column = ctx.cursor.col,
   }
 
-  local char_before_cursor = string.sub(cursor.line, cursor.column - 1, cursor.column - 1)
+  local char_before_cursor =
+    string.sub(cursor.line, cursor.column - 1, cursor.column - 1)
   local char_after_dot = string.sub(cursor.line, cursor.column, cursor.column)
   local types = require("cmp.types").lsp.CompletionItemKind
 
-  if char_before_cursor == "." and char_after_dot:match "[a-zA-Z]" then
-    return kind == types.Method
-        or kind == types.Field
-        or kind == types.Property
+  if char_before_cursor == "." and char_after_dot:match("[a-zA-Z]") then
+    return kind == types.Method or kind == types.Field or kind == types.Property
   elseif string.match(cursor.line, "^%s+%w+$") then
     return kind == types.Function or kind == types.Variable
   elseif kind == require("cmp").lsp.CompletionItemKind.Text then
@@ -104,6 +102,5 @@ M.limit_lsp_types = function(entry, ctx)
 
   return true
 end
-
 
 return M

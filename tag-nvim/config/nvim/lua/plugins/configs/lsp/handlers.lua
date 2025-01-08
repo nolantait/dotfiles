@@ -34,33 +34,27 @@ M.setup = function()
     },
   })
 
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    {
+  vim.lsp.handlers["textDocument/signatureHelp"] =
+    vim.lsp.with(vim.lsp.handlers.signature_help, {
       focusable = false,
       max_height = 7,
       border = utils.border("FloatBorderDocs"),
-      silent = true
-    }
-  )
+      silent = true,
+    })
 
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    {
+  vim.lsp.handlers["textDocument/hover"] =
+    vim.lsp.with(vim.lsp.handlers.hover, {
       border = utils.border("FloatBorderDocs"),
-      silent = true
-    }
-  )
+      silent = true,
+    })
 
-  vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
+  vim.lsp.handlers["textDocument/publishDiagnostics"] =
+    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
       signs = true,
       underline = true,
       virtual_text = { severity = { min = vim.diagnostic.severity.HINT } },
-      update_in_insert = false
-    }
-  )
+      update_in_insert = false,
+    })
 end
 
 -- Provides navigation for LSP symbols for barbecue.nvim

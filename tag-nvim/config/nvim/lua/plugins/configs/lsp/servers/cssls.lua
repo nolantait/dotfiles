@@ -3,20 +3,20 @@ return {
     css = {
       validate = true,
       lint = {
-        unknownAtRules = "ignore"
-      }
+        unknownAtRules = "ignore",
+      },
     },
     scss = {
       validate = true,
       lint = {
-        unknownAtRules = "ignore"
-      }
+        unknownAtRules = "ignore",
+      },
     },
     less = {
       validate = true,
       lint = {
-        unknownAtRules = "ignore"
-      }
+        unknownAtRules = "ignore",
+      },
     },
-  }
+  },
 }

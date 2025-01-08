@@ -6,7 +6,7 @@ return function()
   illuminate.configure({
     delay = 200,
     providers = {
-      "regex"
+      "regex",
     },
     filetypes_denylist = {
       "DressingSelect",
@@ -17,11 +17,11 @@ return function()
       "alpha",
       "help",
       "toggleterm",
-      "Empty"
+      "Empty",
     },
     large_file_cutoff = 2000,
     large_file_overrides = {
-      providers = { "lsp" }
+      providers = { "lsp" },
     },
     max_file_lines = 2000,
     min_count_to_highlight = 1,

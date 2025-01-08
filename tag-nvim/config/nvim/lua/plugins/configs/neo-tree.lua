@@ -15,7 +15,10 @@ return function()
         if node:has_children() and node:is_expanded() then
           state.commands.toggle_node(state)
         else
-          require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+          require("neo-tree.ui.renderer").focus_node(
+            state,
+            node:get_parent_id()
+          )
         end
       end,
       -- https://github.com/AstroNvim/AstroNvim/blob/9054fa4c767f0327340d82411d4e7f10307d9aca/lua/astronvim/plugins/neo-tree.lua#L116C1-L131C13
@@ -24,11 +27,14 @@ return function()
         if node:has_children() then
           if not node:is_expanded() then -- if unexpanded, expand
             state.commands.toggle_node(state)
-          else                           -- if expanded and has children, seleect the next child
+          else -- if expanded and has children, seleect the next child
             if node.type == "file" then
               state.commands.open(state)
             else
-              require("neo-tree.ui.renderer").focus_node(state, node:get_child_ids()[1])
+              require("neo-tree.ui.renderer").focus_node(
+                state,
+                node:get_child_ids()[1]
+              )
             end
           end
         else -- if has no children
@@ -72,20 +78,20 @@ return function()
         handler = function(_)
           vim.opt_local.signcolumn = "auto"
           vim.opt_local.foldcolumn = "0"
-        end
+        end,
       },
     },
     filesystem = {
       follow_current_file = {
         enabled = true,
-        leave_dirs_open = false
+        leave_dirs_open = false,
       },
       hijack_netrw_behavior = "open_default",
       use_libuv_file_watcher = true,
       window = {
         mappings = {
-          h = "toggle_hidden"
-        }
+          h = "toggle_hidden",
+        },
       },
     },
     open_files_do_not_replace_types = {
@@ -93,7 +99,7 @@ return function()
       "terminal",
       "Trouble",
       "qf",
-      "Outline"
+      "Outline",
     },
     popup_border_style = "rounded",
     source_selector = {
@@ -102,15 +108,15 @@ return function()
       sources = {
         {
           source = "filesystem",
-          display_name = " " .. icons.folders.default .. " Files "
+          display_name = " " .. icons.folders.default .. " Files ",
         },
         {
           source = "buffers",
-          display_name = " " .. icons.pencil .. " Buffers "
+          display_name = " " .. icons.pencil .. " Buffers ",
         },
         {
           source = "git_status",
-          display_name = " " .. icons.git.branch .. " Git "
+          display_name = " " .. icons.git.branch .. " Git ",
         },
       },
       highlight_tab = "NeoTreeTab",
@@ -120,7 +126,7 @@ return function()
       highlight_separator_active = "NeoTreeSeparatorActive",
       show_separator_on_edge = false,
       separator_active = false,
-      tabs_layout = "focus"
+      tabs_layout = "focus",
     },
     update_in_insert = false,
     window = {
@@ -129,7 +135,7 @@ return function()
         o = "open",
         H = "prev_source",
         L = "next_source",
-        l = "child_or_open"
+        l = "child_or_open",
       },
     },
   })
@@ -144,16 +150,16 @@ return function()
     end,
   })
 
-  vim.api.nvim_create_autocmd('BufEnter', {
+  vim.api.nvim_create_autocmd("BufEnter", {
     -- make a group to be able to delete it later
-    group = vim.api.nvim_create_augroup('NeoTreeInit', { clear = true }),
+    group = vim.api.nvim_create_augroup("NeoTreeInit", { clear = true }),
     callback = function()
-      local f = vim.fn.expand('%:p')
+      local f = vim.fn.expand("%:p")
       if vim.fn.isdirectory(f) ~= 0 then
-        vim.cmd('Neotree current dir=' .. f)
+        vim.cmd("Neotree current dir=" .. f)
         -- neo-tree is loaded now, delete the init autocmd
-        vim.api.nvim_clear_autocmds { group = 'NeoTreeInit' }
+        vim.api.nvim_clear_autocmds({ group = "NeoTreeInit" })
       end
-    end
+    end,
   })
 end

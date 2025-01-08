@@ -53,5 +53,4 @@ return {
     command = "<cmd>lua require('dap').run_to_cursor()<CR>",
     description = "DAP run to cursor",
   },
-
 }

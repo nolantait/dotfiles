@@ -9,8 +9,8 @@ M.setup = function()
       icons = {
         package_installed = icons.check,
         package_pending = icons.download,
-        package_uninstalled = icons.x_mark
-      }
+        package_uninstalled = icons.x_mark,
+      },
     },
     keymaps = {
       toggle_server_expand = "<CR>",

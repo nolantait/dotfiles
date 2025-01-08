@@ -6,7 +6,7 @@ return function()
   copilot.setup({
     cmp = {
       enabled = true,
-      method = "getCompletionsCycling"
+      method = "getCompletionsCycling",
     },
     copilot_node_command = "node", -- Node.js version must be > 16.x
     filetypes = {
@@ -21,15 +21,15 @@ return function()
       ["neo-tree"] = false,
       ["."] = false,
       ["dap-repl"] = false,
-      ["yaml.ansible"] = true
+      ["yaml.ansible"] = true,
     },
     panel = {
       -- Disabled to not interfere with copilot-cmp
-      enabled = false
+      enabled = false,
     },
     suggestion = {
       -- Disabled to not interfere with copilot-cmp
-      enabled = false
+      enabled = false,
     },
     server_opts_overrides = {},
   })

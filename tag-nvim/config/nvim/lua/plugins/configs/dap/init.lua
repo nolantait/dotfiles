@@ -27,7 +27,7 @@ return function()
   dap.listeners.before.event_exited.dapui_config = debug_terminate
 
   dap.adapters.ruby = function(callback, config)
-    callback {
+    callback({
       type = "server",
       host = "127.0.0.1",
       port = "${port}",
@@ -48,7 +48,7 @@ return function()
           config.script,
         },
       },
-    }
+    })
   end
 
   dap.configurations.ruby = {
@@ -74,21 +74,25 @@ return function()
   local api = vim.api
   local keymap_restore = {}
 
-  dap.listeners.after['event_initialized']['me'] = function()
+  dap.listeners.after["event_initialized"]["me"] = function()
     for _, buf in pairs(api.nvim_list_bufs()) do
-      local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+      local keymaps = api.nvim_buf_get_keymap(buf, "n")
       for _, keymap in pairs(keymaps) do
         if keymap.lhs == "K" then
           table.insert(keymap_restore, keymap)
-          api.nvim_buf_del_keymap(buf, 'n', 'K')
+          api.nvim_buf_del_keymap(buf, "n", "K")
         end
       end
     end
     api.nvim_set_keymap(
-      'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+      "n",
+      "K",
+      '<Cmd>lua require("dap.ui.widgets").hover()<CR>',
+      { silent = true }
+    )
   end
 
-  dap.listeners.after['event_terminated']['me'] = function()
+  dap.listeners.after["event_terminated"]["me"] = function()
     for _, keymap in pairs(keymap_restore) do
       api.nvim_buf_set_keymap(
         keymap.buffer,
@@ -104,53 +108,38 @@ return function()
   -- We need to override nvim-dap's default highlight groups, AFTER requiring nvim-dap for catppuccin.
   vim.api.nvim_set_hl(0, "DapStopped", { fg = colors.green })
 
-  vim.fn.sign_define(
-    "DapBreakpoint",
-    {
-      text = icons.dap.breakpoint,
-      texthl = "DapBreakpoint",
-      linehl = "",
-      numhl = ""
-    }
-  )
+  vim.fn.sign_define("DapBreakpoint", {
+    text = icons.dap.breakpoint,
+    texthl = "DapBreakpoint",
+    linehl = "",
+    numhl = "",
+  })
 
-  vim.fn.sign_define(
-    "DapBreakpointCondition",
-    {
-      text = icons.dap.breakpoint_condition,
-      texthl = "DapBreakpoint",
-      linehl = "",
-      numhl = ""
-    }
-  )
+  vim.fn.sign_define("DapBreakpointCondition", {
+    text = icons.dap.breakpoint_condition,
+    texthl = "DapBreakpoint",
+    linehl = "",
+    numhl = "",
+  })
 
-  vim.fn.sign_define(
-    "DapStopped",
-    {
-      text = icons.dap.stopped,
-      texthl = "DapStopped",
-      linehl = "",
-      numhl = ""
-    }
-  )
+  vim.fn.sign_define("DapStopped", {
+    text = icons.dap.stopped,
+    texthl = "DapStopped",
+    linehl = "",
+    numhl = "",
+  })
 
-  vim.fn.sign_define(
-    "DapBreakpointRejected",
-    {
-      text = icons.dap.breakpoint_rejected,
-      texthl = "DapBreakpoint",
-      linehl = "",
-      numhl = ""
-    }
-  )
+  vim.fn.sign_define("DapBreakpointRejected", {
+    text = icons.dap.breakpoint_rejected,
+    texthl = "DapBreakpoint",
+    linehl = "",
+    numhl = "",
+  })
 
-  vim.fn.sign_define(
-    "DapLogPoint",
-    {
-      text = icons.dap.log_point,
-      texthl = "DapLogPoint",
-      linehl = "",
-      numhl = ""
-    }
-  )
+  vim.fn.sign_define("DapLogPoint", {
+    text = icons.dap.log_point,
+    texthl = "DapLogPoint",
+    linehl = "",
+    numhl = "",
+  })
 end

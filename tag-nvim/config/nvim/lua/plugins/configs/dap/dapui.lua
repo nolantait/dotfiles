@@ -28,8 +28,8 @@ return function()
             id = "scopes",
             size = 0.5, -- Can be float or integer > 1
           },
-          { id = "stacks",      size = 0.3 },
-          { id = "watches",     size = 0.1 },
+          { id = "stacks", size = 0.3 },
+          { id = "watches", size = 0.1 },
           { id = "breakpoints", size = 0.1 },
         },
         size = 0.25,
@@ -38,7 +38,7 @@ return function()
       {
         elements = {
           { id = "console", size = 0.25 },
-          { id = "repl",    size = 0.75 },
+          { id = "repl", size = 0.75 },
         },
         position = "bottom",
         size = 0.25,

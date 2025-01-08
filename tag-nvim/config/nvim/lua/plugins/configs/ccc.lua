@@ -9,14 +9,14 @@ return function()
       ccc.input.rgb,
       ccc.input.hsl,
       ccc.input.cmyk,
-      ccc.input.okhsl
+      ccc.input.okhsl,
     },
     outputs = {
       ccc.output.hex,
       ccc.output.hex_short,
       ccc.css_rgb,
       ccc.css_hsl,
-      ccc.css_oklch
+      ccc.css_oklch,
     },
     pickers = {
       ccc.picker.hex,
@@ -31,7 +31,7 @@ return function()
     },
     highlighter = {
       auto_enable = false,
-      lsp = false
-    }
+      lsp = false,
+    },
   })
 end

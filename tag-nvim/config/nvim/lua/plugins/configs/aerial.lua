@@ -162,7 +162,7 @@ return function()
         "terminal",
         "Trouble",
         "qf",
-        "Outline"
+        "Outline",
       },
 
       -- Ignored buftypes.

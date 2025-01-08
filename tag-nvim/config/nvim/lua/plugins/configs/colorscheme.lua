@@ -25,7 +25,7 @@ return function()
     terminal_color_11 = colors.cyan,
     terminal_color_13 = colors.blue,
     terminal_color_14 = colors.purple,
-    terminal_color_15 = colors.magenta
+    terminal_color_15 = colors.magenta,
   }
 
   for name, color in pairs(globals) do

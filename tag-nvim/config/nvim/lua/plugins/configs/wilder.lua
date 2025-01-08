@@ -35,8 +35,8 @@ return function()
     ),
   })
 
-  local popupmenu_renderer = wilder.popupmenu_renderer(
-    wilder.popupmenu_border_theme({
+  local popupmenu_renderer =
+    wilder.popupmenu_renderer(wilder.popupmenu_border_theme({
       max_height = "50%",
       border = "rounded",
       highlights = {
@@ -58,7 +58,7 @@ return function()
           icons = {
             ["+"] = icons.pencil,
             a = icons.arrow_right,
-            h = icons.files.new
+            h = icons.files.new,
           },
         }),
       },
@@ -66,8 +66,7 @@ return function()
         " ",
         wilder.popupmenu_scrollbar(),
       },
-    })
-  )
+    }))
 
   local wildmenu_renderer = wilder.wildmenu_renderer({
     apply_incsearch_fix = false,
@@ -91,6 +90,6 @@ return function()
       ":",
       "/",
       "?",
-    }
+    },
   })
 end

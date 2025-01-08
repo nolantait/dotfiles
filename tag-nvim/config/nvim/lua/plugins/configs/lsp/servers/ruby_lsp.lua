@@ -3,27 +3,41 @@ local function add_ruby_deps_command(client, bufnr)
     local params = vim.lsp.util.make_text_document_params()
     local showAll = opts.args == "all"
 
-    client.request("rubyLsp/workspace/dependencies", params, function(error, result)
-      if error then
-        print("Error showing deps: " .. error)
-        return
-      end
-
-      local qf_list = {}
-      for _, item in ipairs(result) do
-        if showAll or item.dependency then
-          table.insert(qf_list, {
-            text = string.format("%s (%s) - %s", item.name, item.version, item.dependency),
-            filename = item.path
-          })
+    client.request(
+      "rubyLsp/workspace/dependencies",
+      params,
+      function(error, result)
+        if error then
+          print("Error showing deps: " .. error)
+          return
         end
-      end
 
-      vim.fn.setqflist(qf_list)
-      vim.cmd('copen')
-    end, bufnr)
-  end,
-  {nargs = "?", complete = function() return {"all"} end})
+        local qf_list = {}
+        for _, item in ipairs(result) do
+          if showAll or item.dependency then
+            table.insert(qf_list, {
+              text = string.format(
+                "%s (%s) - %s",
+                item.name,
+                item.version,
+                item.dependency
+              ),
+              filename = item.path,
+            })
+          end
+        end
+
+        vim.fn.setqflist(qf_list)
+        vim.cmd("copen")
+      end,
+      bufnr
+    )
+  end, {
+    nargs = "?",
+    complete = function()
+      return { "all" }
+    end,
+  })
 end
 
 return function(default_handlers)
@@ -63,9 +77,9 @@ return function(default_handlers)
         "letter_opener_web",
         "overcommit",
         "syntax_suggest",
-        "web-console"
+        "web-console",
       },
-    }
+    },
   }
 
   require("lspconfig")["ruby_lsp"].setup(handlers)

@@ -20,14 +20,14 @@ return function()
       { mode = "n", keys = "t" },
 
       -- Marks
-      { mode = 'n', keys = "'" },
-      { mode = 'n', keys = '`' },
-      { mode = 'x', keys = "'" },
-      { mode = 'x', keys = '`' },
+      { mode = "n", keys = "'" },
+      { mode = "n", keys = "`" },
+      { mode = "x", keys = "'" },
+      { mode = "x", keys = "`" },
 
       -- Registers
-      { mode = 'n', keys = '"' },
-      { mode = 'x', keys = '"' },
+      { mode = "n", keys = '"' },
+      { mode = "x", keys = '"' },
       { mode = "i", keys = "<C-r>" },
       { mode = "c", keys = "<C-r>" },
 
@@ -39,7 +39,7 @@ return function()
       { mode = "x", keys = "z" },
 
       -- mini.surround keys
-      { mode = "n", keys = "s" }
+      { mode = "n", keys = "s" },
     },
 
     clues = {
@@ -55,7 +55,7 @@ return function()
       -- Floating window config
       config = {
         height = 100,
-        width = 50
+        width = 50,
       },
 
       -- Delay before showing clue window
@@ -64,6 +64,6 @@ return function()
       -- Keys to scroll inside the clue window
       scroll_down = "<C-j>",
       scroll_up = "<C-k>",
-    }
+    },
   })
 end

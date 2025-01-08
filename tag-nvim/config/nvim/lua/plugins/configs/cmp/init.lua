@@ -49,7 +49,7 @@ return function()
   }
 
   -- Setup cmp with everything above
-  cmp.setup {
+  cmp.setup({
     completion = {
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
@@ -74,10 +74,10 @@ return function()
       ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
       ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
       ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-      ["<C-e>"] = cmp.mapping {
+      ["<C-e>"] = cmp.mapping({
         i = cmp.mapping.abort(),
         c = cmp.mapping.close(),
-      },
+      }),
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
       ["<CR>"] = tainted.confirm({ select = false }),
@@ -111,7 +111,7 @@ return function()
       {
         name = "nvim_lsp",
         keyword_length = 5,
-        entry_filter = utils.limit_lsp_types
+        entry_filter = utils.limit_lsp_types,
       },
       { name = "path" },
     }, {
@@ -131,12 +131,12 @@ return function()
     },
     experimental = {
       ghost_text = {
-        hl_group = "CmpGhostText"
+        hl_group = "CmpGhostText",
       },
     },
     view = {
       entries = "custom", -- One of: "native" | "wildmenu" | "custom"
       docs = { auto_open = true },
-    }
-  }
+    },
+  })
 end

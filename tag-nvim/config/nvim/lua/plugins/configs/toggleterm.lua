@@ -42,12 +42,12 @@ return function()
     hide_numbers = true, -- Hide the number column in toggleterm buffers
     open_mapping = [[<C-\>]],
     shade_terminals = false,
-    shading_factor = "1",   -- The degree to darken the terminal color, 1 for dark, 3 for light
+    shading_factor = "1", -- The degree to darken the terminal color, 1 for dark, 3 for light
     start_in_insert = true,
     insert_mappings = true, -- Whether to apply mappings to insert mode as well
     persist_size = true,
     direction = "float",
     close_on_exit = true, -- Close the terminal window when the process exits
-    shell = vim.o.shell,  -- Change to use our set shell (/usr/bin/zsh)
+    shell = vim.o.shell, -- Change to use our set shell (/usr/bin/zsh)
   })
 end

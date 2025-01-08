@@ -15,7 +15,7 @@ return function()
         "nofile",
         "prompt",
         "quickfix",
-        "terminal"
+        "terminal",
       },
       filetypes = {
         "aerial",
@@ -41,6 +41,6 @@ return function()
     },
     indent = { char = "|" },
     scope = { enabled = false },
-    debounce = 500
+    debounce = 500,
   })
 end

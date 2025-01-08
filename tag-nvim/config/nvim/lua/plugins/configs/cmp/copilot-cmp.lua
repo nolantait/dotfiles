@@ -1,7 +1,7 @@
 -- DOCS: Provides copilot as a source to cmp
 
 local M = {
-  loaded = false
+  loaded = false,
 }
 
 M.setup = function()
@@ -13,7 +13,7 @@ M.setup = function()
     copilot_cmp.setup({
       method = "getCompletionsCycling",
       event = { "InsertEnter", "LspAttach" },
-      fix_pairs = true
+      fix_pairs = true,
     })
 
     local utils = require("utils.cmp")
@@ -34,7 +34,7 @@ M.apply = function(default)
     local copilot = require("copilot_cmp.comparators")
     local comparators = {
       copilot.prioritize,
-      copilot.score
+      copilot.score,
     }
 
     for _, v in pairs(comparators) do

@@ -8,15 +8,15 @@ return function()
     input = {
       default_prompt = icons.play .. " ",
       win_options = {
-        winhighlight = "Normal:Normal,NormalNC:Normal"
+        winhighlight = "Normal:Normal,NormalNC:Normal",
       },
     },
     select = {
       backend = { "telescope", "builtin" },
       builtin = {
         win_options = {
-          winhighlight = "Normal:Normal,NormalNC:Normal"
-        }
+          winhighlight = "Normal:Normal,NormalNC:Normal",
+        },
       },
     },
   })

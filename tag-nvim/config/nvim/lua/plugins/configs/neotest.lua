@@ -8,14 +8,14 @@ return function()
     adapters = {
       require("neotest-python"),
       require("rustaceanvim.neotest"),
-      require("neotest-rspec") {
+      require("neotest-rspec")({
         rspec_cmd = function(position_type)
           if position_type == "test" then
             return vim.tbl_flatten({
               "bundle",
               "exec",
               "rspec",
-              "--fail-fast"
+              "--fail-fast",
             })
           else
             return vim.tbl_flatten({
@@ -24,11 +24,11 @@ return function()
               "rspec",
             })
           end
-        end
-      }
+        end,
+      }),
     },
     diagnostic = {
-      enabled = false
+      enabled = false,
     },
     floating = {
       border = "rounded",
@@ -52,7 +52,7 @@ return function()
     run = { enabled = true },
     output = {
       enabled = true,
-      open_on_run = true
+      open_on_run = true,
     },
     quickfix = {
       enabled = true,
@@ -64,13 +64,13 @@ return function()
     status = {
       enabled = true,
       signs = true,
-      virtual_text = false
+      virtual_text = false,
     },
     strategies = {
       integrated = {
         height = 40,
-        width = 120
-      }
+        width = 120,
+      },
     },
     summary = {
       animated = true,
@@ -90,25 +90,31 @@ return function()
     },
   })
 
-  local neotest_ns = vim.api.nvim_create_namespace('neotest')
+  local neotest_ns = vim.api.nvim_create_namespace("neotest")
   vim.diagnostic.config({
     virtual_text = {
       format = function(diagnostic)
         local message = diagnostic.message
-            :gsub('\n', ' ')
-            :gsub('\t', ' ')
-            :gsub('%s+', ' ')
-            :gsub('^%s+', '')
+          :gsub("\n", " ")
+          :gsub("\t", " ")
+          :gsub("%s+", " ")
+          :gsub("^%s+", "")
         return message
       end,
     },
   }, neotest_ns)
 
   vim.cmd("command! TestNearest lua require('neotest').run.run()")
-  vim.cmd("command! TestFile lua require('neotest').run.run(vim.fn.expand('%'))")
+  vim.cmd(
+    "command! TestFile lua require('neotest').run.run(vim.fn.expand('%'))"
+  )
   vim.cmd("command! TestSummary lua require('neotest').summary.open()")
-  vim.cmd("command! TestOutput lua require('neotest').output.open({ enter = true, last_run = true })")
-  vim.cmd("command! TestOutputPanel lua require('neotest').output_panel.toggle()")
+  vim.cmd(
+    "command! TestOutput lua require('neotest').output.open({ enter = true, last_run = true })"
+  )
+  vim.cmd(
+    "command! TestOutputPanel lua require('neotest').output_panel.toggle()"
+  )
   vim.cmd("command! TestAttach lua require('neotest').run.attach()")
   vim.cmd("command! TestStop lua require('neotest').run.stop()")
 end

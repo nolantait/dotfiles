@@ -32,7 +32,7 @@ return function()
       "yaml",
     },
     matchup = {
-      enable = true
+      enable = true,
     },
     highlight = {
       enable = true, -- false will disable the whole extension
@@ -49,7 +49,7 @@ return function()
         init_selection = "<CR>",
         node_incremental = "<CR>",
         node_decremental = "<BS>",
-      }
-    }
+      },
+    },
   })
 end

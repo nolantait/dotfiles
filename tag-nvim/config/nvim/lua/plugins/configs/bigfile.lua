@@ -22,7 +22,7 @@ return function()
       if ok then
         barbeque.toggle(false)
       end
-    end
+    end,
   }
 
   local tscontext = {
@@ -33,7 +33,7 @@ return function()
       if ok then
         vim.cmd("TSContextDisable")
       end
-    end
+    end,
   }
 
   local lualine = {
@@ -44,7 +44,7 @@ return function()
       if ok then
         lualine.hide({ unhide = false })
       end
-    end
+    end,
   }
 
   local colorizer = {
@@ -55,13 +55,13 @@ return function()
       if ok then
         colorizer.turnOff()
       end
-    end
+    end,
   }
 
   bigfile.setup({
-    filesize = 1,      -- size of the file in MiB, the plugin round file sizes to the closest MiB
+    filesize = 1, -- size of the file in MiB, the plugin round file sizes to the closest MiB
     pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-    features = {       -- features to disable
+    features = { -- features to disable
       "indent_blankline",
       "illuminate",
       "lsp",
@@ -74,7 +74,7 @@ return function()
       barbeque,
       tscontext,
       lualine,
-      colorizer
+      colorizer,
     },
   })
 end

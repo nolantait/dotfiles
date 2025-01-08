@@ -26,16 +26,24 @@ return function()
       b = { fg = lualine_colors.b.fg, bg = lualine_colors.b.bg },
       c = { fg = lualine_colors.c.fg, bg = lualine_colors.c.bg },
     },
-    command = { a = { fg = colors.background, bg = colors.orange, gui = "bold" } },
+    command = {
+      a = { fg = colors.background, bg = colors.orange, gui = "bold" },
+    },
     insert = { a = { fg = colors.background, bg = colors.blue, gui = "bold" } },
-    visual = { a = { fg = colors.background, bg = colors.yellow, gui = "bold" } },
-    replace = { a = { fg = colors.background, bg = colors.green, gui = "bold" } },
-    terminal = { a = { fg = colors.background, bg = colors.cyan, gui = "bold" } },
+    visual = {
+      a = { fg = colors.background, bg = colors.yellow, gui = "bold" },
+    },
+    replace = {
+      a = { fg = colors.background, bg = colors.green, gui = "bold" },
+    },
+    terminal = {
+      a = { fg = colors.background, bg = colors.cyan, gui = "bold" },
+    },
     inactive = {
       a = { fg = colors.white, bg = colors.background, gui = "bold" },
       b = { fg = colors.white, bg = colors.background },
       c = { fg = colors.white, bg = colors.background },
-    }
+    },
   }
 
   -- local empty = require("lualine.component"):extend()
@@ -58,7 +66,9 @@ return function()
     symbols = { error = icons.error .. " " },
     update_in_insert = false,
     always_visible = true,
-    diagnostics_color = { error = { bg = lualine_colors.b.bg, fg = colors.red } },
+    diagnostics_color = {
+      error = { bg = lualine_colors.b.bg, fg = colors.red },
+    },
   }
 
   local warn = {
@@ -68,7 +78,9 @@ return function()
     symbols = { warn = icons.warn .. " " },
     update_in_insert = false,
     always_visible = true,
-    diagnostics_color = { warn = { bg = lualine_colors.b.bg, fg = colors.yellow } },
+    diagnostics_color = {
+      warn = { bg = lualine_colors.b.bg, fg = colors.yellow },
+    },
   }
 
   local diff = {
@@ -77,9 +89,9 @@ return function()
     symbols = {
       added = icons.git.added .. " ",
       modified = icons.git.modified .. " ",
-      removed = icons.git.removed .. " "
+      removed = icons.git.removed .. " ",
     }, -- changes diff symbols
-    cond = has_enough_room
+    cond = has_enough_room,
   }
 
   local mode = {
@@ -94,7 +106,7 @@ return function()
     colored = true,
     icon_only = false,
     icon = { align = "left" },
-    cond = has_enough_room
+    cond = has_enough_room,
   }
 
   local branch = {
@@ -114,36 +126,36 @@ return function()
           sleep = colors.light_gray,
           disabled = colors.red,
           warning = colors.yellow,
-          unknown = colors.yellow
-        }
+          unknown = colors.yellow,
+        },
       },
-      spinner_color = colors.blue
+      spinner_color = colors.blue,
     },
-    show_colors = true
+    show_colors = true,
   }
 
   local file_location = {
     require("components.file_location"),
-    padding = 1
+    padding = 1,
   }
 
   local cwd = {
     require("components.cwd"),
     padding = 1,
     color = { fg = colors.light_gray },
-    cond = has_enough_room
+    cond = has_enough_room,
   }
 
   local lsp_status = {
     require("components.lsp_status"),
     color = { fg = colors.light_gray },
     cond = has_enough_room,
-    padding = 1
+    padding = 1,
   }
 
   local encoding = {
     "encoding",
-    cond = has_enough_room
+    cond = has_enough_room,
   }
 
   local fileformat = {
@@ -151,9 +163,9 @@ return function()
     symbols = {
       unix = "LF",
       dos = "CRLF",
-      mac = "CR"
+      mac = "CR",
     },
-    padding = { right = 1 }
+    padding = { right = 1 },
   }
 
   lualine.setup({
@@ -163,14 +175,14 @@ return function()
       component_separators = { left = "", right = "" },
       section_separators = {
         left = icons.separators.top_left_wedge,
-        right = icons.separators.left_semicircle
+        right = icons.separators.left_semicircle,
       },
       disabled_filetypes = {
         "alpha",
         "dashboard",
         "NvimTree",
         "Outline",
-        "neo-tree"
+        "neo-tree",
       },
       always_divide_middle = false,
     },
@@ -184,7 +196,7 @@ return function()
         fileformat,
         filetype,
         copilot_status,
-        lsp_status
+        lsp_status,
       },
       lualine_y = { cwd },
       lualine_z = { file_location },

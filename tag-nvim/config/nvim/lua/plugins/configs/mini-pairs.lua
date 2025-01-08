@@ -34,11 +34,14 @@ return function()
     local next = line:sub(cursor[2] + 1, cursor[2] + 1)
     local before = line:sub(1, cursor[2])
 
-    if opts.markdown
-        and opening == "`"
-        and vim.bo.filetype == "markdown"
-        and before:match("^%s*``") then
-      return "`\n```" .. vim.api.nvim_replace_termcodes("<up>", true, true, true)
+    if
+      opts.markdown
+      and opening == "`"
+      and vim.bo.filetype == "markdown"
+      and before:match("^%s*``")
+    then
+      return "`\n```"
+        .. vim.api.nvim_replace_termcodes("<up>", true, true, true)
     end
 
     if opts.skip_next and next ~= "" and next:match(opts.skip_next) then
@@ -73,7 +76,10 @@ return function()
   end
 
   vim.api.nvim_create_autocmd({ "FileType" }, {
-    group = vim.api.nvim_create_augroup("rust_disable_single_quote_pairs", { clear = true }),
+    group = vim.api.nvim_create_augroup(
+      "rust_disable_single_quote_pairs",
+      { clear = true }
+    ),
     pattern = "rust",
     callback = function()
       vim.keymap.set("i", "'", "'", { buffer = 0 })

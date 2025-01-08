@@ -6,10 +6,10 @@ return function()
   local icons = require("globals.icons")
   local trouble = require("trouble.sources.telescope")
 
-  local actions = require "telescope.actions"
-  local previewers = require "telescope.previewers"
-  local themes = require "telescope.themes"
-  local sorters = require "telescope.sorters"
+  local actions = require("telescope.actions")
+  local previewers = require("telescope.previewers")
+  local themes = require("telescope.themes")
+  local sorters = require("telescope.sorters")
 
   telescope.setup({
     defaults = {
@@ -28,7 +28,7 @@ return function()
         "%.pdf",
         "%.mkv",
         "%.mp4",
-        "%.zip"
+        "%.zip",
       },
       generic_sorter = sorters.get_generic_fuzzy_sorter,
       file_previewer = previewers.vim_buffer_cat.new,
@@ -80,11 +80,12 @@ return function()
           ["<PageDown>"] = actions.results_scrolling_down,
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-          ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+          ["<S-Tab>"] = actions.toggle_selection
+            + actions.move_selection_better,
           ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           ["<C-Tab>"] = actions.complete_tag,
-          ["<C-_>"] = actions.which_key,   -- keys from pressing <C-/>
+          ["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
         },
         n = {
           ["<C-t"] = trouble.open,
@@ -96,7 +97,8 @@ return function()
           ["<C-t>"] = actions.select_tab,
 
           ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-          ["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
+          ["<S-Tab>"] = actions.toggle_selection
+            + actions.move_selection_better,
           ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 
@@ -121,7 +123,7 @@ return function()
         },
       },
       qflist_previewer = previewers.vim_buffer_qflist.new,
-      set_env = { ["COLORTERM"] = "truecolor" },   -- default = nil,
+      set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       winblend = 0,
       vimgrep_arguments = {
         "rg",
@@ -132,12 +134,12 @@ return function()
         "--column",
         "--smart-case",
         "--hidden",
-        "--glob=!.git/"
-      }
+        "--glob=!.git/",
+      },
     },
     pickers = {
       find_files = {
-        hidden = true
+        hidden = true,
       },
       lsp_references = { theme = "dropdown" },
       lsp_code_actions = { theme = "dropdown" },
@@ -158,10 +160,10 @@ return function()
         ignore_patterns = {
           "*.git/*",
           "*/tmp/*",
-          "term://*"
+          "term://*",
         },
         db_safe_mode = false,
-        auto_validate = true
+        auto_validate = true,
       },
       fzf = {
         fuzzy = true,
@@ -170,11 +172,11 @@ return function()
         case_mode = "smart_case",
       },
       ["ui-select"] = {
-        themes.get_dropdown {},
+        themes.get_dropdown({}),
       },
-    }
+    },
   })
 
-  telescope.load_extension "ui-select"
-  telescope.load_extension "fzf"
+  telescope.load_extension("ui-select")
+  telescope.load_extension("fzf")
 end

@@ -8,13 +8,13 @@ return function()
       animation = mini_indentscope.gen_animation.quadratic({
         easing = "out",
         duration = 400,
-        unit = "total"
-      })
+        unit = "total",
+      }),
     },
     symbol = "╎",
     options = {
       try_as_border = true,
-    }
+    },
   })
 
   -- Create an autocommand to disable the plugin on certain filetypes

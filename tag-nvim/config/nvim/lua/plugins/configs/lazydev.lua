@@ -1,4 +1,3 @@
-
 return function()
   local cmp = require("cmp")
   local lazydev = require("lazydev")
@@ -11,7 +10,7 @@ return function()
   lazydev.setup({
     library = {
       "core",
-      "luvit-meta/library"
-    }
+      "luvit-meta/library",
+    },
   })
 end

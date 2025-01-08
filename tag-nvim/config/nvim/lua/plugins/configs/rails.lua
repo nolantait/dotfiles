@@ -5,18 +5,18 @@ return function()
   vim.g.rails_projections = {
     ["app/components/**/component.rb"] = {
       test = {
-        "spec/components/{}_spec.rb"
+        "spec/components/{}_spec.rb",
       },
     },
     ["app/components/**/component.html.erb"] = {
       alternate = {
-        "app/components/{}/component.rb"
-      }
+        "app/components/{}/component.rb",
+      },
     },
     ["spec/components/*_spec.rb"] = {
       alternate = {
-        "app/components/{}/component.rb"
-      }
-    }
+        "app/components/{}/component.rb",
+      },
+    },
   }
 end

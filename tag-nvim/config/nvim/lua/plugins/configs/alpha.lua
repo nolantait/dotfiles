@@ -22,14 +22,46 @@ return function()
   }
 
   dashboard.section.buttons.val = {
-    dashboard.button("s", icons.source .. " Open session", "<cmd>lua MiniSessions.select()<CR>"),
-    dashboard.button("f", icons.files.find .. " Find file", "<cmd>Telescope find_files<CR>"),
-    dashboard.button("e", icons.files.new .. " New file", ":ene <BAR> startinsert <CR>"),
-    dashboard.button("r", icons.files.code .. " Frequently used files", "<cmd>Telescope frecency workspace=CWD<CR>"),
-    dashboard.button("\\", icons.text .. " Find text", "<cmd>Telescope live_grep <CR>"),
-    dashboard.button("u", icons.download .. " Update plugins", "<cmd>Lazy sync<cr>"),
-    dashboard.button("U", icons.download .. " Update language servers", "<cmd>MasonUpdateAll<CR>"),
-    dashboard.button("c", icons.gear .. " Configuration", "<cmd>Neotree ~/.config/nvim<CR>"),
+    dashboard.button(
+      "s",
+      icons.source .. " Open session",
+      "<cmd>lua MiniSessions.select()<CR>"
+    ),
+    dashboard.button(
+      "f",
+      icons.files.find .. " Find file",
+      "<cmd>Telescope find_files<CR>"
+    ),
+    dashboard.button(
+      "e",
+      icons.files.new .. " New file",
+      ":ene <BAR> startinsert <CR>"
+    ),
+    dashboard.button(
+      "r",
+      icons.files.code .. " Frequently used files",
+      "<cmd>Telescope frecency workspace=CWD<CR>"
+    ),
+    dashboard.button(
+      "\\",
+      icons.text .. " Find text",
+      "<cmd>Telescope live_grep <CR>"
+    ),
+    dashboard.button(
+      "u",
+      icons.download .. " Update plugins",
+      "<cmd>Lazy sync<cr>"
+    ),
+    dashboard.button(
+      "U",
+      icons.download .. " Update language servers",
+      "<cmd>MasonUpdateAll<CR>"
+    ),
+    dashboard.button(
+      "c",
+      icons.gear .. " Configuration",
+      "<cmd>Neotree ~/.config/nvim<CR>"
+    ),
     dashboard.button("q", icons.cross .. " Quit Neovim", ":qa<CR>"),
   }
 
@@ -45,17 +77,17 @@ return function()
     local stats = require("lazy").stats()
     local ms = stats.startuptime
     local plugins_text = icons.vim
-        .. " v"
-        .. vim.version().major
-        .. "."
-        .. vim.version().minor
-        .. "."
-        .. vim.version().patch
-        .. "     "
-        .. stats.count
-        .. " plugins in "
-        .. ms
-        .. "ms"
+      .. " v"
+      .. vim.version().major
+      .. "."
+      .. vim.version().minor
+      .. "."
+      .. vim.version().patch
+      .. "     "
+      .. stats.count
+      .. " plugins in "
+      .. ms
+      .. "ms"
 
     -- Quote
     local fortune = require("alpha.fortune")
@@ -69,8 +101,11 @@ return function()
   dashboard.section.header.opts.hl = "AlphaHeader"
 
   local head_butt_padding = 1
-  local occu_height = #dashboard.section.header.val + 2 * #dashboard.section.buttons.val + head_butt_padding
-  local header_padding = math.max(0, math.ceil((vim.fn.winheight("$") - occu_height) * 0.25))
+  local occu_height = #dashboard.section.header.val
+    + 2 * #dashboard.section.buttons.val
+    + head_butt_padding
+  local header_padding =
+    math.max(0, math.ceil((vim.fn.winheight("$") - occu_height) * 0.25))
   local foot_butt_padding = 0
 
   dashboard.config.layout = {

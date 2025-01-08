@@ -12,25 +12,25 @@ return function()
       completed = "Completed", -- message shown when task completes
     },
     align = {
-      bottom = true,   -- align fidgets along bottom edge of buffer
-      right = true,    -- align fidgets along right edge of buffer
+      bottom = true, -- align fidgets along bottom edge of buffer
+      right = true, -- align fidgets along right edge of buffer
     },
     timer = {
-      spinner_rate = 125,    -- frame rate of spinner animation, in ms
-      fidget_decay = 2000,   -- how long to keep around empty fidget, in ms
-      task_decay = 1000,     -- how long to keep around completed task, in ms
+      spinner_rate = 125, -- frame rate of spinner animation, in ms
+      fidget_decay = 2000, -- how long to keep around empty fidget, in ms
+      task_decay = 1000, -- how long to keep around completed task, in ms
     },
     window = {
       relative = "win",
-      blend = 0,   -- catppuccin integration
+      blend = 0, -- catppuccin integration
       zindex = nil,
-      border = "rounded"
+      border = "rounded",
     },
     fmt = {
-      leftpad = true,         -- right-justify text in fidget box
-      stack_upwards = true,   -- list of tasks grows upwards
-      max_messages = 3,       -- The maximum number of messages stacked at any give time
-      max_width = 0,          -- maximum width of the fidget box
+      leftpad = true, -- right-justify text in fidget box
+      stack_upwards = true, -- list of tasks grows upwards
+      max_messages = 3, -- The maximum number of messages stacked at any give time
+      max_width = 0, -- maximum width of the fidget box
       -- function to format fidget title
       fidget = function(fidget_name, spinner)
         return string.format("%s %s", spinner, fidget_name)
@@ -46,8 +46,8 @@ return function()
       end,
     },
     debug = {
-      logging = false,   -- whether to enable logging, for debugging
-      strict = false,    -- whether to interpret LSP strictly
+      logging = false, -- whether to enable logging, for debugging
+      strict = false, -- whether to interpret LSP strictly
     },
   })
 end

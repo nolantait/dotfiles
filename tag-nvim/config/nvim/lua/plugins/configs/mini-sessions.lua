@@ -21,7 +21,7 @@ return function()
     force = {
       read = false,
       write = true,
-      delete = false
+      delete = false,
     },
 
     -- Hook functions for actions. Default `nil` means 'do nothing'.
@@ -31,13 +31,13 @@ return function()
       pre = {
         read = nil,
         write = nil,
-        delete = nil
+        delete = nil,
       },
       -- After successful action
       post = {
         read = nil,
         write = nil,
-        delete = nil
+        delete = nil,
       },
     },
 

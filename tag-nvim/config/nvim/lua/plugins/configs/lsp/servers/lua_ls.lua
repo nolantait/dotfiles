@@ -2,10 +2,10 @@ return {
   settings = {
     Lua = {
       completion = {
-        callSnippet = "Replace"
+        callSnippet = "Replace",
       },
       doc = {
-        privateName = { "^_" }
+        privateName = { "^_" },
       },
       diagnostics = {
         globals = {
@@ -13,8 +13,8 @@ return {
           "it",
           "describe",
           "before_each",
-          "after_each"
-        }
+          "after_each",
+        },
       },
       hint = {
         enable = true,
@@ -22,7 +22,7 @@ return {
         paramType = true,
         paramName = "Disable",
         semicolon = "Disable",
-        arrayIndex = "Disable"
+        arrayIndex = "Disable",
       },
       format = { enable = true },
       telemetry = { enable = false },
@@ -31,7 +31,7 @@ return {
       codeLens = { enable = true },
       workspace = {
         checkThirdParty = false,
-      }
-    }
-  }
+      },
+    },
+  },
 }

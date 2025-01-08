@@ -3,25 +3,25 @@ return {
     mode = "n",
     key = "T",
     command = "<cmd>TestOutputPanel<CR>",
-    description = "Open test output panel"
+    description = "Open test output panel",
   },
   {
     mode = "n",
     key = "<C-t>",
     command = "<cmd>TestOutput<CR>",
-    description = "Open test output"
+    description = "Open test output",
   },
   {
     mode = "n",
     key = "tS",
     command = "<cmd>TestStop<CR>",
-    description = "Stop a running test"
+    description = "Stop a running test",
   },
   {
     mode = "n",
     key = "<A-t>",
     command = "<cmd>TestAttach<CR>",
-    description = "Attach to a running test"
+    description = "Attach to a running test",
   },
   {
     mode = "n",

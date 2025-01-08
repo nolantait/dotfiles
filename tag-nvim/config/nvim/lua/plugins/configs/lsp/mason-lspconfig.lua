@@ -22,7 +22,8 @@ M.setup = function(handlers)
       return
     end
 
-    local ok, custom_handler = pcall(require, "plugins.configs.lsp.servers." .. lsp_name)
+    local ok, custom_handler =
+      pcall(require, "plugins.configs.lsp.servers." .. lsp_name)
     -- Use preset if there is no user definition
     if not ok then
       -- Default to use factory config for server(s) that doesn't include a spec
@@ -34,17 +35,16 @@ M.setup = function(handlers)
       --- See `clangd.lua` for example.
       custom_handler(handlers)
     elseif type(custom_handler) == "table" then
-      lspconfig[lsp_name].setup(vim.tbl_deep_extend("force", handlers, custom_handler))
+      lspconfig[lsp_name].setup(
+        vim.tbl_deep_extend("force", handlers, custom_handler)
+      )
     else
       local error_message = string.format(
         "Failed to setup [%s].\n\nServer definition under `completion/servers` must return\neither a fun(opts) or a table (got '%s' instead)",
         lsp_name,
         type(custom_handler)
       )
-      notify.error(
-        error_message,
-        "nvim-lspconfig"
-      )
+      notify.error(error_message, "nvim-lspconfig")
     end
   end
 

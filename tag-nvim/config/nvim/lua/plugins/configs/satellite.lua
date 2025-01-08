@@ -12,7 +12,7 @@ return function()
     handlers = {
       cursor = {
         enable = true,
-        symbols = { "█" }
+        symbols = { "█" },
       },
       search = {
         enable = true,
