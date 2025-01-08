@@ -14,12 +14,12 @@ function M.setup()
     local present, plug = pcall(require, plugin)
 
     if present then
-        return present, plug
+      return present, plug
     end
 
     local errmsg = string.format("Could not load %s", plugin)
     if verbose then
-        errmsg = string.format("%s\nError:%s", plug)
+      errmsg = string.format("%s\nError:%s", plug)
     end
     notify.error(errmsg, "Prequire failed")
 

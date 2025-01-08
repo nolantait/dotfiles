@@ -10,7 +10,7 @@ return function(event)
     "<cmd>close<cr>", -- Quit the buffer
     {
       buffer = event.buf, -- The buffer to quit
-      silent = true -- Do not show the command in the command line
+      silent = true, -- Do not show the command in the command line
     }
   )
 end

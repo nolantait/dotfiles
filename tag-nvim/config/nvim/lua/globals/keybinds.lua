@@ -14,7 +14,7 @@ return {
   {
     mode = "n",
     key = "<Leader>a",
-    command = "<cmd>%s/>\\s*</>\\r</g<CR>"
+    command = "<cmd>%s/>\\s*</>\\r</g<CR>",
   },
   {
     mode = "n",

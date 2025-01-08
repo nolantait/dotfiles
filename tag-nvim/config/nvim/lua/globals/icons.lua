@@ -67,7 +67,7 @@ return {
   },
   separators = {
     top_left_wedge = "",
-    left_semicircle = ""
+    left_semicircle = "",
   },
   folders = {
     closed = "",
@@ -101,5 +101,5 @@ return {
     struct = "",
     operator = "",
     type = "󰛦",
-  }
+  },
 }

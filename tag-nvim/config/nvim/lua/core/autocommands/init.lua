@@ -17,9 +17,9 @@ function M.setup()
     group = augroup("relative_numbers"),
     pattern = "[V\x16]*:*",
     callback = function()
-      local matching = string.find(vim.fn.mode(), '^[V\22]') ~= nil
+      local matching = string.find(vim.fn.mode(), "^[V\22]") ~= nil
       vim.wo.relativenumber = matching
-    end
+    end,
   })
 
   command("ModeChanged", {
@@ -28,7 +28,7 @@ function M.setup()
     pattern = "*:[V\x16]*",
     callback = function()
       vim.wo.relativenumber = vim.wo.number
-    end
+    end,
   })
 
   command("TermOpen", {

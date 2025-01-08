@@ -9,7 +9,7 @@ function M.setup()
     "vim",
     "prequire",
     "keymaps",
-    "autocommands"
+    "autocommands",
   }
 
   for _, module in ipairs(modules) do

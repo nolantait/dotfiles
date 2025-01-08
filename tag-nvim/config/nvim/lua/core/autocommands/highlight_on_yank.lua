@@ -3,6 +3,6 @@
 return function()
   vim.highlight.on_yank({
     higroup = "Visual",
-    timeout = 200
+    timeout = 200,
   })
 end

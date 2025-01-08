@@ -10,8 +10,8 @@ local M = {
     -- suppresses the display of most error messages and the displaying of the
     -- command executed. This is helpful to prevent error messages or status
     -- messages from appearing in the command line when the mapping is executed.
-    silent = true
-  }
+    silent = true,
+  },
 }
 
 local keymap = vim.api.nvim_set_keymap
@@ -20,24 +20,13 @@ local bind_keys = function(keybinds)
   for _, keybind in ipairs(keybinds) do
     if type(keybind.mode) == "table" then
       for _, mode in ipairs(keybind.mode) do
-        keymap(
-          mode,
-          keybind.key,
-          keybind.command,
-          M.options
-        )
+        keymap(mode, keybind.key, keybind.command, M.options)
       end
     else
-      keymap(
-        keybind.mode,
-        keybind.key,
-        keybind.command,
-        M.options
-      )
+      keymap(keybind.mode, keybind.key, keybind.command, M.options)
     end
   end
 end
-
 
 function M.setup()
   -- Unbind

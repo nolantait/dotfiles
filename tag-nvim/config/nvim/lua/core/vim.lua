@@ -49,7 +49,7 @@ local M = {
       "ini=dosini",
       "py=python",
       "rb=ruby",
-      "ruby"
+      "ruby",
     },
     -- Highlight YAML/TOML/JSON front matter.
     vim_markdown_frontmatter = true,
@@ -58,70 +58,70 @@ local M = {
     rust_recommended_style = 1,
   },
   options = {
-    backup = false,                                      -- Prevents creating a backup file
-    backspace = "2",                                     -- Backspace deletes like most programs in insert mode
-    breakindent = true,                                  -- Wrap indent to match line start
-    clipboard = "unnamedplus",                           -- Allows neovim to access the system clipboard
-    cmdheight = 0,                                       -- More space in the neovim command line for displaying messages
-    completeopt = { "menu", "menuone", "noselect" },     -- Mostly just for cmp
-    copyindent = true,                                   -- Copy the previous indentation on autoindenting
-    conceallevel = 0,                                    -- So that `` is visible in markdown files
-    colorcolumn = "+1",                                  -- Highlight the 80th column
-    cursorline = true,                                   -- Highlight the current line
-    expandtab = true,                                    -- Convert tabs to spaces
-    fileencoding = "utf-8",                              -- The encoding written to a file
-    fileformats = "unix,dos,mac",                        -- Prefer UNIX over Windows
+    backup = false, -- Prevents creating a backup file
+    backspace = "2", -- Backspace deletes like most programs in insert mode
+    breakindent = true, -- Wrap indent to match line start
+    clipboard = "unnamedplus", -- Allows neovim to access the system clipboard
+    cmdheight = 0, -- More space in the neovim command line for displaying messages
+    completeopt = { "menu", "menuone", "noselect" }, -- Mostly just for cmp
+    copyindent = true, -- Copy the previous indentation on autoindenting
+    conceallevel = 0, -- So that `` is visible in markdown files
+    colorcolumn = "+1", -- Highlight the 80th column
+    cursorline = true, -- Highlight the current line
+    expandtab = true, -- Convert tabs to spaces
+    fileencoding = "utf-8", -- The encoding written to a file
+    fileformats = "unix,dos,mac", -- Prefer UNIX over Windows
     fillchars = "eob: ",
-    formatoptions = "qjl1",                              -- Don't auto format comments
-    history = 100,                                       -- Number of commands to remember in a history table
-    hlsearch = true,                                     -- Highlight all matches on previous search pattern
-    ignorecase = true,                                   -- Ignore case in search patterns
-    incsearch = true,                                    -- Show search matches as you type
-    infercase = true,                                    -- Infer cases in keyword completion
-    joinspaces = false,                                  -- One space after punctuation
-    jumpoptions = "stack,view",                          -- Jump to the last known position when opening a file
-    laststatus = 0,                                      -- Global status
-    linebreak = true,                                    -- Wrap lines at 'breakat'
-    list = true,                                         -- Show some invisible characters
+    formatoptions = "qjl1", -- Don't auto format comments
+    history = 100, -- Number of commands to remember in a history table
+    hlsearch = true, -- Highlight all matches on previous search pattern
+    ignorecase = true, -- Ignore case in search patterns
+    incsearch = true, -- Show search matches as you type
+    infercase = true, -- Infer cases in keyword completion
+    joinspaces = false, -- One space after punctuation
+    jumpoptions = "stack,view", -- Jump to the last known position when opening a file
+    laststatus = 0, -- Global status
+    linebreak = true, -- Wrap lines at 'breakat'
+    list = true, -- Show some invisible characters
     listchars = { tab = "»·", trail = "·", nbsp = "·" }, -- Set listchars
-    mouse = "a",                                         -- Allow the mouse to be used in neovim
-    mousemoveevent = true,                               -- Enable mouse events for bufferline reveal
-    modeline = false,                                    -- Disable modelines as security precaution
-    number = true,                                       -- Set numbered lines
-    numberwidth = 2,                                     -- Set number column width to 2 {default 4}
-    pumblend = 0,                                        -- Make popup windows blend
-    pumheight = 10,                                      -- Pop up menu height
-    preserveindent = true,                               -- Preserve indent structure as much as possible
-    relativenumber = false,                              -- Set relative numbered lines
-    ruler = false,                                       -- Show position
-    scrolloff = 8,                                       -- Set offset to start scrolling vertically
-    sidescrolloff = 8,                                   -- Set offset to scroll sideways
-    signcolumn = "yes",                                  -- Always show the sign column, otherwise it would shift the text each time
-    spelllang = { "en_us" },                                -- Set spellcheck language
-    shiftwidth = 2,                                      -- The number of spaces inserted for each indentation
-    showmode = false,                                    -- We don't need to see things like -- INSERT -- anymore
-    showtabline = 2,                                     -- Always show tabs
-    smartcase = true,                                    -- Smart case
-    smartindent = true,                                  -- Make indenting smarter again
-    softtabstop = 2,                                     -- Insert 2 spaces for a tab
-    splitkeep = "screen",                                -- Reduce scroll during window split
-    splitbelow = true,                                   -- Force all horizontal splits to go below current window
-    splitright = true,                                   -- Force all vertical splits to go to the right of current window
-    swapfile = false,                                    -- Don't use swapfiles
-    tabstop = 2,                                         -- Insert 2 spaces for a tab
-    textwidth = 80,                                      -- Set max width to 80 characters
-    termguicolors = true,                                -- Set term gui colors (most terminals support this)
-    timeoutlen = 500,                                    -- Time to wait for a mapped sequence to complete (in milliseconds)
-    ttyfast = true,                                      -- Assume fast terminal connection
-    undofile = true,                                     -- Enable persistent undo
-    undolevels = 10000,                                  -- Number of undo levels
-    updatetime = 100,                                    -- Faster completion (4000ms default)
-    virtualedit = "block",                               -- Allow cursor to move where there is no text in visual block mode
-    wildmode = { "longest:full", "full" },               -- Command-line completion mode
-    wrap = false,                                        -- Display lines as one long line
-    writebackup = false,                                 -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-    winblend = 0,                                        -- Make floating windows blend
-  }
+    mouse = "a", -- Allow the mouse to be used in neovim
+    mousemoveevent = true, -- Enable mouse events for bufferline reveal
+    modeline = false, -- Disable modelines as security precaution
+    number = true, -- Set numbered lines
+    numberwidth = 2, -- Set number column width to 2 {default 4}
+    pumblend = 0, -- Make popup windows blend
+    pumheight = 10, -- Pop up menu height
+    preserveindent = true, -- Preserve indent structure as much as possible
+    relativenumber = false, -- Set relative numbered lines
+    ruler = false, -- Show position
+    scrolloff = 8, -- Set offset to start scrolling vertically
+    sidescrolloff = 8, -- Set offset to scroll sideways
+    signcolumn = "yes", -- Always show the sign column, otherwise it would shift the text each time
+    spelllang = { "en_us" }, -- Set spellcheck language
+    shiftwidth = 2, -- The number of spaces inserted for each indentation
+    showmode = false, -- We don't need to see things like -- INSERT -- anymore
+    showtabline = 2, -- Always show tabs
+    smartcase = true, -- Smart case
+    smartindent = true, -- Make indenting smarter again
+    softtabstop = 2, -- Insert 2 spaces for a tab
+    splitkeep = "screen", -- Reduce scroll during window split
+    splitbelow = true, -- Force all horizontal splits to go below current window
+    splitright = true, -- Force all vertical splits to go to the right of current window
+    swapfile = false, -- Don't use swapfiles
+    tabstop = 2, -- Insert 2 spaces for a tab
+    textwidth = 80, -- Set max width to 80 characters
+    termguicolors = true, -- Set term gui colors (most terminals support this)
+    timeoutlen = 500, -- Time to wait for a mapped sequence to complete (in milliseconds)
+    ttyfast = true, -- Assume fast terminal connection
+    undofile = true, -- Enable persistent undo
+    undolevels = 10000, -- Number of undo levels
+    updatetime = 100, -- Faster completion (4000ms default)
+    virtualedit = "block", -- Allow cursor to move where there is no text in visual block mode
+    wildmode = { "longest:full", "full" }, -- Command-line completion mode
+    wrap = false, -- Display lines as one long line
+    writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+    winblend = 0, -- Make floating windows blend
+  },
 }
 
 function M.setup()
@@ -144,14 +144,14 @@ function M.setup_options()
   end
 
   local border_fillchars = {
-    bold   = 'vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣',
-    dot    = 'vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·',
-    double = 'vert:║,horiz:═,horizdown:╦,horizup:╩,verthoriz:╬,vertleft:╣,vertright:╠',
-    single = 'vert:│,horiz:─,horizdown:┬,horizup:┴,verthoriz:┼,vertleft:┤,vertright:├',
-    solid  = 'vert: ,horiz: ,horizdown: ,horizup: ,verthoriz: ,vertleft: ,vertright: ',
+    bold = "vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣",
+    dot = "vert:·,horiz:·,horizdown:·,horizup:·,verthoriz:·,vertleft:·,vertright:·",
+    double = "vert:║,horiz:═,horizdown:╦,horizup:╩,verthoriz:╬,vertleft:╣,vertright:╠",
+    single = "vert:│,horiz:─,horizdown:┬,horizup:┴,verthoriz:┼,vertleft:┤,vertright:├",
+    solid = "vert: ,horiz: ,horizdown: ,horizup: ,verthoriz: ,vertleft: ,vertright: ",
   }
 
-  -- Shortmess is a comma separated list of flags that change the way messages 
+  -- Shortmess is a comma separated list of flags that change the way messages
   -- are displayed. These flags can be used to suppress unwanted messages.
   --
   -- Default is "ltToOCF"
@@ -167,8 +167,8 @@ function M.setup_options()
   -- F: don't give the file info when editing a file, like :silent was used
   -- c: don't give ins-completion-menu messages
   -- W: don't give "written" or "[w]" when writing a file
-  vim.opt.shortmess:append "WcC"
-  vim.opt.whichwrap:append "<,>,[,],h,l"
+  vim.opt.shortmess:append("WcC")
+  vim.opt.whichwrap:append("<,>,[,],h,l")
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 end

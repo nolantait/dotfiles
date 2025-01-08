@@ -22,18 +22,16 @@
 -- local filetypes
 -- local very_lazy
 
-
 local settings = require("globals.settings")
 local plugins = require("plugins")
 local keymap = plugins.convert_keymap
-
 
 local high_priority = {
   {
     "echasnovski/mini.sessions",
     config = require("plugins.configs.mini-sessions"),
     keys = keymap(require("plugins.keybinds.mini-sessions")),
-    lazy = false
+    lazy = false,
   },
   {
     -- Unload plugins when opening large files
@@ -43,9 +41,9 @@ local high_priority = {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = '^5', -- Recommended
-    lazy = false,   -- This plugin is already lazy
-  }
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 }
 
 local custom = {
@@ -53,7 +51,7 @@ local custom = {
     "stevearc/profile.nvim",
     enabled = false,
     lazy = false,
-    config = require("plugins.configs.profiler")
+    config = require("plugins.configs.profiler"),
   },
   {
     "rktjmp/lush.nvim",
@@ -64,7 +62,7 @@ local custom = {
     dir = settings.vim_path .. "/lua/custom",
     lazy = false,
     main = "custom.colorscheme",
-    name = "custom.colorscheme"
+    name = "custom.colorscheme",
   },
   -- {
   --   config = true,
@@ -98,7 +96,7 @@ local events = {
     "goolord/alpha-nvim",
     config = require("plugins.configs.alpha"),
     dependencies = {
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     event = "VimEnter",
   },
@@ -108,7 +106,7 @@ local events = {
     config = require("plugins.configs.lsp"),
     event = { "BufReadPre", "BufNewFile" },
     cmd = {
-      "Mason"
+      "Mason",
     },
     keys = keymap(require("plugins.keybinds.lsp")),
     dependencies = {
@@ -133,13 +131,13 @@ local events = {
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
     keys = keymap(require("plugins.keybinds.conform")),
-    config = require("plugins.configs.conform")
+    config = require("plugins.configs.conform"),
   },
   {
     -- Auto remove search highlight and rehighlight when using n or N
     "nvimdev/hlsearch.nvim",
     config = true,
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     -- Automatically make new directories when saving a file
@@ -186,8 +184,8 @@ local events = {
     config = require("plugins.configs.lualine"),
     event = "LazyFile",
     dependencies = {
-      "AndreM222/copilot-lualine"
-    }
+      "AndreM222/copilot-lualine",
+    },
   },
   {
     -- Todo comment highlighting
@@ -201,22 +199,22 @@ local events = {
   {
     "echasnovski/mini.surround",
     config = require("plugins.configs.mini-surround"),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "echasnovski/mini.splitjoin",
     config = require("plugins.configs.mini-splitjoin"),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "echasnovski/mini.pairs",
     config = require("plugins.configs.mini-pairs"),
-    lazy = false
+    lazy = false,
   },
   {
     "echasnovski/mini.move",
     config = require("plugins.configs.mini-move"),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "nolantait/mini.map",
@@ -228,14 +226,14 @@ local events = {
   {
     "echasnovski/mini.indentscope",
     config = require("plugins.configs.mini-indentscope"),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     -- Highlighting of the word under the cursor
     "RRethy/vim-illuminate",
     config = require("plugins.configs.illuminate"),
     dependencies = {
-      "nvim-treesitter/nvim-treesitter"
+      "nvim-treesitter/nvim-treesitter",
     },
     event = { "CursorHold", "CursorHoldI" },
   },
@@ -255,7 +253,7 @@ local events = {
     dependencies = {
       {
         -- We will be loading this inside of the cmp config
-        "zbirenbaum/copilot-cmp"
+        "zbirenbaum/copilot-cmp",
       },
     },
   },
@@ -277,7 +275,7 @@ local events = {
       "andersevenrud/cmp-tmux",
       "hrsh7th/cmp-path",
       "f3fora/cmp-spell",
-      "hrsh7th/cmp-buffer"
+      "hrsh7th/cmp-buffer",
     },
   },
   {
@@ -285,7 +283,7 @@ local events = {
     config = true,
     dependencies = {
       "hrsh7th/nvim-cmp",
-    }
+    },
   },
   {
     -- Completions for vim commands and paths
@@ -308,18 +306,18 @@ local events = {
     config = require("plugins.configs.matchup"),
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-    }
+    },
   },
   {
     "brenoprata10/nvim-highlight-colors",
     config = require("plugins.configs.highlight-colors"),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "uga-rosa/ccc.nvim",
     config = require("plugins.configs.ccc"),
     keys = keymap(require("plugins.keybinds.ccc")),
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
@@ -327,7 +325,7 @@ local events = {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    event = "LazyFile"
+    event = "LazyFile",
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -342,7 +340,7 @@ local events = {
     "echasnovski/mini.bufremove",
     config = true,
     event = "LazyFile",
-    keys = keymap(require("plugins.keybinds.bufremove"))
+    keys = keymap(require("plugins.keybinds.bufremove")),
   },
   {
     -- Improved syntax highlighting and code understanding for other plugins
@@ -364,13 +362,13 @@ local events = {
       "TSUpdateSync",
     },
     -- Disabling lazy loading so new files work without error
-    lazy = "LazyFile"
+    lazy = "LazyFile",
   },
   {
     "lewis6991/satellite.nvim",
     config = require("plugins.configs.satellite"),
     event = "LazyFile",
-  }
+  },
 }
 
 local commands = {
@@ -419,15 +417,15 @@ local commands = {
     config = true,
     dependencies = {
       "neovim/nvim-lspconfig",
-    }
+    },
   },
   {
-    'stevearc/aerial.nvim',
+    "stevearc/aerial.nvim",
     config = require("plugins.configs.aerial"),
     -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons"
+      "nvim-tree/nvim-web-devicons",
     },
     keys = keymap(require("plugins.keybinds.aerial")),
   },
@@ -447,8 +445,8 @@ local commands = {
       "nvim-telescope/telescope.nvim",
     },
     config = function()
-      require("telescope").load_extension "frecency"
-    end
+      require("telescope").load_extension("frecency")
+    end,
   },
   {
     -- Fuzzy file searching
@@ -462,9 +460,9 @@ local commands = {
       "nvim-telescope/telescope-ui-select.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make"
+        build = "make",
       },
-    }
+    },
   },
   {
     -- Debug Adapter Protocol setup for interactive debugging
@@ -485,7 +483,7 @@ local commands = {
     dependencies = {
       {
         "theHamsta/nvim-dap-virtual-text",
-        config = true
+        config = true,
       },
       {
         "rcarriga/nvim-dap-ui",
@@ -509,7 +507,7 @@ local commands = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",        -- improved UI components
+      "MunifTanjim/nui.nvim", -- improved UI components
     },
     keys = keymap(require("plugins.keybinds.neo-tree")),
   },
@@ -530,7 +528,7 @@ local filetypes = {
     config = require("plugins.configs.lazydev"),
     dependencies = {
       "Bilal2453/luvit-meta",
-      "hrsh7th/nvim-cmp"
+      "hrsh7th/nvim-cmp",
     },
     ft = { "lua" },
   },
@@ -540,8 +538,8 @@ local filetypes = {
     ft = {
       "text",
       "txt",
-      "log"
-    }
+      "log",
+    },
   },
 }
 
@@ -564,7 +562,7 @@ local very_lazy = {
         require("lazy").load({ plugins = { "dressing.nvim" } })
         return vim.ui.input(...)
       end
-    end
+    end,
   },
   {
     -- Popup notifications on the top right of the screen
@@ -583,7 +581,7 @@ local very_lazy = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
-      "nvim-neotest/neotest-python"
+      "nvim-neotest/neotest-python",
     },
     event = "VeryLazy",
     keys = keymap(require("plugins.keybinds.neotest")),
@@ -596,5 +594,5 @@ return {
   events,
   commands,
   filetypes,
-  very_lazy
+  very_lazy,
 }
