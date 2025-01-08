@@ -10,6 +10,7 @@ return {
       diagnostics = {
         globals = {
           "vim",
+          "vim.g",
           "it",
           "describe",
           "before_each",

@@ -375,14 +375,6 @@ local commands = {
   {
     "akinsho/toggleterm.nvim",
     config = require("plugins.configs.toggleterm"),
-    cmd = {
-      "ToggleTerm",
-      "TermExec",
-      "ToggleTermToggleAll",
-      "ToggleTermSendCurrentLine",
-      "ToggleTermSendVisualLines",
-      "ToggleTermSendVisualSelection",
-    },
     keys = keymap(require("plugins.keybinds.toggleterm")),
   },
   {
@@ -496,14 +488,6 @@ local commands = {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     config = require("plugins.configs.neo-tree"),
-    cmd = {
-      "Neotree",
-      "NvimTreeToggle",
-      "NvimTreeOpen",
-      "NvimTreeFindFile",
-      "NvimTreeFindFileToggle",
-      "NvimTreeRefresh",
-    },
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
