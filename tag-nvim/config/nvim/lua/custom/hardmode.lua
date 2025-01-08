@@ -2,7 +2,7 @@ local notify = require("core.messages")
 local icons = require("globals.icons")
 
 local M = {
-  hard_mode = false
+  hard_mode = false,
 }
 
 -- avoid repeating hjkl keys
@@ -10,29 +10,27 @@ local id
 local avoid_hjkl = function(mode, mov_keys)
   for _, key in ipairs(mov_keys) do
     local count = 0
-    vim.keymap.set(
-      mode,
-      key,
-      function()
-        if count >= 5 then
-          id = notify.warn("Hold it Cowboy!", "Hardmode", {
-            icon = icons.event .. " ",
-            replace = id,
-            keep = function()
-              return count >= 5
-            end,
-          })
-        else
-          count = count + 1
-          -- after 5 seconds decrement
-          vim.defer_fn(function()
-            count = count - 1
-          end, 5000)
-          return key
-        end
-      end,
-      { expr = true }
-    )
+
+    local count_function = function()
+      if count >= 5 then
+        id = notify.warn("Hold it Cowboy!", "Hardmode", {
+          icon = icons.event .. " ",
+          replace = id,
+          keep = function()
+            return count >= 5
+          end,
+        })
+      else
+        count = count + 1
+        -- after 5 seconds decrement
+        vim.defer_fn(function()
+          count = count - 1
+        end, 5000)
+        return key
+      end
+    end
+
+    vim.keymap.set(mode, key, count_function, { expr = true })
   end
 end
 
@@ -61,15 +59,11 @@ M.toggle_hard_mode = function()
 end
 
 M.setup = function()
-  vim.api.nvim_create_user_command(
-    "HardModeToggle",
-    function()
-      M.toggle_hard_mode()
-    end,
-    {
-      nargs = 0,
-    }
-  )
+  local toggle = function()
+    M.toggle_hard_mode()
+  end
+
+  vim.api.nvim_create_user_command("HardModeToggle", toggle, {nargs = 0,})
 end
 
 return M
