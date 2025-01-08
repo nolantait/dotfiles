@@ -51,7 +51,7 @@ local high_priority = {
 local custom = {
   {
     "stevearc/profile.nvim",
-    enabled = true,
+    enabled = false,
     lazy = false,
     config = require("plugins.configs.profiler")
   },
@@ -66,14 +66,14 @@ local custom = {
     main = "custom.colorscheme",
     name = "custom.colorscheme"
   },
-  {
-    config = true,
-    enabled = false,
-    dir = settings.vim_path .. "/lua/custom",
-    lazy = false,
-    main = "custom.profiling",
-    name = "custom.profiling",
-  },
+  -- {
+  --   config = true,
+  --   enabled = false,
+  --   dir = settings.vim_path .. "/lua/custom",
+  --   lazy = false,
+  --   main = "custom.profiling",
+  --   name = "custom.profiling",
+  -- },
   {
     config = true,
     dir = settings.vim_path .. "/lua/custom",
@@ -82,9 +82,11 @@ local custom = {
     name = "custom.hardmode",
   },
   {
-    config = true,
+    config = function()
+      require("custom.gem").setup()
+    end,
     dir = settings.vim_path .. "/lua/custom",
-    lazy = false,
+    ft = "rb",
     main = "custom.gem",
     name = "custom.gem",
   },

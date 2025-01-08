@@ -13,26 +13,18 @@ end
 function M.setup()
   local command = vim.api.nvim_create_user_command
 
-  command(
-    "ProfileStart",
-    function()
-      M.start()
-    end,
-    { nargs = 0 }
-  )
+  command("ProfileStart", function()
+    M.start()
+  end, { nargs = 0 })
 
-  command(
-    "ProfileStop",
-    function()
-      M.stop()
-    end,
-    { nargs = 0 }
-  )
+  command("ProfileStop", function()
+    M.stop()
+  end, { nargs = 0 })
 
   local keymap = vim.api.nvim_set_keymap
   local opts = {
     noremap = true,
-    silent = true
+    silent = true,
   }
 
   keymap("n", "<Leader>ps", "<cmd>ProfileStart<CR>", opts)
