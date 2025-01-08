@@ -1,7 +1,6 @@
 -- DOCS: This is the filesystem viewer that shows up on the left of the screen
 
 return function()
-  print("Hello")
   local neotree = require("neo-tree")
   local icons = require("globals.icons")
 
