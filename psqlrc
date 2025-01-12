@@ -14,12 +14,19 @@
 -- Show how long each query takes to execute
 \timing
 
--- Use best available output format
+-- Use table format (with headers) by default, but switch to expanded table
+-- format when there's a lot of data.
 \x auto
+
+-- Enables error fixing when entering statements via the prompt without starting over.
+\set ON_ERROR_ROLLBACK interactive
+
+-- Autocomplete keywords (like SELECT) in upper-case, even if you started typing them in lower case.
+\set COMP_KEYWORD_CASE upper
+
 \set VERBOSITY verbose
 \set HISTFILE ~/.psql_history- :DBNAME
 \set HISTCONTROL ignoredups
-\set COMP_KEYWORD_CASE upper
 \unset QUIET
 
 -- psql can't check for a file's existence, so we'll provide an empty local
