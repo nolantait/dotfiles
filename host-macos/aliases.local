@@ -1,4 +1,5 @@
 alias brewdeps='brew leaves | xargs brew deps --formula --for-each | sed "s/^.*:/$(tput setaf 4)&$(tput sgr0)/"'
 
 # Brew upgrade command
-alias brewup="brew -v update && brew -v upgrade && brew cask upgrade && brew -v cleanup --prune=5 && brew doctor"
+alias brewup="brew -v update && brew -v upgrade && brew -v upgrade --cask && brew -v cleanup --prune=5 && brew doctor"
+alias brewlist="brew list --versions | fzf"

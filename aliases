@@ -3,7 +3,9 @@ alias mkdir="mkdir -p"
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
+# Find files
 alias grep="grep --color=auto"
+alias rgf="rg --files --glob"
 
 # Use neovim if available over vim
 if command -v nvim >/dev/null 2>&1; then
@@ -30,7 +32,9 @@ fi
 
 # Lists files (including dot files) sorted by size (biggest last) in long and
 # human readable output format. 
-alias dir="ls -lSrah"
+alias dir="ls -lSra"
+
+alias cop="bin/rubocop --parallel --display-cop-names --display-style-guide"
 
 # Include custom aliases
 if [[ -f ~/.aliases.local ]]; then
