@@ -2,8 +2,21 @@
 require 'irb/completion'
 ARGV.concat [ "--readline", "--prompt-mode", "simple" ]
 
-home = ENV["HOME"]
+Reline::Face.config :completion_dialog do |config|
+  config.define :default, foreground: :white, background: :black
+  config.define :enhanced, foreground: :black, background: :green
+  config.define :scrollbar, foreground: :bright_white, background: :black
+end
 
+begin
+  require "amazing_print"
+
+  AmazingPrint.irb!
+rescue LoadError => error
+  puts "ERROR: #{error.message.capitalize}."
+end
+
+home = ENV["HOME"]
 unless File.exist?(path = "#{home}/.irb/history")
   FileUtils.mkdir_p "#{home}/.irb"
   FileUtils.touch "#{home}/.irb/history"
@@ -12,6 +25,18 @@ end
 IRB.conf[:SAVE_HISTORY] = 200
 IRB.conf[:HISTORY_FILE] = "#{home}/.irb/history"
 IRB.conf[:AUTO_INDENT]  = true
+
+IRB.conf[:COMMAND_ALIASES]
+   .merge! b: :backtrace,
+           c: :continue,
+           e: :edit,
+           h: :show_cmds,
+           i: :info,
+           l: :ls,
+           n: :next,
+           m: :measure,
+           s: :step,
+           w: :whereami
 
 ### Rails
 # Some features that make using irb for rails much nicer.
@@ -32,10 +57,4 @@ if ENV["RAILS_ENV"]
     ActiveRecord::Base.logger = Logger.new(STDOUT)
     ActiveRecord::Base.instance_eval { alias :[] :find }
   end
-end
-
-begin
-  require "amazing_print"
-rescue LoadError => e
-  warn "Could not load amazing_print: #{e}"
 end
