@@ -37,6 +37,5 @@ alias dir="ls -lSra"
 alias cop="bin/rubocop --parallel --display-cop-names --display-style-guide"
 
 # Include custom aliases
-if [[ -f ~/.aliases.local ]]; then
-  source ~/.aliases.local
-fi
+[[ -f ~/.aliases.host ]] && source ~/.aliases.host
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local

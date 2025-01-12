@@ -18,4 +18,5 @@ export CLIPPY_CONF_DIR=$HOME/.config/clippy
 export DOCKER_BUILDKIT=1
 
 # Local config
+[[ -f ~/.zshenv.host ]] && source ~/.zshenv.host
 [[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
