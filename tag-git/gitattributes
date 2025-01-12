@@ -1,2 +1,21 @@
 # Do not show lock files changes in `git diff`:
-*.lock    diff=nodiff
+*.lock diff=nodiff
+*.gemspec diff=ruby
+*.gif diff=exif
+*.ico diff=exif
+*.jpeg diff=exif
+*.jpg diff=exif
+*.mp4 diff=exif
+*.ogg diff=exif
+*.png diff=exif
+*.rake diff=ruby
+*.rb diff=ruby
+*.webm diff=exif
+config.ru diff=ruby
+config/credentials.yml.enc diff=rails_credentials
+config/credentials/*.yml.enc diff=rails_credentials
+Gemfile diff=ruby
+Gemfile.lock diff=ruby
+Guardfile diff=ruby
+Procfile diff=ruby
+Rakefile diff=ruby
