@@ -19,6 +19,8 @@ alias reload!=". ~/.zshrc"
 # Alias ls to something better
 if command -v eza >/dev/null 2>&1; then
   alias ls="eza -h --color=auto --group-directories-first"
+  alias lsf="eza --all --all --long --header --group --group-directories-first --time-style long-iso --git"
+  alias lst="eza --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 fi
 
 # A better cat
