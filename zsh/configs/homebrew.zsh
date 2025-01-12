@@ -3,3 +3,5 @@
 # https://docs.brew.sh/Analytics
 export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_BAT=1
+export HOMEBREW_BOOTSNAP=1
