@@ -17,6 +17,8 @@ it easy to add or remove configs and keep them updated from one place.
 What's in it?
 -------------
 
+These are some highlights, not a full description.
+
 [neovim](https://neovim.io) configuration:
 
 * Full LUA based configs
@@ -127,7 +129,7 @@ Update
 
 From time to time you should pull down any updates to these dotfiles, and run
 
-    rcup
+    rcup -t git -t nvim
 
 to link any new files and install new vim plugins. **Note** You _must_ run
 `rcup` after pulling to ensure that all files in plugins are properly installed,
