@@ -63,18 +63,19 @@ function M.setup()
     group = augroup("close_with_q"),
     pattern = {
       "PlenaryTestPopup",
+      "checkhealth",
       "help",
       "lspinfo",
       "man",
+      "neotest-output",
+      "neotest-output-panel",
+      "neotest-summary",
       "notify",
       "qf",
+      "lazy",
       "spectre_panel",
       "startuptime",
       "tsplayground",
-      "neotest-output",
-      "checkhealth",
-      "neotest-summary",
-      "neotest-output-panel",
     },
   })
 
