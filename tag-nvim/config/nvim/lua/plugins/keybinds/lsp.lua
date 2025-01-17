@@ -83,10 +83,4 @@ return {
     command = "<cmd>lua vim.diagnostic.goto_next()<CR>",
     description = "Go to next diagnostic",
   },
-  {
-    mode = "n",
-    key = "<leader>q",
-    command = "<cmd>lua vim.diagnostic.setloclist()<CR>",
-    description = "Set diagnostic list",
-  },
 }
