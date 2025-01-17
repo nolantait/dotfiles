@@ -1,0 +1,64 @@
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+brew "bat" # Better cat
+brew "bitwarden-cli" # Password manager
+brew "bottom" # Like htop but with graphs
+brew "broot" # Better tree
+brew "cloudflared" # Cloudflare tunnel
+brew "dive" # Docker image explorer
+brew "docker" # Docker
+brew "docker-compose" # Docker
+brew "duckdb" # SQL database for files
+brew "dust" # Disk usage
+brew "erdtree" # Multi-threaded file-tree visualizer
+brew "eza" # Better ls
+brew "fd" # Find files
+brew "ffmpeg" # Video processing
+brew "fzf" # Fuzzy finder
+brew "gh" # GitHub CLI
+brew "git-delta" # Git diff viewer
+brew "git-sizer" # Git repository size
+brew "gping" # Ping with a graph
+brew "hledger" # Accounting
+brew "htop" # Process monitoring
+brew "iftop" # Network monitoring
+brew "imagemagick" # Image processing
+brew "jq" # JSON processor in the terminal
+brew "lnav" # Better log viewer
+brew "mise" # Better asdf (programming language version manager)
+brew "neovim" # Text editor
+brew "nmap" # Network scanner
+brew "nnn" # File manager
+brew "tmux" # Terminal multiplexer
+brew "overmind" # Process manager
+brew "podlet" # Podman podlet generator
+brew "postgresql@17", restart_service: :changed # PostgreSQL
+brew "procs" # Process viewer
+brew "ranger" # File manager
+brew "rcm" # Dotfile manager
+brew "redis", restart_service: :changed # Redis
+brew "ripgrep" # Search tool
+brew "rpl" # Replace text
+brew "shellcheck" # Shell script linter
+brew "tailspin" # Log viewer
+brew "tmate" # Terminal sharing
+brew "tokei" # Code statistics
+brew "tree" # File tree
+brew "unzip" # Unzip files
+brew "viddy" # Better watch (re-run command over and over and watch output)
+brew "vips" # Image processing
+brew "zsh" # Shell
+
+cask "alacritty" # Terminal
+cask "firefox" # Web browser
+cask "font-iosevka-nerd-font" # Font
+cask "google-chrome" # Web browser
+cask "slack" # Communication
+cask "vlc" # Video player
+
+# Optional dependencies
+brew "libpng"
+brew "libxml2"
+brew "libzip"
+brew "pgvector" # PostgreSQL monitoring
