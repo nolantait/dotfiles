@@ -39,11 +39,6 @@ local high_priority = {
     config = require("plugins.configs.bigfile"),
     lazy = false,
   },
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
-  },
 }
 
 local custom = {
@@ -112,6 +107,19 @@ local events = {
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
     },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    init = function()
+      vim.g.rustaceanvim = {
+        tools = {
+          float_win_config = {
+            border = require("core.utils").border("FloatBorder"),
+          },
+        },
+      }
+    end,
   },
   {
     "williamboman/mason.nvim",
