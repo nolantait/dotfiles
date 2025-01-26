@@ -109,6 +109,11 @@ local events = {
     },
   },
   {
+    "joshuavial/aider.nvim",
+    keys = keymap(require("plugins.keybinds.aider")),
+    config = require("plugins.configs.aider"),
+  },
+  {
     "mrcjkb/rustaceanvim",
     version = "^5", -- Recommended
     init = function()
