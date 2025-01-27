@@ -1,0 +1,2 @@
+# Secret config
+[[ -f ~/.zshenv.secret ]] && source ~/.zshenv.secret
