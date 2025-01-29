@@ -40,8 +40,7 @@ return function()
       use_language_tree = true,
     },
     indent = {
-      enable = true,
-      disable = { "ruby" },
+      enable = true
     },
     incremental_selection = {
       enable = true,
