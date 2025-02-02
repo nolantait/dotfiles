@@ -42,11 +42,25 @@ return function()
     "Client %d+ quit",
   }
 
+  local banned_messages = {
+    "No information available",
+    "No code actions available",
+    "method textDocument/codeAction is not supported by any of the servers registered for the current buffer",
+    "no manual entry for",
+    "No matching notification found to replace",
+  }
+
   local message_notifications = {}
 
   -- Set our notifier as the default for neovim so it can work with other plugins
   vim.notify = function(message, level, options)
     options = options or {}
+
+    for _, banned in ipairs(banned_messages) do
+      if string.match(message, banned) then
+        return
+      end
+    end
 
     for _, pattern in ipairs(buffered_messages) do
       if string.find(message, pattern) then
