@@ -3,11 +3,9 @@
 return function(event)
   local exclude = { "gitcommit" }
   local buf = event.buf
-  if vim.tbl_contains(exclude, vim.bo[buf].filetype) or vim.bo[buf].already_last_loc then
+  if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
     return
   end
-
-  vim.bo[buf].already_last_loc = true
 
   -- Get the position of the last jump
   local mark = vim.api.nvim_buf_get_mark(0, '"')

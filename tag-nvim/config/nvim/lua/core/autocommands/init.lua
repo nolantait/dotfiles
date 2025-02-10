@@ -53,6 +53,7 @@ function M.setup()
   })
 
   command("BufReadPost", {
+    group = augroup("auto_jump_last"),
     callback = require("core.autocommands.auto_jump_last"),
     desc = "Auto jump to last cursor position",
   })
