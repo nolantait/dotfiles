@@ -4,6 +4,7 @@ return function()
   local mini_pairs = require("mini.pairs")
 
   local opts = {
+    modes = { insert = true, command = true, terminal = false },
     -- Skip autopair when next character is one of these
     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
     -- Skip autopair when cursor is inside these treesitter nodes
