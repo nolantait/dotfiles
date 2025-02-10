@@ -14,6 +14,8 @@
 /logs/
 /tmp/
 /.git/
+/build/
+/dist/
 
 *.tags
 *.tags*
