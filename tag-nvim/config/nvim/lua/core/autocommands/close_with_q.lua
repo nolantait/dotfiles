@@ -11,6 +11,7 @@ return function(event)
     {
       buffer = event.buf, -- The buffer to quit
       silent = true, -- Do not show the command in the command line
+      desc = "Close buffer with q", -- Description for the keymap
     }
   )
 end

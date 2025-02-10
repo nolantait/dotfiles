@@ -66,6 +66,8 @@ function M.setup()
       "PlenaryTestPopup",
       "checkhealth",
       "help",
+      "dbout",
+      "gitsigns-blame",
       "lspinfo",
       "man",
       "neotest-output",
