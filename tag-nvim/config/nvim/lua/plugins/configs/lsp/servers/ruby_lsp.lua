@@ -47,14 +47,24 @@ return function(default_handlers)
   handlers.on_attach = function(client, bufnr)
     add_ruby_deps_command(client, bufnr)
 
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = "ruby",
+      callback = function()
+        vim.lsp.start {
+          name = "rubocop",
+          cmd = { "bundle", "exec", "rubocop", "--lsp" },
+        }
+      end,
+    })
+
     if on_attach then
       on_attach(client, bufnr)
     end
   end
 
   handlers.init_options = {
-    formatter = "rubocop",
-    linters = { "rubocop" },
+    formatter = "rubocop_internal",
+    linters = { "rubocop_internal" },
     indexing = {
       excludedGems = {
         "bootsnap",
