@@ -1,8 +1,7 @@
 DIRSTACKSIZE=5
 # Show time taken for the command to finish if it takes longer than 6 seconds
-export TIMEFMT="%U user %S system %P cpu %*E total, running %J"
 REPORTTIME=6
-# awesome cd movements from zshkit
+
 setopt autocd autopushd pushdminus pushdsilent pushdtohome cdablevars
 
 ## Options section

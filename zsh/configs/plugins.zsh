@@ -1,5 +1,4 @@
 # If antidote is not installed, install it
-#
 antidote_folder=$HOME/.antidote
 
 if [ ! -d "$antidote_folder" ]; then

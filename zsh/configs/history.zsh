@@ -13,5 +13,3 @@ setopt hist_reduce_blanks     # Remove extra blanks from each command line being
 setopt hist_ignore_space
 setopt hist_save_no_dups
 setopt inc_append_history     # Add comamnds as they are typed, don't wait until shell exit'
-
-export ERL_AFLAGS="-kernel shell_history enabled"
