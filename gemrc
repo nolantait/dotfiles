@@ -1,6 +1,6 @@
 ---
-:update_sources: true
-:benchmark: false
-:backtrace: false
-:verbose: true
-gem: --no-document
+update_sources: true
+benchmark: false
+backtrace: true
+verbose: true
+gem: --no-document --suggestions
