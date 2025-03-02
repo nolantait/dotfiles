@@ -4,16 +4,6 @@ return function()
   local bufferline = require("bufferline")
   local icons = require("globals.icons")
 
-  -- Add any custom highlights here
-  local highlights = {
-    -- fill = {
-    --   bg = "#000000",
-    --   fg = "#000000",
-    --   guifg = "#000000",
-    --   guibg = "#000000"
-    -- },
-  }
-
   -- Optionally use bufdelete to close buffers with fallback
   local close_command = function(bufnum)
     local ok, bufremove = prequire("mini.bufremove")
@@ -68,7 +58,7 @@ return function()
       },
       right_mouse_command = close_command, -- can be a string | function, see "Mouse actions"
       right_trunc_marker = icons.arrow_right,
-      separator_style = "slant", -- | "thick" | "thin" | { 'any', 'any' },
+      separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
       show_buffer_icons = true,
       show_buffer_close_icons = true,
       show_tab_indicators = false,
@@ -76,7 +66,6 @@ return function()
       style_preset = bufferline.style_preset.default,
       tab_size = 20,
       themable = true,
-    },
-    highlights = highlights,
+    }
   })
 end
