@@ -41,19 +41,9 @@ local high_priority = {
   },
   {
     "m4xshen/hardtime.nvim",
-    config = true,
+    config = require("plugins.configs.hardtime"),
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
-    opts = {
-      disabled_filetypes = {
-        "qf",
-        "netrw",
-        "NvimTree",
-        "lazy",
-        "mason",
-        "oil"
-      },
-    }
   },
 }
 
