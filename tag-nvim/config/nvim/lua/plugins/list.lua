@@ -39,6 +39,22 @@ local high_priority = {
     config = require("plugins.configs.bigfile"),
     lazy = false,
   },
+  {
+    "m4xshen/hardtime.nvim",
+    config = true,
+    lazy = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {
+      disabled_filetypes = {
+        "qf",
+        "netrw",
+        "NvimTree",
+        "lazy",
+        "mason",
+        "oil"
+      },
+    }
+  },
 }
 
 local custom = {
@@ -60,12 +76,6 @@ local custom = {
   {
     config = true,
     dir = settings.vim_path .. "/plugins/profiling.nvim",
-    lazy = false,
-    enabled = false,
-  },
-  {
-    config = true,
-    dir = settings.vim_path .. "/plugins/hardmode.nvim",
     lazy = false,
     enabled = false,
   },
@@ -96,13 +106,8 @@ local events = {
     "neovim/nvim-lspconfig",
     config = require("plugins.configs.lsp"),
     event = { "BufReadPre", "BufNewFile" },
-    cmd = {
-      "Mason",
-    },
-    keys = keymap(require("plugins.keybinds.lsp")),
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-    },
+    cmd = { "Mason" },
+    keys = keymap(require("plugins.keybinds.lsp"))
   },
   {
     "joshuavial/aider.nvim",
@@ -500,22 +505,13 @@ local commands = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim", -- improved UI components
+      "MunifTanjim/nui.nvim",        -- improved UI components
     },
     keys = keymap(require("plugins.keybinds.neo-tree")),
   },
 }
 
 local filetypes = {
-  -- {
-  --   -- Easier navigation through rails apps with shortcuts
-  --   "tpope/vim-rails",
-  --   config = require("plugins.configs.rails"),
-  --   ft = {
-  --     "ruby",
-  --     "eruby",
-  --   },
-  -- },
   {
     "folke/lazydev.nvim",
     config = require("plugins.configs.lazydev"),
