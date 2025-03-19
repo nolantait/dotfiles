@@ -3,6 +3,11 @@
 return function()
   -- Set the g:rails_projections table
   vim.g.rails_projections = {
+    ["packages/**/{}.rb"] = {
+      test = {
+        "spec/packages/{}_spec.rb",
+      },
+    },
     ["app/components/**/component.rb"] = {
       test = {
         "spec/components/{}_spec.rb",

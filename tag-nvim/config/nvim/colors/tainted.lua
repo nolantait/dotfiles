@@ -14,9 +14,9 @@ vim.g.colors_name = "tainted"
 --
 -- The performance impact of this call can be measured in the hundreds of
 -- *nanoseconds* and such could be considered "production safe".
-package.loaded["custom.colorscheme"] = nil
+package.loaded["colorscheme"] = nil
 
-local theme = require("custom.colorscheme")
+local theme = require("colorscheme")
 theme.setup()
 
 -- include our theme file and pass it to lush to apply

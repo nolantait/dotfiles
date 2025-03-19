@@ -54,34 +54,30 @@ local custom = {
   },
   {
     config = true,
-    dir = settings.vim_path .. "/lua/custom",
-    lazy = false,
-    main = "custom.colorscheme",
-    name = "custom.colorscheme",
+    dir = settings.vim_path .. "/plugins/colorscheme.nvim",
+    lazy = false
   },
-  -- {
-  --   config = true,
-  --   enabled = false,
-  --   dir = settings.vim_path .. "/lua/custom",
-  --   lazy = false,
-  --   main = "custom.profiling",
-  --   name = "custom.profiling",
-  -- },
   {
     config = true,
-    dir = settings.vim_path .. "/lua/custom",
+    dir = settings.vim_path .. "/plugins/profiling.nvim",
     lazy = false,
-    main = "custom.hardmode",
-    name = "custom.hardmode",
+    enabled = false,
   },
   {
-    config = function()
-      require("custom.gem").setup()
-    end,
-    dir = settings.vim_path .. "/lua/custom",
-    ft = "rb",
-    main = "custom.gem",
-    name = "custom.gem",
+    config = true,
+    dir = settings.vim_path .. "/plugins/hardmode.nvim",
+    lazy = false,
+    enabled = false,
+  },
+  {
+    config = true,
+    ft = "ruby",
+    dir = settings.vim_path .. "/plugins/rails.nvim",
+  },
+  {
+    config = true,
+    ft = "ruby",
+    dir = settings.vim_path .. "/plugins/gem.nvim",
   },
 }
 
@@ -511,15 +507,15 @@ local commands = {
 }
 
 local filetypes = {
-  {
-    -- Easier navigation through rails apps with shortcuts
-    "tpope/vim-rails",
-    config = require("plugins.configs.rails"),
-    ft = {
-      "ruby",
-      "eruby",
-    },
-  },
+  -- {
+  --   -- Easier navigation through rails apps with shortcuts
+  --   "tpope/vim-rails",
+  --   config = require("plugins.configs.rails"),
+  --   ft = {
+  --     "ruby",
+  --     "eruby",
+  --   },
+  -- },
   {
     "folke/lazydev.nvim",
     config = require("plugins.configs.lazydev"),
