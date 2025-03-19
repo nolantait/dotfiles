@@ -35,5 +35,16 @@ return {
     command = "<cmd>lua require('snacks').gitbrowse.open()<CR>",
     description = "Open file in github",
   },
-
+  {
+    mode = "n",
+    key = "<Leader>q",
+    command = "<cmd>lua require('snacks').bufdelete.delete(0)<CR>",
+    description = "Close buffer",
+  },
+  {
+    mode = "n",
+    key = "<Leader>Q",
+    command = "<cmd>lua require('snacks').bufdelete.other()<CR>",
+    description = "Close all other buffers",
+  },
 }

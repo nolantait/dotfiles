@@ -327,13 +327,6 @@ local events = {
     event = "LazyFile",
   },
   {
-    -- Delete buffers individually, fixes some of vim's quirks
-    "echasnovski/mini.bufremove",
-    config = true,
-    event = "LazyFile",
-    keys = keymap(require("plugins.keybinds.bufremove")),
-  },
-  {
     -- Improved syntax highlighting and code understanding for other plugins
     "nvim-treesitter/nvim-treesitter",
     config = require("plugins.configs.treesitter"),
