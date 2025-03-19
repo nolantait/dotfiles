@@ -29,4 +29,11 @@ return {
     command = "<cmd>lua require('snacks').words.jump(-vim.v.count1)<CR>",
     description = "Previous reference",
   },
+  {
+    mode = "n",
+    key = "<leader>gh",
+    command = "<cmd>lua require('snacks').gitbrowse.open()<CR>",
+    description = "Open file in github",
+  },
+
 }
