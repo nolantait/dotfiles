@@ -45,15 +45,15 @@ local high_priority = {
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
   },
+  {
+    "folke/snacks.nvim",
+    lazy = false,
+    config = require("plugins.configs.snacks"),
+    keys = keymap(require("plugins.keybinds.snacks")),
+  }
 }
 
 local custom = {
-  {
-    "stevearc/profile.nvim",
-    enabled = false,
-    lazy = false,
-    config = require("plugins.configs.profiler"),
-  },
   {
     "rktjmp/lush.nvim",
     lazy = false,
@@ -175,14 +175,6 @@ local events = {
     event = "LazyFile",
   },
   {
-    -- Indentations on left side of lines
-    "lukas-reineke/indent-blankline.nvim",
-    enabled = true,
-    config = require("plugins.configs.indent-blankline"),
-    event = "LazyFile",
-    main = "ibl",
-  },
-  {
     -- Powerline at the bottom of screen
     "hoob3rt/lualine.nvim",
     config = require("plugins.configs.lualine"),
@@ -226,11 +218,6 @@ local events = {
     config = require("plugins.configs.mini-map"),
     event = "LazyFile",
     keys = keymap(require("plugins.keybinds.mini-map")),
-  },
-  {
-    "echasnovski/mini.indentscope",
-    config = require("plugins.configs.mini-indentscope"),
-    event = "LazyFile",
   },
   {
     -- Highlighting of the word under the cursor
@@ -542,14 +529,6 @@ local very_lazy = {
         return vim.ui.input(...)
       end
     end,
-  },
-  {
-    -- Popup notifications on the top right of the screen
-    "rcarriga/nvim-notify",
-    config = require("plugins.configs.notify"),
-    keys = keymap(require("plugins.keybinds.notify")),
-    -- Load later, after everything else, not important for initial UI paint
-    event = "VeryLazy",
   },
   {
     -- Test runner

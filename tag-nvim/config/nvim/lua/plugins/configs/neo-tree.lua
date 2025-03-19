@@ -2,7 +2,12 @@
 
 return function()
   local neotree = require("neo-tree")
+  local events = require("neo-tree.events")
   local icons = require("globals.icons")
+
+  local function on_move(data)
+    require("snacks").rename.on_rename_file(data.source, data.destination)
+  end
 
   -- Remove deprecated commands from v1.x
   vim.g.neo_tree_remove_legacy_commands = 1
@@ -74,12 +79,14 @@ return function()
     enable_diagnostics = true,
     event_handlers = {
       {
-        event = "neo_tree_buffer_enter",
+        event = events.NEO_TREE_BUFFER_ENTER,
         handler = function(_)
           vim.opt_local.signcolumn = "auto"
           vim.opt_local.foldcolumn = "0"
         end,
       },
+      { event = events.FILE_MOVED, handler = on_move },
+      { event = events.FILE_RENAMED, handler = on_move },
     },
     filesystem = {
       follow_current_file = {
