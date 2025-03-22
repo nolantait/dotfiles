@@ -4,6 +4,21 @@ return function()
   local colors = require("globals.colors")
   local ccc = require("ccc")
 
+  local filetypes = {
+    "cfg",
+    "css",
+    "conf",
+    "lua",
+    "scss",
+    "html",
+    "rb",
+    "erb",
+    "js",
+    "ts",
+    "jsx",
+    "tsx",
+  }
+
   ccc.setup({
     inputs = {
       ccc.input.rgb,
@@ -31,7 +46,9 @@ return function()
     },
     highlighter = {
       auto_enable = false,
+      -- LSP causes the highlights to not cover the correct range.
       lsp = false,
+      filetypes = filetypes,
     },
   })
 end

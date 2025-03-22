@@ -5,12 +5,16 @@ return function()
 
   conform.setup({
     formatters_by_ft = {
-      javascript = { "prettier" },
-      javascriptreact = { "prettier" },
-      typescriptreact = { "prettier" },
+      javascript = { "prettier", lsp_format = "fallback" },
+      javascriptreact = { "prettier", lsp_format = "fallback" },
+      typescriptreact = { "prettier", lsp_format = "fallback" },
+      json = { "prettier", stop_on_first = true },
+      jsonc = { "prettier", stop_on_first = true },
       lua = { "stylua" },
+      rust = { name = "rust_analyzer", lsp_format = "prefer" },
       html = { "htmlbeautifier" },
       svg = { "htmlbeautifier" },
+      ["_"] = { "trim_whitespace", "trim_newlines" },
     },
   })
 
@@ -32,6 +36,9 @@ return function()
       range = range,
     })
   end
+
+  -- Use conform for gq
+  vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
   vim.api.nvim_create_user_command("Format", format, { range = true })
 end
