@@ -18,6 +18,7 @@ return function()
       hgcommit = false,
       svn = false,
       cvs = false,
+      text = false,
       ["neo-tree"] = false,
       ["."] = false,
       ["dap-repl"] = false,
