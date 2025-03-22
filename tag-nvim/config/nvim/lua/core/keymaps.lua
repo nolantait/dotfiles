@@ -18,12 +18,14 @@ local keymap = vim.api.nvim_set_keymap
 
 local bind_keys = function(keybinds)
   for _, keybind in ipairs(keybinds) do
+    local merged = vim.tbl_extend("force", M.options, keybind.options or {})
+
     if type(keybind.mode) == "table" then
       for _, mode in ipairs(keybind.mode) do
-        keymap(mode, keybind.key, keybind.command, M.options)
+        keymap(mode, keybind.key, keybind.command, merged)
       end
     else
-      keymap(keybind.mode, keybind.key, keybind.command, M.options)
+      keymap(keybind.mode, keybind.key, keybind.command, merged)
     end
   end
 end

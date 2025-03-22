@@ -239,5 +239,3 @@ This directory is handy for combining dotfiles from multiple teams; one team
 can add the `virtualenv` file, another `keys`, and a third `chpwd`.
 
 The `~/dotfiles-local/zshrc.local` is loaded after `~/dotfiles-local/zsh/configs`.
-
-

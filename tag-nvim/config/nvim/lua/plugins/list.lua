@@ -50,7 +50,7 @@ local high_priority = {
     lazy = false,
     config = require("plugins.configs.snacks"),
     keys = keymap(require("plugins.keybinds.snacks")),
-  }
+  },
 }
 
 local custom = {
@@ -61,7 +61,7 @@ local custom = {
   {
     config = true,
     dir = settings.vim_path .. "/plugins/colorscheme.nvim",
-    lazy = false
+    lazy = false,
   },
   {
     config = true,
@@ -97,7 +97,7 @@ local events = {
     config = require("plugins.configs.lsp"),
     event = { "BufReadPre", "BufNewFile" },
     cmd = { "Mason" },
-    keys = keymap(require("plugins.keybinds.lsp"))
+    keys = keymap(require("plugins.keybinds.lsp")),
   },
   {
     "joshuavial/aider.nvim",
@@ -146,6 +146,13 @@ local events = {
   {
     -- Automatically make new directories when saving a file
     "jghauser/mkdir.nvim",
+    event = "LazyFile",
+  },
+  {
+    "MagicDuck/grug-far.nvim",
+    config = require("plugins.configs.grug-far"),
+    keys = keymap(require("plugins.keybinds.grug-far")),
+    cmd = { "GrugFar" },
     event = "LazyFile",
   },
   {
@@ -456,15 +463,18 @@ local commands = {
       "DapTerminate",
     },
     config = require("plugins.configs.dap"),
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    config = true,
+    opts = { virt_text_pos = "eol" },
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    config = require("plugins.configs.dap.dapui"),
     dependencies = {
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        config = true,
-      },
-      {
-        "rcarriga/nvim-dap-ui",
-        config = require("plugins.configs.dap.dapui"),
-      },
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio",
     },
   },
   {
@@ -475,7 +485,7 @@ local commands = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",        -- improved UI components
+      "MunifTanjim/nui.nvim", -- improved UI components
     },
     keys = keymap(require("plugins.keybinds.neo-tree")),
   },
