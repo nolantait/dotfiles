@@ -3,8 +3,6 @@
 
 -- Load core config
 require("core.init").setup()
+
 -- Load plugins with lazy
 require("plugins").setup()
-
--- Load our colorscheme
-vim.cmd.colorscheme("tainted")

@@ -59,7 +59,8 @@ local custom = {
     lazy = false,
   },
   {
-    config = true,
+    config = require("plugins.configs.colorscheme"),
+    priority = 1000,
     dir = settings.vim_path .. "/plugins/colorscheme.nvim",
     lazy = false,
   },
