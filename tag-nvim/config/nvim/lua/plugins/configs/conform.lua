@@ -11,7 +11,6 @@ return function()
       json = { "prettier", stop_on_first = true },
       jsonc = { "prettier", stop_on_first = true },
       lua = { "stylua" },
-      rust = { name = "rust_analyzer", lsp_format = "prefer" },
       html = { "htmlbeautifier" },
       svg = { "htmlbeautifier" },
       ["_"] = { "trim_whitespace", "trim_newlines" },
@@ -38,7 +37,7 @@ return function()
   end
 
   -- Use conform for gq
-  vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  -- vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
   vim.api.nvim_create_user_command("Format", format, { range = true })
 end
