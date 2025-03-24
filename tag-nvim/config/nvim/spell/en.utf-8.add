@@ -22,7 +22,6 @@ NixOS
 PBR
 PDA
 PDAs
-PDAs
 PNG
 Photoshop
 Rakefile
@@ -145,12 +144,11 @@ taintedcoders
 taxonomically
 tilemap
 tilemaps
+timestamp
 timestep
 url
 variadic
-variadic
 variadics
-vectorized
 vectorized
 viewport
 websocket
