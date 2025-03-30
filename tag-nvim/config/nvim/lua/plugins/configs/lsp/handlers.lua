@@ -1,12 +1,9 @@
-local methods = vim.lsp.protocol.Methods
-
 local M = {
   capabilities = vim.lsp.protocol.make_client_capabilities(),
 }
 
 M.setup = function()
   local icons = require("globals.icons")
-  local utils = require("core.utils")
   local severity = vim.diagnostic.severity
 
   -- Global config for diagnostics
@@ -32,7 +29,7 @@ M.setup = function()
       focused = false,
       focusable = true,
       style = "minimal",
-      border = utils.border("FloatBorder"),
+      border = "rounded",
       source = "if_many",
     },
   })

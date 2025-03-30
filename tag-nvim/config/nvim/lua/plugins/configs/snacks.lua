@@ -6,6 +6,7 @@ return function()
 
   snacks.setup({
     bigfile = { enabled = true },
+    bufdelete = { enabled = true },
     animate = {
       duration = 20,
       easing = "linear",
@@ -22,13 +23,19 @@ return function()
       scope = {
         enabled = true,
         char = "╎",
+        priority = 200,
+        hl = "SnacksIndentScope",
       },
       chunk = {
         enabled = true,
         char = {
+          arrow = ">",
+          corner_bottom = "╰",
+          corner_top = "╭",
+          horizontal = "─",
           vertical = "╎",
-        }
-      }
+        },
+      },
     },
     input = { enabled = true },
     notifier = {
@@ -47,7 +54,7 @@ return function()
         info = icons.info,
         debug = icons.debug,
         trace = icons.trace,
-      }
+      },
     },
     picker = { enabled = false },
     quickfile = { enabled = true },
@@ -55,5 +62,6 @@ return function()
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
+    zen = { enabled = true }
   })
 end
