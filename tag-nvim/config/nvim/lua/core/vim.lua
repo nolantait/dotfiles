@@ -57,6 +57,7 @@ local M = {
     vim_markdown_strikethrough = true,
     rust_recommended_style = 1,
     inlay_hints = true,
+    have_nerd_font = 1,
   },
   options = {
     backup = false, -- Prevents creating a backup file
@@ -69,6 +70,7 @@ local M = {
     conceallevel = 0, -- So that `` is visible in markdown files
     colorcolumn = "+1", -- Highlight the 80th column
     cursorline = true, -- Highlight the current line
+    diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60,algorithm:histogram", -- Diff options
     expandtab = true, -- Convert tabs to spaces
     fileencoding = "utf-8", -- The encoding written to a file
     fileformats = "unix,dos,mac", -- Prefer UNIX over Windows
@@ -88,15 +90,17 @@ local M = {
     hlsearch = true, -- Highlight all matches on previous search pattern
     ignorecase = true, -- Ignore case in search patterns
     incsearch = true, -- Show search matches as you type
+    inccommand = "nosplit", -- Preview incremental substitute
     infercase = true, -- Infer cases in keyword completion
     joinspaces = false, -- One space after punctuation
-    jumpoptions = "stack,view", -- Jump to the last known position when opening a file
+    jumpoptions = "view", -- Jump to the last known position when opening a file
     laststatus = 0, -- Global status
     linebreak = true, -- Wrap lines at 'breakat'
     list = true, -- Show some invisible characters
     listchars = { tab = "»·", trail = "·", nbsp = "·" }, -- Set listchars
     mouse = "a", -- Allow the mouse to be used in neovim
     mousemoveevent = true, -- Enable mouse events for bufferline reveal
+    mousescroll = "ver:1,hor:0", -- Enable mouse scrolling
     modeline = false, -- Disable modelines as security precaution
     number = true, -- Set numbered lines
     numberwidth = 2, -- Set number column width to 2 {default 4}
@@ -199,10 +203,15 @@ function M.setup_options()
   -- F: don't give the file info when editing a file, like :silent was used
   -- c: don't give ins-completion-menu messages
   -- W: don't give "written" or "[w]" when writing a file
-  vim.opt.shortmess:append("WcC")
-  vim.opt.whichwrap:append("<,>,[,],h,l")
+  vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+  vim.opt.whichwrap:append("<>[]hl")
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
+
+  local loaded, _ = pcall(require, "snacks")
+  if loaded then
+    vim.opt.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+  end
 end
 
 _G._vim_opts = M

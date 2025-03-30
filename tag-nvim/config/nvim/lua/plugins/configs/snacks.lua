@@ -64,4 +64,6 @@ return function()
     words = { enabled = true },
     zen = { enabled = true }
   })
+
+  vim.ui.input = snacks.input
 end
