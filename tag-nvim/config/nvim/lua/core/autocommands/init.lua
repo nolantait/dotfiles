@@ -100,40 +100,6 @@ function M.setup()
     desc = "Check if we need to reload the file when it changed",
     group = augroup("checktime"),
   })
-
-  command({ "BufNewFile", "BufRead" }, {
-    desc = "Set the i3 filetype based on the file extension",
-    group = augroup("detect_i3"),
-    pattern = "*.i3.config",
-    callback = function()
-      vim.bo.filetype = "i3config"
-    end,
-  })
-
-  command({ "BufNewFile", "BufRead" }, {
-    desc = "Set the sway filetype based on the file extension",
-    group = augroup("detect_sway"),
-    pattern = "*.sway.config",
-    callback = function()
-      vim.bo.filetype = "i3config"
-    end,
-  })
-
-  command({ "BufNewFile", "BufRead" }, {
-    desc = "Set the ansible filetype based on the project",
-    group = augroup("detect_ansible"),
-    pattern = "*.yml,*.yaml",
-    callback = require("core.autocommands.ansible_filetype"),
-  })
-
-  command({ "BufNewFile", "BufRead" }, {
-    desc = "Set the Brewfile filetype",
-    group = augroup("detect_brewfile"),
-    pattern = "Brewfile",
-    callback = function()
-      vim.bo.filetype = "ruby"
-    end,
-  })
 end
 
 return M
