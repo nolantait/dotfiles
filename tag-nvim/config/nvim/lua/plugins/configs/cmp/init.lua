@@ -50,11 +50,21 @@ return function()
 
   -- Setup cmp with everything above
   cmp.setup({
+    enabled = function()
+      local disabled = false
+
+      disabled = disabled
+        or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
+      disabled = disabled or (vim.fn.reg_recording() ~= "")
+      disabled = disabled or (vim.fn.reg_executing() ~= "")
+
+      return not disabled
+    end,
     completion = {
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
       },
-      -- completeopt = "menu,menuone,noinsert,noselect",
+      -- completeopt = "menu,menuone,noselect",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
     },
@@ -86,22 +96,23 @@ return function()
       ["<S-Tab>"] = cmp.mapping(commands.previous_item, { "i", "s" }),
     },
     matching = {
-      disallow_prefix_unmatching = true,
-      disallow_fullfuzzy_matching = true,
-      disallow_fuzzy_matching = true,
-      disallow_partial_matching = false,
+      disallow_fullfuzzy_matching = false,
+      disallow_fuzzy_matching = false,
       disallow_partial_fuzzy_matching = true,
+      disallow_partial_matching = false,
+      disallow_prefix_unmatching = false,
       disallow_symbol_nonprefix_matching = true,
     },
     preselect = cmp.PreselectMode.Item,
-    -- performance = {
-    --   debounce = 60,
-    --   throttle = 30,
-    --   fetching_timeout = 1000,
-    --   confirm_resolve_timeout = 80,
-    --   async_budget = 1,
-    --   max_view_entries = 200
-    -- },
+    performance = {
+      debounce = 60,
+      throttle = 30,
+      fetching_timeout = 500,
+      filtering_context_budget = 3,
+      confirm_resolve_timeout = 80,
+      async_budget = 1,
+      max_view_entries = 200
+    },
     sources = cmp.config.sources({
       {
         name = "copilot",
@@ -124,9 +135,11 @@ return function()
     window = {
       completion = {
         border = core_utils.border("FloatBorderCmp"),
+        winhighlight = "Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None",
       },
       documentation = {
         border = core_utils.border("FloatBorderCmp"),
+        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
       },
     },
     experimental = {
