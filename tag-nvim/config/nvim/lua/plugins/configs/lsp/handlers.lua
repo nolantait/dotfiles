@@ -11,6 +11,7 @@ M.setup = function()
 
   -- Global config for diagnostics
   vim.diagnostic.config({
+    virtual_lines = true,
     virtual_text = { prefix = "", spacing = 2 },
     inlay_hints = {
       enabled = true,

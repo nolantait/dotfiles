@@ -54,7 +54,7 @@ return function()
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
       },
-      completeopt = "menu,menuone,noinsert,noselect",
+      -- completeopt = "menu,menuone,noinsert,noselect",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
       keyword_length = 1,
     },
