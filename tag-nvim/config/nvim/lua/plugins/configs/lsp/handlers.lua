@@ -11,7 +11,7 @@ M.setup = function()
 
   -- Global config for diagnostics
   vim.diagnostic.config({
-    virtual_lines = { current_line = true },
+    -- virtual_lines = { current_line = true },
     virtual_text = true,
     inlay_hints = {
       enabled = true,

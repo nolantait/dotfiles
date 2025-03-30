@@ -1,7 +1,7 @@
 return {
   {
     mode = "n",
-    key = "<C-,>",
+    key = "<C-n>",
     command = "<cmd>pop<CR>",
     description = "Pop the last entry from the jump list",
   },

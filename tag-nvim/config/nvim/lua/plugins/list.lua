@@ -275,6 +275,8 @@ local events = {
       "hrsh7th/cmp-path",
       "f3fora/cmp-spell",
       "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp-document-symbol",
     },
   },
   {
@@ -287,9 +289,24 @@ local events = {
   {
     -- Completions for vim commands and paths
     "gelguy/wilder.nvim",
+    enabled = false,
     config = require("plugins.configs.wilder"),
     dependencies = {
       "romgrk/fzy-lua-native",
+    },
+    event = "CmdlineEnter",
+  },
+  {
+    -- Completions for vim commands and paths
+    "folke/noice.nvim",
+    config = require("plugins.configs.noice"),
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
     },
     event = "CmdlineEnter",
   },
