@@ -1,6 +1,12 @@
 return {
   {
     mode = "n",
+    key = "<C-,>",
+    command = "<cmd>pop<CR>",
+    description = "Pop the last entry from the jump list",
+  },
+  {
+    mode = "n",
     key = "gD",
     command = "<cmd>lua vim.lsp.buf.declaration()<CR>",
     description = "Go to declaration",

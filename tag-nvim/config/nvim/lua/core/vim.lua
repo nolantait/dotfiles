@@ -130,6 +130,24 @@ local M = {
     updatetime = 200, -- Faster completion (4000ms default)
     virtualedit = "block", -- Allow cursor to move where there is no text in visual block mode
     wildmode = { "longest:full", "full" }, -- Command-line completion mode
+    wildignorecase = true, -- Ignore case when completing file names
+    wildignore = {
+      "*.o",
+      "*.obj",
+      "*.exe",
+      "*.dll",
+      "*.so",
+      "*.swp",
+      "*.zip",
+      "*.tar.gz",
+      "*.tar.bz2",
+      "*.tar.xz",
+      "*~",
+      ".pyc",
+      "__pycache__",
+      ".DS_Store",
+      "#*#",
+    }, -- Ignore these files when completing file names
     winminwidth = 5, -- Minimum window width
     wrap = false, -- Display lines as one long line
     writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited

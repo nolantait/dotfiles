@@ -11,8 +11,8 @@ M.setup = function()
 
   -- Global config for diagnostics
   vim.diagnostic.config({
-    virtual_lines = true,
-    virtual_text = { prefix = "", spacing = 2 },
+    virtual_lines = { current_line = true },
+    virtual_text = true,
     inlay_hints = {
       enabled = true,
       exclude = {},
@@ -64,7 +64,7 @@ M.on_attach = function(client, buffer)
     end
 
     local augroup =
-      vim.api.nvim_create_augroup("tainted/lsp-highlight", { clear = true })
+        vim.api.nvim_create_augroup("tainted/lsp-highlight", { clear = true })
 
     vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
       group = augroup,
