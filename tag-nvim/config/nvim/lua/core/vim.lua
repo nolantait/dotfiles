@@ -134,6 +134,7 @@ local M = {
     wrap = false, -- Display lines as one long line
     writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     winblend = 0, -- Make floating windows blend
+    winborder = "rounded", -- Set window border style
   },
 }
 

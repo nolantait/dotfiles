@@ -12,8 +12,6 @@ local detect_ansible = function(path)
   return "yaml"
 end
 
-vim.notify("Loading filetype.lua", vim.log.levels.INFO, { title = "tag-nvim" })
-
 vim.filetype.add({
   extension = {
     -- Add new filetype for .i3.config files

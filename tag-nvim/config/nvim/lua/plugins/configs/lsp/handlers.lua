@@ -35,28 +35,6 @@ M.setup = function()
       source = "if_many",
     },
   })
-
-  vim.lsp.handlers[methods.textDocument_signatureHelp] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {
-      focusable = false,
-      max_height = 7,
-      border = utils.border("FloatBorderDocs"),
-      silent = true,
-    })
-
-  vim.lsp.handlers[methods.textDocument_hover] =
-    vim.lsp.with(vim.lsp.handlers.hover, {
-      border = utils.border("FloatBorderDocs"),
-      silent = true,
-    })
-
-  vim.lsp.handlers[methods.textDocument_publishDiagnostics] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      signs = true,
-      underline = true,
-      virtual_text = { severity = { min = vim.diagnostic.severity.HINT } },
-      update_in_insert = false,
-    })
 end
 
 -- Provides navigation for LSP symbols for barbecue.nvim
@@ -86,12 +64,14 @@ M.on_attach = function(client, buffer)
 
     local augroup =
       vim.api.nvim_create_augroup("tainted/lsp-highlight", { clear = true })
+
     vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
       group = augroup,
       desc = "Highlight references under the cursor",
       buffer = buffer,
       callback = vim.lsp.buf.document_highlight,
     })
+
     vim.api.nvim_create_autocmd({ "CursorMoved", "InsertEnter", "BufLeave" }, {
       group = augroup,
       desc = "Clear highlight references",
