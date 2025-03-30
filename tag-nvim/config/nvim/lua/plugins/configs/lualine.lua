@@ -195,7 +195,7 @@ return function()
         encoding,
         fileformat,
         filetype,
-        copilot_status,
+        -- copilot_status,
         lsp_status,
       },
       lualine_y = { cwd },
