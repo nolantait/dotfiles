@@ -8,6 +8,7 @@ return function()
       javascript = { "prettier", lsp_format = "fallback" },
       javascriptreact = { "prettier", lsp_format = "fallback" },
       typescriptreact = { "prettier", lsp_format = "fallback" },
+      typescript = { "prettier", lsp_format = "fallback" },
       json = { "prettier", stop_on_first = true },
       jsonc = { "prettier", stop_on_first = true },
       lua = { "stylua" },
