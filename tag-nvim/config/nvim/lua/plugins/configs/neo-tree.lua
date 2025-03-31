@@ -15,6 +15,27 @@ return function()
   neotree.setup({
     close_if_last_window = true,
     commands = {
+      avante_add_files = function(state)
+        local node = state.tree:get_node()
+        local filepath = node:get_id()
+        local relative_path = require("avante.utils").relative_path(filepath)
+
+        local sidebar = require("avante").get()
+
+        local open = sidebar:is_open()
+        -- ensure avante sidebar is open
+        if not open then
+          require("avante.api").ask()
+          sidebar = require("avante").get()
+        end
+
+        sidebar.file_selector:add_selected_file(relative_path)
+
+        -- remove neo tree buffer
+        if not open then
+          sidebar.file_selector:remove_selected_file("neo-tree filesystem [1]")
+        end
+      end,
       parent_or_close = function(state)
         local node = state.tree:get_node()
         if node:has_children() and node:is_expanded() then
@@ -139,7 +160,7 @@ return function()
     window = {
       width = 30,
       mappings = {
-        o = "open",
+        ["oa"] = "avante_add_files",
         H = "prev_source",
         L = "next_source",
         l = "child_or_open",

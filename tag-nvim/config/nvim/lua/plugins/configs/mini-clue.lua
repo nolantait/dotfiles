@@ -40,6 +40,9 @@ return function()
 
       -- mini.surround keys
       { mode = "n", keys = "s" },
+
+      -- Avante keys
+      { mode = "n", keys = "<Leader>a" }
     },
 
     clues = {

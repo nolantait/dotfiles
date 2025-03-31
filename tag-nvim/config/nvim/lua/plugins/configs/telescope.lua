@@ -14,7 +14,7 @@ return function()
   telescope.setup({
     defaults = {
       border = false,
-      borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
       buffer_previewer_maker = previewers.buffer_previewer_maker,
       color_devicons = true,
       dynamic_preview_title = true,
