@@ -14,7 +14,7 @@ return function()
       lua = { "stylua" },
       html = { "htmlbeautifier" },
       svg = { "htmlbeautifier" },
-      ["_"] = { "trim_whitespace", "trim_newlines" },
+      markdown = { "trim_whitespace", "trim_newlines" },
     },
   })
 

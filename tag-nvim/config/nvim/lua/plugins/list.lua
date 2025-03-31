@@ -47,6 +47,7 @@ local high_priority = {
   },
   {
     "folke/snacks.nvim",
+    priority = 1000,
     lazy = false,
     config = require("plugins.configs.snacks"),
     keys = keymap(require("plugins.keybinds.snacks")),
@@ -108,7 +109,7 @@ local events = {
   },
   {
     "yetone/avante.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     config = require("plugins.configs.avante"),
@@ -612,10 +613,10 @@ local very_lazy = {
         return vim.ui.select(...)
       end
       ---@diagnostic disable-next-line: duplicate-set-field
-      vim.ui.input = function(...)
-        require("lazy").load({ plugins = { "dressing.nvim" } })
-        return vim.ui.input(...)
-      end
+      -- vim.ui.input = function(...)
+      --   require("lazy").load({ plugins = { "dressing.nvim" } })
+      --   return vim.ui.input(...)
+      -- end
     end,
   },
   {
