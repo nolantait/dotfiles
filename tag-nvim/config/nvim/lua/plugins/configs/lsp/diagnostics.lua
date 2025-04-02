@@ -74,6 +74,7 @@ local function setup_diagnostic_config()
       style = "minimal",
       border = utils.border("FloatBorder"),
       source = "if_many",
+      max_width = 100,
     },
   })
 end
