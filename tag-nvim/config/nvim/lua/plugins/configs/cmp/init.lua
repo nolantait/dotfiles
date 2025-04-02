@@ -9,9 +9,6 @@ return function()
   -- Load our module for copilot_cmp which we use to wrap functions below
   -- conditionally on it being available. Doing this so we can easily remove
   -- without breaking.
-  local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
-  copilot_cmp.setup()
-
   vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
   local compare = cmp.config.compare
@@ -28,6 +25,8 @@ return function()
     compare.order,
   }
 
+  local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
+  copilot_cmp.setup()
   -- Apply copilot_cmp conditionally on it being loaded
   comparators = copilot_cmp.apply(comparators)
 
@@ -118,6 +117,7 @@ return function()
         name = "copilot",
         max_view_entries = 3,
       },
+      { name = "render-markdown" },
       { name = "nvim_lua" },
       {
         name = "nvim_lsp",
