@@ -62,24 +62,24 @@ local custom = {
   {
     config = require("plugins.configs.colorscheme"),
     priority = 1000,
-    dir = settings.vim_path .. "/plugins/colorscheme.nvim",
+    dir = settings.vim_path .. "/custom_plugins/colorscheme.nvim",
     lazy = false,
   },
   {
     config = true,
-    dir = settings.vim_path .. "/plugins/profiling.nvim",
+    dir = settings.vim_path .. "/custom_plugins/profiling.nvim",
     lazy = false,
     enabled = false,
   },
   {
     config = true,
     ft = "ruby",
-    dir = settings.vim_path .. "/plugins/rails.nvim",
+    dir = settings.vim_path .. "/custom_plugins/rails.nvim",
   },
   {
     config = true,
     ft = "ruby",
-    dir = settings.vim_path .. "/plugins/gem.nvim",
+    dir = settings.vim_path .. "/custom_plugins/gem.nvim",
   },
 }
 
