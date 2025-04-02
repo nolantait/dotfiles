@@ -356,16 +356,6 @@ local events = {
   },
   {
     -- Completions for vim commands and paths
-    "gelguy/wilder.nvim",
-    enabled = false,
-    config = require("plugins.configs.wilder"),
-    dependencies = {
-      "romgrk/fzy-lua-native",
-    },
-    event = "CmdlineEnter",
-  },
-  {
-    -- Completions for vim commands and paths
     "folke/noice.nvim",
     config = require("plugins.configs.noice"),
     dependencies = {
