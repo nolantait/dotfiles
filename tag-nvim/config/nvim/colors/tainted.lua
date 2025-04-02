@@ -1,10 +1,5 @@
-local lush = require("lush")
-
--- Reset highlights
--- vim.cmd.highlight("clear")
--- if vim.fn.exists("syntax_on") then
---   vim.cmd.syntax("reset")
--- end
+vim.g.colors_name = "tainted"
+vim.opt.background = "dark"
 
 -- By setting our module to nil, we clear lua"s cache,
 -- which means the require ahead will *always* occur.
@@ -18,12 +13,10 @@ local lush = require("lush")
 --
 -- The performance impact of this call can be measured in the hundreds of
 -- *nanoseconds* and such could be considered "production safe".
--- package.loaded["colorscheme"] = nil
+package.loaded["colorscheme"] = nil
 local theme = require("colorscheme")
 theme.setup()
 
 -- include our theme file and pass it to lush to apply
+local lush = require("lush")
 lush(theme.theme)
-
-vim.g.colors_name = "tainted"
-vim.opt.background = "dark"
