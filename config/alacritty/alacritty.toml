@@ -1,7 +1,7 @@
 [general]
 live_config_reload = true
 working_directory = "Workspace"
-import = ["~/.config/alacritty-local/alacritty.host.toml"]
+import = ["~/.config/alacritty/alacritty.host.toml"]
 
 # Start flavours
 # Base16 OneDark 256 - alacritty color config
@@ -101,3 +101,6 @@ title = "Alacritty"
 [window.padding]
 x = 0
 y = 0
+
+[font]
+size = 14.0
