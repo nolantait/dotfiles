@@ -3,6 +3,7 @@
 return function()
   local trouble = require("trouble")
   local icon = require("globals.icons")
+  local utils = require("core.utils")
 
   trouble.setup({
     position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -51,7 +52,9 @@ return function()
       information = icon.info,
       other = icon.circle,
     },
-    win_config = { border = "single" },
+    win_config = {
+      border = utils.border("FloatBorder"), -- the border to use for the trouble list
+    },
     use_diagnostic_signs = false, -- enabling this will use the signs defined in your lsp client
   })
 end

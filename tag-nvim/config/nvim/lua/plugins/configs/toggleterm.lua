@@ -2,6 +2,7 @@
 
 return function()
   local toggleterm = require("toggleterm")
+  local utils = require("core.utils")
 
   toggleterm.setup({
     size = function(term)
@@ -34,7 +35,7 @@ return function()
       -- the 'curved' border is a custom border type
       -- not natively supported but implemented in this plugin.
       -- border = 'single' | 'double' | 'shadow' | 'curved' | ... other options supported by win open
-      border = "curved",
+      border = utils.border("FloatBorder"),
       -- width = <value>,
       -- height = <value>,
       winblend = 0,

@@ -4,6 +4,7 @@ return function()
   local neotree = require("neo-tree")
   local events = require("neo-tree.events")
   local icons = require("globals.icons")
+  local utils = require("core.utils")
 
   local function on_move(data)
     require("snacks").rename.on_rename_file(data.source, data.destination)
@@ -129,7 +130,7 @@ return function()
       "qf",
       "Outline",
     },
-    popup_border_style = "rounded",
+    popup_border_style = utils.border("FloatBorder"),
     source_selector = {
       winbar = true,
       content_layout = "center",

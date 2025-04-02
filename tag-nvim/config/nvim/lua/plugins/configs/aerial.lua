@@ -2,6 +2,7 @@
 
 return function()
   local aerial = require("aerial")
+  local utils = require("utils")
 
   aerial.setup({
     -- Priority list of preferred backends for aerial.
@@ -278,7 +279,7 @@ return function()
     -- Options for opening aerial in a floating win
     float = {
       -- Controls border appearance. Passed to nvim_open_win
-      border = "rounded",
+      border = utils.border("FloatBorder"),
 
       -- Determines location of floating window
       --   cursor - Opens float on top of the cursor
@@ -303,7 +304,7 @@ return function()
 
     -- Options for the floating nav windows
     nav = {
-      border = "rounded",
+      border = utils.border("FloatBorder"),
       max_height = 0.9,
       min_height = { 10, 0.1 },
       max_width = 0.5,

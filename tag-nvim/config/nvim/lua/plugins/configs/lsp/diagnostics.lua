@@ -48,6 +48,7 @@ end
 local function setup_diagnostic_config()
   local icons = require("globals.icons")
   local severity = vim.diagnostic.severity
+  local utils = require("core.utils")
 
   vim.diagnostic.config({
     virtual_lines = { current_line = true },
@@ -71,7 +72,7 @@ local function setup_diagnostic_config()
       focused = false,
       focusable = true,
       style = "minimal",
-      border = "rounded",
+      border = utils.border("FloatBorder"),
       source = "if_many",
     },
   })

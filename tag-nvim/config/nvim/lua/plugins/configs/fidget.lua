@@ -3,6 +3,7 @@
 return function()
   local fidget = require("fidget")
   local icons = require("globals.icons")
+  local utils = require("core.utils")
 
   fidget.setup({
     text = {
@@ -24,7 +25,7 @@ return function()
       relative = "win",
       blend = 0, -- catppuccin integration
       zindex = nil,
-      border = "rounded",
+      border = utils.border("FloatBorder"), -- style of border for fidget window
     },
     fmt = {
       leftpad = true, -- right-justify text in fidget box

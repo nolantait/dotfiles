@@ -3,6 +3,7 @@
 
 return function()
   local gitsigns = require("gitsigns")
+  local utils = require("core.utils")
 
   gitsigns.setup({
     signs = {
@@ -36,7 +37,7 @@ return function()
     numhl = true, -- Toggle with `:Gitsigns toggle_numhl`
     preview_config = {
       -- Options passed to nvim_open_win
-      border = "single",
+      border = utils.border("FloatBorder"),
       style = "minimal",
       relative = "cursor",
       row = 0,

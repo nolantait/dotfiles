@@ -3,6 +3,7 @@
 return function()
   local neotest = require("neotest")
   local icons = require("globals.icons")
+  local utils = require("core.utils")
 
   neotest.setup({
     adapters = {
@@ -31,7 +32,7 @@ return function()
       enabled = false,
     },
     floating = {
-      border = "rounded",
+      border = utils.border("FloatBorder"),
       max_height = 0.6,
       max_width = 0.9,
     },

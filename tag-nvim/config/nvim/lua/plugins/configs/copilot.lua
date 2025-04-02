@@ -20,9 +20,9 @@ return function()
       cvs = false,
       text = false,
       ["neo-tree"] = false,
-      ["."] = false,
       ["dap-repl"] = false,
       ["yaml.ansible"] = true,
+      ["."] = false,
     },
     panel = {
       -- Disabled to not interfere with copilot-cmp

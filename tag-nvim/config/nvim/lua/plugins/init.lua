@@ -4,6 +4,7 @@
 
 local settings = require("globals.settings")
 local icons = require("globals.icons")
+local utils = require("core.utils")
 
 local M = {
   options = {
@@ -29,7 +30,7 @@ local M = {
       size = { width = 0.88, height = 0.8 },
       wrap = true, -- wrap the lines in the ui
       -- The border to use for the UI window. Accepts same border values as |nvim_open_win()|.
-      border = "rounded",
+      border = utils.border("FloatBorder"),
       icons = {
         cmd = icons.code,
         config = icons.gear,
