@@ -85,6 +85,11 @@ local custom = {
 
 local events = {
   {
+    "sphamba/smear-cursor.nvim",
+    config = require("plugins.configs.smear-cursor"),
+    event = "CursorMoved",
+  },
+  {
     -- Startup dashboard greeting when opening vim
     "goolord/alpha-nvim",
     config = require("plugins.configs.alpha"),
