@@ -6,6 +6,11 @@ return function()
   local utils = require("core.utils")
 
   fidget.setup({
+    display = {
+      render_limit = 5,
+      done_ttl = 2,
+      done_icon = icons.check, -- character shown when all tasks are complete
+    },
     text = {
       spinner = "dots_snake", -- animation shown when tasks are ongoing
       done = icons.check, -- character shown when all tasks are complete
