@@ -15,10 +15,8 @@ return function()
     defaults = {
       border = false,
       -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
-      buffer_previewer_maker = previewers.buffer_previewer_maker,
       color_devicons = true,
       dynamic_preview_title = true,
-      file_sorter = sorters.get_fuzzy_file,
       file_ignore_patterns = {
         "node_modules/",
         ".git/",
@@ -33,9 +31,12 @@ return function()
       generic_sorter = sorters.get_generic_fuzzy_sorter,
       file_previewer = previewers.vim_buffer_cat.new,
       grep_previewer = previewers.vim_buffer_vimgrep.new,
+      qflist_previewer = previewers.vim_buffer_qflist.new,
+      buffer_previewer_maker = previewers.buffer_previewer_maker,
+      file_sorter = sorters.get_fuzzy_file,
       initial_mode = "insert",
       layout_strategy = "flex",
-      path_display = { "truncate" },
+      path_display = { "smart" },
       prompt_prefix = icons.telescope .. " ",
       results_title = false,
       scroll_strategy = "cycle",
@@ -50,8 +51,8 @@ return function()
         vertical = {
           mirror = false,
         },
-        width = 0.87,
-        height = 0.80,
+        width = 0.85,
+        height = 0.92,
         preview_cutoff = 120,
       },
       mappings = {
@@ -122,7 +123,6 @@ return function()
           ["?"] = actions.which_key,
         },
       },
-      qflist_previewer = previewers.vim_buffer_qflist.new,
       set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
       winblend = 0,
       vimgrep_arguments = {
@@ -158,6 +158,7 @@ return function()
         show_unindexed = false,
         disable_devicons = false,
         ignore_patterns = {
+          "node_modules/*",
           "*.git/*",
           "*/tmp/*",
           "term://*",
@@ -179,4 +180,5 @@ return function()
 
   telescope.load_extension("ui-select")
   telescope.load_extension("fzf")
+  telescope.load_extension("frecency")
 end
