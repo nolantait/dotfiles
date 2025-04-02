@@ -15,13 +15,8 @@ local function lsp_attach_navic(client, bufnr)
   end
 end
 
-local function use_lsp_highlight(buffer)
-  -- Use LSP to highlight references under the cursor instead of Illuminate
-  local ok, illuminate = pcall(require, "illuminate")
-  if ok then
-    illuminate.pause_buf()
-  end
-
+-- Set up LSP highlight references under the cursor
+local function setup_lsp_highlight(buffer)
   local augroup =
     vim.api.nvim_create_augroup("tainted/lsp-highlight", { clear = true })
 
@@ -38,6 +33,16 @@ local function use_lsp_highlight(buffer)
     buffer = buffer,
     callback = vim.lsp.buf.clear_references,
   })
+end
+
+-- Pause Illuminate and use LSP to highlight references under the cursor
+local function use_lsp_highlight(buffer)
+  local ok, illuminate = pcall(require, "illuminate")
+  if ok then
+    illuminate.pause_buf()
+  end
+
+  setup_lsp_highlight(buffer)
 end
 
 function M.on_attach(client, buffer)

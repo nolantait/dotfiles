@@ -32,8 +32,8 @@ return function()
     },
     mappings = {
       submit = {
-        normal = "<C-CR>",
-        insert = "<C-CR>",
+        normal = "<C-A>",
+        insert = "<C-A>",
       },
       sidebar = {
         close_from_input = {
