@@ -4,7 +4,7 @@ local icons = require("globals.icons")
 
 local M = {}
 
-local kind_icons = {
+local KIND_ICONS = {
   Text = icons.text,
   Method = icons.coding.method,
   Function = icons.coding.func,
@@ -33,11 +33,6 @@ local kind_icons = {
   Copilot = icons.copilot,
 }
 
-M.check_backspace = function()
-  local col = vim.fn.col(".") - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end
-
 M.format = function(entry, vim_item)
   -- Use tailwindcss-colorizer-cmp formatter if our kind is a tailwind color
   local ok, tw_colorizer = pcall(require, "tailwindcss-colorizer-cmp")
@@ -49,7 +44,7 @@ M.format = function(entry, vim_item)
   end
 
   -- Otherwise use the default formatter
-  vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+  vim_item.kind = string.format("%s", KIND_ICONS[vim_item.kind])
 
   vim_item.menu = ({
     copilot = "[Copilot]",
@@ -62,20 +57,6 @@ M.format = function(entry, vim_item)
   })[entry.source.name]
 
   return vim_item
-end
-
-M.lsp_scores = function(entry_a, entry_b)
-  local score_a = entry_a.completion_item.score
-  local score_b = entry_b.completion_item.score
-  local diff = 0
-
-  if score_a and score_b then
-    diff = (score_b * entry_b.score) - (score_a * entry_a.score)
-  else
-    diff = entry_b.score - entry_a.score
-  end
-
-  return (diff < 0)
 end
 
 -- Limit the types of LSP options shown depending on what we are typing
@@ -101,6 +82,64 @@ M.limit_lsp_types = function(entry, ctx)
   end
 
   return true
+end
+
+M.CREATE_UNDO = vim.api.nvim_replace_termcodes("<c-G>u", true, true, true)
+function M.create_undo()
+  if vim.api.nvim_get_mode().mode == "i" then
+    vim.api.nvim_feedkeys(M.CREATE_UNDO, "n", false)
+  end
+end
+
+M.actions = {}
+
+-- This is a better implementation of `cmp.confirm`:
+--  * check if the completion menu is visible without waiting for running sources
+--  * create an undo point before confirming
+-- This function is both faster and more reliable.
+---@param opts? {select: boolean, behavior: cmp.ConfirmBehavior}
+function M.confirm(opts)
+  local cmp = require("cmp")
+
+  opts = vim.tbl_extend(
+    "force",
+    { select = true, behavior = cmp.ConfirmBehavior.Insert },
+    opts or {}
+  )
+
+  return function(fallback)
+    if cmp.core.view:visible() or vim.fn.pumvisible() == 1 then
+      M.create_undo()
+      if cmp.confirm(opts) then
+        return
+      end
+    end
+    return fallback()
+  end
+end
+
+---@param entry cmp.Entry
+function M.auto_brackets(entry)
+  local cmp = require("cmp")
+  local Kind = cmp.lsp.CompletionItemKind
+  local item = entry.completion_item()
+
+  if vim.tbl_contains({ Kind.Function, Kind.Method }, item.kind) then
+    local cursor = vim.api.nvim_win_get_cursor(0)
+    local prev_char = vim.api.nvim_buf_get_text(
+      0,
+      cursor[1] - 1,
+      cursor[2],
+      cursor[1] - 1,
+      cursor[2] + 1,
+      {}
+    )[1]
+    if prev_char ~= "(" and prev_char ~= ")" then
+      local keys =
+        vim.api.nvim_replace_termcodes("()<left>", false, false, true)
+      vim.api.nvim_feedkeys(keys, "i", true)
+    end
+  end
 end
 
 return M

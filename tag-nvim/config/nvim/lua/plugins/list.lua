@@ -319,7 +319,6 @@ local events = {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     config = require("plugins.configs.cmp"),
-    main = require("utils.cmp"),
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lua",

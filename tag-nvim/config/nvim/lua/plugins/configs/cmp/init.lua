@@ -1,21 +1,10 @@
 -- DOCS: Completions plugin for code suggestions
 
-return function()
-  local cmp = require("cmp")
-  local utils = require("plugins.configs.cmp.utils")
-  local core_utils = require("core.utils")
-  local tainted = require("utils.cmp")
-
-  -- Load our module for copilot_cmp which we use to wrap functions below
-  -- conditionally on it being available. Doing this so we can easily remove
-  -- without breaking.
-  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
+local setup_compare = function(cmp)
   local compare = cmp.config.compare
   local comparators = {
     compare.offset,
     compare.exact,
-    utils.lsp_scores,
     compare.score,
     compare.recently_used,
     compare.locality,
@@ -24,11 +13,22 @@ return function()
     compare.length,
     compare.order,
   }
-
   local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
   copilot_cmp.setup()
-  -- Apply copilot_cmp conditionally on it being loaded
-  comparators = copilot_cmp.apply(comparators)
+  return copilot_cmp.apply(comparators)
+end
+
+return function()
+  local cmp = require("cmp")
+  local utils = require("plugins.configs.cmp.utils")
+  local core_utils = require("core.utils")
+
+  -- Load our module for copilot_cmp which we use to wrap functions below
+  -- conditionally on it being available. Doing this so we can easily remove
+  -- without breaking.
+  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
+
+  setup_compare(cmp)
 
   local commands = {
     next_item = function(fallback)
@@ -89,8 +89,8 @@ return function()
       }),
       -- Accept currently selected item. If none selected, `select` first item.
       -- Set `select` to `false` to only confirm explicitly selected items.
-      ["<CR>"] = tainted.confirm({ select = false }),
-      ["<S-CR>"] = tainted.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
+      ["<CR>"] = utils.confirm({ select = false }),
+      ["<S-CR>"] = utils.confirm({ behavior = cmp.ConfirmBehavior.Replace }),
       ["<Tab>"] = cmp.mapping(commands.next_item, { "i", "s" }),
       ["<S-Tab>"] = cmp.mapping(commands.previous_item, { "i", "s" }),
     },
