@@ -13,7 +13,7 @@ local setup_compare = function(cmp)
     compare.length,
     compare.order,
   }
-  local copilot_cmp = require("plugins.configs.cmp.copilot-cmp")
+  local copilot_cmp = require("plugins.configs.cmp.copilot")
   copilot_cmp.setup()
   return copilot_cmp.apply(comparators)
 end
