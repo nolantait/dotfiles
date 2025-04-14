@@ -33,6 +33,24 @@ local KIND_ICONS = {
   Copilot = icons.copilot,
 }
 
+M.setup_comparators = function(cmp)
+  local compare = cmp.config.compare
+  local comparators = {
+    compare.offset,
+    compare.exact,
+    compare.score,
+    compare.recently_used,
+    compare.locality,
+    compare.kind,
+    compare.sort_text,
+    compare.length,
+    compare.order,
+  }
+  local copilot_cmp = require("plugins.configs.cmp.copilot")
+  copilot_cmp.setup()
+  return copilot_cmp.apply(comparators)
+end
+
 M.format = function(entry, vim_item)
   -- Use tailwindcss-colorizer-cmp formatter if our kind is a tailwind color
   local ok, tw_colorizer = pcall(require, "tailwindcss-colorizer-cmp")

@@ -34,4 +34,6 @@ return function()
     },
     server_opts_overrides = {},
   })
+
+  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 end

@@ -1,34 +1,9 @@
 -- DOCS: Completions plugin for code suggestions
 
-local setup_compare = function(cmp)
-  local compare = cmp.config.compare
-  local comparators = {
-    compare.offset,
-    compare.exact,
-    compare.score,
-    compare.recently_used,
-    compare.locality,
-    compare.kind,
-    compare.sort_text,
-    compare.length,
-    compare.order,
-  }
-  local copilot_cmp = require("plugins.configs.cmp.copilot")
-  copilot_cmp.setup()
-  return copilot_cmp.apply(comparators)
-end
-
 return function()
   local cmp = require("cmp")
   local utils = require("plugins.configs.cmp.utils")
   local core_utils = require("core.utils")
-
-  -- Load our module for copilot_cmp which we use to wrap functions below
-  -- conditionally on it being available. Doing this so we can easily remove
-  -- without breaking.
-  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
-  setup_compare(cmp)
 
   local commands = {
     next_item = function(fallback)
@@ -130,7 +105,7 @@ return function()
     }),
     sorting = {
       priority_weight = 2,
-      comparators = comparators,
+      comparators = utils.setup_comparators(cmp),
     },
     window = {
       completion = {
