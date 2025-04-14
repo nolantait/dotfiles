@@ -38,9 +38,9 @@ return function()
       sidebar = {
         close_from_input = {
           normal = "<C-q>",
-          insert = "<C-q>"
+          insert = "<C-q>",
         },
-      }
-    }
+      },
+    },
   })
 end

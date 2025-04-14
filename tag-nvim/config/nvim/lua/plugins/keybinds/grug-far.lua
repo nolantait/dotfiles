@@ -11,6 +11,4 @@ return {
     command = "<cmd>lua require'grug-far'.open({ transient = true })<CR>",
     description = "Open find and replace in all files",
   },
-
 }
-

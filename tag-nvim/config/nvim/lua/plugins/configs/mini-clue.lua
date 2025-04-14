@@ -42,7 +42,7 @@ return function()
       { mode = "n", keys = "s" },
 
       -- Avante keys
-      { mode = "n", keys = "<Leader>a" }
+      { mode = "n", keys = "<Leader>a" },
     },
 
     clues = {

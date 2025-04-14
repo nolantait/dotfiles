@@ -3,8 +3,5 @@
 return function()
   local grug = require("grug-far")
 
-  grug.setup({
-
-  })
+  grug.setup({})
 end
-

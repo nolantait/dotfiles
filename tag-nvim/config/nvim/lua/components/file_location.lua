@@ -8,7 +8,8 @@ return function()
   elseif cursorline == filelines then
     position = "Bot"
   else
-    position = string.format("%2d%%%%", math.floor(cursorline / filelines * 100))
+    position =
+      string.format("%2d%%%%", math.floor(cursorline / filelines * 100))
   end
   return string.format("%s%3d:%-2d", position, cursorline, cursorcol)
 end

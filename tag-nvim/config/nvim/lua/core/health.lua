@@ -12,7 +12,7 @@ function M.check()
   -- health.info("AstroNvim Version: " .. require("astrocore.updater").version(true))
   health.info(
     "Neovim Version: v"
-    .. vim.fn.matchstr(vim.fn.execute("version"), "NVIM v\\zs[^\n]*")
+      .. vim.fn.matchstr(vim.fn.execute("version"), "NVIM v\\zs[^\n]*")
   )
 
   local programs = {

@@ -9,5 +9,5 @@ return function()
     end
   end
 
-  return ""  -- No server available
+  return "" -- No server available
 end

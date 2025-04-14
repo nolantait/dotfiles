@@ -66,6 +66,6 @@ return function()
       style_preset = bufferline.style_preset.default,
       tab_size = 20,
       themable = true,
-    }
+    },
   })
 end

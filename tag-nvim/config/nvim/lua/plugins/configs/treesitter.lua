@@ -42,7 +42,7 @@ return function()
     indent = {
       -- Disable treesitter's indentation for nvim's builtin smartindent
       -- which can be much faster at the cost of slightly less accuracy
-      enable = false
+      enable = false,
     },
     incremental_selection = {
       enable = true,

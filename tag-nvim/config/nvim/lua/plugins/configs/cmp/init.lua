@@ -110,7 +110,7 @@ return function()
       filtering_context_budget = 3,
       confirm_resolve_timeout = 80,
       async_budget = 1,
-      max_view_entries = 200
+      max_view_entries = 200,
     },
     sources = cmp.config.sources({
       {

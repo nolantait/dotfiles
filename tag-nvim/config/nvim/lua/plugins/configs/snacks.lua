@@ -62,7 +62,7 @@ return function()
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
-    zen = { enabled = true }
+    zen = { enabled = true },
   })
 
   vim.ui.input = snacks.input

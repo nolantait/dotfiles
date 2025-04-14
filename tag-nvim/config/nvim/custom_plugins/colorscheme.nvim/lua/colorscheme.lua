@@ -22,119 +22,119 @@ function M.setup()
   local theme = lush(function(injected_functions)
     local sym = injected_functions.sym
     return {
-      Background({ bg = colors.background }),                           -- normal background color
-      ColorColumn({ bg = colors.darker_gray }),                         -- Columns set with "colorcolumn"
-      Conceal({ fg = colors.light_gray }),                              -- Placeholder characters substituted for concealed text (see "conceallevel")
-      Cursor({ fg = colors.black, bg = colors.foreground }),            -- Character under the cursor
-      lCursor({ Cursor }),                                              -- Character under the cursor when |language-mapping| is used (see "guicursor")
-      CursorIM({ Cursor }),                                             -- Like Cursor, but used when in IME mode |CursorIM|
-      TermCursor({ Cursor }),                                           -- Cursor in a focused terminal
-      TermCursorNC({ Cursor }),                                         -- Cursor in an unfocused terminal
-      CursorLine({ bg = colors.darker_gray }),                          -- Screen-line at the cursor, when "cursorline" is set. Low-priority if foreground (ctermfg OR guifg) is not set.
-      CursorColumn({ CursorLine }),                                     -- Screen-column at the cursor, when "cursorcolumn" is set.
-      Directory({ fg = colors.blue }),                                  -- Directory names (and other special names in listings)
-      Added({ fg = colors.green }),                                     -- diff mode: Added line
-      Removed({ fg = colors.red }),                                     -- diff mode: Removed line
-      Changed({ fg = colors.orange }),                                  -- diff mode: Changed line
-      DiffAdd({ Added }),                                               -- Diff mode: Added line |diff.txt|
-      DiffChange({ Changed }),                                          -- Diff mode: Changed line |diff.txt|
-      DiffDelete({ Removed }),                                          -- Diff mode: Deleted line |diff.txt|
-      DiffText({ fg = colors.background, bg = colors.green }),          -- Diff mode: Changed text within a changed line |diff.txt|
-      NonText({ fg = colors.gray }),                                    -- "@" at the end of the window, characters from "showbreak" and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn"t fit at the end of the line). See also |hl-EndOfBuffer|.
-      ErrorMsg({ fg = colors.red }),                                    -- Error messages on the command line
-      VertSplit({ fg = colors.background, bg = colors.background }),    -- Column separating vertically split windows
-      Folded({ fg = colors.lightest_gray, bg = colors.darker_gray }),   -- Line used for closed folds
-      LineNr({ fg = colors.light_gray }),                               -- Line number for ":number" and ":#" commands, and when "number" or "relativenumber" option is set.
-      LineNrAbove({ LineNr }),                                          -- Line number for when the "relativenumber" option is set, above the cursor line
-      LineNrBelow({ LineNr }),                                          -- Line number for when the "relativenumber" option is set, below the cursor line
-      CursorLineNr({ gui = "bold" }),                                   -- Like LineNr when "cursorline" or "relativenumber" is set for the cursor line.
-      MatchParen({ bg = colors.gray }),                                 -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
-      ModeMsg({ fg = colors.green }),                                   -- "showmode" message (e.g., "-- INSERT -- ")
-      MsgArea({ bg = colors.background }),                              -- Area for messages and cmdline
-      MsgSeparator({ bg = colors.gray }),                               -- Separator for scrolled messages, `msgsep` flag of "display"
-      NormalFloat({ bg = colors.black }),                               -- Normal text in floating windows.
-      FloatBorder({ fg = colors.gray, bg = colors.black }),             -- Border of floating windows.
-      FloatBorderCmp({ FloatBorder }),                                  -- Border of floating windows.
-      FloatBorderDocs({ FloatBorder }),                                 -- Border of floating windows.
-      TelescopeBorder({ FloatBorder }),                                 -- Border of floating windows.
-      FloatShadow({ bg = colors.background }),                          -- Shadow of floating windows.
-      FloatShadowThrough({ FloatShadow }),                              -- Shadow of floating windows.
-      Title({ fg = colors.blue }),                                      -- Titles for output from ":set all", ":autocmd" etc.
-      FloatTitle({ Title }),                                            -- Title of floating windows.
-      Normal({ fg = colors.foreground }),                               -- Normal text
-      NormalNC({ Normal }),                                             -- normal text in non-current windows
-      Pmenu({ NormalFloat }),                                           -- Popup menu: Normal item.
-      PmenuBorder({ FloatBorder }),                                     -- Popup menu: Border.
-      PmenuSbar({ bg = colors.dark_gray }),                             -- Popup menu: Scrollbar.
-      PmenuSel({ fg = colors.black, bg = colors.foreground }),          -- Popup menu: Selected item.
-      PmenuThumb({ bg = colors.white }),                                -- Popup menu: Thumb of the scrollbar.
+      Background({ bg = colors.background }), -- normal background color
+      ColorColumn({ bg = colors.darker_gray }), -- Columns set with "colorcolumn"
+      Conceal({ fg = colors.light_gray }), -- Placeholder characters substituted for concealed text (see "conceallevel")
+      Cursor({ fg = colors.black, bg = colors.foreground }), -- Character under the cursor
+      lCursor({ Cursor }), -- Character under the cursor when |language-mapping| is used (see "guicursor")
+      CursorIM({ Cursor }), -- Like Cursor, but used when in IME mode |CursorIM|
+      TermCursor({ Cursor }), -- Cursor in a focused terminal
+      TermCursorNC({ Cursor }), -- Cursor in an unfocused terminal
+      CursorLine({ bg = colors.darker_gray }), -- Screen-line at the cursor, when "cursorline" is set. Low-priority if foreground (ctermfg OR guifg) is not set.
+      CursorColumn({ CursorLine }), -- Screen-column at the cursor, when "cursorcolumn" is set.
+      Directory({ fg = colors.blue }), -- Directory names (and other special names in listings)
+      Added({ fg = colors.green }), -- diff mode: Added line
+      Removed({ fg = colors.red }), -- diff mode: Removed line
+      Changed({ fg = colors.orange }), -- diff mode: Changed line
+      DiffAdd({ Added }), -- Diff mode: Added line |diff.txt|
+      DiffChange({ Changed }), -- Diff mode: Changed line |diff.txt|
+      DiffDelete({ Removed }), -- Diff mode: Deleted line |diff.txt|
+      DiffText({ fg = colors.background, bg = colors.green }), -- Diff mode: Changed text within a changed line |diff.txt|
+      NonText({ fg = colors.gray }), -- "@" at the end of the window, characters from "showbreak" and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn"t fit at the end of the line). See also |hl-EndOfBuffer|.
+      ErrorMsg({ fg = colors.red }), -- Error messages on the command line
+      VertSplit({ fg = colors.background, bg = colors.background }), -- Column separating vertically split windows
+      Folded({ fg = colors.lightest_gray, bg = colors.darker_gray }), -- Line used for closed folds
+      LineNr({ fg = colors.light_gray }), -- Line number for ":number" and ":#" commands, and when "number" or "relativenumber" option is set.
+      LineNrAbove({ LineNr }), -- Line number for when the "relativenumber" option is set, above the cursor line
+      LineNrBelow({ LineNr }), -- Line number for when the "relativenumber" option is set, below the cursor line
+      CursorLineNr({ gui = "bold" }), -- Like LineNr when "cursorline" or "relativenumber" is set for the cursor line.
+      MatchParen({ bg = colors.gray }), -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+      ModeMsg({ fg = colors.green }), -- "showmode" message (e.g., "-- INSERT -- ")
+      MsgArea({ bg = colors.background }), -- Area for messages and cmdline
+      MsgSeparator({ bg = colors.gray }), -- Separator for scrolled messages, `msgsep` flag of "display"
+      NormalFloat({ bg = colors.black }), -- Normal text in floating windows.
+      FloatBorder({ fg = colors.gray, bg = colors.black }), -- Border of floating windows.
+      FloatBorderCmp({ FloatBorder }), -- Border of floating windows.
+      FloatBorderDocs({ FloatBorder }), -- Border of floating windows.
+      TelescopeBorder({ FloatBorder }), -- Border of floating windows.
+      FloatShadow({ bg = colors.background }), -- Shadow of floating windows.
+      FloatShadowThrough({ FloatShadow }), -- Shadow of floating windows.
+      Title({ fg = colors.blue }), -- Titles for output from ":set all", ":autocmd" etc.
+      FloatTitle({ Title }), -- Title of floating windows.
+      Normal({ fg = colors.foreground }), -- Normal text
+      NormalNC({ Normal }), -- normal text in non-current windows
+      Pmenu({ NormalFloat }), -- Popup menu: Normal item.
+      PmenuBorder({ FloatBorder }), -- Popup menu: Border.
+      PmenuSbar({ bg = colors.dark_gray }), -- Popup menu: Scrollbar.
+      PmenuSel({ fg = colors.black, bg = colors.foreground }), -- Popup menu: Selected item.
+      PmenuThumb({ bg = colors.white }), -- Popup menu: Thumb of the scrollbar.
       CmpPmenu({ Pmenu }),
-      Question({ fg = colors.yellow }),                                 -- |hit-enter| prompt and yes/no questions
-      QuickFixLine({ Background }),                                     -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-      Search({ fg = colors.black, bg = colors.yellow }),                -- Last search pattern highlighting (see "hlsearch"). Also used for similar items that need to stand out.
-      IncSearch({ Search }),                                            -- "incsearch" highlighting; also used for the text replaced with ":s///c"
-      Substitute({ Search }),                                           -- |:substitute| replacement text highlighting
-      CurSearch({ Search, bg = colors.blue }),                          -- Highlighting a search pattern under the cursor (see "hlsearch")
-      SpecialKey({ NonText }),                                          -- Unprintable characters: text displayed differently from what it really is. But not "listchars" whitespace. |hl-Whitespace|
-      StatusLine({ Background }),                                       -- Status line of current window
-      StatusLineNC({ StatusLine }),                                     -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
-      TabLine({ StatusLine }),                                          -- Tab pages line, not active tab page label
-      TabLineFill({ TabLine }),                                         -- Tab pages line, where there are no labels
-      TabLineSel({ fg = colors.foreground, bg = colors.black }),        -- Active tab page label
-      Visual({ bg = colors.dark_gray }),                                -- Visual mode selection
-      VisualNOS({ Visual }),                                            -- Visual mode selection when vim is "Not Owning the Selection".
-      WarningMsg({ fg = colors.yellow }),                               -- Warning messages
-      Whitespace({ NonText }),                                          -- "nbsp", "space", "tab" and "trail" in "listchars"
+      Question({ fg = colors.yellow }), -- |hit-enter| prompt and yes/no questions
+      QuickFixLine({ Background }), -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
+      Search({ fg = colors.black, bg = colors.yellow }), -- Last search pattern highlighting (see "hlsearch"). Also used for similar items that need to stand out.
+      IncSearch({ Search }), -- "incsearch" highlighting; also used for the text replaced with ":s///c"
+      Substitute({ Search }), -- |:substitute| replacement text highlighting
+      CurSearch({ Search, bg = colors.blue }), -- Highlighting a search pattern under the cursor (see "hlsearch")
+      SpecialKey({ NonText }), -- Unprintable characters: text displayed differently from what it really is. But not "listchars" whitespace. |hl-Whitespace|
+      StatusLine({ Background }), -- Status line of current window
+      StatusLineNC({ StatusLine }), -- Status lines of not-current windows. Note: If this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+      TabLine({ StatusLine }), -- Tab pages line, not active tab page label
+      TabLineFill({ TabLine }), -- Tab pages line, where there are no labels
+      TabLineSel({ fg = colors.foreground, bg = colors.black }), -- Active tab page label
+      Visual({ bg = colors.dark_gray }), -- Visual mode selection
+      VisualNOS({ Visual }), -- Visual mode selection when vim is "Not Owning the Selection".
+      WarningMsg({ fg = colors.yellow }), -- Warning messages
+      Whitespace({ NonText }), -- "nbsp", "space", "tab" and "trail" in "listchars"
       Winseparator({ fg = colors.background, bg = colors.background }), -- Separator between window splits. Inherts from |hl-VertSplit| by default, which it will replace eventually.
-      WildMenu({ Search }),                                             -- Current match in "wildmenu" completion
-      WinBar({ TabLine }),                                              -- Window bar of current window
-      WinBarNC({ TabLine }),                                            -- Window bar of not-current windows
-      Comment({ NonText }),                                             -- Any comment
-      Constant({ fg = colors.orange }),                                 -- (*) Any constant
-      String({ fg = colors.green }),                                    --   A string constant: "this is a string"
-      Character({ Constant }),                                          --   A character constant: "c", "\n"
-      Number({ Constant }),                                             --   A number constant: 234, 0xff
-      Boolean({ Constant }),                                            --   A boolean constant: TRUE, false
-      Exception({ fg = colors.red }),                                   --   Exception name
-      Define({ fg = colors.purple }),                                   --   Preprocessor #define
-      Delimiter({ fg = colors.magenta }),                               --   Character that needs attention
-      Float({ Constant }),                                              --   A floating point constant: 2.3e10
-      Identifier({ Normal }),                                           -- (*) Any variable name
-      Function({ fg = colors.blue }),                                   --   Function name (also: methods for classes)
-      Method({ Function }),                                             --   Method
-      Statement({ fg = colors.purple }),                                -- (*) Any statement
-      PreProc({ Identifier }),                                          -- (*) Generic Preprocessor
-      Type({ fg = colors.yellow }),                                     -- (*) int, long, char, etc.
+      WildMenu({ Search }), -- Current match in "wildmenu" completion
+      WinBar({ TabLine }), -- Window bar of current window
+      WinBarNC({ TabLine }), -- Window bar of not-current windows
+      Comment({ NonText }), -- Any comment
+      Constant({ fg = colors.orange }), -- (*) Any constant
+      String({ fg = colors.green }), --   A string constant: "this is a string"
+      Character({ Constant }), --   A character constant: "c", "\n"
+      Number({ Constant }), --   A number constant: 234, 0xff
+      Boolean({ Constant }), --   A boolean constant: TRUE, false
+      Exception({ fg = colors.red }), --   Exception name
+      Define({ fg = colors.purple }), --   Preprocessor #define
+      Delimiter({ fg = colors.magenta }), --   Character that needs attention
+      Float({ Constant }), --   A floating point constant: 2.3e10
+      Identifier({ Normal }), -- (*) Any variable name
+      Function({ fg = colors.blue }), --   Function name (also: methods for classes)
+      Method({ Function }), --   Method
+      Statement({ fg = colors.purple }), -- (*) Any statement
+      PreProc({ Identifier }), -- (*) Generic Preprocessor
+      Type({ fg = colors.yellow }), -- (*) int, long, char, etc.
       Structure({ Type }),
-      Typedef({ Type }),                                                --  A typedef
-      Struct({ Type }),                                                 --  struct, union, enum, etc.
-      Special({ fg = colors.cyan }),                                    -- (*) Any special symbol
-      SpecialChar({ fg = colors.purple }),                              --   Special character in a constant
-      Error({ fg = colors.red }),                                       -- Any erroneous construct
-      LspInlayHint({ NonText }),                                        -- Used for virtual text "hints"
-      DiagnosticError({ fg = colors.red }),                             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-      DiagnosticWarn({ fg = colors.yellow }),                           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-      DiagnosticInfo({ fg = colors.blue }),                             -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-      DiagnosticHint({ fg = colors.purple }),                           -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-      DiagnosticOk({ fg = colors.green }),                              -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
-      DiagnosticUnderlineError({ gui = "undercurl" }),                  -- Used to underline "Error" diagnostics.
-      DiagnosticUnderlineWarn({ gui = "undercurl" }),                   -- Used to underline "Warn" diagnostics.
-      DiagnosticUnderlineInfo({ gui = "undercurl" }),                   -- Used to underline "Info" diagnostics.
-      DiagnosticUnderlineHint({ gui = "undercurl" }),                   -- Used to underline "Hint" diagnostics.
-      DiagnosticUnderlineOk({ gui = "undercurl" }),                     -- Used to underline "Ok" diagnostics.
-      sym("@string.special")({ Statement }),                            -- SpecialChar
-      sym("@variable")({ g = colors.lighter_gray }),                    -- Identifier
-      sym("@keyword.return")({ fg = colors.red }),                      -- Return keyword
-      sym("@text.strong")({ gui = "bold" }),                            -- Strong text
-      sym("@text.emphasis")({ gui = "italic" }),                        -- Emphasized text
-      sym("@text.strike")({ gui = "strikethrough" }),                   -- Strike-through text
-      sym("@lsp.type.variable")({ fg = colors.lighter_gray }),          -- LSP variable type
-      sym("@lsp.mod.defaultLibrary")({ Special }),                      -- LSP default library
-      sym("@lsp.mod.deprecated")({ fg = colors.red }),                  -- LSP deprecated module
-      sym("@markup.strong")({ gui = "bold" }),                          -- Strong text
-      sym("@markup.italic")({ gui = "italic" }),                        -- Italic text
-      sym("@markup.strikethrough")({ gui = "strikethrough" }),          -- Strike-through text
-      sym("@markup.underline")({ gui = "underline" }),                  -- Underlined text
+      Typedef({ Type }), --  A typedef
+      Struct({ Type }), --  struct, union, enum, etc.
+      Special({ fg = colors.cyan }), -- (*) Any special symbol
+      SpecialChar({ fg = colors.purple }), --   Special character in a constant
+      Error({ fg = colors.red }), -- Any erroneous construct
+      LspInlayHint({ NonText }), -- Used for virtual text "hints"
+      DiagnosticError({ fg = colors.red }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+      DiagnosticWarn({ fg = colors.yellow }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+      DiagnosticInfo({ fg = colors.blue }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+      DiagnosticHint({ fg = colors.purple }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+      DiagnosticOk({ fg = colors.green }), -- Used as the base highlight group. Other Diagnostic highlights link to this by default (except Underline)
+      DiagnosticUnderlineError({ gui = "undercurl" }), -- Used to underline "Error" diagnostics.
+      DiagnosticUnderlineWarn({ gui = "undercurl" }), -- Used to underline "Warn" diagnostics.
+      DiagnosticUnderlineInfo({ gui = "undercurl" }), -- Used to underline "Info" diagnostics.
+      DiagnosticUnderlineHint({ gui = "undercurl" }), -- Used to underline "Hint" diagnostics.
+      DiagnosticUnderlineOk({ gui = "undercurl" }), -- Used to underline "Ok" diagnostics.
+      sym("@string.special")({ Statement }), -- SpecialChar
+      sym("@variable")({ g = colors.lighter_gray }), -- Identifier
+      sym("@keyword.return")({ fg = colors.red }), -- Return keyword
+      sym("@text.strong")({ gui = "bold" }), -- Strong text
+      sym("@text.emphasis")({ gui = "italic" }), -- Emphasized text
+      sym("@text.strike")({ gui = "strikethrough" }), -- Strike-through text
+      sym("@lsp.type.variable")({ fg = colors.lighter_gray }), -- LSP variable type
+      sym("@lsp.mod.defaultLibrary")({ Special }), -- LSP default library
+      sym("@lsp.mod.deprecated")({ fg = colors.red }), -- LSP deprecated module
+      sym("@markup.strong")({ gui = "bold" }), -- Strong text
+      sym("@markup.italic")({ gui = "italic" }), -- Italic text
+      sym("@markup.strikethrough")({ gui = "strikethrough" }), -- Strike-through text
+      sym("@markup.underline")({ gui = "underline" }), -- Underlined text
       AlphaHeader({ Title }),
       AlphaFooter({ fg = colors.yellow }),
       DevIcon({ fg = colors.foreground }),
@@ -316,12 +316,12 @@ function M.setup()
       NotifyINFOIcon({ fg = colors.blue }),
       NotifyHINTIcon({ fg = colors.purple }),
       NotifyOKIcon({ fg = colors.green }),
-      GitSignsAdd({ fg = colors.green }),       -- Diff mode: Added line |diff.txt
-      GitSignsAddNr({ fg = colors.green }),     -- Diff mode: Added line |diff.txt
-      GitSignsChange({ fg = colors.orange }),   -- Diff mode: Changed line |diff.txt
+      GitSignsAdd({ fg = colors.green }), -- Diff mode: Added line |diff.txt
+      GitSignsAddNr({ fg = colors.green }), -- Diff mode: Added line |diff.txt
+      GitSignsChange({ fg = colors.orange }), -- Diff mode: Changed line |diff.txt
       GitSignsChangeNr({ fg = colors.orange }), -- Diff mode: Changed line |diff.txt
-      GitSignsDelete({ fg = colors.red }),      -- Diff mode: Deleted line |diff.txt
-      GitSignsDeleteNr({ fg = colors.red }),    -- Diff mode: Deleted line |diff.txt
+      GitSignsDelete({ fg = colors.red }), -- Diff mode: Deleted line |diff.txt
+      GitSignsDeleteNr({ fg = colors.red }), -- Diff mode: Deleted line |diff.txt
       MiniClueBorder({ FloatBorder }),
       MiniClueDescGroup({ DiagnosticWarn }),
       MiniClueDescSingle({ NormalFloat }),

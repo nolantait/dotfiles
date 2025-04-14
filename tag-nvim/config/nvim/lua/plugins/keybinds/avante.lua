@@ -17,5 +17,4 @@ return {
     command = "<cmd>AvanteShowRepoMap<CR>",
     description = "Chat with Avante",
   },
-
 }

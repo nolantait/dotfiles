@@ -486,7 +486,7 @@ local commands = {
     cmd = "Telescope frecency",
     dependencies = {
       "nvim-telescope/telescope.nvim",
-    }
+    },
   },
   {
     -- Fuzzy file searching
