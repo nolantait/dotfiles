@@ -4,6 +4,9 @@ Nolan's Dotfiles
 These are my dotfiles I've maintained over the last 12 years. They originally
 started as a fork of [thoughtbot's dotfiles](https://github.com/thoughtbot/dotfiles).
 
+I've tried to write these dotfiles as a learning resource for others looking for
+to dive deep and customize their own.
+
 I've since taken inspiration from other dotfiles:
 
 - [https://github.com/CharlesChiuGit/nvimdots.lua](https://github.com/CharlesChiuGit/nvimdots.lua)
@@ -13,6 +16,20 @@ I've since taken inspiration from other dotfiles:
 These dotfiles use [rcm](https://github.com/thoughtbot/rcm) to create system
 links from `~/dotfiles` to your `$HOME` folder. System linking these files makes
 it easy to add or remove configs and keep them updated from one place.
+
+The dotfiles are split between my two primary setups:
+
+1. Arch Linux with i3 desktop
+2. Mac M3
+
+General configuration is in all root folders except those with a `tag-` or
+`host-` prefix.
+
+Specific configuration for each setup is located in the `host-linux` and
+`host-macos` folders.
+
+`rcm` will, depending on the system, add the correct configuration to the
+configured home folders.
 
 What's in it?
 -------------
@@ -24,8 +41,7 @@ These are some highlights, not a full description.
 * Full LUA based configs
 * `config/nvim/lua/plugins/list.lua` for a list of all the plugins
 
-[tmux](http://robots.thoughtbot.com/a-tmux-crash-course)
-configuration:
+[tmux](http://robots.thoughtbot.com/a-tmux-crash-course) configuration:
 
 * Improve color resolution.
 * Remove administrative debris (session name, hostname, time) in status bar.
@@ -44,26 +60,17 @@ configuration:
   config.
 * Adds `trust-bin` alias to append a project's `bin/` directory to `$PATH`.
 
-Shell aliases and scripts:
-
-* `b` for `bundle`.
-* `g` with no arguments is `git status` and with arguments acts like `git`.
-* `migrate` for `bin/rails db:migrate db:rollback && bin/rails db:migrate db:test:prepare`.
-* `mcd` to make a directory and change into it.
-* `replace foo bar **/*.rb` to find and replace within a given list of files.
-* `tat` to attach to tmux session named the same as the current directory.
-* `v` for `$VISUAL`.
-
 Dynamic color scheming across apps with [flavours](https://github.com/Misterio77/flavours)
 
 * Alacritty
 * Conky
 * Dunst
 * i3
-* nvim
+* neovim
 * Polybar
 * tmux
 * Xresources
+* Rofi
 
 Dependencies
 ------------
@@ -76,12 +83,15 @@ Dependencies
 - **mise**: Programming language manager
 - **flavours**: Dynamic theming
 - **i3-scrot**: Screenshot utility for i3
-- **neovim-git**
-- **rcm-git**: manage dotfiles with system links
-- **slack-desktop**
-- **spotify-edge**
+- **neovim**
+- **rcm**: manage dotfiles with system links
 - **feh**: Sets wallpaper
 - **polybar**: Customizable topbar for i3
+- **rofi**: Configurable launcher
+
+## MacOS (brew)
+
+You can find all dependencies listed in the [Brewfile](host-macos/Brewfile)
 
 Requirements
 ------------
@@ -99,7 +109,11 @@ Clone onto your laptop:
 
 Install [rcm](https://github.com/thoughtbot/rcm):
 
+    # On macos:
     brew install rcm
+
+    # On linux:
+    pacman -S rcm
 
 Install the dotfiles:
 
@@ -167,33 +181,8 @@ Your `~/dotfiles-local/gitconfig.local` might look like this:
     [pretty]
       colored = format:%Cred%h%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset
     [user]
-      name = Dan Croak
-      email = dan@thoughtbot.com
-
-Your `~/dotfiles-local/vimrc.local` might look like this:
-
-    " Color scheme
-    colorscheme github
-    highlight NonText guibg=#060606
-    highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-If you don't wish to install a vim plugin from the default set of vim plugins in
-`.vimrc.bundles`, you can ignore the plugin by calling it out with `UnPlug` in
-your `~/.vimrc.bundles.local`.
-
-    " Don't install vim-scripts/tComment
-    UnPlug 'tComment'
-
-`UnPlug` can be used to install your own fork of a plugin or to install a shared
-plugin with different custom options.
-
-    " Only load vim-coffee-script if a Coffeescript buffer is created
-    UnPlug 'vim-coffee-script'
-    Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-
-    " Use a personal fork of vim-run-interactive
-    UnPlug 'vim-run-interactive'
-    Plug '$HOME/plugins/vim-run-interactive'
+      name = Joe Blow
+      email = joe.b@inhouse.work
 
 To extend your `git` hooks, create executable scripts in
 `~/dotfiles-local/git_template.local/hooks/*` files.
@@ -205,20 +194,17 @@ Your `~/dotfiles-local/zshrc.local` might look like this:
       eval "$(pyenv init -)"
     fi
 
-Your `~/dotfiles-local/vimrc.bundles.local` might look like this:
-
-    Plug 'Lokaltog/vim-powerline'
-    Plug 'stephenmckinney/vim-solarized-powerline'
-
 zsh Configurations
 ------------------
 
-Additional zsh configuration can go under the `~/dotfiles-local/zsh/configs` directory. This
-has two special subdirectories: `pre` for files that must be loaded first, and
-`post` for files that must be loaded last.
+Additional zsh configuration can go under the `~/dotfiles-local/zsh/configs`
+directory. This has two special sub-directories:
 
-For example, `~/dotfiles-local/zsh/configs/pre/virtualenv` makes use of various shell
-features which may be affected by your settings, so load it first:
+1. `pre` for files that must be loaded first
+2. `post` for files that must be loaded last.
+
+For example, `~/dotfiles-local/zsh/configs/pre/virtualenv` makes use of various
+shell features which may be affected by your settings, so load it first:
 
     # Load the virtualenv wrapper
     . /usr/local/bin/virtualenvwrapper.sh
