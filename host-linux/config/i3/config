@@ -14,12 +14,12 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 
-include $HOME/.config/i3/autostart.i3.config
+include $HOME/.config/i3/style.i3.config
 include $HOME/.config/i3/layout.i3.config
 include $HOME/.config/i3/keybinds.i3.config
-include $HOME/.config/i3/style.i3.config
 include $HOME/.config/i3/floating.i3.config
 include $HOME/.config/i3/resize.i3.config
 include $HOME/.config/i3/shutdown.i3.config
 include $HOME/.config/i3/gaps.i3.config
 include $HOME/.config/i3/assignments.i3.config
+include $HOME/.config/i3/autostart.i3.config
