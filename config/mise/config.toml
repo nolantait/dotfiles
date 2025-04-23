@@ -20,3 +20,4 @@ jobs = 8
 plugin_autoupdate_last_check_duration = "1 week"
 verbose = false
 status = { missing_tools = "always", show_env = false, show_tools = false }
+idiomatic_version_file_enable_tools = ["ruby", "lua", "node", "python"]
