@@ -153,7 +153,7 @@ local events = {
     end,
   },
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     config = require("plugins.configs.lsp"),
     keys = keymap(require("plugins.keybinds.lsp")),
     lazy = false,
