@@ -5,4 +5,4 @@
 require("core.init").setup()
 
 -- Load plugins with lazy
-require("plugins").setup()
+require("load-plugins").setup()
