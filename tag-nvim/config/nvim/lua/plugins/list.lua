@@ -166,7 +166,7 @@ local events = {
     "williamboman/mason.nvim",
     config = require("plugins.configs.lsp"),
     keys = keymap(require("plugins.keybinds.lsp")),
-    lazy = false
+    lazy = false,
   },
   {
     "stevearc/conform.nvim",

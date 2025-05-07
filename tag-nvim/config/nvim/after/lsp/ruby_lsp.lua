@@ -57,5 +57,5 @@ return {
         "web-console",
       },
     },
-  }
+  },
 }

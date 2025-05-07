@@ -9,7 +9,7 @@ return {
     "stylua.toml",
     "selene.toml",
     "selene.yml",
-    ".git"
+    ".git",
   },
   on_init = function(client)
     if client.workspace_folders then

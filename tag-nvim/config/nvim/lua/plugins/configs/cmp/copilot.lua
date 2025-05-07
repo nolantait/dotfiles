@@ -19,8 +19,7 @@ M.setup = function()
   end)
 
   if ok then
-  vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-
+    vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
     copilot_cmp.setup({
       method = "getCompletionsCycling",
