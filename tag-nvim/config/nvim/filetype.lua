@@ -1,3 +1,5 @@
+-- DOCS: Filetype configuration for Neovim
+
 local detect_ansible = function(path)
   local dir = path
 

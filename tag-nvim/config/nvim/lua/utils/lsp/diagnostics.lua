@@ -1,3 +1,5 @@
+-- DOCS: LSP diagnostics configuration
+
 local M = {}
 
 local function setup_virtual_text_toggle()

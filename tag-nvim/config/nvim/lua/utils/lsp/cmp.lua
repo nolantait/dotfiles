@@ -1,3 +1,5 @@
+-- DOCS: LSP capabilities for nvim-cmp
+
 local M = {}
 
 M.setup = function(handlers)
