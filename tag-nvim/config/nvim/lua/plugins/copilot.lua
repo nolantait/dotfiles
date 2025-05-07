@@ -20,7 +20,7 @@ return {
         function()
           require("copilot.suggestion").next()
         end,
-      }
+      },
     },
     init = function()
       vim.api.nvim_set_hl(

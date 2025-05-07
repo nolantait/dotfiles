@@ -132,7 +132,7 @@ end
 local load_plugins = function()
   -- Load settings and list of plugins
   local plugins = {
-    { import = "plugins" }
+    { import = "plugins" },
   }
 
   require("lazy").setup(plugins, M.options)

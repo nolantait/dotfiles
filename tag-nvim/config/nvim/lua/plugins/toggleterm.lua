@@ -13,7 +13,7 @@ return {
         function()
           require("toggleterm").toggle()
         end,
-      }
+      },
     },
     opts = {
       size = function(term)
