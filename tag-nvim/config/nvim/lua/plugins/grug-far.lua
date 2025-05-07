@@ -1,4 +1,4 @@
--- DOCS: Gurg find and replace
+-- DOCS: Grug find and replace
 
 return {
   {

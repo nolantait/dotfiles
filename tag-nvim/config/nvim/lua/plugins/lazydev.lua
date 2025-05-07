@@ -1,3 +1,5 @@
+-- DOCS: Lua LSP setup for neovim
+
 local config = function()
   local cmp = require("cmp")
   local lazydev = require("lazydev")

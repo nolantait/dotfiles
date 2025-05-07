@@ -1,3 +1,5 @@
+-- DOCS: Loads the tainted colorscheme
+
 local settings = require("globals.settings")
 
 local config = function()

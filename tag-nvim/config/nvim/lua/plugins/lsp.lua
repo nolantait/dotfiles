@@ -1,3 +1,5 @@
+-- DOCS: LSP setup with mason which will handle the installation of LSP servers
+
 local icons = require("globals.icons")
 
 return {

@@ -1,3 +1,5 @@
+-- DOCS: Ruby plugins for Neovim
+
 return {
   {
     "tpope/vim-rails",
