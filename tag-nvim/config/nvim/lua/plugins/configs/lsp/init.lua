@@ -1,5 +1,8 @@
 return function()
   local handlers = require("plugins.configs.lsp.handlers")
+  require("plugins.configs.lsp.mason").setup()
+  require("plugins.configs.lsp.diagnostics").setup()
+  require("plugins.configs.lsp.cmp").setup(handlers)
 
   vim.lsp.config("*", {
     capabilities = handlers.capabilities,
@@ -10,8 +13,4 @@ return function()
   vim.lsp.enable("lua_ls")
   vim.lsp.enable("ts_ls")
   vim.lsp.enable("ansiblels")
-
-  require("plugins.configs.lsp.mason").setup()
-  require("plugins.configs.lsp.diagnostics").setup()
-  require("plugins.configs.lsp.cmp").setup(handlers)
 end

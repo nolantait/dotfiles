@@ -89,4 +89,10 @@ return {
     command = "<cmd>lua vim.diagnostic.goto_next()<CR>",
     description = "Go to next diagnostic",
   },
+  {
+    mode = "n",
+    key = "<leader>ih",
+    command = "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>",
+    description = "Toggle inlay hints",
+  },
 }
