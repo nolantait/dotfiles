@@ -74,11 +74,6 @@ local custom = {
   {
     config = true,
     ft = "ruby",
-    dir = settings.vim_path .. "/custom_plugins/rails.nvim",
-  },
-  {
-    config = true,
-    ft = "ruby",
     dir = settings.vim_path .. "/custom_plugins/gem.nvim",
   },
 }
@@ -546,6 +541,10 @@ local filetypes = {
       "txt",
       "log",
     },
+  },
+  {
+    "tpope/vim-rails",
+    ft = { "ruby", "eruby" },
   },
 }
 
