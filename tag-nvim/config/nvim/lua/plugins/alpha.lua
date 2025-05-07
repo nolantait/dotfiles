@@ -23,11 +23,6 @@ local config = function()
 
   dashboard.section.buttons.val = {
     dashboard.button(
-      "s",
-      icons.source .. " Open session",
-      "<cmd>lua MiniSessions.select()<CR>"
-    ),
-    dashboard.button(
       "f",
       icons.files.find .. " Find file",
       "<cmd>Telescope find_files<CR>"
