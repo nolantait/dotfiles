@@ -71,11 +71,6 @@ local custom = {
     lazy = false,
     enabled = false,
   },
-  {
-    config = true,
-    ft = "ruby",
-    dir = settings.vim_path .. "/custom_plugins/gem.nvim",
-  },
 }
 
 local events = {
@@ -545,6 +540,10 @@ local filetypes = {
   {
     "tpope/vim-rails",
     ft = { "ruby", "eruby" },
+  },
+  {
+    "tpope/vim-rake",
+    ft = { "ruby" },
   },
 }
 
