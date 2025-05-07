@@ -4,9 +4,9 @@ return {
   {
     "mason-org/mason.nvim",
     init = function()
-      local handlers = require("plugins.lsp.handlers")
-      local diagnostics = require("plugins.lsp.diagnostics")
-      local cmp = require("plugins.lsp.cmp")
+      local handlers = require("utils.lsp.handlers")
+      local diagnostics = require("utils.lsp.diagnostics")
+      local cmp = require("utils.lsp.cmp")
 
       diagnostics.setup()
       cmp.setup(handlers)

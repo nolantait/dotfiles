@@ -32,7 +32,7 @@ M.setup = function()
       },
     })
 
-    local utils = require("plugins.cmp.utils")
+    local utils = require("utils.cmp.utils")
 
     utils.actions.ai_accept = function()
       local suggestion = require("copilot.suggestion")

@@ -2,7 +2,7 @@
 
 local config = function()
   local cmp = require("cmp")
-  local utils = require("plugins.cmp.utils")
+  local utils = require("utils.cmp.utils")
   local core_utils = require("core.utils")
 
   local commands = {

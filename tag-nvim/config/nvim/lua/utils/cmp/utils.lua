@@ -46,7 +46,7 @@ M.setup_comparators = function(cmp)
     compare.length,
     compare.order,
   }
-  local copilot_cmp = require("plugins.cmp.copilot")
+  local copilot_cmp = require("utils.cmp.copilot")
   copilot_cmp.setup()
   return copilot_cmp.apply(comparators)
 end
