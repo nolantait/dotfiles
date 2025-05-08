@@ -12,17 +12,17 @@ return {
       {
         "xx",
         mode = { "n", "v" },
-        desc = "Toggle Trouble",
+        desc = "Trouble diagnostics for the current buffer",
         function()
-          require("trouble").toggle()
+          vim.cmd("Trouble diagnostics toggle filter.buf=0")
         end,
       },
       {
         "xX",
         mode = { "n", "v" },
-        desc = "Open trouble workspace",
+        desc = "Trouble diagnostics for the current workspace",
         function()
-          require("trouble").workspace_diagnostics()
+          vim.cmd("Trouble diagnostics toggle")
         end,
       },
     },
@@ -31,7 +31,6 @@ return {
       position = "bottom", -- position of the list can be: bottom, top, left, right
       height = 10, -- height of the trouble list when position is top or bottom
       width = 50, -- width of the list when position is left or right
-      icons = true, -- use devicons for filenames
       mode = "document_diagnostics", -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
       fold_open = icon.arrow_open, -- icon used for open folds
       fold_closed = icon.arrow_closed, -- icon used for closed folds
