@@ -18,10 +18,12 @@ return {
         on_attach = handlers.on_attach,
       })
 
-      vim.lsp.enable("ruby_lsp")
-      vim.lsp.enable("lua_ls")
-      vim.lsp.enable("ts_ls")
-      vim.lsp.enable("ansiblels")
+      vim.lsp.enable({
+        "ruby",
+        "lua",
+        "typescript",
+        "ansible",
+      })
     end,
     keys = {
       {

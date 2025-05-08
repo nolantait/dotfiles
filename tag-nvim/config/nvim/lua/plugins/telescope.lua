@@ -210,7 +210,7 @@ return {
       },
       {
         "\\",
-        mode = { "n", "i" },
+        mode = "n",
         desc = "Telescope live grep",
         function()
           require("telescope.builtin").live_grep()
