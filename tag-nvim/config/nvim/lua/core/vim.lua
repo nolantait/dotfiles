@@ -42,9 +42,9 @@ local M = {
     -- Disable remote plugins
     loaded_remote_plugins = 1, -- Disable menu loading
     -- Disable markdown folding
-    vim_markdown_folding_disabled = 1,
+    markdown_folding_disabled = 1,
     -- Fenced languages syntax highlight in markdown
-    vim_markdown_fenced_languages = {
+    markdown_fenced_languages = {
       "c==cpp",
       "viml=vim",
       "bash=sh",
@@ -52,6 +52,7 @@ local M = {
       "py=python",
       "rb=ruby",
       "ruby",
+      "rust"
     },
     -- Highlight YAML/TOML/JSON front matter.
     vim_markdown_frontmatter = true,
