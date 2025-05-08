@@ -25,6 +25,8 @@ vim.filetype.add({
   filename = {
     -- Add new filetype for specific filenames
     ["Brewfile"] = "ruby",
+    [".env.*"] = "bash",
+    ["%.env%.[%w_.-]+"] = "bash",
   },
   pattern = {
     -- Add new filetype for files matching a pattern
