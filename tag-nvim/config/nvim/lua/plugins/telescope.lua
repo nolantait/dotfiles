@@ -233,6 +233,14 @@ return {
         end,
       },
       {
+        "the",
+        mode = "n",
+        desc = "Telescope help tags",
+        function()
+          require("telescope.builtin").help_tags()
+        end,
+      },
+      {
         "tv",
         mode = "n",
         desc = "Telescope vim options",
