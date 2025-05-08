@@ -162,7 +162,7 @@ return {
     config = config,
     keys = {
       {
-        "<leader>db",
+        "<leader>b",
         mode = { "n", "v" },
         desc = "Toggle Breakpoint",
         function()
@@ -170,7 +170,7 @@ return {
         end,
       },
       {
-        "<leader>dc",
+        "<F5>",
         mode = { "n", "v" },
         desc = "Continue",
         function()
@@ -178,7 +178,7 @@ return {
         end,
       },
       {
-        "<leader>di",
+        "<F1>",
         mode = { "n", "v" },
         desc = "Step Into",
         function()
@@ -186,7 +186,7 @@ return {
         end,
       },
       {
-        "<leader>do",
+        "<F2>",
         mode = { "n", "v" },
         desc = "Step Over",
         function()
@@ -194,7 +194,7 @@ return {
         end,
       },
       {
-        "<leader>du",
+        "<F3>",
         mode = { "n", "v" },
         desc = "Step Out",
         function()
