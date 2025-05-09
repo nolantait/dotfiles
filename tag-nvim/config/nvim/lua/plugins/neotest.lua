@@ -124,7 +124,7 @@ return {
       {
         "<leader>t",
         mode = { "n", "v" },
-        desc = "Test",
+        desc = "[t]est file",
         function()
           require("neotest").run.run(vim.fn.expand("%"))
         end,
@@ -132,15 +132,7 @@ return {
       {
         "<leader>s",
         mode = { "n", "v" },
-        desc = "Test File",
-        function()
-          require("neotest").run.run(vim.fn.expand("%"))
-        end,
-      },
-      {
-        "<leader>tn",
-        mode = { "n", "v" },
-        desc = "Test Nearest",
+        desc = "Test [s]ingle",
         function()
           require("neotest").run.run()
         end,
@@ -155,7 +147,7 @@ return {
       {
         "ts",
         mode = { "n", "v" },
-        desc = "Test Summary",
+        desc = "[t]est [s]ummary",
         function()
           require("neotest").summary.toggle()
         end,
