@@ -13,17 +13,18 @@ return {
       diagnostics.setup()
       cmp.setup(handlers)
 
-      vim.lsp.config("*", {
-        capabilities = handlers.capabilities,
-        on_attach = handlers.on_attach,
-      })
-
-      vim.lsp.enable({
-        "ruby",
-        "lua",
-        "typescript",
-        "ansible",
-      })
+      vim.lsp.enable(
+        {
+          "ruby",
+          "lua",
+          "typescript",
+          "ansible",
+        },
+        {
+          capabilities = handlers.capabilities,
+          on_attach = handlers.on_attach
+        }
+      )
     end,
     keys = {
       {
