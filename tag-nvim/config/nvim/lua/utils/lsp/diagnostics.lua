@@ -53,10 +53,10 @@ local function setup_diagnostic_config()
   local utils = require("core.utils")
 
   vim.diagnostic.config({
-    virtual_lines = { current_line = true },
+    virtual_lines = false,
     virtual_text = true,
     inlay_hints = {
-      enabled = true,
+      enabled = false,
       exclude = {},
     },
     signs = {
