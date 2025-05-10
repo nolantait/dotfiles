@@ -1,6 +1,7 @@
 -- DOCS: LSP handlers for Neovim
 
 local M = {
+  -- Start with the default capabilities
   capabilities = vim.lsp.protocol.make_client_capabilities(),
 }
 
