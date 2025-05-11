@@ -8,5 +8,8 @@ export XDG_STATE_HOME=$HOME/.local/state
 
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="YES"
 
+# Disable Apple's save/restore mechanism.
+export SHELL_SESSIONS_DISABLE=1
+
 # Secret config
 [[ -f ~/.zshenv.secret ]] && source ~/.zshenv.secret
