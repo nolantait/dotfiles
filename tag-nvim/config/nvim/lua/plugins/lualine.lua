@@ -168,6 +168,19 @@ local config = function()
     padding = { right = 1 },
   }
 
+  local macro = {
+    "macro",
+    fmt = function()
+      local reg = vim.fn.reg_recording()
+      if reg ~= "" then
+        return "Recording @" .. reg
+      end
+      return nil
+    end,
+    color = { fg = colors.orange },
+    draw_empty = false,
+  }
+
   lualine.setup({
     options = {
       icons_enabled = true,
@@ -195,8 +208,9 @@ local config = function()
         encoding,
         fileformat,
         filetype,
-        -- copilot_status,
+        copilot_status,
         lsp_status,
+        macro,
       },
       lualine_y = { cwd },
       lualine_z = { file_location },
