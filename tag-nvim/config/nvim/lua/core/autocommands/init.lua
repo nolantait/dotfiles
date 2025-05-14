@@ -81,6 +81,7 @@ function M.setup()
       "spectre_panel",
       "startuptime",
       "tsplayground",
+      "grug-far"
     },
   })
 
