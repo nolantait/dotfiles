@@ -14,10 +14,10 @@ local config = function()
   hardtime.setup({
     restriction_mode = "hint",
     restricted_keys = {
-      ["h"] = {},
-      ["j"] = {},
-      ["k"] = {},
-      ["l"] = {},
+      ["h"] = false,
+      ["j"] = false,
+      ["k"] = false,
+      ["l"] = false,
       ["+"] = { "n", "x" },
       ["gj"] = { "n", "x" },
       ["gk"] = { "n", "x" },
@@ -33,6 +33,7 @@ end
 return {
   {
     "m4xshen/hardtime.nvim",
+    enabled = false,
     lazy = false,
     dependencies = { "MunifTanjim/nui.nvim" },
     config = config,
