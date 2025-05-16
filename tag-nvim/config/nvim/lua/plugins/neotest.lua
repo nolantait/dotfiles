@@ -116,7 +116,6 @@ return {
       "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "nvim-neotest/neotest-python",
-      "mrcjkb/rustaceanvim",
     },
     event = "VeryLazy",
     config = config,
