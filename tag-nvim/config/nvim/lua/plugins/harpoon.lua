@@ -17,7 +17,7 @@ return {
     keys = {
       {
         "<leader>ha",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon add file",
         function()
           require("harpoon.mark").add_file()
@@ -25,7 +25,7 @@ return {
       },
       {
         "<leader>hh",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon toggle menu",
         function()
           require("harpoon.ui").toggle_quick_menu()
@@ -33,7 +33,7 @@ return {
       },
       {
         "<leader>hm",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Telescope search Harpoon marks",
         function()
           vim.cmd("Telescope harpoon marks")
@@ -41,7 +41,7 @@ return {
       },
       {
         "<leader>h1",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon quick menu 1",
         function()
           require("harpoon.ui").nav_file(1)
@@ -49,7 +49,7 @@ return {
       },
       {
         "<leader>h2",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon quick menu 2",
         function()
           require("harpoon.ui").nav_file(2)
@@ -57,7 +57,7 @@ return {
       },
       {
         "<leader>h3",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon quick menu 3",
         function()
           require("harpoon.ui").nav_file(3)
@@ -65,7 +65,7 @@ return {
       },
       {
         "<leader>h4",
-        mode = { "n", "i" },
+        mode = { "n" },
         desc = "Harpoon quick menu 4",
         function()
           require("harpoon.ui").nav_file(4)
