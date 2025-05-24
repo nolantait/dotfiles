@@ -100,6 +100,7 @@ local config = function()
         entry_filter = utils.limit_lsp_types,
       },
       { name = "path" },
+      { name = "crates" },
     }, {
       { name = "buffer" },
     }),
