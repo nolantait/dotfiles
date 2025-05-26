@@ -39,9 +39,9 @@ if [ -f "$usermodmap" ]; then
   xmodmap "$usermodmap"
 fi
 
-xrandr --output DP-4 --mode 2560x1440 --rate 165 --pos 0x0 --primary
-xrandr --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-4
-xrandr --output DP-2 --mode 1920x1080 --rate 144 --right-of DP-4 --rotate left
+xrandr --output DP-2 --mode 2560x1440 --rate 165 --pos 0x0 --primary
+xrandr --output HDMI-0 --mode 1920x1080 --rate 60 --left-of DP-2
+xrandr --output DP-0 --mode 1920x1080 --rate 144 --right-of DP-2 --rotate left
 
 # Set environment variables if needed
 export DISPLAY=:0
