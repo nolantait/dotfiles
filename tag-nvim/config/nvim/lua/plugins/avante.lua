@@ -57,8 +57,8 @@ return {
             options = {
               temperature = 0,
               num_ctx = 20480,
-              keep_alive = "5m"
-            }
+              keep_alive = "5m",
+            },
           },
         },
         claude = {
@@ -71,8 +71,8 @@ return {
             options = {
               temperature = 0,
               num_ctx = 20480,
-              keep_alive = "5m"
-            }
+              keep_alive = "5m",
+            },
           },
         },
       },
@@ -86,6 +86,41 @@ return {
             normal = "<C-q>",
             insert = "<C-q>",
           },
+        },
+      },
+      custom_tools = {
+        {
+          name = "run_ruby_tests", -- Unique name for the tool
+          description = "Run Ruby unit tests and return results", -- Description shown to AI
+          command = "bin/rspec", -- Shell command to execute
+          param = { -- Input parameters (optional)
+            type = "table",
+            fields = {
+              {
+                name = "target",
+                description = "File or directory to test (e.g. '.' or 'packages')",
+                type = "string",
+                optional = true,
+              },
+            },
+          },
+          returns = { -- Expected return values
+            {
+              name = "result",
+              description = "Result of the fetch",
+              type = "string",
+            },
+            {
+              name = "error",
+              description = "Error message if the fetch was not successful",
+              type = "string",
+              optional = true,
+            },
+          },
+          func = function(params, on_log, on_complete) -- Custom function to execute
+            local target = params.target or "."
+            return vim.fn.system(string.format("bin/rspec %s", target))
+          end,
         },
       },
     },
