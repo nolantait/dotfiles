@@ -71,6 +71,11 @@ return {
         provider = "telescope",
       },
       providers = {
+        deepseek = {
+          __inherited_from = "openai", -- inherit from openai provider
+          endpoint = "https://api.deepseek.com",
+          model = "deepseek-coder"
+        },
         openai = {
           endpoint = "https://api.openai.com/v1",
           model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)

@@ -10,9 +10,13 @@ local config = function()
   })
 
   lazydev.setup({
+    dependencies = {
+      -- Manage libuv types with lazy. Plugin will never be loaded
+      { "Bilal2453/luvit-meta", lazy = true },
+    },
     library = {
       "core",
-      "luvit-meta/library",
+      { path = "luvit-meta/library", words = { "vim%.uv" } },
     },
   })
 end
