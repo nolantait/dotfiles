@@ -21,6 +21,7 @@ vim.filetype.add({
     ["sway.config"] = "i3config",
     yml = detect_ansible,
     yaml = detect_ansible,
+    avanterules = "markdown",
   },
   filename = {
     -- Add new filetype for specific filenames

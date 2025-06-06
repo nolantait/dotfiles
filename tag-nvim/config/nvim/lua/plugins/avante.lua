@@ -31,6 +31,14 @@ return {
           vim.cmd("AvanteClear")
         end,
       },
+      -- {
+      --   "<Leader>ad",
+      --   mode = "n",
+      --   desc = "Toggle Avante debug",
+      --   function()
+      --     vim.cmd("AvanteDebug")
+      --   end,
+      -- },
       {
         "<Leader>am",
         mode = "n",
@@ -60,7 +68,7 @@ return {
       -- add any opts here
       -- for example
       provider = "claude",
-      cursor_applying_provider = "claude",
+      cursor_applying_provider = "openai_mini",
       behavior = {
         enable_claude_text_editor_tool_mode = true,
         -- NOTE: uses Aider's method to planing when false, but is picky about
@@ -71,14 +79,9 @@ return {
         provider = "telescope",
       },
       providers = {
-        deepseek = {
-          __inherited_from = "openai", -- inherit from openai provider
-          endpoint = "https://api.deepseek.com",
-          model = "deepseek-coder"
-        },
         openai = {
           endpoint = "https://api.openai.com/v1",
-          model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
+          model = "gpt-4.1", -- your desired model (or use gpt-4o, etc.)
           timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
           extra_request_body = {
             max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
@@ -90,19 +93,21 @@ return {
             },
           },
         },
+        openai_mini = {
+          __inherited_from = "openai", -- inherit from openai provider
+          endpoint = "https://api.openai.com/v1",
+          model = "gpt-4.1-mini", -- your desired model (or use gpt-4o-mini, etc.)
+        },
+        deepseek = {
+          __inherited_from = "openai", -- inherit from openai provider
+          endpoint = "https://api.deepseek.com",
+          model = "deepseek-coder",
+        },
         claude = {
+          __inherited_from = "openai", -- inherit from openai provider
           endpoint = "https://api.anthropic.com",
-          model = "claude-3-7-sonnet-latest",
+          model = "claude-4-sonnet-latest",
           disable_tools = false,
-          extra_request_body = {
-            reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-            max_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-            options = {
-              temperature = 0,
-              num_ctx = 20480,
-              keep_alive = "5m",
-            },
-          },
         },
       },
       mappings = {
@@ -115,6 +120,13 @@ return {
             normal = "<C-q>",
             insert = "<C-q>",
           },
+        },
+      },
+      input = {
+        provider = "snacks",
+        provider_opts = {
+          title = "Avante Input",
+          icon = "",
         },
       },
       custom_tools = {
