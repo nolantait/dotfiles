@@ -24,6 +24,30 @@ return {
         end,
       },
       {
+        "<Leader>aC",
+        mode = "n",
+        desc = "Clear chat with Avante",
+        function()
+          vim.cmd("AvanteClear")
+        end,
+      },
+      {
+        "<Leader>am",
+        mode = "n",
+        desc = "Open list of models",
+        function()
+          vim.cmd("AvanteModels")
+        end,
+      },
+      {
+        "<Leader>ah",
+        mode = "n",
+        desc = "Open previous chats",
+        function()
+          vim.cmd("AvanteHistory")
+        end,
+      },
+      {
         "<Leader>ar",
         mode = "n",
         desc = "Show repo map with Avante",
