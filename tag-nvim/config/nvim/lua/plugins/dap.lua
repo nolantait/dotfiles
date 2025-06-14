@@ -7,6 +7,8 @@ local config = function()
   local dap = require("dap")
   local dapui = require("dapui")
 
+  require("dap-ruby").setup()
+
   -- Initialize debug hooks
   _G._debugging = false
   local function debug_init()
@@ -21,35 +23,10 @@ local config = function()
     end
   end
 
-  dap.listeners.before.attach.dapui_config = debug_init
-  dap.listeners.before.launch.dapui_config = debug_init
+  -- Automatically open/close dap-ui on debug events
+  dap.listeners.after.event_initialized.dapui_config = debug_init
   dap.listeners.before.event_terminated.dapui_config = debug_terminate
   dap.listeners.before.event_exited.dapui_config = debug_terminate
-
-  dap.adapters.ruby = function(callback, config)
-    callback({
-      type = "server",
-      host = "127.0.0.1",
-      port = "${port}",
-      executable = {
-        command = "bundle",
-        args = {
-          "exec",
-          "rdbg",
-          "-n",
-          "--open",
-          "--port",
-          "${port}",
-          "-c",
-          "--",
-          "bundle",
-          "exec",
-          config.command,
-          config.script,
-        },
-      },
-    })
-  end
 
   dap.configurations.ruby = {
     {
@@ -74,7 +51,7 @@ local config = function()
   local api = vim.api
   local keymap_restore = {}
 
-  dap.listeners.after["event_initialized"]["me"] = function()
+  dap.listeners.after.event_initialized["me"] = function()
     for _, buf in pairs(api.nvim_list_bufs()) do
       local keymaps = api.nvim_buf_get_keymap(buf, "n")
       for _, keymap in pairs(keymaps) do
@@ -92,7 +69,7 @@ local config = function()
     )
   end
 
-  dap.listeners.after["event_terminated"]["me"] = function()
+  dap.listeners.after.event_terminated["me"] = function()
     for _, keymap in pairs(keymap_restore) do
       api.nvim_buf_set_keymap(
         keymap.buffer,
@@ -159,6 +136,7 @@ return {
       "DapStepOut",
       "DapTerminate",
     },
+    deps = { "suketa/nvim-dap-ruby" },
     config = config,
     keys = {
       {
