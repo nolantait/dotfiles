@@ -311,9 +311,4 @@ return {
       render = { indent = 1, max_value_lines = 85 },
     },
   },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    config = true,
-    opts = { virt_text_pos = "eol" },
-  },
 }
