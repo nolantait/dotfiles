@@ -74,6 +74,7 @@ return {
         -- NOTE: uses Aider's method to planing when false, but is picky about
         -- the model chosen
         enable_cursor_planning_mode = false,
+        auto_approve_tool_permissions = false,
       },
       file_selector = {
         provider = "telescope",

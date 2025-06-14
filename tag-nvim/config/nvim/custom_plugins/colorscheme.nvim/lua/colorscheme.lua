@@ -21,6 +21,7 @@ function M.setup()
   ---@diagnostic disable: undefined-global
   local theme = lush(function(injected_functions)
     local sym = injected_functions.sym
+
     return {
       Background({ bg = colors.background }), -- normal background color
       ColorColumn({ bg = colors.darker_gray }), -- Columns set with "colorcolumn"
