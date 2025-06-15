@@ -66,8 +66,10 @@ function M.setup()
       "PlenaryTestPopup",
       "checkhealth",
       "copilot",
+      "dap-float",
       "dbout",
       "gitsigns-blame",
+      "grug-far",
       "help",
       "lazy",
       "lspinfo",
@@ -81,7 +83,6 @@ function M.setup()
       "spectre_panel",
       "startuptime",
       "tsplayground",
-      "grug-far"
     },
   })
 
