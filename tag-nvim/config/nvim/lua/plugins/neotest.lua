@@ -56,7 +56,7 @@ local config = function()
       open_on_run = true,
     },
     quickfix = {
-      enabled = true,
+      enabled = false,
       open = function()
         -- vim.cmd("Trouble quickfix")
         -- vim.cmd("TestSummary")
