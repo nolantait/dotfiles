@@ -21,10 +21,11 @@ return {
 
       -- Rust is handled by rustacean.nvim
       vim.lsp.enable({
-        "ruby",
-        "lua",
-        "typescript",
         "ansible",
+        "lua",
+        "python",
+        "ruby",
+        "typescript",
       })
     end,
     keys = {
@@ -119,13 +120,6 @@ return {
     },
     lazy = false,
     opts = {
-      ensure_installed = {
-        "ruby-lsp",
-        "typescript-language-server",
-        "rust-analyzer",
-        "prettier",
-        "lua-language-server",
-      },
       ui = {
         icons = {
           package_installed = icons.check,
