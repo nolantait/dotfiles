@@ -5,19 +5,17 @@ local config = function()
   local treesitter = require("nvim-treesitter.configs")
 
   treesitter.setup({
-    auto_install = false,
+    auto_install = true,
     ignore_install = {
       "help",
     },
     ensure_installed = {
       "css",
-      "elixir",
       "embedded_template", -- ERB support
       "gitignore",
       "gitcommit",
       "gitattributes",
       "git_rebase",
-      "heex",
       "html",
       "json",
       "javascript",
