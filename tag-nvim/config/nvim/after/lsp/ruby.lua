@@ -15,27 +15,27 @@ return {
     enabledFeatures = {
       codeActions = false,
       codeLens = false,
-      completion = true,
+      completion = false,
       definition = true,
       diagnostics = true,
       documentHighlights = true,
-      documentLink = true,
-      documentSymbols = true,
+      documentLink = false,
+      documentSymbols = false,
       foldingRanges = false,
-      formatting = true,
+      formatting = false,
       hover = true,
       inlayHint = false,
       onTypeFormatting = false,
       selectionRanges = false,
-      semanticHighlighting = false,
-      signatureHelp = true,
+      semanticHighlighting = true,
+      signatureHelp = false,
       typeHierarchy = false,
       workspaceSymbol = false,
     },
     featuresConfiguration = {
       inlayHint = {
-        implicitHashValue = true,
-        implicitRescue = true
+        implicitHashValue = false,
+        implicitRescue = false
       },
     },
     indexing = {
@@ -61,6 +61,8 @@ return {
         "overcommit",
         "syntax_suggest",
         "web-console",
+        "phlex",
+        "phlex-rails"
       },
     },
   },

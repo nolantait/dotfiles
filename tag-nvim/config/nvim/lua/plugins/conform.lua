@@ -38,6 +38,7 @@ return {
     },
     opts = {
       formatters_by_ft = {
+        ruby = { "rubocop" },
         javascript = { "prettier", lsp_format = "fallback" },
         javascriptreact = { "prettier", lsp_format = "fallback" },
         typescriptreact = { "prettier", lsp_format = "fallback" },

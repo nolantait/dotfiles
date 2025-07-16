@@ -31,7 +31,7 @@ local config = function()
     disable = function()
       local ok, _ = pcall(require, "treesitter-context")
       if ok then
-        vim.cmd("TSContextDisable")
+        vim.cmd("TSContext disable")
       end
     end,
   }
