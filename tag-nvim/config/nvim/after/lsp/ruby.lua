@@ -33,7 +33,10 @@ return {
       workspaceSymbol = false,
     },
     featuresConfiguration = {
-      inlayHint = false,
+      inlayHint = {
+        implicitHashValue = true,
+        implicitRescue = true
+      },
     },
     indexing = {
       excludedGems = {
