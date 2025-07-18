@@ -15,12 +15,12 @@ return {
     enabledFeatures = {
       codeActions = false,
       codeLens = false,
-      completion = false,
+      completion = true,
       definition = true,
       diagnostics = true,
-      documentHighlights = true,
+      documentHighlights = false,
       documentLink = false,
-      documentSymbols = false,
+      documentSymbols = true,
       foldingRanges = false,
       formatting = false,
       hover = true,
@@ -28,9 +28,9 @@ return {
       onTypeFormatting = false,
       selectionRanges = false,
       semanticHighlighting = true,
-      signatureHelp = false,
+      signatureHelp = true,
       typeHierarchy = false,
-      workspaceSymbol = false,
+      workspaceSymbol = true,
     },
     featuresConfiguration = {
       inlayHint = {
