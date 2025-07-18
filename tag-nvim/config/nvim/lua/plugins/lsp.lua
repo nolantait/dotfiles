@@ -19,6 +19,67 @@ return {
         on_attach = handlers.on_attach,
       })
 
+      local complete_client = function(arg)
+        return vim
+          .iter(vim.lsp.get_clients())
+          :map(function(client)
+            return client.name
+          end)
+          :filter(function(name)
+            return name:sub(1, #arg) == arg
+          end)
+          :totable()
+      end
+
+      vim.api.nvim_create_user_command("LspRestart", function(info)
+        local clients = info.fargs
+
+        -- Default to restarting all active servers
+        if #clients == 0 then
+          clients = vim
+            .iter(vim.lsp.get_clients())
+            :map(function(client)
+              return client.name
+            end)
+            :totable()
+        end
+
+        for _, name in ipairs(clients) do
+          if vim.lsp.config[name] == nil then
+            if name ~= "copilot" then
+              vim.notify(("Invalid server name '%s'"):format(name))
+            end
+          else
+            vim.lsp.enable(name, false)
+          end
+        end
+
+        local timer = assert(vim.uv.new_timer())
+        timer:start(500, 0, function()
+          for _, name in ipairs(clients) do
+            vim.schedule_wrap(function(x)
+              vim.lsp.enable(x)
+            end)(name)
+          end
+        end)
+      end, {
+        desc = "Restart the given client",
+        nargs = "?",
+        complete = complete_client,
+      })
+
+      vim.api.nvim_create_user_command("LspLog", function()
+        local log_path = vim.lsp.get_log_path()
+
+        if log_path then
+          vim.cmd("edit " .. log_path)
+        else
+          print("No LSP logs found.")
+        end
+      end, {
+        desc = "Open LSP logs",
+      })
+
       -- Rust is handled by rustacean.nvim
       vim.lsp.enable({
         "ansible",
