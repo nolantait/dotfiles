@@ -8,15 +8,11 @@
 #
 # .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
 
-export BROWSER=firefox
-export VISUAL=nvim
-export EDITOR=nvim
-export GOROOT=$HOME/.go
-export MANPAGER="sh -c 'col -bx | bat -l man -p --theme=\"default\"'"
-export MANROFFOPT="-c"
 export CLIPPY_CONF_DIR=$HOME/.config/clippy
 export DOCKER_BUILDKIT=1
-export FZF_DEFAULT_OPTS_FILE=~/.fzfrc
+export GOROOT=$HOME/.go
+export RUBYOPT="-W:deprecated -W:performance --yjit --debug-frozen-string-literal"
+export TIMEFMT="%U user %S system %P cpu %*E total, running %J"
 
 # Local config
 [[ -f ~/.zshenv.host ]] && source ~/.zshenv.host
