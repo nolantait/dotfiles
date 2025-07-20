@@ -54,6 +54,14 @@ _load_settings() {
         . $config
       done
     fi
+
+    # Check for a "plugin" directory within the config directory.
+    if [ -d "$_dir/plugins" ]; then
+      # Load configuration files from the "plugin" directory, excluding compiled files (zwc).
+      for plugin in "$_dir"/plugins/**/*~*.zwc(N-.); do
+        . $plugin
+      done
+    fi
   fi
 }
 
