@@ -116,12 +116,9 @@ ${top_mem name 4} ${alignr}${top_mem mem 4}
 ${voffset 5}${color1}${font1}VIDEO ${hr 2}${font}
 ${voffset 5}${color1}GPU:
 ${color3}- ${nvidia modelname 0}
-${color3}- ${nvidia modelname 1}
-${color1}Driver: 
+${color1}Driver:
 ${color3}- ${nvidia driverversion 0}
-${color3}- ${nvidia driverversion 1}
 ${voffset 5}${color4}${nvidia gpuutil 0}% ${color2}${nvidiabar 10 gpuutil 0}
-${color4}${nvidia gpuutil 0}% ${color2}${nvidiabar 10 gpuutil 1}
 #------------+
 # DISK
 #------------+
@@ -137,10 +134,10 @@ ${color2}${diskiograph_read 20,130} ${goto 200}${alignr}${diskiograph_write 20,1
 #NETWORK
 #------------+
 ${voffset 5}${color1}${font1}NETWORK ${hr 2}${font}
-${voffset 5}${color4}${addr enp10s0}${alignr}${if_existing /sys/class/net/enp10s0/operstate up}ONLINE${else}OFFLINE${endif}
-${color3}Down: ${color4}${downspeed enp10s0}/s  ${alignr}${color3}Total: ${color4}${totaldown enp10s0}
-${color2}${downspeedgraph enp10s0}
-${color3}Up: ${color4}${upspeed enp10s0}/s  ${alignr}${color3}Total: ${color4}${totalup enp10s0}
-${color2}${upspeedgraph enp10s0}
+${voffset 5}${color4}${addr enp12s0}${alignr}${if_existing /sys/class/net/enp10s0/operstate up}ONLINE${else}OFFLINE${endif}
+${color3}Down: ${color4}${downspeed enp12s0}/s  ${alignr}${color3}Total: ${color4}${totaldown enp10s0}
+${color2}${downspeedgraph enp12s0}
+${color3}Up: ${color4}${upspeed enp12s0}/s  ${alignr}${color3}Total: ${color4}${totalup enp10s0}
+${color2}${upspeedgraph enp12s0}
 ]]
 
