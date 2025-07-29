@@ -32,7 +32,7 @@ function M.setup(colors)
     DiffDelete = { link = "Removed" },
     Changed = { fg = colors.yellow, bg = colors.black },
     DiffChange = { link = "Changed" },
-    DiffText = { fg = colors.light_gray, bg = colors.darker_gray },
+    DiffText = { fg = colors.lightest_gray, bg = colors.darker_gray },
     EndOfBuffer = { link = "NonText" },
     ErrorMsg = { fg = colors.red },
     WinSeparator = { fg = colors.background, bg = colors.background },

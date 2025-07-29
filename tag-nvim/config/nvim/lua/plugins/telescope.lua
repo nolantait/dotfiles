@@ -5,7 +5,6 @@ local config = function()
   local telescope = require("telescope")
   local icons = require("globals.icons")
   local trouble = require("trouble.sources.telescope")
-
   local actions = require("telescope.actions")
   local previewers = require("telescope.previewers")
   local themes = require("telescope.themes")
@@ -180,7 +179,7 @@ local config = function()
   telescope.load_extension("ui-select")
   telescope.load_extension("fzf")
   telescope.load_extension("frecency")
-  telescope.load_extension('harpoon')
+  telescope.load_extension("harpoon")
 end
 
 return {

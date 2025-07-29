@@ -107,7 +107,8 @@ function M.setup(colors)
     NeoTreeFadeText1 = { link = "NeoTreeDimText" },
     NeoTreeFadeText2 = { link = "NeoTreeDimText" },
     NeoTreeWinSeparator = { link = "WinSeparator" },
-    NeoTreeModified = { fg = colors.yellow },
+    NeoTreeGitModified = { fg = colors.yellow },
+    NeoTreeGitStaged = { link = "Added" },
     NeoTreeGitAdded = { link = "Added" },
     NeoTreeGitConflict = { link = "Removed" },
     NeoTreeGitUnstaged = { link = "Changed" },
@@ -150,11 +151,11 @@ function M.setup(colors)
     SatelliteBar = { bg = colors.dark_gray },
     SatelliteBackground = { link = "Background" },
 
-    TelescopeTitle = { link = "Title" },
-    TelescopeMatching = { fg = colors.yellow, bold = true },
     TelescopeBorder = { link = "FloatBorder" },
-    TelescopeSelection = { fg = colors.lightest_gray, bold = true },
-    TelescopeMultiSelection = { link = "TelescopeSelection" },
+    TelescopeNormal = { link = "NormalFloat" },
+    TelescopeTitle = { link = "Title" },
+    TelescopePromptBorder = { fg = colors.blue },
+    TelescopeResultsComment = { link = "Comment" },
 
     barbecue_normal = { link = "Background" },
 
@@ -225,8 +226,11 @@ function M.setup(colors)
     SnacksIndent7 = { link = "SnacksIndentScope" },
     SnacksIndent8 = { link = "SnacksIndentScope" },
 
-    NoiceCmdlinePopupBorder = { fg = colors.blue },
     NoiceConfirmBorder = { fg = colors.purple },
+    NoiceCmdlinePopupBorderInput = { fg = colors.yellow },
+    NoiceCmdlinePopupBorder = { fg = colors.blue },
+    NoiceCmdlineIconInput = { fg = colors.yellow, bg = colors.dark_gray },
+    NoiceCmdlineIconLua = { fg = colors.blue },
 
     LazyButton = { bg = colors.darker_gray },
     LazyButtonActive = { bg = colors.dark_gray },
@@ -329,6 +333,13 @@ function M.setup(colors)
     MasonMuted = { link = "Comment" },
     MasonMutedBlock = { fg = colors.black, bg = colors.gray },
     MasonMutedBlockBold = { fg = colors.black, bg = colors.gray, bold = true },
+
+    RenderMarkdownBullet = { fg = colors.orange },
+    RenderMarkdownCode = { bg = colors.dark_gray },
+    RenderMarkdownDash = { fg = colors.orange },
+    RenderMarkdownTableHeader = { fg = colors.blue, bold = true },
+    RenderMarkdownTableRow = { fg = colors.light_gray },
+    RenderMarkdownCodeInline = { fg = colors.cyan },
   }
 end
 
