@@ -13,8 +13,7 @@ local config = function()
 
   telescope.setup({
     defaults = {
-      border = false,
-      -- borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+      border = true,
       color_devicons = true,
       dynamic_preview_title = true,
       file_ignore_patterns = {
