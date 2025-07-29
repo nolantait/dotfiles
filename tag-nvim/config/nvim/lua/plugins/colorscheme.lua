@@ -38,8 +38,4 @@ return {
     priority = 1000,
     lazy = false,
   },
-  {
-    "rktjmp/lush.nvim",
-    lazy = false,
-  },
 }
