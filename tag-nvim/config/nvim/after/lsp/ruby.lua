@@ -22,7 +22,7 @@ return {
       documentLink = false,
       documentSymbols = true,
       foldingRanges = false,
-      formatting = false,
+      formatting = true,
       hover = true,
       inlayHint = false,
       onTypeFormatting = false,
