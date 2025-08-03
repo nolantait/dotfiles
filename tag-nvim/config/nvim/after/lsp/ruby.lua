@@ -61,8 +61,6 @@ return {
         "overcommit",
         "syntax_suggest",
         "web-console",
-        "phlex",
-        "phlex-rails"
       },
     },
   },
