@@ -5,10 +5,9 @@
 # clear-port 3000
 
 if [ -n "$1" ]; then
-  if port_num="$(lsof -ti4TCP:"$1")"; then
-    kill "$port_num"
-  fi
+  echo "Killing processes on port $1..."
+  lsof -ti4TCP:"$1" | xargs -r kill
 else
-  echo >&2 Usage: clear-port port-number
+  echo >&2 "Usage: clear-port port-number"
   exit 1
 fi
