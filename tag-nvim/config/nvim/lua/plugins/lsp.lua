@@ -99,6 +99,14 @@ return {
         end,
       },
       {
+        "gT",
+        mode = "n",
+        desc = "Go to type definition",
+        function()
+          vim.lsp.buf.type_definition()
+        end,
+      },
+      {
         "gd",
         mode = "n",
         desc = "Go to definition",
