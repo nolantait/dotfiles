@@ -41,6 +41,7 @@ Vite
 Vulkan
 WebGPU
 accessor
+accessors
 acyclic
 acyclical
 algorithmically
@@ -62,6 +63,7 @@ colliders
 config
 cooldown
 cooldowns
+cryptographic
 css
 customizable
 decrementing
@@ -172,6 +174,7 @@ timestep
 unnormalized
 url
 validator
+validators
 variadic
 variadics
 vectorized
@@ -181,5 +184,3 @@ websocket
 wgpu
 wifi
 wireframe
-validators
-cryptographic
