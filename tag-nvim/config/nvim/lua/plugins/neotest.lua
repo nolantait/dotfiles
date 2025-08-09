@@ -137,6 +137,14 @@ return {
         end,
       },
       {
+        "<leader>d",
+        mode = { "n", "v" },
+        desc = "Test [d]ebug",
+        function()
+          require("neotest").run.run({strategy = "dap"})
+        end,
+      },
+      {
         "<A-t>",
         desc = "Attach to running test",
         function()
