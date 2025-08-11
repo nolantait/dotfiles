@@ -12,18 +12,24 @@ local config = function()
       require("neotest-rspec")({
         rspec_cmd = function(position_type)
           if position_type == "test" then
-            return vim.tbl_flatten({
-              "bundle",
-              "exec",
-              "rspec",
-              "--fail-fast",
-            })
+            return vim
+              .iter({
+                "bundle",
+                "exec",
+                "rspec",
+                "--fail-fast",
+              })
+              :flatten()
+              :totable()
           else
-            return vim.tbl_flatten({
-              "bundle",
-              "exec",
-              "rspec",
-            })
+            return vim
+              .iter({
+                "bundle",
+                "exec",
+                "rspec",
+              })
+              :flatten()
+              :totable()
           end
         end,
       }),
@@ -110,6 +116,9 @@ return {
   {
     -- Test runner
     "nvim-neotest/neotest",
+    -- Setting to this specific commit until this issue is resolved:
+    -- https://github.com/nvim-neotest/neotest/issues/531
+    commit = "52fca67",
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
@@ -141,7 +150,7 @@ return {
         mode = { "n", "v" },
         desc = "Test [d]ebug",
         function()
-          require("neotest").run.run({strategy = "dap"})
+          require("neotest").run.run({ strategy = "dap" })
         end,
       },
       {
