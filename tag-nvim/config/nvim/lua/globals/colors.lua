@@ -6,6 +6,7 @@ local colors = {
   -- Base16 OneDark
   -- Author: Lalit Magant (http://github.com/tilal6991)
   -- Sets up the theme for base16-vim
+
   black = "#282c34", -- base00
   darker_gray = "#353b45", -- base01
   dark_gray = "#3e4451", -- base02

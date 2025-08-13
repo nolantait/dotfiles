@@ -39,7 +39,7 @@ end = "# End flavours"
 hook = "i3-msg reload"
 
 [[item]]
-file = "~/dotfiles/config/nvim/lua/globals/colors.lua"
+file = "~/dotfiles/tag-nvim/config/nvim/lua/globals/colors.lua"
 template = "nvim"
 subtemplate = "colors"
 rewrite = false
