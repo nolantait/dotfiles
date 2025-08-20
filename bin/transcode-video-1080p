@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# Transcode a video to a good-balance 1080p that's great for sharing online
+transcode-video-1080p() {
+  ffmpeg -i $1 -vf scale=1920:1080 -c:v libx264 -preset fast -crf 23 -c:a copy ${1%.*}-1080p.mp4
+}

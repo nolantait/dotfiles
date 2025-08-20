@@ -2,6 +2,7 @@
 
 export BROWSER=firefox
 export EDITOR=nvim
+export SUDO_EDITOR="$EDITOR"
 export ERL_AFLAGS="-kernel shell_history enabled"
 export EZA_STRICT=false
 export FZF_DEFAULT_COMMAND="fd --type file --follow --hidden --color always --exclude .git"
