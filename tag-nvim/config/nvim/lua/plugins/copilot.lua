@@ -13,14 +13,14 @@ return {
       },
     },
     keys = {
-      {
-        "<C-Space>",
-        mode = { "i", "s" },
-        desc = "Trigger copilot",
-        function()
-          require("copilot.suggestion").next()
-        end,
-      },
+      -- {
+      --   "<M-c>",
+      --   mode = { "i", "s" },
+      --   desc = "Trigger copilot",
+      --   function()
+      --     require("copilot.suggestion").next()
+      --   end,
+      -- },
     },
     init = function()
       vim.api.nvim_set_hl(
@@ -32,7 +32,7 @@ return {
     opts = {
       cmp = {
         enabled = true,
-        method = "getCompletionsCycling",
+        -- method = "getCompletionsCycling",
       },
       copilot_node_command = "node", -- Node.js version must be > 16.x
       filetypes = {
@@ -55,10 +55,19 @@ return {
         enabled = false,
       },
       suggestion = {
-        -- Disabled to not interfere with copilot-cmp
         enabled = false,
+        -- auto_trigger = true,
+        -- enabled = true,
+        -- keymap = {
+        --   accept = "<M-l>",
+        --   accept_word = false,
+        --   accept_line = "<M-L>",
+        --   next = "<M-]>",
+        --   prev = "<M-[>",
+        --   dismiss = "<C-]>",
+        -- },
       },
-      server_opts_overrides = {},
+      server_opts_overrides = {}
     },
   },
 }

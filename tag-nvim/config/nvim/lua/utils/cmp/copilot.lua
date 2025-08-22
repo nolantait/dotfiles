@@ -22,7 +22,7 @@ M.setup = function()
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
 
     copilot_cmp.setup({
-      method = "getCompletionsCycling",
+      -- method = "getCompletionsCycling",
       event = { "InsertEnter", "LspAttach" },
       fix_pairs = true,
       formatters = {

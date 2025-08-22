@@ -38,9 +38,9 @@ local config = function()
       autocomplete = {
         cmp.TriggerEvent.TextChanged,
       },
-      -- completeopt = "menu,menuone,noselect",
+      completeopt = "menu,menuone,noselect",
       keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%(-\w*\)*\)]],
-      keyword_length = 1,
+      keyword_length = 0,
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
@@ -91,18 +91,27 @@ local config = function()
       {
         name = "copilot",
         max_view_entries = 3,
+        priority = 100,
+        group_index = 1,
       },
-      { name = "render-markdown" },
-      { name = "nvim_lua" },
       {
         name = "nvim_lsp",
         keyword_length = 5,
         entry_filter = utils.limit_lsp_types,
+        group_index = 2,
       },
-      { name = "path" },
-      { name = "crates" },
-    }, {
-      { name = "buffer" },
+      {
+        name = "path",
+        group_index = 1,
+      },
+      {
+        name = "crates",
+        group_index = 1,
+      },
+      {
+        name = "buffer",
+        group_index = 1,
+      },
     }),
     sorting = {
       priority_weight = 2,
@@ -111,11 +120,9 @@ local config = function()
     window = {
       completion = {
         border = core_utils.border("FloatBorderCmp"),
-        winhighlight = "Normal:TelescopePreviewBorder,TelescopePreviewBorder:Pmenu,CursorLine:PmenuSel,Search:None",
       },
       documentation = {
         border = core_utils.border("FloatBorderCmp"),
-        winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:PmenuSel,Search:None",
       },
     },
     experimental = {
