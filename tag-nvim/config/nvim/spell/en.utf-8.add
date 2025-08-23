@@ -27,6 +27,7 @@ PDA
 PDAs
 PNG
 Photoshop
+Postgresql
 Rakefile
 Roda
 SIMD
@@ -57,6 +58,7 @@ boolean
 bootable
 bundler
 bytecode
+changelog
 cloudflared
 collider
 colliders
@@ -107,6 +109,7 @@ inlining
 instantiation
 iterable
 javascript
+jittering
 keypair
 kubectl
 lamports
@@ -184,5 +187,3 @@ websocket
 wgpu
 wifi
 wireframe
-Postgresql
-changelog
