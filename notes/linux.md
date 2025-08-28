@@ -7,6 +7,9 @@ These are some notes about my latest arch install.
 Format disks with a boot/root/swap split using `fdisk`, use `gdisk` if you
    need to set EFI permissions from an existing drive.
 
+You will need to figure out which disk you will be wiping. Your devices will be
+located in the `/dev` folder. In this example it is `/dev/sdb`
+
 Wipe any old stuff from the target:
 
 ```
@@ -21,6 +24,11 @@ sgdisk --new=1:0:+2M --typecode=1:ef02 --new=2:0:+4G --typecode=2:8200 --new=3:0
 
 ## Mount the drives
 
+For the 2nd and 3rd partitions we will add:
+
+1. The filesystem with `mkfs.ext4`
+2. A swap partition with `mkswap`
+
 ```
 mkfs.ext4 /dev/sdb3
 mkswap /dev/sdb2
@@ -33,7 +41,8 @@ mount /dev/sdb3 /mnt
 swapon /dev/sdb2
 ```
 
-Pacstrap that shit
+Pacstrap that shit which is going to bootstrap the installation with whatever we
+need.
 
 ```
 pacstrap -K /mnt base linux linux-firmware networkmanager man-db man-pages vim intel-ucode grub openssh
@@ -95,7 +104,7 @@ Sign in, change password with `passwd`. Install `sudo` and edit `/etc/sudoers` t
 ## Setup SSH
 
 Install `openssh`. Start the service `systemctl sshd.servivce`. Add keys to the
-root.
+root. Make sure you change the url below with your own keys.
 
 ```
 mkdir -p ~/.ssh && curl https://github.com/nolantait.keys > ~/.ssh/authorized_keys
@@ -257,39 +266,22 @@ paru -S --asdeps openslide poppler-glib libheif
 
 ## Install programming languages
 
+To manage our programming languages we will use `mise`
+
 ```
-paru -S unzip libyaml
+paru -S mise unzip libyaml
+```
 
-asdf plugin add nodejs
-asdf plugin add ruby
-asdf plugin add python
-asdf plugin add lua
+Then we can install the languages from the dotfiles
 
-asdf install
-
-corepack enable
-yarn set version stable
+```
+mise install
 ```
 
 ## Install applications
 
 ```
 paru -S slack-desktop discord vlc firefox-developer-edition
-```
-
-## Setup gaming
-
-```
-paru -S wine-staging
-
-paru -S --needed --asdeps giflib lib32-giflib gnutls lib32-gnutls v4l-utils lib32-v4l-utils libpulse \
-lib32-libpulse alsa-plugins lib32-alsa-plugins alsa-lib lib32-alsa-lib sqlite lib32-sqlite libxcomposite \
-lib32-libxcomposite ocl-icd lib32-ocl-icd libva lib32-libva gtk3 lib32-gtk3 gst-plugins-base-libs \
-lib32-gst-plugins-base-libs vulkan-icd-loader lib32-vulkan-icd-loader sdl2 lib32-sdl2
-
-paru -S steam
-
-paru -S lutris
 ```
 
 # Install docker
