@@ -1,5 +1,10 @@
 # Kill orphaned packages
 
 function pacmurder() {
-  pacman -Qtdq | sudo xargs -r pacman -Rns --noconfirm
+  orphans=$(pacman -Qtdq)
+  if [[ -n "$orphans" ]]; then
+    sudo pacman -Rns $orphans
+  else
+    echo "No orphaned packages found."
+  fi
 }
