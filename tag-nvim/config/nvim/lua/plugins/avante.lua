@@ -3,7 +3,7 @@
 return {
   {
     "yetone/avante.nvim",
-    enabled = true,
+    enabled = false,
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
     keys = {
@@ -194,7 +194,7 @@ return {
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
       "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
       "ibhagwan/fzf-lua", -- for file_selector provider fzf
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "nvim-tree/nvim-web-devicons", -- or nvim-mini/mini.icons
       "zbirenbaum/copilot.lua", -- for providers='copilot'
     },
   },

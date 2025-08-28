@@ -10,7 +10,7 @@ end
 return {
   {
     -- Automatic commenting with gc
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     event = "LazyFile",
     init = function()
       vim.g.skip_ts_context_commentstring_module = true

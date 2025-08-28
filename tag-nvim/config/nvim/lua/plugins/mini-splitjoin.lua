@@ -2,7 +2,7 @@
 
 return {
   {
-    "echasnovski/mini.splitjoin",
+    "nvim-mini/mini.splitjoin",
     event = "LazyFile",
     opts = {
       -- Module mappings. Use `''` (empty string) to disable one.

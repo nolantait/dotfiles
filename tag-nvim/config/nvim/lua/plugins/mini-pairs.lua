@@ -90,7 +90,7 @@ end
 
 return {
   {
-    "echasnovski/mini.pairs",
+    "nvim-mini/mini.pairs",
     config = config,
     lazy = false,
   },

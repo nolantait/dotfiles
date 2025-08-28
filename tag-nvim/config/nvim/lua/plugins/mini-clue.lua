@@ -3,7 +3,7 @@
 return {
   {
     -- Show keymaps on partial completion at the bottom of the screen
-    "echasnovski/mini.clue",
+    "nvim-mini/mini.clue",
     event = { "CursorHold", "CursorHoldI" },
     version = "*",
     opts = {
