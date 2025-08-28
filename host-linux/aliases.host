@@ -12,7 +12,7 @@ alias pacfind="pacman -Qi"
 alias pacsearch="pacman -Qs"
 alias paccacheclear="sudo pacman -Scc"
 # Kills orphaned packages
-alias pacmurder="sudo pacman -Rs $(pacman -Qtdq)"
+alias pacorphans="pacman -Qtdq"
 # Shows which package owns a file
 alias pacown="pacman -Qo"
 

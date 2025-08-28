@@ -1,0 +1,5 @@
+# Kill orphaned packages
+
+function pacmurder() {
+  pacman -Qtdq | sudo xargs -r pacman -Rns --noconfirm
+}
