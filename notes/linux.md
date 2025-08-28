@@ -1,4 +1,4 @@
-2# Setting up a new Arch Linux machine
+# Setting up a new Arch Linux machine
 
 These are some notes about my latest arch install.
 
