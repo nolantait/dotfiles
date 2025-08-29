@@ -22,7 +22,8 @@ vim.filetype.add({
     yml = detect_ansible,
     yaml = detect_ansible,
     avanterules = "markdown",
-    baml = "baml"
+    baml = "baml",
+    mdx = "markdown"
   },
   filename = {
     -- Add new filetype for specific filenames
