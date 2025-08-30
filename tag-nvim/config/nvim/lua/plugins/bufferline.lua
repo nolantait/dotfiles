@@ -4,10 +4,10 @@ local icons = require("globals.icons")
 
 -- Optionally use bufdelete to close buffers with fallback
 local close_command = function(bufnum)
-  local ok, bufremove = prequire("mini.bufremove")
+  local ok, snacks = prequire("snacks")
 
-  if ok and bufremove then
-    bufremove.delete(bufnum, true)
+  if ok and snacks then
+    snacks.bufdelete.delete(bufnum)
   else
     vim.cmd.bdelete({
       args = { bufnum },
