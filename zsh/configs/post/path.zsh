@@ -4,7 +4,7 @@
 # so we source it before setting our own PATHs.
 
 [[ -f '/etc/profile' ]] && emulate sh -c '. /etc/profile'
-[[ -f '~/.profile'   ]] && emulate sh -c '. ~/.profile'
+[[ -f '~/.profile' ]] && emulate sh -c '. ~/.profile'
 
 typeset -gxU path PATH
 
@@ -15,5 +15,5 @@ path=($HOME/.git/safe/../../bin $path)
 
 # Set $PATH if ~/.local/bin exist
 if [ -d "$HOME/.local/bin" ]; then
-    path=($HOME/.local/bin $path)
+  path=($HOME/.local/bin $path)
 fi

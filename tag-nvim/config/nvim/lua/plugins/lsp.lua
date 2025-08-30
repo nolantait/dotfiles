@@ -83,6 +83,8 @@ return {
       -- Rust is handled by rustacean.nvim
       vim.lsp.enable({
         "ansible",
+        "bash",
+        "css",
         "lua",
         "python",
         "ruby",

@@ -60,8 +60,8 @@ if [[ -n "${terminfo[khome]}" ]]; then
 fi
 # [End] - Go to end of line
 if [[ -n "${terminfo[kend]}" ]]; then
-  bindkey -M viins "${terminfo[kend]}"  end-of-line
-  bindkey -M vicmd "${terminfo[kend]}"  end-of-line
+  bindkey -M viins "${terminfo[kend]}" end-of-line
+  bindkey -M vicmd "${terminfo[kend]}" end-of-line
 fi
 
 # [Shift-Tab] - move through the completion menu backwards
@@ -87,37 +87,37 @@ fi
 
 typeset -g -A key
 if (( ${+terminfo[smkx]} && ${+terminfo[rmkx]} )); then
-	autoload -Uz add-zle-hook-widget
-	function zle_application_mode_start { echoti smkx }
-	function zle_application_mode_stop { echoti rmkx }
-	add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
-	add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
+  autoload -Uz add-zle-hook-widget
+  function zle_application_mode_start { echoti smkx }
+  function zle_application_mode_stop { echoti rmkx }
+  add-zle-hook-widget -Uz zle-line-init zle_application_mode_start
+  add-zle-hook-widget -Uz zle-line-finish zle_application_mode_stop
 fi
 
 # Control Left - go back a word
-key[Control-Left]="${terminfo[kLFT5]}"
-if [[ -n "${key[Control-Left]}"  ]]; then
-	bindkey -M viins "${key[Control-Left]}"  backward-word
-	bindkey -M vicmd "${key[Control-Left]}"  backward-word
+key[Control - Left]="${terminfo[kLFT5]}"
+if [[ -n "${key[Control - Left]}" ]]; then
+  bindkey -M viins "${key[Control - Left]}" backward-word
+  bindkey -M vicmd "${key[Control - Left]}" backward-word
 fi
 
 # Control Left - go forward a word
-key[Control-Right]="${terminfo[kRIT5]}"
-if [[ -n "${key[Control-Right]}" ]]; then
-	bindkey -M viins "${key[Control-Right]}" forward-word
-	bindkey -M vicmd "${key[Control-Right]}" forward-word
+key[Control - Right]="${terminfo[kRIT5]}"
+if [[ -n "${key[Control - Right]}" ]]; then
+  bindkey -M viins "${key[Control - Right]}" forward-word
+  bindkey -M vicmd "${key[Control - Right]}" forward-word
 fi
 
 # Alt Left - go back a word
-key[Alt-Left]="${terminfo[kLFT3]}"
-if [[ -n "${key[Alt-Left]}"  ]]; then
-	bindkey -M viins "${key[Alt-Left]}"  backward-word
-	bindkey -M vicmd "${key[Alt-Left]}"  backward-word
+key[Alt - Left]="${terminfo[kLFT3]}"
+if [[ -n "${key[Alt - Left]}" ]]; then
+  bindkey -M viins "${key[Alt - Left]}" backward-word
+  bindkey -M vicmd "${key[Alt - Left]}" backward-word
 fi
 
 # Control Right - go forward a word
-key[Alt-Right]="${terminfo[kRIT3]}"
-if [[ -n "${key[Alt-Right]}" ]]; then
-	bindkey -M viins "${key[Alt-Right]}" forward-word
-	bindkey -M vicmd "${key[Alt-Right]}" forward-word
+key[Alt - Right]="${terminfo[kRIT3]}"
+if [[ -n "${key[Alt - Right]}" ]]; then
+  bindkey -M viins "${key[Alt - Right]}" forward-word
+  bindkey -M vicmd "${key[Alt - Right]}" forward-word
 fi

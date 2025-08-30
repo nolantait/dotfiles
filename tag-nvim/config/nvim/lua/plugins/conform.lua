@@ -49,6 +49,9 @@ return {
         css = { "prettier" },
         svg = { "htmlbeautifier" },
         markdown = { "trim_whitespace", "trim_newlines" },
+        sh = { "shfmt" },
+        bash = { "shfmt" },
+        zsh = { lsp_format = "fallback"}
       },
     },
   },
