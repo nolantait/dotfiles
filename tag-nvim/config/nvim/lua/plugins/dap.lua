@@ -7,6 +7,16 @@ local config = function()
   local dap = require("dap")
   local dapui = require("dapui")
   local dap_ruby = require("dap-ruby")
+  local debugmaster = require("debugmaster")
+
+  -- make sure you don't have any other keymaps that starts with "<leader>d" to avoid delay
+  -- Alternative keybindings to "<leader>d" could be: "<leader>m", "<leader>;"
+  vim.keymap.set(
+    { "n", "v" },
+    "<leader>d",
+    debugmaster.mode.toggle,
+    { nowait = true }
+  )
 
   -- Initialize debug hooks
   _G._debugging = false
@@ -100,6 +110,15 @@ local config = function()
     numhl = "",
   })
 
+  -- Decides when and how to jump when stopping at a breakpoint
+  -- The order matters!
+  --
+  -- (1) If the line with the breakpoint is visible, don't jump at all
+  -- (2) If the buffer is opened in a tab, jump to it instead
+  -- (3) Else, create a new tab with the buffer
+  --
+  -- This avoid unnecessary jumps
+  dap.defaults.fallback.switchbuf = "usevisible,usetab,newtab"
 
   dap_ruby.setup()
 end
@@ -165,11 +184,19 @@ return {
         end,
       },
       {
+        "<leader>ds",
+        function()
+          local widgets = require("dap.ui.widgets")
+          widgets.centered_float(widgets.scopes, { border = "rounded" })
+        end,
+        desc = "DAP Scopes",
+      },
+      {
         "<leader>dr",
         mode = { "n", "v" },
         desc = "Repl",
         function()
-          require("dap").repl.toggle()
+          require("dap").repl.toggle(nil, "tab split")
         end,
       },
       {
