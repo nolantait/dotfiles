@@ -146,7 +146,7 @@ return {
         end,
       },
       {
-        "<leader>d",
+        "<leader>db",
         mode = { "n", "v" },
         desc = "Test [d]ebug",
         function()

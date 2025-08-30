@@ -6,6 +6,7 @@ local icons = require("globals.icons")
 local config = function()
   local dap = require("dap")
   local dapui = require("dapui")
+  local dap_ruby = require("dap-ruby")
 
   -- Initialize debug hooks
   _G._debugging = false
@@ -25,50 +26,6 @@ local config = function()
   dap.listeners.before.launch.dapui_config = debug_init
   dap.listeners.before.event_terminated.dapui_config = debug_terminate
   dap.listeners.before.event_exited.dapui_config = debug_terminate
-
-  dap.adapters.ruby = function(callback, config)
-    callback({
-      type = "server",
-      host = "127.0.0.1",
-      port = "${port}",
-      executable = {
-        command = "bundle",
-        args = {
-          "exec",
-          "rdbg",
-          "-n",
-          "--open",
-          "--port",
-          "${port}",
-          "-c",
-          "--",
-          "bundle",
-          "exec",
-          config.command,
-          config.script,
-        },
-      },
-    })
-  end
-
-  dap.configurations.ruby = {
-    {
-      type = "ruby",
-      name = "run current spec file",
-      request = "attach",
-      localfs = true,
-      command = "rspec",
-      script = "${file}",
-    },
-    {
-      type = "ruby",
-      name = "debug current file",
-      request = "attach",
-      localfs = true,
-      command = "ruby",
-      script = "${file}",
-    },
-  }
 
   -- Remap K to hover over variables only during debugging sessions
   local api = vim.api
@@ -142,6 +99,9 @@ local config = function()
     linehl = "",
     numhl = "",
   })
+
+
+  dap_ruby.setup()
 end
 
 return {
@@ -159,6 +119,9 @@ return {
       "DapStepOut",
       "DapTerminate",
     },
+    dependencies = {
+      "suketa/nvim-dap-ruby",
+    },
     config = config,
     keys = {
       {
@@ -170,7 +133,7 @@ return {
         end,
       },
       {
-        "<F5>",
+        "<leader>;",
         mode = { "n", "v" },
         desc = "Continue",
         function()
