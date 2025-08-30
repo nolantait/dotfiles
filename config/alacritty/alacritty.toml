@@ -32,14 +32,14 @@ color = "0xb6bdca"
 index = 21
 
 [colors.bright]
-black   = "0x545862"
-red     = "0xe06c75"
-green   = "0x98c379"
-yellow  = "0xe5c07b"
-blue    = "0x61afef"
-magenta = "0xc678dd"
-cyan    = "0x56b6c2"
-white   = "0xc8ccd4"
+black    = "#3e4451"
+red      = "#e9969d"
+green    = "#b3d39c"
+yellow   = "#edd4a6"
+blue     = "#8fc6f4"
+magenta  = "#d7a1e7"
+cyan     = "#7bc6d0"
+white    = "#c8cdd5"
 
 [colors.cursor]
 cursor  = "0xabb2bf"
@@ -77,7 +77,7 @@ foreground = "0xabb2bf"
 # End flavours
 
 [colors]
-draw_bold_text_with_bright_colors = true
+draw_bold_text_with_bright_colors = false
 
 [cursor]
 blink_interval = 550
