@@ -24,6 +24,14 @@ return {
         end,
       },
       {
+        "<leader>hr",
+        mode = { "n" },
+        desc = "Harpoon remove file",
+        function()
+          require("harpoon.mark").rm_file()
+        end,
+      },
+      {
         "<leader>hh",
         mode = { "n" },
         desc = "Harpoon toggle menu",
