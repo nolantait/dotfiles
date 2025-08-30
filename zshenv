@@ -15,5 +15,5 @@ export RUBYOPT="-W:deprecated -W:performance --yjit --enable-frozen-string-liter
 export TIMEFMT="%U user %S system %P cpu %*E total, running %J"
 
 # Local config
-[[ -f ~/.zshenv.host ]] && source ~/.zshenv.host
-[[ -f ~/.zshenv.local ]] && source ~/.zshenv.local
+[[ -f "$HOME/.zshenv.host" ]] && source "$HOME/.zshenv.host"
+[[ -f "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"

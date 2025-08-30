@@ -61,6 +61,8 @@ return {
         "overcommit",
         "syntax_suggest",
         "web-console",
+        -- Causes issues with indexing currently
+        "phlex-rails"
       },
     },
   },

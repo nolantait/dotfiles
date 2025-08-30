@@ -9,7 +9,7 @@
 # .zshenv → .zprofile → .zshrc → .zlogin → .zlogout
 
 # load custom executable functions
-for function in ~/.zsh/functions/*; do
+for function in $HOME/.zsh/functions/*; do
   source $function
 done
 
@@ -70,8 +70,8 @@ _load_settings() {
 _load_settings "$HOME/.zsh/configs"
 
 # Local config
-[[ -f ~/.zshrc.host ]] && source ~/.zshrc.host
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ -f "$HOME/.zshrc.host" ]] && source "$HOME/.zshrc.host"
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 # aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
+[[ -f "$HOME/.aliases" ]] && source "$HOME/.aliases"

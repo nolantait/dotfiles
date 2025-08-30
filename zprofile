@@ -18,5 +18,5 @@ export MANROFFOPT="-c"
 # As recommended in https://wiki.archlinux.org/title/Zsh
 emulate sh -c 'source /etc/profile'
 
-[[ -f ~/.zprofile.host ]] && source ~/.zprofile.host
-[[ -f ~/.zprofile.local ]] && source ~/.zprofile.local
+[[ -f "$HOME/.zprofile.host" ]] && source "$HOME/.zprofile.host"
+[[ -f "$HOME/.zprofile.local" ]] && source "$HOME/.zprofile.local"
