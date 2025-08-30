@@ -52,7 +52,7 @@ local M = {
       "py=python",
       "rb=ruby",
       "ruby",
-      "rust"
+      "rust",
     },
     -- Highlight YAML/TOML/JSON front matter.
     vim_markdown_frontmatter = true,
@@ -105,6 +105,7 @@ local M = {
     mousemoveevent = true, -- Enable mouse events for bufferline reveal
     mousescroll = "ver:1,hor:0", -- Enable mouse scrolling
     modeline = false, -- Disable modelines as security precaution
+    nrformats = "bin,hex,blank",
     number = true, -- Set numbered lines
     numberwidth = 2, -- Set number column width to 2 {default 4}
     pumblend = 0, -- Make popup windows blend
