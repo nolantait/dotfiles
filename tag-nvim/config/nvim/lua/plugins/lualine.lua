@@ -6,18 +6,9 @@ local config = function()
   local icons = require("globals.icons")
 
   local lualine_colors = {
-    a = {
-      bg = colors.background,
-      fg = colors.white,
-    },
-    b = {
-      bg = colors.background,
-      fg = colors.green,
-    },
-    c = {
-      bg = colors.background,
-      fg = colors.white,
-    },
+    a = { bg = colors.background, fg = colors.white },
+    b = { bg = colors.background, fg = colors.green },
+    c = { bg = colors.background, fg = colors.white },
   }
 
   local theme = {

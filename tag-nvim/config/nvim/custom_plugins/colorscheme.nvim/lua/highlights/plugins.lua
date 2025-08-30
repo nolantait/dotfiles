@@ -3,7 +3,10 @@ local M = {}
 function M.setup(colors)
   return {
     AlphaHeader = { link = "Title" },
-    AlphaFooter = { fg = colors.yellow },
+    AlphaFooter = { fg = colors.yellow, italic = true },
+    AlphaShortcut = { fg = colors.green },
+    AlphaHeaderLabel = { fg = colors.purple },
+    AlphaButtons = { fg = colors.red },
 
     DevIcon = { fg = colors.foreground },
     DevIconDefault = { link = "DevIcon" },
@@ -119,22 +122,22 @@ function M.setup(colors)
     NeoTreeSeparator = { link = "WinSeparator" },
     NeoTreeCursorLine = { link = "CursorLine" },
 
-    BufferLineInfo = { fg = colors.blue },
-    BufferLineInfoDiagnostic = { fg = colors.blue },
-    BufferLineHint = { fg = colors.purple },
-    BufferLineHintDiagnostic = { fg = colors.purple },
-    BufferLineWarning = { fg = colors.yellow },
-    BufferLineWarningDiagnostic = { fg = colors.yellow },
-    BufferLineError = { fg = colors.red },
-    BufferLineErrorDiagnostic = { fg = colors.red },
+    BufferLineInfo = { fg = colors.dark_gray },
+    BufferLineInfoDiagnostic = { fg = colors.darker_gray },
+    BufferLineHint = { fg = colors.darker_gray },
+    BufferLineHintDiagnostic = { fg = colors.darker_gray },
+    BufferLineWarning = { fg = colors.darker_gray },
+    BufferLineWarningDiagnostic = { fg = colors.darker_gray },
+    BufferLineError = { fg = colors.darker_gray },
+    BufferLineErrorDiagnostic = { fg = colors.darker_gray },
     BufferLineSeparator = { fg = colors.background, bg = colors.background },
-    BufferLineSeparatorVisible = { fg = colors.background, bg = colors.background },
-    BufferLineSeparatorSelected = { fg = colors.background, bg = colors.background },
-    BufferLineTab = { fg = colors.darker_gray },
-    BufferLineTabSeparator = { fg = colors.background, bg = colors.background },
-    BufferLineTabSeparatorSelected = { fg = colors.background, bg = colors.background },
+    BufferLineSeparatorVisible = { fg = colors.black, bg = colors.black },
+    BufferLineSeparatorSelected = { fg = colors.black, bg = colors.black },
+    BufferLineTab = { fg = colors.background },
+    BufferLineTabSeparator = { fg = colors.black, bg = colors.black },
+    BufferLineTabSeparatorSelected = { fg = colors.black, bg = colors.black },
     BufferLineIndicatorSelected = { fg = colors.blue },
-    BufferLineIndicator = { fg = colors.background },
+    BufferLineIndicator = { fg = colors.black },
 
     IlluminatedWordText = { link = "DiffText" },
     IlluminatedWordRead = { link = "IlluminatedWordText" },
@@ -147,6 +150,8 @@ function M.setup(colors)
     NeotestNamespace = { fg = colors.purple },
     NeotestFile = { link = "Directory" },
     NeotestDirectory = { link = "Directory" },
+    NeoTestFocused = { italic = true, bold = true },
+    NeoTestIndent = { fg = colors.dark_gray },
 
     SatelliteBar = { bg = colors.dark_gray },
     SatelliteBackground = { link = "Background" },
@@ -226,11 +231,18 @@ function M.setup(colors)
     SnacksIndent7 = { link = "SnacksIndentScope" },
     SnacksIndent8 = { link = "SnacksIndentScope" },
 
-    NoiceConfirmBorder = { fg = colors.purple },
     NoiceCmdlinePopupBorderInput = { fg = colors.yellow },
     NoiceCmdlinePopupBorder = { fg = colors.blue },
     NoiceCmdlineIconInput = { fg = colors.yellow, bg = colors.dark_gray },
     NoiceCmdlineIconLua = { fg = colors.blue },
+    NoiceCmdline = { fg = colors.lighter_gray },
+    NoiceCmdlineIcon = { fg = colors.blue },
+    NoiceCmdlineIconSearch = { fg = colors.yellow },
+    NoiceCmdlinePopupBorderSearch = { fg = colors.yellow },
+    NoiceConfirmBorder = { fg = colors.blue },
+    NoiceMini = { fg = colors.light_gray, blend = 0 },
+    NoiceFormatProgressDone = { bg = colors.black, fg = colors.light_gray },
+    NoiceFormatProgressTodo = { bg = colors.black, fg = colors.light_gray },
 
     LazyButton = { bg = colors.darker_gray },
     LazyButtonActive = { bg = colors.dark_gray },
@@ -326,7 +338,11 @@ function M.setup(colors)
     MasonHeading = { bold = true },
     MasonHighlight = { fg = colors.magenta },
     MasonHighlightBlock = { fg = colors.black, bg = colors.magenta },
-    MasonHighlightBlockBold = { link = "MasonHeaderSecondary" },
+    MasonHighlightBlockBold = {
+      fg = colors.black,
+      bg = colors.magenta,
+      bold = true,
+    },
     MasonHighlightBlockBoldSecondary = { link = "MasonHeader" },
     MasonHighlightBlockSecondary = { fg = colors.black, bg = colors.blue },
     MasonLink = { link = "MasonHighlight" },
@@ -340,6 +356,14 @@ function M.setup(colors)
     RenderMarkdownTableHeader = { fg = colors.blue, bold = true },
     RenderMarkdownTableRow = { fg = colors.light_gray },
     RenderMarkdownCodeInline = { fg = colors.cyan },
+
+    GrugFarResultsMatch = { link = "IncSearch" },
+
+    HarpoonWindow = { fg = colors.white, bg = colors.black },
+    HarpoonBorder = { fg = colors.blue },
+
+    FidgetTask = { fg = colors.lighter_gray, bg = colors.black },
+    FidgetTitle = { fg = colors.blue },
   }
 end
 
