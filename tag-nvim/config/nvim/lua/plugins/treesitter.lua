@@ -59,7 +59,8 @@ return {
     -- Improved syntax highlighting and code understanding for other plugins
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    config = config
+    config = config,
+    build = ":TSUpdate",
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
