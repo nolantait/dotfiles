@@ -6,3 +6,16 @@ require("core.init").setup()
 
 -- Load plugins with lazy
 require("load-plugins").setup()
+
+-- Enable relevant LSP servers
+-- These are configured in `after/lsp/*.lua`
+-- Rust is handled by rustacean.nvim
+vim.lsp.enable({
+  "ansible",
+  "bash",
+  "css",
+  "lua",
+  "python",
+  "ruby",
+  "typescript",
+})

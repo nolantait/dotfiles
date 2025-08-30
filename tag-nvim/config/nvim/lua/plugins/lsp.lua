@@ -79,17 +79,6 @@ return {
       end, {
         desc = "Open LSP logs",
       })
-
-      -- Rust is handled by rustacean.nvim
-      vim.lsp.enable({
-        "ansible",
-        "bash",
-        "css",
-        "lua",
-        "python",
-        "ruby",
-        "typescript",
-      })
     end,
     keys = {
       {
