@@ -5,9 +5,10 @@
 #   - Additionally, if there are any packages that depend on package_name, they will be removed as well.
 #   - Ask if it should be removed before removing
 alias yeet="paru -Rns"
+alias paruclean="paru -Sccd"
 
 # Clean out old and unused caches and packages
-alias paclean="sudo pacman -Sc"
+alias paclean="pacman -Scd"
 alias pacfind="pacman -Qi"
 alias pacsearch="pacman -Qs"
 alias paccacheclear="sudo pacman -Scc"
