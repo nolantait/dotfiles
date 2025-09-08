@@ -67,7 +67,12 @@ return {
         --   dismiss = "<C-]>",
         -- },
       },
-      server_opts_overrides = {}
+      server_opts_overrides = {
+        settings = {
+          telemetry = {
+          telemetryLevel = "off",
+        },
+      }
     },
   },
 }
