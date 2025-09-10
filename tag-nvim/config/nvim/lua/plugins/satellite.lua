@@ -3,6 +3,8 @@
 return {
   {
     "lewis6991/satellite.nvim",
+    -- Disabled until they fix deleting the current buffer
+    enabled = false,
     lazy = false,
     opts = {
       current_only = false,
