@@ -44,6 +44,7 @@ alias cop="bin/rubocop --parallel --display-cop-names --display-style-guide"
 alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) | %(authorname) | (%(color:green)%(committerdate:relative)%(color:reset))| %(contents:subject) ' | column -t -s '|'"
 
 alias my_ip="curl wtfismyip.com/text"
+alias my_lan_ip="ip a | grep -w inet"
 
 # Include custom aliases
 [[ -f ~/.aliases.host ]] && source ~/.aliases.host
