@@ -7,16 +7,6 @@ local config = function()
   local dap = require("dap")
   local dapui = require("dapui")
   local dap_ruby = require("dap-ruby")
-  local debugmaster = require("debugmaster")
-
-  -- make sure you don't have any other keymaps that starts with "<leader>d" to avoid delay
-  -- Alternative keybindings to "<leader>d" could be: "<leader>m", "<leader>;"
-  vim.keymap.set(
-    { "n", "v" },
-    "<leader>d",
-    debugmaster.mode.toggle,
-    { nowait = true }
-  )
 
   -- Initialize debug hooks
   _G._debugging = false
