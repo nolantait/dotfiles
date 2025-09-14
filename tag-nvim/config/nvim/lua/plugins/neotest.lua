@@ -34,6 +34,7 @@ local config = function()
         end,
       }),
     },
+    discovery = { enabled = true },
     diagnostic = {
       enabled = false,
     },

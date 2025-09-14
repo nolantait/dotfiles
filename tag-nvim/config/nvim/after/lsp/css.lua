@@ -7,6 +7,8 @@ return {
       validate = true,
       lint = {
         unknownAtRules = "ignore",
+        zeroUnits = "warning",
+        duplicateProperties = "warning",
       },
     },
     scss = { validate = true },
