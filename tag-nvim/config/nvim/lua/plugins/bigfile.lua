@@ -3,17 +3,6 @@
 local config = function()
   local bigfile = require("bigfile")
 
-  local cmp = {
-    name = "nvim-cmp",
-    opts = { defer = false },
-    disable = function()
-      local ok, cmp = pcall(require, "cmp")
-      if ok then
-        cmp.setup.buffer({ enabled = false })
-      end
-    end,
-  }
-
   local barbeque = {
     name = "barbeque",
     opts = { defer = false },
@@ -70,7 +59,6 @@ local config = function()
       "matchparen",
       "vimopts",
       "filetype",
-      cmp,
       barbeque,
       tscontext,
       lualine,

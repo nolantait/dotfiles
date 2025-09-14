@@ -6,22 +6,6 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    dependencies = {
-      {
-        -- We will be loading this inside of the cmp config
-        "zbirenbaum/copilot-cmp",
-      },
-    },
-    keys = {
-      -- {
-      --   "<M-c>",
-      --   mode = { "i", "s" },
-      --   desc = "Trigger copilot",
-      --   function()
-      --     require("copilot.suggestion").next()
-      --   end,
-      -- },
-    },
     opts = {
       cmp = {
         enabled = true,

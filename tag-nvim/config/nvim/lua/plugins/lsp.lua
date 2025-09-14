@@ -8,10 +8,8 @@ return {
     init = function()
       local handlers = require("utils.lsp.handlers")
       local diagnostics = require("utils.lsp.diagnostics")
-      local cmp = require("utils.lsp.cmp")
 
       diagnostics.setup()
-      cmp.setup(handlers)
 
       -- Sets up default LSP handlers
       vim.lsp.config("*", {
