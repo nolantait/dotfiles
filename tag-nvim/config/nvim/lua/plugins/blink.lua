@@ -20,6 +20,11 @@ return {
         keyword = { range = "full" },
         documentation = { auto_show = true },
         ghost_text = { enabled = true },
+        list = {
+          selection = {
+            preselect = false,
+          }
+        },
         menu = {
           auto_show = true,
           draw = {
