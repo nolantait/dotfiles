@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
-env RCRC="$HOME/dotfiles/rcrc rcdn '$*'"
+export RCRC="$HOME/dotfiles/rcrc"
+rcdn "$@"
 git pull
-env RCRC="$HOME/dotfiles/rcrc rcup '$*'"
+rcup "$@"
