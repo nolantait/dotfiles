@@ -14,15 +14,11 @@ return {
             return result:gsub("%s+$", "")
           end
 
-          -- Only create pane if we don't have one
+          -- Spawn the pane at fixed height if it doesn't exist
           if not pane_id or pane_id == "" then
-            -- Create pane at 12 lines high directly (avoids resize flash)
-            local new_pane_id =
-              shell("tmux split-window -P -F '#{pane_id}' -v -l 12")
-            vim.g[pane_var] = new_pane_id
-            pane_id = new_pane_id
+            pane_id = shell("tmux split-window -P -F '#{pane_id}' -v -l 12")
+            vim.g[pane_var] = pane_id
           else
-            -- Recreate if pane no longer exists
             local exists = os.execute(
               "tmux list-panes -F '#{pane_id}' | grep -q " .. pane_id
             )
@@ -32,11 +28,19 @@ return {
             end
           end
 
+          -- Escape double quotes in the command
           local escaped_cmd = cmd:gsub('"', '\\"')
-          os.execute("tmux send-keys -t " .. pane_id .. " C-l")
-          os.execute(
-            "tmux send-keys -t " .. pane_id .. ' "' .. escaped_cmd .. '" Enter'
-          )
+
+          -- Non-blocking jobstart so Neovim does not redraw or enter prompt state
+          vim.fn.jobstart({ "tmux", "send-keys", "-t", pane_id, "C-l" })
+          vim.fn.jobstart({
+            "tmux",
+            "send-keys",
+            "-t",
+            pane_id,
+            escaped_cmd,
+            "C-m",
+          })
         end,
       }
 
