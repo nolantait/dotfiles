@@ -10,6 +10,9 @@
 -- - term_mode = "t",
 -- - command_mode = "c",
 
+-- Better escaping of terminal mode with `<C-o>`
+vim.keymap.set("t", "<C-o>", [[<C-\><C-n>]], { noremap = true, silent = true })
+
 return {
   {
     mode = "n",
