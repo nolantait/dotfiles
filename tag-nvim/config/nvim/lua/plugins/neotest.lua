@@ -34,7 +34,7 @@ local config = function()
         end,
       }),
     },
-    discovery = { enabled = true },
+    -- discovery = { enabled = true },
     diagnostic = {
       enabled = false,
     },
@@ -117,6 +117,7 @@ return {
   {
     -- Test runner
     "nvim-neotest/neotest",
+    enabled = false,
     -- Setting to this specific commit until this issue is resolved:
     -- https://github.com/nvim-neotest/neotest/issues/531
     commit = "52fca67",
