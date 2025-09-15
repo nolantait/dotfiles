@@ -2,7 +2,8 @@ return {
   {
     "vim-test/vim-test",
     init = function()
-      vim.g["test#strategy"] = "neovim"
+      vim.g["test#strategy"] = "neovim_sticky"
+      vim.keymap.set("t", "<C-o>", [[<C-\><C-n>]], { noremap = true, silent = true })
     end,
     keys = {
       {

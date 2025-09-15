@@ -5,6 +5,7 @@ local utils = require("core.utils")
 return {
   {
     "akinsho/toggleterm.nvim",
+    lazy = false,
     keys = {
       {
         "<C-\\>",
