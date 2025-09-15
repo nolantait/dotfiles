@@ -52,6 +52,22 @@ return {
         end,
       },
       {
+        "<leader>a",
+        mode = { "n", "v" },
+        desc = "Test suite",
+        function()
+          vim.cmd("TestSuite spec packages")
+        end,
+      },
+      {
+        "<leader>A",
+        mode = { "n", "v" },
+        desc = "Test suite",
+        function()
+          vim.cmd("TestSuite spec packages --only-failures")
+        end,
+      },
+      {
         "<leader>s",
         mode = { "n", "v" },
         desc = "Test [s]ingle",
