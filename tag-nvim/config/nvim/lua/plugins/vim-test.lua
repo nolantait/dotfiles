@@ -60,7 +60,7 @@ return {
         mode = { "n", "v" },
         desc = "Test suite",
         function()
-          vim.cmd("TestSuite spec packages")
+          vim.cmd("TestSuite")
         end,
       },
       {
@@ -68,7 +68,7 @@ return {
         mode = { "n", "v" },
         desc = "Test suite",
         function()
-          vim.cmd("TestSuite spec packages --only-failures")
+          vim.cmd("TestSuite --only-failures")
         end,
       },
       {
