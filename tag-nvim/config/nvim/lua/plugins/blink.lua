@@ -2,9 +2,26 @@ return {
   {
     "saghen/blink.cmp",
     event = "LazyFile",
-    dependencies = { "giuxtaposition/blink-cmp-copilot" },
+    dependencies = {
+      "fang2hou/blink-copilot"
+    },
     version = "1.*",
 
+    init = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "BlinkCmpMenuOpen",
+        callback = function()
+          vim.b.copilot_suggestion_hidden = true
+        end,
+      })
+
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "BlinkCmpMenuClose",
+        callback = function()
+          vim.b.copilot_suggestion_hidden = false
+        end,
+      })
+    end,
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -23,7 +40,7 @@ return {
         list = {
           selection = {
             preselect = false,
-          }
+          },
         },
         menu = {
           auto_show = true,
@@ -52,7 +69,7 @@ return {
           },
           copilot = {
             name = "copilot",
-            module = "blink-cmp-copilot",
+            module = "blink-copilot",
             score_offset = 100,
             async = true,
           },
