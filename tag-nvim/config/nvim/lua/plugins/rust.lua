@@ -38,6 +38,19 @@ return {
                 ["async-recursion"] = { "async_recursion" },
               },
             },
+            files = {
+              excludeDirs = {
+                ".direnv",
+                ".git",
+                ".github",
+                ".gitlab",
+                "bin",
+                "node_modules",
+                "target",
+                "venv",
+                ".venv",
+              },
+            },
           },
         },
       }

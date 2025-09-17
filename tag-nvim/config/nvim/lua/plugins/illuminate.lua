@@ -7,7 +7,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
-    event = { "CursorHold", "CursorHoldI" },
+    event = "LazyFile",
     config = function()
       local illuminate = require("illuminate")
       illuminate.configure({

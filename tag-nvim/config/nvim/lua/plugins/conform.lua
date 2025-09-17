@@ -13,7 +13,8 @@ local format = function(args)
   end
 
   require("conform").format({
-    async = true,
+    async = false,
+    quiet = false,
     lsp_fallback = true,
     range = range,
   })
@@ -51,7 +52,7 @@ return {
         markdown = { "trim_whitespace", "trim_newlines" },
         sh = { "shfmt" },
         bash = { "shfmt" },
-        zsh = { lsp_format = "fallback"}
+        zsh = { lsp_format = "fallback" },
       },
     },
   },

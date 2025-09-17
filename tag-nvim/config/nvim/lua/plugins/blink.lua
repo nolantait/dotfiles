@@ -35,7 +35,10 @@ return {
       fuzzy = { implementation = "rust" },
       completion = {
         keyword = { range = "full" },
-        documentation = { auto_show = true },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200
+        },
         ghost_text = { enabled = true },
         list = {
           selection = {
