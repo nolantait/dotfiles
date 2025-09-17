@@ -6,7 +6,7 @@ local M = {}
 
 -- This will prefix our autocommands to namespace them to run first
 local function augroup(name)
-  local augroup_name = "_" .. name
+  local augroup_name = "Tainted_" .. name
   return vim.api.nvim_create_augroup(augroup_name, { clear = true })
 end
 
@@ -100,9 +100,22 @@ function M.setup()
   })
 
   command({ "FocusGained", "TermClose", "TermLeave" }, {
-    command = "checktime",
     desc = "Check if we need to reload the file when it changed",
     group = augroup("checktime"),
+    callback = function()
+      if vim.o.buftype ~= "nofile" then
+        vim.cmd("checktime")
+      end
+    end,
+  })
+
+  command("FileType", {
+    desc = "Make it easier to close man-files when opened inline",
+    group = augroup("man_unlisted"),
+    pattern = { "man" },
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+    end
   })
 end
 
