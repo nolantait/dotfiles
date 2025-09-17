@@ -1,4 +1,8 @@
-; extends
+;; extends
+
+((identifier) @namespace.builtin
+  (#eq? @namespace.builtin "vim"))
+
 ((field
   name: (identifier) @odp.function_assignment
   value: (function_definition)
