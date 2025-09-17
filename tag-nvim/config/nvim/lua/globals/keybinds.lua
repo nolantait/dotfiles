@@ -175,4 +175,46 @@ return {
     command = "<cmd>vertical resize -10<CR>",
     description = "Decrease window width by 10",
   },
+  {
+    mode = "n",
+    key = "<C-Up>",
+    command = "<cmd>resize +2<CR>",
+    description = "Increase window height by 2",
+  },
+  {
+    mode = "n",
+    key = "<C-Down>",
+    command = "<cmd>resize -2<CR>",
+    description = "Decrease window height by 2",
+  },
+  {
+    mode = "n",
+    key = "<C-Left>",
+    command = "<cmd>vertical resize -2<CR>",
+    description = "Decrease window width by 2",
+  },
+  {
+    mode = "n",
+    key = "<C-Right>",
+    command = "<cmd>vertical resize +2<CR>",
+    description = "Increase window width by 2",
+  },
+  {
+    mode = "i",
+    key = ",",
+    command = ",<C-g>u",
+    desc = "Add undo break-point for ','",
+  },
+  {
+    mode = "i",
+    key = ".",
+    command = ".<C-g>u",
+    desc = "Add undo break-point for '.'",
+  },
+  {
+    mode = "i",
+    key = ";",
+    command = ";<C-g>u",
+    desc = "Add undo break-point for ';'",
+  },
 }
