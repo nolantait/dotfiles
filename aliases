@@ -46,6 +46,9 @@ alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(
 alias my_ip="curl wtfismyip.com/text"
 alias my_lan_ip="ip a | grep -w inet"
 
+alias dusted="dust -d 2"
+alias download_website="wget -r -l 3 -k -p -H"
+
 # Include custom aliases
 [[ -f ~/.aliases.host ]] && source ~/.aliases.host
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
