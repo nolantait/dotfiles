@@ -1,0 +1,21 @@
+---
+syntax: bash
+---
+
+# Start by creating a new feature branch with your initials at the end
+git create-branch some-feature-nt
+
+# Work on the branch and rebase when the branch you staged off changes
+git rebase -i origin/master
+
+# While rebasing you want to resolve conflicts.
+# To take the version of the file from master
+git checkout origin/master path/to/file
+
+# Open a PR on Github and fill out a summary, close any issues, etc
+#
+# Once the PR is merged you can delete your branch
+git delete-branch some-feature-nt
+# Or if you wanted to keep that branch going, rebase on top of the merge
+git rebase -i origin/master
+git push
