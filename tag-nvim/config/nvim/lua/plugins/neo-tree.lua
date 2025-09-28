@@ -130,7 +130,7 @@ local config = function()
       "qf",
       "Outline",
     },
-    popup_border_style = utils.border("FloatBorder"),
+    popup_border_style = "rounded",
     source_selector = {
       winbar = true,
       content_layout = "center",
