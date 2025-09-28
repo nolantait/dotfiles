@@ -43,3 +43,5 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = default
+[diff "rspec"]
+  xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"

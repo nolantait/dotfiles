@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Delete any local branches that have been merged into master
+# https://tekin.co.uk/2020/01/clean-up-your-git-branches-and-repositories
+#
+# Example:
+#  git delete-merged
+
+set -e
+
+git branch --merged master | egrep -v "(^\*|^  master$|^  staging$|^  main$)" | xargs git branch --delete
