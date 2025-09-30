@@ -12,6 +12,7 @@ return {
         tabline = true,
         tabline_prefix = " ",
         tabline_suffix = " ",
+        tmux_autoclose_windows = true,
       },
     },
     keys = {
