@@ -27,9 +27,26 @@ M.check_pane = function()
     return false
   end
 
-  local check =
-    os.execute("tmux list-panes -F '#{pane_id}' | grep -q " .. private.pane_id)
-  local exists = check == 0
+  local check = vim
+    .system({
+      "tmux",
+      "list-panes",
+      "-F",
+      "'#{pane_id}'",
+    })
+    :wait()
+
+  -- Find any lines that match our pane
+  local lines = vim.split(check.stdout, "\n", { trimempty = true })
+  local found = false
+  for _, line in ipairs(lines) do
+    if line:find(private.pane_id, 1, true) then
+      found = true
+      break
+    end
+  end
+
+  local exists = found
 
   if not exists then
     private.pane_id = nil
