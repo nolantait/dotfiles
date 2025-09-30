@@ -1,8 +1,4 @@
 local M = {
-  pane_variable = "vim_test_pane",
-}
-
-local private = {
   pane_id = nil,
 }
 
@@ -23,7 +19,7 @@ M.in_tmate = function()
 end
 
 M.check_pane = function()
-  if not private.pane_id then
+  if not M.pane_id then
     return false
   end
 
@@ -40,7 +36,7 @@ M.check_pane = function()
   local lines = vim.split(check.stdout, "\n", { trimempty = true })
   local found = false
   for _, line in ipairs(lines) do
-    if line:find(private.pane_id, 1, true) then
+    if line:find(M.pane_id, 1, true) then
       found = true
       break
     end
@@ -49,7 +45,7 @@ M.check_pane = function()
   local exists = found
 
   if not exists then
-    private.pane_id = nil
+    M.pane_id = nil
   end
 
   return exists
@@ -58,22 +54,22 @@ end
 M.execute = function(cmd)
   M.check_pane()
 
-  if not private.pane_id then
+  if not M.pane_id then
     M.create_pane()
   end
 
   vim
-    .system({ "tmux", "send-keys", "-t", private.pane_id, "-X", "cancel" })
+    .system({ "tmux", "send-keys", "-t", M.pane_id, "-X", "cancel" })
     :wait()
   -- Clear the pane
-  vim.system({ "tmux", "send-keys", "-t", private.pane_id, "C-l" }):wait()
+  vim.system({ "tmux", "send-keys", "-t", M.pane_id, "C-l" }):wait()
   -- Send the testing command
   vim
     .system({
       "tmux",
       "send-keys",
       "-t",
-      private.pane_id,
+      M.pane_id,
       cmd,
       "C-m",
     })
@@ -81,8 +77,8 @@ M.execute = function(cmd)
 end
 
 M.create_pane = function()
-  if private.pane_id then
-    return private.pane_id
+  if M.pane_id then
+    return M.pane_id
   end
 
   local pane_id = vim
@@ -99,7 +95,7 @@ M.create_pane = function()
     :wait().stdout
     :gsub("%s+$", "")
 
-  private.pane_id = pane_id
+  M.pane_id = pane_id
 end
 
 return M
