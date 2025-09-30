@@ -11,12 +11,13 @@ return {
             local handle = io.popen(cmd_str)
             local result = handle:read("*a")
             handle:close()
+
             return result:gsub("%s+$", "")
           end
 
           -- Spawn the pane at fixed height if it doesn't exist
           if not pane_id or pane_id == "" then
-            pane_id = shell("tmux split-window -P -F '#{pane_id}' -v -l 12")
+            pane_id = shell("tmux split-window -P -F '#{pane_id}' -v -l 33")
             vim.g[pane_var] = pane_id
           else
             local exists = os.execute(
@@ -32,7 +33,12 @@ return {
           local escaped_cmd = cmd:gsub('"', '\\"')
 
           -- Non-blocking jobstart so Neovim does not redraw or enter prompt state
+          --
+          -- Always ensure we’re back in normal mode before sending anything
+          vim.fn.jobstart({ "tmux", "send-keys", "-t", pane_id, "-X", "cancel" })
+          -- Clear the pane
           vim.fn.jobstart({ "tmux", "send-keys", "-t", pane_id, "C-l" })
+          -- Send the testing command
           vim.fn.jobstart({
             "tmux",
             "send-keys",
