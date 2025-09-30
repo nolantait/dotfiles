@@ -260,7 +260,7 @@ systemctl enable --now postgresql
 Needed as a dependency for Rails
 
 ```
-paru -S vips
+paru -S libvips
 paru -S --asdeps openslide poppler-glib libheif
 ```
 
