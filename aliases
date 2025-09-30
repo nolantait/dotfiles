@@ -13,14 +13,16 @@ if command -v nvim >/dev/null 2>&1; then
 fi
 
 # Alias raw man to colorman function
-alias man="colorman"
+if command -v colorman >/dev/null 2>&1; then
+  alias man="colorman"
+fi
 
 # Reload zshrc like a rails console
 alias reload!=". ~/.zshrc"
 
 # Alias ls to something better
 if command -v eza >/dev/null 2>&1; then
-  alias ls="eza -lh --group-directories-first --icons=auto"
+  alias ls="eza --group-directories-first --icons=auto"
   alias lsf="eza --all --all --long --header --group --group-directories-first --time-style long-iso --git"
   alias lst="eza --all --group-directories-first --ignore-glob '*.git' --git-ignore --tree"
 fi
@@ -36,7 +38,7 @@ if command -v fzf >/dev/null 2>&1; then
 fi
 
 # Lists files (including dot files) sorted by size (biggest last) in long and
-# human readable output format. 
+# human readable output format.
 alias dir="ls -lSra"
 
 alias cop="bin/rubocop --parallel --display-cop-names --display-style-guide"
