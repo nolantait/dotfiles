@@ -1,3 +1,19 @@
+local function env(name)
+  return vim.fn.getenv(name) ~= vim.NIL and vim.fn.getenv(name) or nil
+end
+
+local function in_tmate()
+  -- prefer TMUX content (e.g. "/private/tmp/tmate-501/...") and fallback to TMATE_* vars
+  local tmux_env = vim.env.TMUX or ""
+  if string.find(tmux_env, "tmate", 1, true) then
+    return true
+  end
+  if env("TMATE") or env("TMATE_SESSION") or env("TMATE_SOCK") then
+    return true
+  end
+  return false
+end
+
 return {
   {
     "vim-test/vim-test",
@@ -17,7 +33,7 @@ return {
 
           -- Spawn the pane at fixed height if it doesn't exist
           if not pane_id or pane_id == "" then
-            pane_id = shell("tmux split-window -P -F '#{pane_id}' -v -l 33")
+            pane_id = shell("tmux split-window -P -F '#{pane_id}' -v -l 20")
             vim.g[pane_var] = pane_id
           else
             local exists = os.execute(
@@ -50,7 +66,11 @@ return {
         end,
       }
 
-      vim.g["test#strategy"] = "tmux"
+      if in_tmate() then
+        vim.g["test#strategy"] = "neovim_sticky"
+      else
+        vim.g["test#strategy"] = "tmux"
+      end
     end,
     keys = {
       {
