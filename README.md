@@ -22,14 +22,15 @@ The dotfiles are split between my two primary setups:
 1. Arch Linux with i3 desktop
 2. Mac M3
 
-General configuration is in all root folders except those with a `tag-` or
-`host-` prefix.
+`rcm` has a tagged and host based dotfiles feature that lets you install part of
+your dotfiles. General configuration is in all root folders except those with a
+`tag-` or `host-` prefix. Those are installed with `-t` or `-B` flags when you
+run the `rcup` command (see below).
+
+You can find more info about this with `man rcm` after you install `rcm`.
 
 Specific configuration for each setup is located in the `host-linux` and
 `host-macos` folders.
-
-`rcm` will, depending on the system, add the correct configuration to the
-configured home folders.
 
 What's in it?
 -------------
@@ -38,8 +39,7 @@ These are some highlights, not a full description.
 
 [neovim](https://neovim.io) configuration:
 
-* Full LUA based configs
-* `config/nvim/lua/plugins/list.lua` for a list of all the plugins
+* Fully custom Lua based configs
 
 [tmux](http://robots.thoughtbot.com/a-tmux-crash-course) configuration:
 
@@ -62,32 +62,26 @@ These are some highlights, not a full description.
 
 Dynamic color scheming across apps with [flavours](https://github.com/Misterio77/flavours)
 
-* Alacritty
-* Conky
-* Dunst
-* i3
-* neovim
-* Polybar
-* tmux
-* Xresources
-* Rofi
-
 Dependencies
 ------------
 
 ## Linux (AUR)
 
 - **alacritty**: OpenGL based terminal in Rust
-- **firefox**
-- **ranger**: Vim based file navigation
-- **mise**: Programming language manager
-- **flavours**: Dynamic theming
-- **i3-scrot**: Screenshot utility for i3
-- **neovim**
-- **rcm**: manage dotfiles with system links
+- **conky**: High level system stats on desktop
+- **dunst**: Notifications
 - **feh**: Sets wallpaper
+- **firefox**
+- **flavours**: Dynamic theming
+- **i3**: Tiling window manager desktop environment
+- **i3-scrot**: Screenshot utility for i3
+- **mise**: Programming language manager
+- **neovim**
 - **polybar**: Customizable topbar for i3
+- **ranger**: Vim based file navigation
+- **rcm**: manage dotfiles with system links
 - **rofi**: Configurable launcher
+- **tmux**: Terminal multiplexer
 
 ## MacOS (brew)
 
@@ -137,7 +131,6 @@ configuration options:
 * Please configure the `rcrc` file if you'd like to make personal
   overrides in a different directory
 
-
 Update
 ------
 
@@ -164,8 +157,6 @@ Put your customizations in `~/dotfiles-local` appended with `.local`:
 * `~/dotfiles-local/psqlrc.local` (we supply a blank `.psqlrc.local` to prevent `psql` from
   throwing an error, but you should overwrite the file with your own copy)
 * `~/dotfiles-local/tmux.conf.local`
-* `~/dotfiles-local/vimrc.local`
-* `~/dotfiles-local/vimrc.bundles.local`
 * `~/dotfiles-local/zshrc.local`
 * `~/dotfiles-local/zsh/configs/*`
 
