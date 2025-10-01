@@ -9,6 +9,7 @@ require("load-plugins").setup()
 
 -- Enable relevant LSP servers
 -- These are configured in `after/lsp/*.lua`
+--
 -- Rust is handled by rustacean.nvim
 vim.lsp.enable({
   "ansible",

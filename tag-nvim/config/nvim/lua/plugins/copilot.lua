@@ -1,12 +1,15 @@
 -- DOCS: Copilot setup
 
 return {
+  -- {
+  --   "copilotlsp-nvim/copilot-lsp",
+  -- },
   {
     -- Auto completion using Github's copilot
     "zbirenbaum/copilot.lua",
-    requires = {
-      "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
-    },
+    -- requires = {
+    --   "copilotlsp-nvim/copilot-lsp", -- (optional) for NES functionality
+    -- },
     cmd = "Copilot",
     event = "InsertEnter",
     opts = {
@@ -47,7 +50,7 @@ return {
         enabled = false,
       },
       nes = {
-        enabled = true,
+        enabled = false,
         auto_trigger = true,
         debounce = 100,
         keymap = {
