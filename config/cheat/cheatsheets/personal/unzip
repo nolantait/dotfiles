@@ -1,0 +1,41 @@
+---
+syntax: bash
+tags: [ compression ]
+---
+
+# unzip — extract `.zip` archives
+
+## Examples
+
+unzip archive.zip                  # extract all
+unzip -l archive.zip               # list contents
+unzip -t archive.zip               # test integrity
+unzip archive.zip -d /tmp/out      # extract into /tmp/out
+unzip -j archive.zip               # ignore directory structure
+unzip archive.zip file.txt         # extract one file
+unzip archive.zip file1 file2      # extract multiple files
+unzip archive.zip -x "*.log"       # exclude logs
+unzip -o archive.zip               # overwrite without prompt
+unzip -n archive.zip               # skip existing files
+unzip -P secret secret.zip         # use password (insecure)
+
+`unzip` extracts files from `.zip` archives. Use it to list, test, extract, or
+selectively operate on ZIPs.
+
+- `zipfile` — path to the `.zip` archive  
+- `files...` — (optional) files/patterns to extract  
+- `-x xfiles...` — exclude these files/patterns  
+- `-d exdir` — extract into directory `exdir`  
+
+## Common options
+
+- `-l` — list contents  
+- `-t` — test integrity  
+- `-v` — verbose listing  
+- `-o` — overwrite existing files without asking  
+- `-n` — never overwrite existing files  
+- `-j` — junk paths (flatten structure)  
+- `-d <dir>` — extract into directory `<dir>`  
+- `-x` — exclude files/patterns  
+- `-P <password>` — provide password (avoid in scripts)  
+- `-q` — quiet mode (less output)  
