@@ -37,15 +37,6 @@ local config = function()
     },
   }
 
-  -- local empty = require("lualine.component"):extend()
-  -- function empty:draw(default_highlight)
-  --   self.status = ""
-  --   self.applied_separator = ""
-  --   self:apply_highlights(default_highlight)
-  --   self:apply_section_separators()
-  --   return self.status
-  -- end
-
   local has_enough_room = function()
     return vim.o.columns > 100
   end
@@ -125,6 +116,24 @@ local config = function()
     show_colors = true,
   }
 
+  local sidekick_status = {
+    function()
+      return "󰽒 "
+    end,
+    color = function()
+      local status = require("sidekick.status").get()
+      if status then
+        return status.kind == "Error" and "DiagnosticError"
+          or status.busy and "DiagnosticWarn"
+          or "DiagnosticOk"
+      end
+    end,
+    cond = function()
+      local status = require("sidekick.status")
+      return status.get() ~= nil
+    end,
+  }
+
   local file_location = {
     require("components.file_location"),
     padding = 1,
@@ -200,6 +209,7 @@ local config = function()
         fileformat,
         filetype,
         copilot_status,
+        sidekick_status,
         lsp_status,
         macro,
       },

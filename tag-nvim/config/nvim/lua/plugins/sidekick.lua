@@ -23,6 +23,14 @@ return {
         desc = "Goto/Apply Next Edit Suggestion",
       },
       {
+        "<C-Space>",
+        function()
+          require("sidekick.nes").update()
+        end,
+        mode = { "n" },
+        desc = "Sidekick NES Update",
+      },
+      {
         "<C-.>",
         function()
           require("sidekick.cli").focus()
