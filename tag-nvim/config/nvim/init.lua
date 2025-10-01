@@ -18,4 +18,5 @@ vim.lsp.enable({
   "python",
   "ruby",
   "typescript",
+  "copilot_ls",
 })

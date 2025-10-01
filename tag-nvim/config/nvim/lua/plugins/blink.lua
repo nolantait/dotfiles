@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     event = "LazyFile",
     dependencies = {
-      "fang2hou/blink-copilot"
+      "fang2hou/blink-copilot",
     },
     version = "1.*",
 
@@ -27,7 +27,28 @@ return {
     opts = {
       keymap = {
         preset = "enter",
-        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<Tab>"] = {
+          "select_next",
+          "snippet_forward",
+          function()
+            local buffer = vim.b[vim.api.nvim_get_current_buf()]
+            if buffer.nes_state then
+              local ok, nes = prequire("copilot-lsp.nes")
+              if ok and nes then
+                nes.apply_pending_nes()
+                nes.walk_cursor_end_edit()
+              end
+            end
+          end,
+          -- @see sidekick
+          function() -- sidekick next edit suggestion
+            local ok, sidekick = prequire("sidekick")
+            if ok and sidekick then
+              sidekick.nes_jump_or_apply()
+            end
+          end,
+          "fallback",
+        },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
       },
       appearance = { nerd_font_variant = "mono" },
@@ -37,7 +58,7 @@ return {
         keyword = { range = "full" },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 200
+          auto_show_delay_ms = 200,
         },
         ghost_text = { enabled = true },
         list = {
