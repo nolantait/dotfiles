@@ -20,4 +20,5 @@ vim.lsp.enable({
   "ruby",
   "typescript",
   "copilot_ls",
+  -- "sql"
 })
