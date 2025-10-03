@@ -115,7 +115,19 @@ function M.setup()
     pattern = { "man" },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
-    end
+    end,
+  })
+
+  command("BufEnter", {
+    desc = "Disable shell lsp for .env files",
+    group = augroup("filetype_env"),
+    pattern = { ".env" },
+    callback = function(event)
+      vim.diagnostic.enable(false, {
+        namespace = "bash",
+        bufnr = event.buf,
+      })
+    end,
   })
 end
 
