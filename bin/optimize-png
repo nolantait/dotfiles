@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# -----------------------------------------------------------------------------
+# optimize-png.sh
+#
+# Resize and optimize PNG images for web delivery.
+# Uses ImageMagick `mogrify` and `pngquant`.
+#
+# Usage:
+#   ./optimize-png.sh input.png [--max-width 1200] [--max-height 800]
+#
+# Notes:
+#   - The script modifies the file *in place* unless you copy it first.
+#   - Requires: imagemagick, pngquant
+# -----------------------------------------------------------------------------
+
+if [[ $# -lt 1 ]]; then
+  echo "Usage: $0 input.png [--max-width N] [--max-height N]"
+  exit 1
+fi
+
+INPUT_FILE="$1"
+shift
+
+# Default constraints
+MAX_WIDTH=1920
+MAX_HEIGHT=1080
+
+# Parse optional args
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --max-width)
+      MAX_WIDTH="$2"
+      shift 2
+      ;;
+    --max-height)
+      MAX_HEIGHT="$2"
+      shift 2
+      ;;
+    *)
+      echo "Unknown argument: $1"
+      exit 1
+      ;;
+  esac
+done
+
+# Ensure dependencies
+for cmd in mogrify pngquant; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "Error: $cmd is not installed or not in PATH"
+    exit 1
+  fi
+done
+
+# Step 1: Resize (preserving aspect ratio)
+echo "Resizing $INPUT_FILE to fit within ${MAX_WIDTH}x${MAX_HEIGHT}..."
+mogrify -resize "${MAX_WIDTH}x${MAX_HEIGHT}>" "$INPUT_FILE"
+
+# Step 2: Quantize and compress
+echo "Optimizing PNG colors and compression..."
+pngquant --force --ext .png --strip --quality=65-90 "$INPUT_FILE"
+
+# Step 3: Report final size
+FINAL_SIZE=$(du -h "$INPUT_FILE" | cut -f1)
+echo "✅ Optimized: $INPUT_FILE (${FINAL_SIZE})"
