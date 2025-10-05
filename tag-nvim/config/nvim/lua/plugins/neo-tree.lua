@@ -178,6 +178,27 @@ local config = function()
       end
     end,
   })
+
+  -- Open folders correctly
+  vim.api.nvim_create_autocmd("VimEnter", {
+    callback = function(data)
+      -- Check if the argument is a directory
+      local is_dir = vim.fn.isdirectory(data.file) == 1
+      if not is_dir then
+        return
+      end
+
+      -- Change to that directory
+      vim.cmd.cd(data.file)
+
+      -- Open Neo-tree showing the filesystem
+      require("neo-tree.command").execute({
+        source = "filesystem",
+        position = "left",
+        reveal = true,
+      })
+    end,
+  })
 end
 
 return {
@@ -185,6 +206,7 @@ return {
     -- Filesystem tree on the left side of the screen
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
+    lazy = false,
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
