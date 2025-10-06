@@ -4,48 +4,54 @@ set -euo pipefail
 # -----------------------------------------------------------------------------
 # optimize-png.sh
 #
-# Resize and optimize PNG images for web delivery.
-# Uses ImageMagick `mogrify` and `pngquant`.
+# Resize and optimize PNG images for web delivery with sharp resampling,
+# retina scaling, and optional WebP export.
 #
 # Usage:
-#   ./optimize-png.sh input.png [--max-width 1200] [--max-height 800]
+#   ./optimize-png.sh input.png [--max-width N] [--max-height N]
+#       [--retina 2] [--quality 80-100] [--webp]
 #
 # Notes:
-#   - The script modifies the file *in place* unless you copy it first.
 #   - Requires: imagemagick, pngquant
+#   - Resizes with Lanczos filter (sharpest for downscaling)
+#   - Adds unsharp mask for clarity after resizing
+#   - Converts to WebP if --webp flag is passed
 # -----------------------------------------------------------------------------
 
 if [[ $# -lt 1 ]]; then
-  echo "Usage: $0 input.png [--max-width N] [--max-height N]"
+  echo "Usage: $0 input.png [--max-width N] [--max-height N] [--retina 2] [--quality 80-100] [--webp]"
   exit 1
 fi
 
 INPUT_FILE="$1"
 shift
 
-# Default constraints
+# Default parameters
 MAX_WIDTH=1920
 MAX_HEIGHT=1080
+RETINA_SCALE=1
+QUALITY_RANGE="70-90"
+EXPORT_WEBP=false
 
-# Parse optional args
+# Parse arguments
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --max-width)
-      MAX_WIDTH="$2"
-      shift 2
-      ;;
+      MAX_WIDTH="$2"; shift 2 ;;
     --max-height)
-      MAX_HEIGHT="$2"
-      shift 2
-      ;;
+      MAX_HEIGHT="$2"; shift 2 ;;
+    --retina)
+      RETINA_SCALE="$2"; shift 2 ;;
+    --quality)
+      QUALITY_RANGE="$2"; shift 2 ;;
+    --webp)
+      EXPORT_WEBP=true; shift ;;
     *)
-      echo "Unknown argument: $1"
-      exit 1
-      ;;
+      echo "Unknown argument: $1"; exit 1 ;;
   esac
 done
 
-# Ensure dependencies
+# Check dependencies
 for cmd in mogrify pngquant; do
   if ! command -v "$cmd" >/dev/null 2>&1; then
     echo "Error: $cmd is not installed or not in PATH"
@@ -53,14 +59,31 @@ for cmd in mogrify pngquant; do
   fi
 done
 
-# Step 1: Resize (preserving aspect ratio)
-echo "Resizing $INPUT_FILE to fit within ${MAX_WIDTH}x${MAX_HEIGHT}..."
-mogrify -resize "${MAX_WIDTH}x${MAX_HEIGHT}>" "$INPUT_FILE"
+# Compute target dimensions considering retina scaling
+TARGET_WIDTH=$(awk "BEGIN {printf \"%d\", $MAX_WIDTH * $RETINA_SCALE}")
+TARGET_HEIGHT=$(awk "BEGIN {printf \"%d\", $MAX_HEIGHT * $RETINA_SCALE}")
 
-# Step 2: Quantize and compress
-echo "Optimizing PNG colors and compression..."
-pngquant --force --ext .png --strip --quality=65-90 "$INPUT_FILE"
+# Resize with Lanczos filter (sharp downscaling) + mild unsharp mask
+echo "🔧 Resizing to max ${TARGET_WIDTH}x${TARGET_HEIGHT} (retina ${RETINA_SCALE}x)..."
+mogrify -filter Lanczos -resize "${TARGET_WIDTH}x${TARGET_HEIGHT}>" -unsharp 0x0.75 "$INPUT_FILE"
 
-# Step 3: Report final size
+# Quantize and compress PNG
+echo "🎨 Optimizing PNG colors and compression (quality=${QUALITY_RANGE})..."
+pngquant --force --ext .png --strip --quality="${QUALITY_RANGE}" "$INPUT_FILE"
+
+# Optionally export to WebP (lossless)
+if [[ "$EXPORT_WEBP" == true ]]; then
+  WEBP_FILE="${INPUT_FILE%.png}.webp"
+  echo "🌐 Exporting to WebP: $WEBP_FILE"
+  magick "$INPUT_FILE" -quality 90 -define webp:lossless=true "$WEBP_FILE"
+fi
+
+# Report final sizes
 FINAL_SIZE=$(du -h "$INPUT_FILE" | cut -f1)
-echo "✅ Optimized: $INPUT_FILE (${FINAL_SIZE})"
+echo "✅ Optimized PNG: $INPUT_FILE (${FINAL_SIZE})"
+
+if [[ "$EXPORT_WEBP" == true ]]; then
+  WEBP_SIZE=$(du -h "$WEBP_FILE" | cut -f1)
+  echo "✅ WebP version: $WEBP_FILE (${WEBP_SIZE})"
+fi
+
