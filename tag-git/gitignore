@@ -186,3 +186,7 @@ WakaTime.sublime-settings
 
 .byebug_history
 .solargraph.yml
+
+.llm.history
+.llm.input_history
+.llm.chat_history
