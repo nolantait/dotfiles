@@ -4,6 +4,8 @@ model: gpt-5-mini
 editor-model: gpt-5-nano
 weak-model: gpt-5-nano
 llm-history-file: .llm.history
+input-history-file: .llm.input_history
+chat-history-file: .llm.chat_history
 
 # Theme
 user-input-color: "#98c379"
