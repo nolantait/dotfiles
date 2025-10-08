@@ -31,27 +31,11 @@ return {
         desc = "Sidekick NES Update",
       },
       {
-        "<C-.>",
+        "<Leader>ai",
         function()
-          require("sidekick.cli").focus()
-        end,
-        mode = { "n", "x", "i", "t" },
-        desc = "Sidekick Switch Focus",
-      },
-      {
-        "<Leader>aa",
-        function()
-          require("sidekick.cli").toggle({ focus = true })
+          require("sidekick.cli").toggle({ name = "aider", focus = true })
         end,
         desc = "Sidekick Toggle CLI",
-        mode = { "n", "v" },
-      },
-      {
-        "<leader>ac",
-        function()
-          require("sidekick.cli").toggle({ name = "claude", focus = true })
-        end,
-        desc = "Sidekick Claude Toggle",
         mode = { "n", "v" },
       },
       {
