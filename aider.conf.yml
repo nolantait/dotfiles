@@ -9,6 +9,10 @@ chat-history-file: .llm.chat_history
 
 # Theme
 user-input-color: "#98c379"
+completion-menu-color: "#56b6c2"
+completion-menu-bg-color: "#1F2228"
+completion-menu-current-color: "#1F2228"
+completion-menu-current-bg-color: "#61afef"
 tool-output-color: "#c678dd"
 tool-error-color: "#e06c75"
 tool-warning-color: "#e5c07b"
@@ -28,12 +32,11 @@ commit: false
 watch-files: true
 
 # Fixing and committing
-lint: true
-lint-cmd:
-  - ruby: bin/rubocop -A --parallel
+# lint: true
+lint-cmd: "bin/rubocop -A --parallel"
+test-cmd: "bin/rspec"
 auto-lint: true
 auto-test: true
-test: true
 
 # Other
 disable-playwright: true
