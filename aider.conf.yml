@@ -35,9 +35,6 @@ auto-lint: true
 auto-test: true
 test: true
 
-# Upgrading
-upgrade: true
-
 # Other
 disable-playwright: true
 vim: true
