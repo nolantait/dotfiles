@@ -17,7 +17,7 @@ code-theme: one-dark
 show-diffs: true
 
 # Git settings
-gitignore: true
+gitignore: false
 auto-commits: false
 attribute-author: false
 attribute-committer: false
