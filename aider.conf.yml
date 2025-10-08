@@ -1,0 +1,41 @@
+# General
+dark-mode: true
+model: gpt-5-mini
+editor-model: gpt-5-nano
+weak-model: gpt-5-nano
+llm-history-file: .llm.history
+
+# Theme
+user-input-color: "#00cc00"
+tool-output-color: "xxx"
+tool-error-color: "#FF2222"
+tool-warning-color: "#FFA500"
+assistant-output-color: "#0088ff"
+code-theme: one-dark
+show-diffs: true
+
+# Git settings
+gitignore: true
+auto-commits: false
+attribute-author: false
+attribute-committer: false
+attribute-commit-message-author: false
+attribute-commit-message-committer: false
+attribute-co-authored-by: false
+commit: false
+watch-files: true
+
+# Fixing and committing
+lint: true
+lint-cmd:
+  - ruby: bin/rubocop -A --parallel
+auto-lint: true
+auto-test: true
+test: true
+
+# Upgrading
+upgrade: true
+
+# Other
+disable-playwright: true
+vim: true
