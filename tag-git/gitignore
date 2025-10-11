@@ -190,3 +190,4 @@ WakaTime.sublime-settings
 .llm.history
 .llm.input_history
 .llm.chat_history
+.aider*

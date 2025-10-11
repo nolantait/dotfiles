@@ -33,7 +33,23 @@ return {
       {
         "<Leader>ai",
         function()
-          require("sidekick.cli").toggle({ name = "aider", focus = true })
+          require("sidekick.cli").toggle({
+            name = "aider",
+            focus = true,
+          })
+
+          -- Add each file in the current buffer to aider
+          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+            if
+              vim.api.nvim_buf_is_loaded(buf)
+              and vim.api.nvim_buf_get_option(buf, "buftype") == ""
+            then
+              local filename = vim.api.nvim_buf_get_name(buf)
+              if filename ~= "" then
+                require("sidekick.cli").send("/add " .. filename)
+              end
+            end
+          end
         end,
         desc = "Sidekick Toggle CLI",
         mode = { "n", "v" },
