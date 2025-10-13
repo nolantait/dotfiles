@@ -1,3 +1,49 @@
+local find_aider_session = function()
+  -- Find the aider tmux session
+  local result =
+    vim.system({ "tmux", "list-sessions", "-F", "#{session_name}" }):wait()
+  local sessions = vim.split(result.stdout or "", "\n", { trimempty = true })
+  local aider_session
+
+  for _, s in ipairs(sessions) do
+    if s:match("^aider") then
+      aider_session = s
+      break
+    end
+  end
+
+  return aider_session
+end
+
+local add_files = function()
+  local aider_session = find_aider_session()
+
+  if not aider_session then
+    vim.notify("Could not find aider tmux session", vim.log.levels.WARN)
+    return
+  end
+
+  -- Add all open buffers to aider
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if
+      vim.api.nvim_buf_is_loaded(buf)
+      and vim.api.nvim_buf_get_option(buf, "buftype") == ""
+    then
+      local filename = vim.api.nvim_buf_get_name(buf)
+      if filename ~= "" then
+        vim.system({
+          "tmux",
+          "send-keys",
+          "-t",
+          aider_session,
+          "/add " .. filename,
+          "Enter",
+        })
+      end
+    end
+  end
+end
+
 return {
   {
     "folke/sidekick.nvim",
@@ -33,25 +79,20 @@ return {
       {
         "<Leader>ai",
         function()
-          require("sidekick.cli").toggle({
+          local sidekick = require("sidekick.cli")
+
+          -- Open aider in Sidekick tmux
+          sidekick.toggle({
             name = "aider",
             focus = true,
           })
 
-          -- Add each file in the current buffer to aider
-          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if
-              vim.api.nvim_buf_is_loaded(buf)
-              and vim.api.nvim_buf_get_option(buf, "buftype") == ""
-            then
-              local filename = vim.api.nvim_buf_get_name(buf)
-              if filename ~= "" then
-                require("sidekick.cli").send("/add " .. filename)
-              end
-            end
-          end
+          -- Delay 500ms to let the tmux session start
+          vim.defer_fn(function()
+            add_files()
+          end, 500) -- 500ms delay
         end,
-        desc = "Sidekick Toggle CLI",
+        desc = "Toggle Aider tmux session and add open files",
         mode = { "n", "v" },
       },
       {
