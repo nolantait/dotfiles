@@ -1,21 +1,11 @@
+local tmux = require("utils.tmux")
+
 local M = {
   pane_id = nil,
 }
 
-local function env(name)
-  return vim.fn.getenv(name) ~= vim.NIL and vim.fn.getenv(name) or nil
-end
-
 M.in_tmate = function()
-  -- prefer TMUX content (e.g. "/private/tmp/tmate-501/...") and fallback to TMATE_* vars
-  local tmux_env = vim.env.TMUX or ""
-  if string.find(tmux_env, "tmate", 1, true) then
-    return true
-  end
-  if env("TMATE") or env("TMATE_SESSION") or env("TMATE_SOCK") then
-    return true
-  end
-  return false
+  return tmux.in_tmate()
 end
 
 M.check_pane = function()
@@ -23,20 +13,11 @@ M.check_pane = function()
     return false
   end
 
-  local check = vim
-    .system({
-      "tmux",
-      "list-panes",
-      "-F",
-      "'#{pane_id}'",
-    })
-    :wait()
+  local panes = tmux.list_panes()
 
-  -- Find any lines that match our pane
-  local lines = vim.split(check.stdout, "\n", { trimempty = true })
   local found = false
-  for _, line in ipairs(lines) do
-    if line:find(M.pane_id, 1, true) then
+  for _, pane in ipairs(panes) do
+    if pane.id == M.pane_id then
       found = true
       break
     end
@@ -58,22 +39,9 @@ M.execute = function(cmd)
     M.create_pane()
   end
 
-  vim
-    .system({ "tmux", "send-keys", "-t", M.pane_id, "-X", "cancel" })
-    :wait()
-  -- Clear the pane
-  vim.system({ "tmux", "send-keys", "-t", M.pane_id, "C-l" }):wait()
-  -- Send the testing command
-  vim
-    .system({
-      "tmux",
-      "send-keys",
-      "-t",
-      M.pane_id,
-      cmd,
-      "C-m",
-    })
-    :wait()
+  tmux.send_keys(M.pane_id, { "-X", "cancel" }):wait()
+  tmux.send_keys(M.pane_id, { "C-l" }):wait()
+  tmux.send_keys(M.pane_id, { cmd, "C-m" }):wait()
 end
 
 M.create_pane = function()
@@ -81,19 +49,7 @@ M.create_pane = function()
     return M.pane_id
   end
 
-  local pane_id = vim
-    .system({
-      "tmux",
-      "split-window",
-      "-P",
-      "-F",
-      "#{pane_id}",
-      "-v",
-      "-l",
-      "20",
-    })
-    :wait().stdout
-    :gsub("%s+$", "")
+  local pane_id = tmux.create_pane()
 
   M.pane_id = pane_id
 end

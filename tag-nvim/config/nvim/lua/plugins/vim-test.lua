@@ -6,11 +6,13 @@ return {
 
       vim.g["test#custom_strategies"] = { tmux = tmux.execute }
 
-      if tmux.in_tmate() then
-        vim.g["test#strategy"] = "neovim_sticky"
-      else
-        vim.g["test#strategy"] = "tmux"
-      end
+      vim.g["test#strategy"] = "tmux"
+
+      -- if tmux.in_tmate() then
+      --   vim.g["test#strategy"] = "neovim_sticky"
+      -- else
+      --   vim.g["test#strategy"] = "tmux"
+      -- end
     end,
     keys = {
       {

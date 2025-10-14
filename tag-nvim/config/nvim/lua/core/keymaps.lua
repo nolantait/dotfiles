@@ -11,6 +11,11 @@ local M = {
     -- command executed. This is helpful to prevent error messages or status
     -- messages from appearing in the command line when the mapping is executed.
     silent = true,
+    -- When set to true, the mapping will be executed without waiting for
+    -- further input. This is particularly useful for mappings that
+    -- involve multiple key presses or sequences, as it allows the mapping
+    -- to be executed immediately without waiting for additional input.
+    nowait = true
   },
 }
 
