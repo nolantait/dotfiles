@@ -1,8 +1,5 @@
 # General
 dark-mode: true
-# model: gpt-5-mini
-# editor-model: gpt-5-nano
-# weak-model: gpt-5-nano
 llm-history-file: .llm.history
 input-history-file: .llm.input_history
 chat-history-file: .llm.chat_history
@@ -19,6 +16,14 @@ tool-warning-color: "#e5c07b"
 assistant-output-color: "#61afef"
 code-theme: one-dark
 show-diffs: true
+
+## LLM
+# model: gpt-5-mini
+# editor-model: gpt-5-nano
+# weak-model: gpt-5-nano
+cache-prompts: true
+cache-keepalive-pings: 12
+suggest-shell-commands: false
 
 # Git settings
 gitignore: false

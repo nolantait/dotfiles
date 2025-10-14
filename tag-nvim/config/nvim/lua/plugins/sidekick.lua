@@ -23,12 +23,12 @@ local add_files = function()
     return
   end
 
-  -- Add all open buffers to aider
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     if
       vim.api.nvim_buf_is_loaded(buf)
-      and vim.api.nvim_buf_get_option(buf, "buftype") == ""
+      and vim.api.nvim_get_option_value("buflisted", { buf = buf })
     then
+      -- Add all listed buffers to aider
       local filename = vim.api.nvim_buf_get_name(buf)
       if filename ~= "" then
         vim.system({
