@@ -99,4 +99,59 @@ M.create_pane = function()
   return pane_id
 end
 
+-- Finds a tmux session matching a given pattern
+---@param pattern string The pattern to match against session names
+---@return string|nil The name of the found session or nil if not found
+M.find_session = function(pattern)
+  local result =
+    vim.system({ M.binary(), "list-sessions", "-F", "#{session_name}" }):wait()
+  local sessions = vim.split(result.stdout or "", "\n", { trimempty = true })
+  local found
+
+  for _, session in ipairs(sessions) do
+    if session:match(pattern) then
+      found = session
+      break
+    end
+  end
+
+  return found
+end
+
+M.find_window = function(pattern)
+  local result = vim
+    .system({
+      M.binary(),
+      "list-windows",
+      "-F",
+      "#{window_name}",
+    })
+    :wait()
+  local windows = vim.split(result.stdout or "", "\n", { trimempty = true })
+  local found
+
+  for _, window in ipairs(windows) do
+    if window:match(pattern) then
+      found = window
+      break
+    end
+  end
+
+  return found
+end
+
+M.find_pane = function(pattern)
+  local panes = M.list_panes()
+  local found
+
+  for _, pane in ipairs(panes) do
+    if pane.command:match(pattern) then
+      found = pane
+      break
+    end
+  end
+
+  return found
+end
+
 return M

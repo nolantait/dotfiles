@@ -12,7 +12,7 @@ local M = {
       lazy = true,
     },
     dev = {
-      path = settings.vim_path .. "/lua/custom",
+      path = settings.dev_path,
       fallback = false, -- fallback to git when local plugins don't exist
     },
     git = {
