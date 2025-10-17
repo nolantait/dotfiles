@@ -14,11 +14,11 @@ require("load-plugins").setup()
 vim.lsp.enable({
   "ansible",
   "bash",
+  "copilot_ls",
   "css",
+  "eslint",
   "lua",
   "python",
   "ruby",
   "typescript",
-  "copilot_ls",
-  -- "sql"
 })
