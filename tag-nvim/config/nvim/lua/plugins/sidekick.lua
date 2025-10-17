@@ -2,17 +2,32 @@ local tmux = require("utils.sidekick.tmux")
 
 return {
   {
-    "nolantait/sidekick.nvim",
-    branch = "custom-nt",
+    "folke/sidekick.nvim",
+    branch = "main",
     config = function()
       local sidekick = require("sidekick")
-      local prompts = require("utils.sidekick.prompts")
+      local utils = require("sidekick.util")
+
+      local original_exec = utils.exec
+
+      -- Monkey patching to handle tmate
+      ---@param cmd string[]
+      ---@param opts? vim.SystemOpts|{notify?:boolean}
+      utils.exec = function(cmd, opts)
+        local isTmux = cmd[1] == "tmux"
+        local insideTmate = vim.env.TMATE_SESSION
+
+        if isTmux and insideTmate then
+          cmd[1] = "tmate"
+        end
+
+        return original_exec(cmd, opts)
+      end
 
       sidekick.setup({
         cli = {
-          prompts = prompts,
+          prompts = require("utils.sidekick.prompts"),
           mux = {
-            binary = vim.env.TMATE_SESSION and "tmate" or "tmux",
             backend = "tmux",
             enabled = true,
             create = "split",
