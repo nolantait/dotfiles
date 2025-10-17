@@ -3,21 +3,22 @@ local tmux = require("utils.sidekick.tmux")
 return {
   {
     "nolantait/sidekick.nvim",
-    branch = "tmux-binary-nt",
+    branch = "custom-nt",
     config = function()
       local sidekick = require("sidekick")
+      local prompts = require("utils.sidekick.prompts")
 
       sidekick.setup({
-        -- add any options here
         cli = {
+          prompts = prompts,
           mux = {
             binary = vim.env.TMATE_SESSION and "tmate" or "tmux",
             backend = "tmux",
             enabled = true,
             create = "split",
             split = {
-              size = 100
-            }
+              size = 100,
+            },
           },
         },
       })
