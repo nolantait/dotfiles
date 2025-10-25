@@ -13,6 +13,7 @@ DSLs
 Dockerfile
 Dokku
 ECS
+Erlang
 Ethereum
 Gamepads
 Gemfile
@@ -21,10 +22,12 @@ IDL
 Metalic
 NixOS
 OpenGL
+OpenXR
 Oxidising
 PBR
 PDA
 PDAs
+PID
 PNG
 Photoshop
 Postgresql
@@ -70,6 +73,8 @@ css
 customizable
 decrementing
 deployable
+dereference
+dereferencing
 deserialization
 deserialize
 deserialized
@@ -84,6 +89,7 @@ dotfiles
 dropdown
 dropdowns
 embeddings
+enqueued
 enqueuing
 entrypoint
 enum
@@ -93,6 +99,7 @@ filesystem
 frontend
 frontends
 frustrum
+gamepad
 getters
 getters
 globals
@@ -117,8 +124,10 @@ localhost
 maximalists
 metadata
 metadata
+metaprogramming
 minified
 minimap
+modularity
 monomorphization
 moodboard
 namespace
@@ -134,6 +143,7 @@ param
 params
 performant
 phlex
+pipelined
 preflight
 procedurally
 protos
@@ -149,7 +159,7 @@ repo
 resizable
 roadmap
 rubocop
-runtime
+runnable
 runtime
 scriptable
 shaders
@@ -174,6 +184,7 @@ tilemap
 tilemaps
 timestamp
 timestep
+unannotated
 unnormalized
 url
 validator
@@ -187,5 +198,3 @@ websocket
 wgpu
 wifi
 wireframe
-pipelined
-OpenXR
