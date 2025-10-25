@@ -1,0 +1,24 @@
+---
+syntax: markdown
+---
+
+```ruby
+require 'faraday_middleware'
+
+connection = Faraday.new('https://example.com') do |faraday|
+  faraday.request :json
+  faraday.response :json, :content_type => /\bjson$/
+
+  faraday.request :retry, {
+    max: 3,
+    interval: 1,
+    backoff_factor: 2,
+    retry_statuses: [429, 503]
+  }
+
+  faraday.use FaradayMiddleware::FollowRedirects
+  faraday.adapter Faraday.default_adapter
+end
+
+connection.get('/api/v1/whateva')
+```
