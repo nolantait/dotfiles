@@ -1,13 +1,3 @@
-# Load homebrew so brew is available
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
-# Have postgresql@17 first in our path
-path=(
-  "/opt/homebrew/opt/postgresql@17/bin"
-  "/opt/homebrew/opt/coreutils/libexec/gnubin"
-  $path
-)
-
 # Load mise if available
 if [ -x "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
