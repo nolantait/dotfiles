@@ -17,3 +17,8 @@ path=($HOME/.git/safe/../../bin $path)
 if [ -d "$HOME/.local/bin" ]; then
   path=($HOME/.local/bin $path)
 fi
+
+# Load mise if available
+if [ -x "$(command -v mise)" ]; then
+  eval "$(mise activate zsh)"
+fi
