@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Load mise if available
 if [ -x "$(command -v mise)" ]; then
   eval "$(mise activate zsh)"
