@@ -27,8 +27,8 @@ INPUT_FILE="$1"
 shift
 
 # Default parameters
-MAX_WIDTH=1920
-MAX_HEIGHT=1080
+MAX_WIDTH=""
+MAX_HEIGHT=""
 RETINA_SCALE=1
 QUALITY_RANGE="70-90"
 EXPORT_WEBP=false
@@ -36,18 +36,30 @@ EXPORT_WEBP=false
 # Parse arguments
 while [[ $# -gt 0 ]]; do
   case "$1" in
-    --max-width)
-      MAX_WIDTH="$2"; shift 2 ;;
-    --max-height)
-      MAX_HEIGHT="$2"; shift 2 ;;
-    --retina)
-      RETINA_SCALE="$2"; shift 2 ;;
-    --quality)
-      QUALITY_RANGE="$2"; shift 2 ;;
-    --webp)
-      EXPORT_WEBP=true; shift ;;
-    *)
-      echo "Unknown argument: $1"; exit 1 ;;
+  --max-width)
+    MAX_WIDTH="$2"
+    shift 2
+    ;;
+  --max-height)
+    MAX_HEIGHT="$2"
+    shift 2
+    ;;
+  --retina)
+    RETINA_SCALE="$2"
+    shift 2
+    ;;
+  --quality)
+    QUALITY_RANGE="$2"
+    shift 2
+    ;;
+  --webp)
+    EXPORT_WEBP=true
+    shift
+    ;;
+  *)
+    echo "Unknown argument: $1"
+    exit 1
+    ;;
   esac
 done
 
@@ -59,31 +71,59 @@ for cmd in mogrify pngquant; do
   fi
 done
 
+# Handle dimensions - if neither is specified, use large values to maintain original size
+# ImageMagick will maintain aspect ratio when only one dimension is specified
+if [[ -z "$MAX_WIDTH" && -z "$MAX_HEIGHT" ]]; then
+    # If neither is specified, we can set to very large values to effectively not resize
+    # But this may not be what the user wants, so let's use some sensible maximums
+    MAX_WIDTH=3840
+    MAX_HEIGHT=2160
+fi
+
 # Compute target dimensions considering retina scaling
-TARGET_WIDTH=$(awk "BEGIN {printf \"%d\", $MAX_WIDTH * $RETINA_SCALE}")
-TARGET_HEIGHT=$(awk "BEGIN {printf \"%d\", $MAX_HEIGHT * $RETINA_SCALE}")
+# Use very large values for unspecified dimensions to let ImageMagick maintain aspect ratio
+if [[ -n "$MAX_WIDTH" ]]; then
+    TARGET_WIDTH=$(awk "BEGIN {printf \"%d\", $MAX_WIDTH * $RETINA_SCALE}")
+else
+    TARGET_WIDTH=100000  # Very large number
+fi
+
+if [[ -n "$MAX_HEIGHT" ]]; then
+    TARGET_HEIGHT=$(awk "BEGIN {printf \"%d\", $MAX_HEIGHT * $RETINA_SCALE}")
+else
+    TARGET_HEIGHT=100000  # Very large number
+fi
+
+# Create output filename
+BASENAME=$(basename "$INPUT_FILE" .png)
+DIRNAME=$(dirname "$INPUT_FILE")
+OUTPUT_PNG="${DIRNAME}/${BASENAME}-processed.png"
+
+# Copy the original to the processed file first
+cp "$INPUT_FILE" "$OUTPUT_PNG"
 
 # Resize with Lanczos filter (sharp downscaling) + mild unsharp mask
 echo "🔧 Resizing to max ${TARGET_WIDTH}x${TARGET_HEIGHT} (retina ${RETINA_SCALE}x)..."
-mogrify -filter Lanczos -resize "${TARGET_WIDTH}x${TARGET_HEIGHT}>" -unsharp 0x0.75 "$INPUT_FILE"
+mogrify -filter Lanczos -resize "${TARGET_WIDTH}x${TARGET_HEIGHT}>" -unsharp 0x0.75 "$OUTPUT_PNG"
 
 # Quantize and compress PNG
 echo "🎨 Optimizing PNG colors and compression (quality=${QUALITY_RANGE})..."
-pngquant --force --ext .png --strip --quality="${QUALITY_RANGE}" "$INPUT_FILE"
+# Use a temporary file for pngquant output
+TEMP_FILE="${OUTPUT_PNG%.png}-temp.png"
+pngquant --force --strip --quality="${QUALITY_RANGE}" --output "$TEMP_FILE" "$OUTPUT_PNG" && mv "$TEMP_FILE" "$OUTPUT_PNG"
 
 # Optionally export to WebP (lossless)
 if [[ "$EXPORT_WEBP" == true ]]; then
-  WEBP_FILE="${INPUT_FILE%.png}.webp"
+  WEBP_FILE="${DIRNAME}/${BASENAME}-processed.webp"
   echo "🌐 Exporting to WebP: $WEBP_FILE"
-  magick "$INPUT_FILE" -quality 90 -define webp:lossless=true "$WEBP_FILE"
+  magick "$OUTPUT_PNG" -quality 90 -define webp:lossless=true "$WEBP_FILE"
 fi
 
 # Report final sizes
-FINAL_SIZE=$(du -h "$INPUT_FILE" | cut -f1)
-echo "✅ Optimized PNG: $INPUT_FILE (${FINAL_SIZE})"
+FINAL_SIZE=$(du -h "$OUTPUT_PNG" | cut -f1)
+echo "✅ Optimized PNG: $OUTPUT_PNG (${FINAL_SIZE})"
 
 if [[ "$EXPORT_WEBP" == true ]]; then
   WEBP_SIZE=$(du -h "$WEBP_FILE" | cut -f1)
   echo "✅ WebP version: $WEBP_FILE (${WEBP_SIZE})"
 fi
-
