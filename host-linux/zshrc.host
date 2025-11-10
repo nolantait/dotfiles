@@ -1,1 +1,6 @@
 # Any specific linux configs here
+
+# Load mise if available
+if [ -x "$(command -v mise)" ]; then
+  eval "$(mise activate zsh)"
+fi
