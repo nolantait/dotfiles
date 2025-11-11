@@ -24,9 +24,9 @@ editor-model: deepseek/deepseek-chat
 weak-model: deepseek/deepseek-chat
 cache-prompts: true
 cache-keepalive-pings: 12
-suggest-shell-commands: false
-# edit-format: whole
-# editor-edit-format: editor-whole
+suggest-shell-commands: true
+edit-format: diff
+editor-edit-format: editor-diff
 
 # Git settings
 gitignore: false
@@ -40,11 +40,11 @@ commit: false
 watch-files: true
 
 # Fixing and committing
-# lint: true
-# lint-cmd: "bin/rubocop -A"
-# test-cmd: "bin/rspec"
-# auto-lint: true
-# auto-test: true
+check-update: true
+lint-cmd: "bundle exec rubocop -A"
+test-cmd: "bundle exec rspec"
+auto-lint: true
+auto-test: true
 
 # Other
 disable-playwright: true
