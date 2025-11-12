@@ -116,23 +116,23 @@ local config = function()
     show_colors = true,
   }
 
-  local sidekick_status = {
-    function()
-      return "󰽒 "
-    end,
-    color = function()
-      local status = require("sidekick.status").get()
-      if status then
-        return status.kind == "Error" and "DiagnosticError"
-          or status.busy and "DiagnosticWarn"
-          or "DiagnosticOk"
-      end
-    end,
-    cond = function()
-      local status = require("sidekick.status")
-      return status.get() ~= nil
-    end,
-  }
+  -- local sidekick_status = {
+  --   function()
+  --     return "󰽒 "
+  --   end,
+  --   color = function()
+  --     local status = require("sidekick.status").get()
+  --     if status then
+  --       return status.kind == "Error" and "DiagnosticError"
+  --         or status.busy and "DiagnosticWarn"
+  --         or "DiagnosticOk"
+  --     end
+  --   end,
+  --   cond = function()
+  --     local status = require("sidekick.status")
+  --     return status.get() ~= nil
+  --   end,
+  -- }
 
   local file_location = {
     require("components.file_location"),
@@ -209,7 +209,7 @@ local config = function()
         fileformat,
         filetype,
         copilot_status,
-        sidekick_status,
+        -- sidekick_status,
         lsp_status,
         macro,
       },

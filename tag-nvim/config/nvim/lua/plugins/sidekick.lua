@@ -3,6 +3,7 @@ local tmux = require("utils.sidekick.tmux")
 return {
   {
     "folke/sidekick.nvim",
+    enabled = false,
     branch = "main",
     config = function()
       local sidekick = require("sidekick")
