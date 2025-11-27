@@ -41,8 +41,8 @@ watch-files: true
 
 # Fixing and committing
 check-update: true
-lint-cmd: "bundle exec rubocop -A"
-test-cmd: "bundle exec rspec"
+# lint-cmd: "bundle exec rubocop -A"
+# test-cmd: "bundle exec rspec"
 auto-lint: true
 auto-test: true
 

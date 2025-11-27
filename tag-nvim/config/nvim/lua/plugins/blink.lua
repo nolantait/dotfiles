@@ -41,12 +41,12 @@ return {
             end
           end,
           -- @see sidekick
-          function() -- sidekick next edit suggestion
-            local ok, sidekick = prequire("sidekick")
-            if ok and sidekick then
-              sidekick.nes_jump_or_apply()
-            end
-          end,
+          -- function() -- sidekick next edit suggestion
+          --   local ok, sidekick = prequire("sidekick")
+          --   if ok and sidekick then
+          --     sidekick.nes_jump_or_apply()
+          --   end
+          -- end,
           "fallback",
         },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
