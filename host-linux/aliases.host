@@ -9,19 +9,23 @@ alias paruclean="paru -Sccd"
 
 # Clean out old and unused caches and packages
 alias paclean="pacman -Scd"
-alias pacfind="pacman -Qi"
-alias pacsearch="pacman -Qs"
+# Clears out the entire package cache
 alias paccacheclear="sudo pacman -Scc"
+# Finds installed packages
+alias pacfind="pacman -Qi"
+# Searches for packages in the repositories
+alias pacsearch="pacman -Qs"
 # Kills orphaned packages
 alias pacorphans="pacman -Qtdq"
 # Shows which package owns a file
 alias pacown="pacman -Qo"
 # Shows packages installed by the user
 alias pacuser="pacman -Qe"
-
-alias journalctl-error='sudo journalctl -b --priority 0..3'
-
+# Refreshes the servers pacman connects to
 alias pacmirrors="sudo reflector --country Canada,US --latest 200 --protocol https --sort rate --save /etc/pacman.d/mirrorlist"
+
+# Shows system journal logs with priority levels 0 (emerg) to 3 (err)
+alias journalctl-error='sudo journalctl -b --priority 0..3'
 
 alias firefox="firefox-developer-edition"
 
@@ -29,5 +33,4 @@ alias services="systemctl list-units --type=service --all --no-legend | awk '{pr
 alias enabled_services="systemctl list-unit-files --type=service --state=enabled --no-legend | awk '{print $1}' | sed 's/\.service//' | more"
 alias disabled_services="systemctl list-unit-files --type=service --state=disabled --no-legend | awk '{print $1}' | sed 's/\.service//' | more"
 alias started_services="systemctl list-units --type=service --state=running --no-pager | head -n -6 | awk 'NR>1 {print $1}' | more"
-
 alias ports="sudo ss -tulpn"
