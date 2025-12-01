@@ -26,24 +26,12 @@ return {
     command = "ygv<Esc>",
     description = "Yank visual selection and keep cursor at the end",
   },
-  {
-    mode = "n",
-    key = "<C-c>",
-    command = "ciw",
-    description = "Remove word and go to insert mode",
-  },
-  {
-    mode = { "i", "x" },
-    key = "<C-s>",
-    command = "<Esc><cmd>silent! update | redraw<CR>",
-    description = "Save file and go to normal mode",
-  },
-  {
-    mode = "n",
-    key = "<C-s>",
-    command = "<cmd>silent! update | redraw<CR>",
-    description = "Save file",
-  },
+  -- {
+  --   mode = "n",
+  --   key = "<C-c>",
+  --   command = "ciw",
+  --   description = "Remove word and go to insert mode",
+  -- },
   {
     mode = "n",
     key = "<Leader><Leader>",
@@ -196,20 +184,8 @@ return {
   },
   {
     mode = "i",
-    key = ",",
-    command = ",<C-g>u",
-    desc = "Add undo break-point for ','",
-  },
-  {
-    mode = "i",
     key = ".",
     command = ".<C-g>u",
     desc = "Add undo break-point for '.'",
-  },
-  {
-    mode = "i",
-    key = ";",
-    command = ";<C-g>u",
-    desc = "Add undo break-point for ';'",
   },
 }
