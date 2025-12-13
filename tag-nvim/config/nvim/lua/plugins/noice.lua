@@ -23,6 +23,38 @@ return {
         enabled = true,
         format = {
           conceal = false,
+          cmdline = {
+            pattern = "^:",
+            lang = "vim",
+            icon = false,
+          },
+          search_down = {
+            kind = "search",
+            pattern = "^/",
+            lang = "regex",
+            icon = "", -- 
+          },
+          search_up = {
+            kind = "search",
+            pattern = "^%?",
+            lang = "regex",
+            icon = "", -- 
+          },
+          filter = {
+            pattern = "^:%s*!",
+            lang = "bash",
+            icon = false,
+          },
+          lua = {
+            pattern = { "^:%s*lua%s+", "^:%s*lua%s*=%s*", "^:%s*=%s*" },
+            lang = "lua",
+            icon = false,
+          },
+          help = {
+            pattern = "^:%s*he?l?p?%s+",
+            icon = false,
+          },
+          input = {}, -- Used by input(),
         },
       },
       routes = {
@@ -36,6 +68,9 @@ return {
           view = "split",
           filter = { event = "msg_show", min_height = 20 },
         },
+      },
+      messages = {
+        enabled = true,
       },
       message = {
         view = "snacks",
