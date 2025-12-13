@@ -74,7 +74,15 @@ local M = {
     conceallevel = 2, -- Hide * markup for bold and italic, but not markers with substitutions
     colorcolumn = "+1", -- Highlight the 80th column
     cursorline = true, -- Highlight the current line
-    diffopt = "filler,internal,closeoff,algorithm:histogram,context:5,linematch:60,algorithm:histogram", -- Diff options
+    diffopt = {
+      "internal",
+      "filler",
+      "closeoff",
+      "vertical",
+      "algorithm:histogram",
+      "indent-heuristic",
+      "linematch:60",
+    },
     expandtab = true, -- Convert tabs to spaces
     fileencoding = "utf-8", -- The encoding written to a file
     fileformats = "unix,dos,mac", -- Prefer UNIX over Windows
