@@ -7,7 +7,7 @@ local function setup_virtual_text_toggle()
   local lines_config = nil
 
   vim.api.nvim_create_autocmd({ "CursorMoved", "DiagnosticChanged" }, {
-    group = vim.api.nvim_create_augroup("tainted/virtlines", {}),
+    group = vim.api.nvim_create_augroup("tainted/virtlines", { clear = true }),
     callback = function()
       -- Cache the original virtual lines config if not already cached
       if lines_config == nil then

@@ -6,7 +6,7 @@ local M = {}
 
 -- This will prefix our autocommands to namespace them to run first
 local function augroup(name)
-  local augroup_name = "Tainted_" .. name
+  local augroup_name = "tainted/" .. name
   return vim.api.nvim_create_augroup(augroup_name, { clear = true })
 end
 
