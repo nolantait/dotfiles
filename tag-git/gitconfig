@@ -1,28 +1,29 @@
-[init]
-  defaultBranch = master
-  templatedir = ~/.git_template
-[push]
-  default = current
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  ui = auto
 [alias]
   l = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   aa = add --all
   ap = add --patch
+  b = branch -vv
+  d = diff
+  dst = diff --staged
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
   ci = commit -v
   co = checkout
   pf = push --force-with-lease
   st = status
+[branch]
+  sort = -committerdate
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+[commit]
+  template = ~/.gitmessage
+  verbose = true
 [core]
   pager = delta
   excludesfile = ~/.gitignore
   autocrlf = input
-[interactive]
-  diffFilter = delta --color-only
 [delta]
   navigate = true
   dark = true
@@ -30,18 +31,25 @@
   syntax-theme = base16
   line-numbers = true
   zero-style = dim syntax
-[merge]
-  conflictstyle = diff3
-  ff = only
-[commit]
-  template = ~/.gitmessage
-[fetch]
-  prune = true
-[rebase]
-  autosquash = true
-[include]
-  path = ~/.gitconfig.local
 [diff]
   colorMoved = default
 [diff "rspec"]
   xfuncname = "^[ \t]*((RSpec|describe|context|it|before|after|around|feature|scenario)[ \t].*)$"
+[fetch]
+  prune = true
+[include]
+  path = ~/.gitconfig.local
+[init]
+  defaultBranch = master
+  templatedir = ~/.git_template
+[interactive]
+  diffFilter = delta --color-only
+[log]
+  date = local
+[merge]
+  conflictstyle = diff3
+  ff = only
+[push]
+  default = current
+[rebase]
+  autosquash = true

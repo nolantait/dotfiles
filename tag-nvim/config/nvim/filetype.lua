@@ -30,6 +30,8 @@ vim.filetype.add({
     ["Brewfile"] = "ruby",
     [".env.*"] = "bash",
     ["%.env%.[%w_.-]+"] = "bash",
+    ["gitconfig"] = "gitconfig",
+    ["gitignore"] = "gitignore",
   },
   pattern = {
     -- Add new filetype for files matching a pattern
