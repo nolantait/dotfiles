@@ -6,6 +6,7 @@ return {
   {
     -- Better UI elements for neovim
     "stevearc/dressing.nvim",
+    enabled = false,
     event = "VeryLazy",
     init = function()
       -- Init functions are always executed during startup.

@@ -188,7 +188,6 @@ return {
     },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
       "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
