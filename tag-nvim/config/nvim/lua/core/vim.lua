@@ -104,6 +104,7 @@ local M = {
     incsearch = true, -- Show search matches as you type
     inccommand = "nosplit", -- Preview incremental substitute
     infercase = true, -- Infer cases in keyword completion
+    iskeyword = "@,48-57,_,192-255,-", -- Treat dash separated words as a word text object
     joinspaces = false, -- One space after punctuation
     jumpoptions = "view", -- Jump to the last known position when opening a file
     laststatus = 0, -- Global status
