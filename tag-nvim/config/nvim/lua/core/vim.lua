@@ -1,4 +1,4 @@
-local utils = require("core.utils")
+local opt = vim.opt
 
 local M = {
   globals = {
@@ -95,7 +95,16 @@ local M = {
       eob = " ",
       msgsep = "─",
     },
-    formatoptions = "jcroqlnt", -- tcqj
+    formatoptions = opt.formatoptions
+      - "a" -- disable automatic formatting of entire paragraphs insert-mode
+      - "t" -- dont autowrap text...
+      + "c" -- ...but do autowrap comments
+      - "o" -- don't insert comment after o/O commands (also set in autocommands.lua)
+      + "r" -- do insert comment after enter in insert mode
+      - "q" -- allow formatting comments with gq
+      + "n" -- recognize numbered lists
+      - "2" -- don't use second line's indent level for formatting rest of paragraph
+      + "j", -- remove comment leader when joining comments
     grepprg = "rg --vimgrep", -- Use ripgrep for grepping
     grepformat = "%f:%l:%c:%m", -- Ripgrep format
     history = 100, -- Number of commands to remember in a history table
