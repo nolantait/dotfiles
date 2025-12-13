@@ -56,16 +56,17 @@ local config = function()
       mappings = {
         i = {
           ["<C-t"] = trouble.open,
-          ["<C-f>"] = actions.cycle_history_next,
-          ["<C-b>"] = actions.cycle_history_prev,
+          ["<C-f>"] = actions.to_fuzzy_refine,
 
           ["<C-j>"] = actions.move_selection_next,
           ["<C-k>"] = actions.move_selection_previous,
-
-          ["<C-c>"] = actions.close,
-
           ["<Down>"] = actions.move_selection_next,
           ["<Up>"] = actions.move_selection_previous,
+          ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
+          ["<S-Tab>"] = actions.toggle_selection
+            + actions.move_selection_better,
+
+          ["<C-c>"] = actions.close,
 
           ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
@@ -74,13 +75,9 @@ local config = function()
 
           ["<C-u>"] = actions.preview_scrolling_up,
           ["<C-d>"] = actions.preview_scrolling_down,
-
           ["<PageUp>"] = actions.results_scrolling_up,
           ["<PageDown>"] = actions.results_scrolling_down,
 
-          ["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
-          ["<S-Tab>"] = actions.toggle_selection
-            + actions.move_selection_better,
           ["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
           ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
           ["<C-Tab>"] = actions.complete_tag,
@@ -88,8 +85,11 @@ local config = function()
         },
         n = {
           ["<C-t"] = trouble.open,
-          ["<esc>"] = actions.close,
+          ["<Esc>"] = actions.close,
           ["q"] = actions.close,
+
+          ["<C-f>"] = actions.to_fuzzy_refine,
+
           ["<CR>"] = actions.select_default,
           ["<C-x>"] = actions.select_horizontal,
           ["<C-v>"] = actions.select_vertical,
