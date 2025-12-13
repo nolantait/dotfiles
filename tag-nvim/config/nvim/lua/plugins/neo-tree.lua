@@ -154,8 +154,7 @@ local config = function()
       highlight_separator = "NeoTreeSeparator",
       highlight_separator_active = "NeoTreeSeparatorActive",
       show_separator_on_edge = false,
-      separator_active = false,
-      tabs_layout = "focus",
+      tabs_layout = "active",
     },
     update_in_insert = false,
     window = {
