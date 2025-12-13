@@ -105,6 +105,7 @@ local M = {
       + "n" -- recognize numbered lists
       - "2" -- don't use second line's indent level for formatting rest of paragraph
       + "j", -- remove comment leader when joining comments
+    formatlistpat = [[^\s*\(\d\+[\]:.)}\t ]\|[*-][\t ]\)\s*]], -- https://superuser.com/questions/99138/bulleted-lists-for-plain-text-documents-in-vim
     grepprg = "rg --vimgrep", -- Use ripgrep for grepping
     grepformat = "%f:%l:%c:%m", -- Ripgrep format
     history = 100, -- Number of commands to remember in a history table
