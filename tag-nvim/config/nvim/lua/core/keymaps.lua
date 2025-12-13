@@ -39,6 +39,10 @@ function M.setup()
   -- Unbind
   keymap("", "?", "<Nop>", M.options)
   keymap("", "<Leader>q", "<Nop>", M.options)
+  -- Remove default cmdwin mappings to prevent conflicts
+  keymap("n", "q:", "<Nop>", M.options)
+  keymap("n", "q/", "<Nop>", M.options)
+  keymap("n", "q?", "<Nop>", M.options)
 
   -- Rebind W to w for fat finger saves
   vim.api.nvim_create_user_command("W", "w", { nargs = 0 })
