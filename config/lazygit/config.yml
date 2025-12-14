@@ -1,3 +1,10 @@
+notARepository: 'quit'
+git:
+  pagers:
+    - colorArg: always
+      pager: delta
+os:
+  editPreset: nvim
 gui:
   nerdFontsVersion: "3"
   theme:
