@@ -16,6 +16,7 @@ vim.lsp.enable({
   "bash",
   "copilot_ls",
   "css",
+  "docker",
   "eslint",
   "lua",
   "python",
