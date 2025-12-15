@@ -26,12 +26,12 @@ return {
     command = "ygv<Esc>",
     description = "Yank visual selection and keep cursor at the end",
   },
-  {
-    mode = "v",
-    key = "p",
-    command = "_dP",
-    description = "Maintain register contents after paste",
-  },
+  -- {
+  --   mode = "v",
+  --   key = "p",
+  --   command = "_dP",
+  --   description = "Maintain register contents after paste",
+  -- },
   -- {
   --   mode = "n",
   --   key = "<C-c>",
