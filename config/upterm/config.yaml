@@ -1,0 +1,44 @@
+# Config file does not exist. Example config:
+
+# Upterm Configuration File
+#
+# This file follows the XDG Base Directory Specification.
+# Settings here are overridden by environment variables (UPTERM_*) and command-line flags.
+#
+# Configuration priority (highest to lowest):
+#   1. Command-line flags
+#   2. Environment variables (UPTERM_* prefix)
+#   3. This config file
+#   4. Default values
+
+# Debug logging (default: false)
+# When enabled, writes debug-level logs to the log file.
+# debug: true
+
+# Default server address for hosting sessions (default: ssh://uptermd.upterm.dev:22)
+# Supported protocols: ssh, ws, wss
+# server: ssh://uptermd.upterm.dev:22
+
+# Force a specific command for clients (default: none)
+# When set, clients cannot run arbitrary commands.
+# Use YAML array syntax: ["command", "arg1", "arg2"]
+# force-command: ["/bin/bash", "-l"]
+
+# Path to authorized_keys file for client authentication (default: none)
+authorized-keys: ~/.ssh/authorized_keys
+
+# Paths to private key files (default: generates ephemeral key)
+# private-key:
+#   - /path/to/private/key1
+#   - /path/to/private/key2
+
+# Read-only mode (default: false)
+# When enabled, clients can view but not interact with the session.
+# read-only: false
+
+# Auto-accept clients without confirmation (default: false)
+# WARNING: Only use this in trusted environments.
+# accept: false
+
+# Hide client IP addresses from logs and display (default: false)
+# hide-client-ip: false
