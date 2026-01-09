@@ -21,5 +21,4 @@ vim.lsp.enable({
   "lua",
   "python",
   "ruby",
-  "typescript",
 })

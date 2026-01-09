@@ -1,7 +1,7 @@
 [tools]
-ruby = "3.4"
+ruby = "latest"
 lua = "5.1"
-node = "24.9"
+node = "latest"
 python = "3.13"
 uv = "latest"
 
