@@ -80,14 +80,6 @@ return {
     end,
     keys = {
       {
-        "gD",
-        mode = "n",
-        desc = "Go to definition",
-        function()
-          vim.lsp.buf.definition()
-        end,
-      },
-      {
         "gT",
         mode = "n",
         desc = "Go to type definition",
