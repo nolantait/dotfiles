@@ -12,8 +12,8 @@ fi;
 # --- Global completion behavior ---
 # Enable completions
 zstyle ':completion:*' menu select=2
-# Match case-insensitively, also match partial words
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# Match case-insensitively
+zstyle ':completion:*' matcher-list 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' group-name ''
 # Automatically find new executables in path
 zstyle ':completion:*' rehash true
@@ -95,6 +95,15 @@ zstyle ':completion:*:sudo:*' command-path /usr/local/sbin \
                                            /usr/bin        \
                                            /sbin           \
                                            /bin
+# Don't complete uninteresting users
+zstyle ':completion:*:*:*:users' ignored-patterns \
+        adm amanda apache avahi beaglidx bin cacti canna clamav daemon \
+        dbus distcache dovecot fax ftp games gdm gkrellmd gopher \
+        hacluster haldaemon halt hsqldb ident junkbust ldap lp mail \
+        mailman mailnull mldonkey mysql nagios \
+        named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+        operator pcap postfix postgres privoxy pulse pvm quagga radvd \
+        rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 
 # Support for hosts completion
 _etc_hosts=()
