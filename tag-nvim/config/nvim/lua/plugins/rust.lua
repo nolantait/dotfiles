@@ -4,12 +4,36 @@ return {
   {
     "saecki/crates.nvim",
     event = { "BufRead Cargo.toml" },
-    config = true
+    config = true,
   },
   {
     "mrcjkb/rustaceanvim",
     version = "^6",
     lazy = false,
+    ft = { "rust", "rs" },
+    keys = {
+      {
+        "<Leader>od",
+        desc = "Open Rust docs for item under cursor",
+        function()
+          vim.cmd.RustLsp("openDocs")
+        end,
+      },
+      {
+        "<Leader>or",
+        desc = "Open related diagnostics",
+        function()
+          vim.cmd.RustLsp("relatedDiagnostics")
+        end,
+      },
+      {
+        "<Leader>oe",
+        desc = "Explain rust error",
+        function()
+          vim.cmd.RustLsp("explainError")
+        end,
+      },
+    },
     config = function()
       vim.g.rustaceanvim = {
         tools = {
