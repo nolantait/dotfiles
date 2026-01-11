@@ -14,6 +14,34 @@ return {
           vim.cmd("TSToolsGoToSourceDefinition")
         end,
       },
+      {
+        "<Leader>F",
+        desc = "Add missing imports",
+        function()
+          vim.cmd("TSToolsAddMissingImports")
+        end,
+      },
+      {
+        "<Leader>di",
+        desc = "Remove unused imports",
+        function()
+          vim.cmd("TSToolsRemoveUnusedImports")
+        end,
+      },
+      {
+        "<Leader>rt",
+        desc = "Rename current file",
+        function()
+          vim.cmd("TSToolsRenameFile")
+        end,
+      },
+      {
+        "gR",
+        desc = "Find references to the current file",
+        function()
+          vim.cmd("TSToolsFileReferences")
+        end,
+      },
     },
   },
 }
