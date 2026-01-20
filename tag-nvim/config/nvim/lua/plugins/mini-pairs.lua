@@ -91,6 +91,7 @@ end
 return {
   {
     "nvim-mini/mini.pairs",
+    enabled = false,
     config = config,
     lazy = false,
   },
