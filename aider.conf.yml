@@ -4,6 +4,7 @@ llm-history-file: .llm.history
 input-history-file: .llm.input_history
 chat-history-file: .llm.chat_history
 max-chat-history-tokens: 2500
+map-tokens: 0
 
 # Theme
 user-input-color: "#98c379"
@@ -43,8 +44,8 @@ watch-files: true
 check-update: true
 # lint-cmd: "bundle exec rubocop -A"
 # test-cmd: "bundle exec rspec"
-auto-lint: true
-auto-test: true
+# auto-lint: true
+# auto-test: true
 
 # Other
 disable-playwright: true
