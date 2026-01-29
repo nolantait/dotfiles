@@ -160,7 +160,12 @@ local config = function()
     window = {
       width = 30,
       mappings = {
-        ["oa"] = "avante_add_files",
+        ["+"] = { "nvim_aider_add", desc = "add to aider" },
+        ["-"] = { "nvim_aider_drop", desc = "drop from aider" },
+        ["="] = {
+          "nvim_aider_add_read_only",
+          desc = "add read-only to aider",
+        },
         H = "prev_source",
         L = "next_source",
         l = "child_or_open",
