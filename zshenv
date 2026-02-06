@@ -10,7 +10,6 @@
 
 export CLIPPY_CONF_DIR=$HOME/.config/clippy
 export DOCKER_BUILDKIT=1
-export GOROOT=$HOME/.go
 export RUBYOPT="-W:deprecated -W:performance --yjit --enable-frozen-string-literal --debug-frozen-string-literal"
 export TIMEFMT="%U user %S system %P cpu %*E total, running %J"
 

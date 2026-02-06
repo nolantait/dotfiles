@@ -44,6 +44,17 @@ return {
         default_settings = {
           -- rust-analyzer language server configuration
           ["rust-analyzer"] = {
+            check = {
+              command = "clippy",
+              extraArgs = {
+                "--",
+                "-D",
+                "clippy::pedantic",
+                "-D",
+                "clippy::nursery",
+                "--no-deps",
+              },
+            },
             cargo = {
               allFeatures = true,
               loadOutDirsFromCheck = true,
