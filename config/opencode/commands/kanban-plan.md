@@ -223,7 +223,7 @@ After structure approval:
 
 ## References
 
-- Other tickets: `kanban/todo/eng_XXXX.md`
+- Other relevant tickets: `kanban/done/eng_XXXX.md`
 - Similar implementation: `[file:line]`
 
 ### Step 5: Review
@@ -231,7 +231,7 @@ After structure approval:
 2. **Present the draft plan location**:
     ```
     I've created the initial implementation plan at:
-    `thoughts/plans/[filename].md`
+    `kanban/todo/[filename].md`
 
     Please review it and let me know:
     - Are the phases properly scoped?
