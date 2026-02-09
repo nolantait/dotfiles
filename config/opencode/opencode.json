@@ -3,12 +3,6 @@
   "theme": "one-dark",
   "plugin": ["@tarquinen/opencode-dcp@v2.0.2"],
   "agent": {
-    "kanban-plan": {
-      "description": "Plan the implementation of a feature or task and break it down into smaller tasks to be added to the kanban board"
-    },
-    "kanban-ticket": {
-      "description": "Add a new ticket to the kanban board"
-    },
     "plan": {
       "permission": {
         "bash": {
