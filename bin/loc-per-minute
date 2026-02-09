@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [ $# -ne 1 ]; then
+  echo "Usage: $0 <N>"
+  exit 1
+fi
+
+N="$1"
+
+# Get commit SHAs (oldest → newest)
+commits=$(git rev-list --reverse -n "$N" HEAD)
+
+if [ -z "$commits" ]; then
+  echo "No commits found."
+  exit 1
+fi
+
+# Get timestamps
+first_commit=$(echo "$commits" | head -n 1)
+last_commit=$(echo "$commits" | tail -n 1)
+
+start_ts=$(git show -s --format=%ct "$first_commit")
+end_ts=$(git show -s --format=%ct "$last_commit")
+
+elapsed_seconds=$((end_ts - start_ts))
+
+if [ "$elapsed_seconds" -le 0 ]; then
+  echo "Elapsed time is zero or negative; cannot compute rate."
+  exit 1
+fi
+
+elapsed_minutes=$(awk "BEGIN { print $elapsed_seconds / 60.0 }")
+
+# Sum insertions + deletions
+read insertions deletions <<<"$(
+  git show --numstat --format="" $commits \
+  | awk '{ins+=$1; del+=$2} END {print ins, del}'
+)"
+
+total_lines=$((insertions + deletions))
+
+lines_per_minute=$(awk "BEGIN { print $total_lines / $elapsed_minutes }")
+
+cat <<EOF
+Commits analyzed: $N
+Time window: $elapsed_minutes minutes
+Insertions: $insertions
+Deletions: $deletions
+Total lines changed: $total_lines
+Lines changed per minute: $lines_per_minute
+EOF

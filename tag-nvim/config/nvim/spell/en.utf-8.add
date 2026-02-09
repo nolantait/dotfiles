@@ -208,3 +208,5 @@ CAS
 INCI
 overridable
 serializable
+failable
+dereferenced
