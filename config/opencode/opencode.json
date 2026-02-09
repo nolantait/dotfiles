@@ -21,7 +21,11 @@
       "grep *": "allow",
       "find *": "allow",
       "mkdir *": "allow",
-      "which *": "allow"
+      "which *": "allow",
+      "bundle *": "allow",
+      "bin/rspec *": "allow",
+      "bin/rails *": "allow",
+      "bin/rubocop *": "allow"
     },
 
     "read": {
