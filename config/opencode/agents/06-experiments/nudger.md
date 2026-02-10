@@ -1,6 +1,7 @@
 ---
 name: nudger
 mode: primary
+model: "deepseek/deepseek-reasoner"
 description: An orchestrator that coordinates between tester and implementor agents in a TDD workflow. Manages turns, ensures each subagent stays focused, and cuts short their turns if they take too long. Masters workflow coordination, time management, and maintaining incremental progress.
 task:
   "*": "deny"
