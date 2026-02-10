@@ -1,7 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "one-dark",
-  "plugin": ["@tarquinen/opencode-dcp@v2.0.2"],
   "agent": {
     "plan": {
       "permission": {
