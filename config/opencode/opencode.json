@@ -1,48 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "theme": "one-dark",
-  "agent": {
-    "plan": {
-      "permission": {
-        "bash": {
-          "*": "ask",
-          "ls *": "allow",
-          "grep *": "allow",
-          "find *": "allow",
-          "mkdir *": "allow",
-          "head *": "allow",
-          "which *": "allow",
-          "bundle *": "allow",
-          "bin/rspec *": "allow",
-          "bin/rails *": "allow",
-          "bin/rubocop *": "allow"
-        },
-      }
-    },
-    "build": {
-      "permission": {
-        "bash": {
-          "*": "ask",
-          "ls *": "allow",
-          "grep *": "allow",
-          "find *": "allow",
-          "mkdir *": "allow",
-          "head *": "allow",
-          "which *": "allow",
-          "bundle *": "allow",
-          "bin/rspec *": "allow",
-          "bin/rails *": "allow",
-          "bin/rubocop *": "allow"
-        },
-      }
-    }
-  },
   "permission": {
-    "edit": "ask",
     "webfetch": "ask",
-    "write": "ask",
-    "patch": "ask",
 
+    "edit": "allow",
     "question": "allow",
     "todowrite": "allow",
     "todoread": "allow",
@@ -60,7 +22,9 @@
       "which *": "allow",
       "bundle *": "allow",
       "bin/rspec *": "allow",
+      "rspec *": "allow",
       "bin/rails *": "allow",
+      "rails *": "allow",
       "bin/rubocop *": "allow"
     },
 

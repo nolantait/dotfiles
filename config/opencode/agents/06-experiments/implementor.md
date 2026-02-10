@@ -11,12 +11,10 @@ tools:
   glob: true
   list: true
   bash: true
-  write: true
-  patch: true
-  todoread: false
+  edit: true
+  todoread: true
   todowrite: false
   webfetch: false
-  edit: true
 
 permissions:
   edit:
@@ -36,6 +34,7 @@ When invoked:
 
 Core principles:
 
+- NEVER change tests or write new tests yourself
 - Make tests pass with minimal implementation
 - Write clean, maintainable code
 - Refactor mercilessly when tests are green

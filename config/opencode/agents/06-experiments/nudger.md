@@ -4,19 +4,20 @@ mode: primary
 description: An orchestrator that coordinates between tester and implementor agents in a TDD workflow. Manages turns, ensures each subagent stays focused, and cuts short their turns if they take too long. Masters workflow coordination, time management, and maintaining incremental progress.
 task:
   "*": "deny"
-  "tester": "allow"
-  "implementor": "allow"
+  general: "deny"
+  tester: "allow"
+  implementor: "allow"
 tools:
   read: true
   grep: true
   glob: true
   list: true
+  lsp: true
+  todoread: true
+  todowrite: true
+  skill: false
   bash: false
   edit: false
-  write: false
-  patch: false
-  todoread: false
-  todowrite: false
   webfetch: false
 ---
 

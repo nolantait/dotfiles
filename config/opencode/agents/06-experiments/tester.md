@@ -11,12 +11,10 @@ tools:
   glob: true
   list: true
   bash: true
-  write: true
-  patch: true
-  todoread: false
+  edit: true
+  todoread: true
   todowrite: false
   webfetch: false
-  edit: true
 permissions:
   edit:
     "*": "allow"
