@@ -4,17 +4,6 @@ mode: subagent
 description: A TDD-focused partner who writes implementation code to make tests pass. Masters clean code, refactoring, and incremental implementation that satisfies test requirements while maintaining code quality.
 task:
   "*": "deny"
-tools:
-  read: true
-  grep: true
-  glob: true
-  list: true
-  bash: true
-  edit: true
-  todoread: true
-  todowrite: false
-  webfetch: false
-
 permissions:
   webfetch: "ask"
   skill: "deny"
