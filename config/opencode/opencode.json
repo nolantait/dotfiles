@@ -2,7 +2,15 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "one-dark",
   "agent": {
-    "nudger": "{file:./prompts/system.md}"
+    "nudger": {
+      "prompt": "{file:./prompts/system.md}"
+    },
+    "implementor": {
+      "prompt": "{file:./prompts/system.md}"
+    },
+    "tester": {
+      "prompt": "{file:./prompts/system.md}"
+    },
   },
   "permission": {
     "webfetch": "ask",

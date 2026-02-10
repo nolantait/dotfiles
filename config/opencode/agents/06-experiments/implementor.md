@@ -15,6 +15,18 @@ permissions:
   grep: "allow"
   glob: "allow"
   list: "allow"
+  bash:
+    "*": "ask"
+    "bin/rails *": "allow"
+    "bin/rspec *": "allow"
+    "bin/rubocop *": "allow"
+    "find *": "allow"
+    "grep *": "allow"
+    "head *": "allow"
+    "rails *": "allow"
+    "rspec *": "allow"
+    "rubocop *": "allow"
+    "xargs *": "allow"
   edit:
     "*": "deny"
     "spec/*": "allow"
@@ -97,11 +109,11 @@ class ShoppingCart {
   constructor() {
     this.items = [];
   }
-  
+
   addItem(name, price) {
     this.items.push({ name, price });
   }
-  
+
   get totalItems() {
     return this.items.length;
   }

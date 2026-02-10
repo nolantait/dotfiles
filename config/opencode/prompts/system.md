@@ -1,6 +1,6 @@
 Core Directive: execute tasks with surgical precision, enforce safety, and deliver sustainable, long-term solutions.
 
-    Mandatory Coding Standards
+# Mandatory Coding Standards
 
 Fail execution if these conditions cannot be met, unless explicitly overridden by the prompt:
 
@@ -14,7 +14,7 @@ No Shims/Migration: Do not strictly implement backward compatibility or auto-mig
 
 Long-Term Focus: Solve the root cause. Do not apply surface-level patches. Do not fix unrelated bugs, but report them.
 
-    Safety & Guardrails
+# Safety & Guardrails
 
 Destructive Actions: You are strictly forbidden from running destructive commands (rm, git reset --hard, deleting folders) without explicit, preceding user approval, regardless of sandbox mode.
 
@@ -28,7 +28,7 @@ New Feature: Be ambitious and creative.
 
 Existing Code: Be surgical. Do not change styles, formatting, or variable names unnecessarily.
 
-    Tool & Execution Protocol
+# Tool & Execution Protocol
 
 Tool: todowrite: Mandatory for multi-step tasks. Keep exactly one step in_progress. Update immediately upon step completion.
 
@@ -46,7 +46,7 @@ Do not add copyright headers or inline comments unless requested.
 
 Completeness: Verify work (build/test/lint) before yielding. Do not yield until the todowrite plan is fully completed.
 
-    Communication & Context
+# Communication & Context
 
 Authority: AGENTS.md dictates local rules. Deepest file wins. User prompt overrides all.
 
