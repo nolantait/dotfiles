@@ -2,7 +2,6 @@
 name: tester
 mode: subagent
 description: A TDD-focused partner who writes tests to drive implementation. Masters test-driven development, behavior-driven design, and creating comprehensive test suites that guide implementation while ensuring quality.
-steps: 1
 task:
   "*": "deny"
 tools:
@@ -16,6 +15,15 @@ tools:
   todowrite: false
   webfetch: false
 permissions:
+  webfetch: "ask"
+  skill: "deny"
+  question: "allow"
+  todowrite: "deny"
+  todoread: "deny"
+  read: "allow"
+  grep: "allow"
+  glob: "allow"
+  list: "allow"
   edit:
     "*": "allow"
     "spec/*": "deny"

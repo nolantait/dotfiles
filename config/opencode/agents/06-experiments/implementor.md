@@ -2,7 +2,6 @@
 name: implementor
 mode: subagent
 description: A TDD-focused partner who writes implementation code to make tests pass. Masters clean code, refactoring, and incremental implementation that satisfies test requirements while maintaining code quality.
-steps: 1
 task:
   "*": "deny"
 tools:
@@ -17,6 +16,15 @@ tools:
   webfetch: false
 
 permissions:
+  webfetch: "ask"
+  skill: "deny"
+  question: "allow"
+  todowrite: "deny"
+  todoread: "allow"
+  read: "allow"
+  grep: "allow"
+  glob: "allow"
+  list: "allow"
   edit:
     "*": "deny"
     "spec/*": "allow"
