@@ -7,7 +7,7 @@ task:
   "*": "deny"
 permissions:
   webfetch: "ask"
-  skill: "deny"
+  skill: "allow"
   question: "allow"
   todowrite: "deny"
   todoread: "allow"
