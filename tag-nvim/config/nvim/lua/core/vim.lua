@@ -63,9 +63,20 @@ local M = {
     have_nerd_font = 1,
   },
   options = {
+    ambiwidth = "single", -- Treat ambiguous characters as single width
+    autoread = true, -- Automatically read file changes from disk
+    arabic = false, -- Don't use Arabic-indic digits
+    arabicshape = false, -- Don't use Arabic letter shaping
+    autowrite = false, -- Don't automatically save before commands like :next and :make
+    autowriteall = false, -- Don't automatically save before commands like :next and :make
     backup = false, -- Prevents creating a backup file
     backspace = "2", -- Backspace deletes like most programs in insert mode
     breakindent = true, -- Wrap indent to match line start
+    breakindentopt = "shift:0,min:40,sbr,list:-1", -- Set breakindent options
+    breakat = [[\ ^I!@*_-+;:,./?]], -- Line break characters
+    casemap = "internal,keepascii", -- Don't ignore case with accented characters
+    cedit = "<C-F>", -- In command mode open the command line window with this
+    cindent = false, -- Don't use C-style indentation
     clipboard = vim.env.SSH_TTY and "" or "unnamedplus", -- Allows neovim to access the system clipboard
     cmdheight = 0, -- More space in the neovim command line for displaying messages
     confirm = true, -- Confirm to save changes before exiting modified buffer
@@ -74,6 +85,7 @@ local M = {
     conceallevel = 2, -- Hide * markup for bold and italic, but not markers with substitutions
     colorcolumn = "+1", -- Highlight the 80th column
     cursorline = true, -- Highlight the current line
+    digraph = false, -- Don't use digraphs
     diffopt = {
       "internal",
       "filler",
@@ -84,6 +96,7 @@ local M = {
       "linematch:60",
     },
     expandtab = true, -- Convert tabs to spaces
+    fileignorecase = true, -- Ignore case when completing file names and directories
     fileencoding = "utf-8", -- The encoding written to a file
     fileformats = "unix,dos,mac", -- Prefer UNIX over Windows
     fillchars = { -- Set fillchars
@@ -121,36 +134,48 @@ local M = {
     linebreak = true, -- Wrap lines at 'breakat'
     list = true, -- Show some invisible characters
     listchars = { tab = "»·", trail = "·", nbsp = "·" }, -- Set listchars
+    maxmapdepth = 10, -- Maximum keymap depth
+    maxmempattern = 1000, -- Maximum memory used for pattern matching
     mouse = "a", -- Allow the mouse to be used in neovim
     mousemoveevent = true, -- Enable mouse events for bufferline reveal
     mousescroll = "ver:1,hor:0", -- Enable mouse scrolling
     modeline = false, -- Disable modelines as security precaution
+    modelineexpr = false,
+    modelines = 0,
     nrformats = "bin,hex,blank",
     number = true, -- Set numbered lines
     numberwidth = 2, -- Set number column width to 2 {default 4}
+    path = "**16", -- Set path to current directory and all subdirectories for gf command up to 16 subdirs
     pumblend = 0, -- Make popup windows blend
     pumheight = 10, -- Pop up menu height
     preserveindent = true, -- Preserve indent structure as much as possible
+    remap = true, -- Allow mappings to be recursive
     relativenumber = false, -- Set relative numbered lines
     ruler = false, -- Show position
     scrolloff = 8, -- Set offset to start scrolling vertically
-    sidescrolloff = 8, -- Set offset to scroll sideways
-    signcolumn = "yes", -- Always show the sign column, otherwise it would shift the text each time
-    spelllang = { "en_us" }, -- Set spellcheck language
+    scrolljump = 1, -- Minimal number of screen lines to keep when scrolling
+    scrollopt = "ver", -- Enable vertical scrolling only
     shiftwidth = 2, -- The number of spaces inserted for each indentation
     showmode = false, -- We don't need to see things like -- INSERT -- anymore
+    showmatch = false, -- Don't briefly jump to matching bracket
     showtabline = 2, -- Always show tabs
+    sidescrolloff = 8, -- Set offset to scroll sideways
+    signcolumn = "yes", -- Always show the sign column, otherwise it would shift the text each time
     smartcase = true, -- Smart case
     smartindent = true, -- Make indenting smarter again
     softtabstop = 2, -- Insert 2 spaces for a tab
-    splitkeep = "screen", -- Reduce scroll during window split
+    spelllang = { "en_us" }, -- Set spellcheck language
+    spellsuggest = "best,7,timeout:3000", -- Set spellcheck suggestions
+    spelloptions = "camel", -- Don't spellcheck camelCase words
     splitbelow = true, -- Force all horizontal splits to go below current window
+    splitkeep = "screen", -- Reduce scroll during window split
     splitright = true, -- Force all vertical splits to go to the right of current window
     smoothscroll = true, -- Smooth scrolling
     swapfile = false, -- Don't use swapfiles
     tabstop = 2, -- Insert 2 spaces for a tab
     textwidth = 80, -- Set max width to 80 characters
     termguicolors = true, -- Set term gui colors (most terminals support this)
+    timeout = true, -- Enable timeout for mapped sequences
     timeoutlen = 500, -- Time to wait for a mapped sequence to complete (in milliseconds)
     ttyfast = true, -- Assume fast terminal connection
     undofile = true, -- Enable persistent undo
@@ -161,6 +186,7 @@ local M = {
     wildignorecase = true, -- Ignore case when completing file names
     wildignore = {
       "#*#",
+      "*.7z",
       "*.bmp",
       "*.dll",
       "*.exe",
@@ -173,12 +199,18 @@ local M = {
       "*.obj",
       "*.pdf",
       "*.png",
+      "*.png",
+      "*.pyc",
+      "*.pyo",
+      "*.rar",
       "*.so",
       "*.svg",
       "*.swp",
       "*.tar.bz2",
       "*.tar.gz",
       "*.tar.xz",
+      "*.tgz",
+      "*.tiff",
       "*.zip",
       "*/.git/*",
       "*~",
@@ -193,6 +225,8 @@ local M = {
     writebackup = false, -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
     winblend = 0, -- Make floating windows blend
     winborder = "rounded", -- Set default window border style
+    wrapmargin = 0, -- Set the minimal number of screen columns to keep when wrapping text
+    wrapscan = false, -- Don't wrap searches
   },
 }
 
@@ -239,7 +273,15 @@ function M.setup_options()
   -- F: don't give the file info when editing a file, like :silent was used
   -- c: don't give ins-completion-menu messages
   -- W: don't give "written" or "[w]" when writing a file
-  vim.opt.shortmess:append({ W = true, I = true, c = true, C = true })
+  vim.opt.shortmess:append({
+    C = true,
+    F = true,
+    I = true,
+    O = true,
+    W = true,
+    c = true,
+    o = true,
+  })
   vim.opt.whichwrap:append("<>[]hl")
   vim.opt.fillchars:append(border_fillchars.bold)
   vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
