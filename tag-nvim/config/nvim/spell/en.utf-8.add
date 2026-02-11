@@ -210,3 +210,4 @@ overridable
 serializable
 failable
 dereferenced
+idempotency
