@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+# Originally from: https://codeberg.org/EvanHahn/dotfiles/src/commit/f7a9d94ae2254cb7e5f67e6e5bdb74b6467f6dec/home/bin/bin/treefind
+
+set -e
+set -u
+set -o pipefail
+
+if [[ $# == 0 ]]; then
+  tree .
+  exit 0
+elif [[ $# == 1 ]]; then
+  what="$1"
+  where="$(pwd)"
+elif [[ $# == 2 ]]; then
+  what="$1"
+  where="$2"
+else
+  echo 'too many arguments' 1>&2
+  exit 1
+fi
+
+if [[ "$what" == *[[:upper:]]* ]]; then
+  ignore_case_arg=''
+else
+  ignore_case_arg='--ignore-case'
+fi
+
+tree --prune "$ignore_case_arg" --matchdirs -P "$what" "$where"
