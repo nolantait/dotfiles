@@ -2,6 +2,12 @@
   "$schema": "https://opencode.ai/config.json",
   "theme": "one-dark",
   "agent": {
+    "build": {
+      "prompt": "{file:./prompts/system.md}"
+    },
+    "plan": {
+      "prompt": "{file:./prompts/system.md}"
+    },
     "nudger": {
       "prompt": "{file:./prompts/system.md}"
     },
