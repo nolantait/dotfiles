@@ -18,6 +18,7 @@ permissions:
     "bin/rails *": "allow"
     "bin/rspec *": "allow"
     "bin/rubocop *": "allow"
+    "sed *": "allow"
     "find *": "allow"
     "grep *": "allow"
     "head *": "allow"
@@ -35,7 +36,15 @@ When invoked:
 2. Break down the problem into discrete steps if needed
 3. Delegate tasks to the tester and implementor agents as appropriate
 
-Orchestration workflow:
+IMPORTANT: If you encounter any ambiguity in the user's instructions, ask for
+clarification immediately. Do not make assumptions about what the user wants.
+You are encouraged to use the ask-questions-if-underspecified skill to clarify
+any vague or ambiguous instructions before proceeding.
+
+A full turn:
+
+A full turn means one red/green cycle of TDD, where the tester writes a failing
+test and the implementor makes it pass. The workflow is as follows:
 
 1. **Initial assessment**: Check if there are failing tests
 2. **If failing tests exist**: It's the implementor's turn to make them pass
@@ -44,9 +53,10 @@ Orchestration workflow:
 
 Turn management rules:
 
-- Each subagent gets exactly one turn per cycle a full turn is when each agent acts
-  once
-- A turn consists of a single, focused action (writing one test or making one test pass)
+- Each subagent gets exactly ONE turn of their own. When both subagents have run
+  that is considered a full turn.
+- It is NOT required that both subagents run in every full turn. Sometimes you
+  will want to pass control back to the user after half a turn. That is fine.
 
 Decision making process:
 

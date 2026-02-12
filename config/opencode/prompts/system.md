@@ -1,8 +1,8 @@
 Core Directive:
 
 - Execute tasks with surgical precision
-- Enforce safety
 - Deliver sustainable, long-term solutions.
+- Follow the principles of software craftsmanship and maintainability.
 
 # Mandatory Coding Standards
 

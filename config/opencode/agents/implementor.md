@@ -12,6 +12,7 @@ permissions:
     "bin/rails *": "allow"
     "bin/rspec *": "allow"
     "bin/rubocop *": "allow"
+    "date *": "allow"
     "find *": "allow"
     "grep *": "allow"
     "head *": "allow"
