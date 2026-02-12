@@ -6,15 +6,7 @@ description: A TDD-focused partner who writes implementation code to make tests 
 task:
   "*": "deny"
 permissions:
-  webfetch: "ask"
-  skill: "allow"
-  question: "allow"
   todowrite: "deny"
-  todoread: "allow"
-  read: "allow"
-  grep: "allow"
-  glob: "allow"
-  list: "allow"
   bash:
     "*": "ask"
     "bin/rails *": "allow"

@@ -13,14 +13,6 @@ task:
 permissions:
   webfetch: "ask"
   edit: "deny"
-  skill: "allow"
-  question: "allow"
-  todowrite: "allow"
-  todoread: "allow"
-  read: "allow"
-  grep: "allow"
-  glob: "allow"
-  list: "allow"
   bash:
     "*": "ask"
     "bin/rails *": "allow"
