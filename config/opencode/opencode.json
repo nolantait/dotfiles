@@ -17,7 +17,7 @@
     },
     "tester": {
       "prompt": "{file:./prompts/system.md}"
-    },
+    }
   },
   "permission": {
     "webfetch": "ask",
@@ -33,17 +33,22 @@
 
     "bash": {
       "*": "ask",
-      "ls *": "allow",
-      "grep *": "allow",
-      "find *": "allow",
-      "mkdir *": "allow",
-      "which *": "allow",
-      "bundle *": "allow",
-      "bin/rspec *": "allow",
-      "rspec *": "allow",
       "bin/rails *": "allow",
+      "bin/rspec *": "allow",
+      "bin/rubocop *": "allow",
+      "bundle *": "allow",
+      "echo *": "allow",
+      "find *": "allow",
+      "grep *": "allow",
+      "head *": "allow",
+      "ls *": "allow",
+      "mkdir *": "allow",
       "rails *": "allow",
-      "bin/rubocop *": "allow"
+      "rg *": "allow",
+      "rspec *": "allow",
+      "tail *": "allow",
+      "which *": "allow",
+      "xargs *": "allow"
     },
 
     "read": {
