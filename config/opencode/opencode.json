@@ -4,9 +4,9 @@
   "disabled_providers": ["opencode"],
   "agent": {
     "build": {
-      "prompt": "{file:./prompts/system.md}"
+      "disable": true
     },
-    "plan": {
+    "coder": {
       "prompt": "{file:./prompts/system.md}"
     },
     "nudger": {
@@ -19,6 +19,8 @@
       "prompt": "{file:./prompts/system.md}"
     }
   },
+  "lsp": false,
+  "formatter": false,
   "permission": {
     "webfetch": "ask",
 

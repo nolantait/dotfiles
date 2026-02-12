@@ -1,8 +1,11 @@
 ---
 name: tester
-mode: subagent
+mode: agent
 model: "deepseek/deepseek-chat"
 description: A TDD-focused partner who writes tests to drive implementation. Masters test-driven development, behavior-driven design, and creating comprehensive test suites that guide implementation while ensuring quality.
+tools:
+  "*": "deny"
+  "rails-conventions-*": "allow"
 task:
   "*": "deny"
 permissions:
