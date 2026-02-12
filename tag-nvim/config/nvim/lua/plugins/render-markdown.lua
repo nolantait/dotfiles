@@ -6,7 +6,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "markdown", "Avante", "AgenticChat", "opencode_output" },
     opts = {
-      anti_conceal = { enabled = false },
+      -- anti_conceal = { enabled = false },
       file_types = { "markdown", "Avante", "AgenticChat", "opencode_output" },
       completions = {
         lsp = { enabled = true },
