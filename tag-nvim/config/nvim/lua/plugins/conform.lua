@@ -49,6 +49,7 @@ return {
         jsonc = { "prettier", stop_on_first = true },
         lua = { "stylua" },
         markdown = { "trim_whitespace", "trim_newlines" },
+        python = { "black" },
         sh = { "shfmt" },
         svg = { "htmlbeautifier" },
         toml = { "prettier" },
