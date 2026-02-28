@@ -13,9 +13,10 @@ local format = function(args)
   end
 
   require("conform").format({
+    timeout_ms = 3000,
     async = false,
     quiet = false,
-    lsp_fallback = true,
+    lsp_format = "fallback",
     range = range,
   })
 end
@@ -43,18 +44,18 @@ return {
         bash = { "shfmt" },
         css = { "prettier" },
         html = { "prettier" },
-        javascript = { "prettier", lsp_format = "fallback" },
-        javascriptreact = { "prettier", lsp_format = "fallback" },
-        json = { "prettier", stop_on_first = true },
-        jsonc = { "prettier", stop_on_first = true },
+        javascript = { "prettier" },
+        javascriptreact = { "prettier" },
+        json = { "prettier" },
+        jsonc = { "prettier" },
         lua = { "stylua" },
         markdown = { "trim_whitespace", "trim_newlines" },
-        python = { "black" },
+        python = { "ruff_format" },
         sh = { "shfmt" },
         svg = { "htmlbeautifier" },
         toml = { "prettier" },
-        typescript = { "prettier", lsp_format = "fallback" },
-        typescriptreact = { "prettier", lsp_format = "fallback" },
+        typescript = { "prettier" },
+        typescriptreact = { "prettier" },
         zsh = { lsp_format = "fallback" },
       },
     },
