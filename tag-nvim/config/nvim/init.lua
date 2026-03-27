@@ -19,6 +19,7 @@ vim.lsp.enable({
   "docker",
   "eslint",
   "lua",
-  "python",
+  "python_ruff",
+  "python_ty",
   "ruby",
 })
