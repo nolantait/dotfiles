@@ -18,10 +18,16 @@
       "prompt": "{file:./prompts/system.md}"
     }
   },
+  "compaction": {
+    "auto": true,
+    "prune": true,
+    "reserved": 10000
+  },
   "lsp": false,
   "formatter": false,
   "permission": {
     "webfetch": "ask",
+    "websearch": "ask",
 
     "edit": "allow",
     "question": "allow",
@@ -58,5 +64,6 @@
       "*.env.*": "deny",
       "*.env.example": "allow"
     }
-  }
+  },
+  "share": "disabled"
 }
