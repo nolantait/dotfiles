@@ -2,55 +2,38 @@
 -- information about text objects to other plugins.
 
 local config = function()
-  local treesitter = require("nvim-treesitter.configs")
+  local treesitter = require("nvim-treesitter")
 
-  treesitter.setup({
-    auto_install = true,
-    ignore_install = {
-      "help",
-    },
-    ensure_installed = {
-      "css",
-      "embedded_template", -- ERB support
-      "gitignore",
-      "gitcommit",
-      "gitattributes",
-      "git_rebase",
-      "html",
-      "json",
-      "javascript",
-      "lua",
-      "python",
-      "ruby",
-      "rust",
-      "sql",
-      "typescript",
-      "vim",
-      "vimdoc",
-      "yaml",
-    },
-    matchup = {
-      enable = true,
-    },
-    highlight = {
-      enable = true, -- false will disable the whole extension
-      additional_vim_regex_highlighting = true,
-      use_language_tree = true,
-    },
-    indent = {
-      -- Disable treesitter's indentation for nvim's builtin smartindent
-      -- which can be much faster at the cost of slightly less accuracy
-      enable = false,
-    },
-    incremental_selection = {
-      enable = true,
-      keymaps = {
-        init_selection = "<CR>",
-        node_incremental = "<CR>",
-        node_decremental = "<BS>",
-        scope_incremental = false,
-      },
-    },
+  treesitter.setup({})
+
+  local parsers = {
+    "css",
+    "embedded_template", -- ERB support
+    "gitignore",
+    "gitcommit",
+    "gitattributes",
+    "git_rebase",
+    "html",
+    "json",
+    "javascript",
+    "lua",
+    "python",
+    "ruby",
+    "rust",
+    "sql",
+    "typescript",
+    "vim",
+    "vimdoc",
+    "yaml",
+  }
+
+  treesitter.install(parsers)
+
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = parsers,
+    callback = function()
+      vim.treesitter.start()
+    end,
   })
 end
 
@@ -58,6 +41,7 @@ return {
   {
     -- Improved syntax highlighting and code understanding for other plugins
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     lazy = false,
     config = config,
     build = ":TSUpdate",
