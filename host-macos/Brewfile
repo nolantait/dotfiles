@@ -41,6 +41,7 @@ brew "redis", restart_service: :changed # Redis
 brew "ripgrep" # Search tool
 brew "rpl" # Replace text
 brew "shellcheck" # Shell script linter
+brew "tree-sitter-cli" # Required for Neovim treesitter
 brew "tailspin" # Log viewer
 brew "tmate" # Terminal sharing
 brew "tokei" # Code statistics
