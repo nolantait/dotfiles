@@ -3,6 +3,7 @@
 return {
   {
     "klepp0/nvim-baml-syntax",
+    enabled = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = { "baml" }, -- This ensures the plugin is loaded for baml files
     config = function()
