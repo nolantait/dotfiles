@@ -30,7 +30,7 @@ local config = function()
   treesitter.install(parsers)
 
   vim.api.nvim_create_autocmd("FileType", {
-    pattern = parsers,
+    pattern = parsers - "rust",
     callback = function()
       vim.treesitter.start()
     end,
