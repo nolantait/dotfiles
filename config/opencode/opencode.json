@@ -2,9 +2,6 @@
   "$schema": "https://opencode.ai/config.json",
   "disabled_providers": ["opencode"],
   "agent": {
-    "build": {
-      "disable": true
-    },
     "coder": {
       "prompt": "{file:./prompts/system.md}"
     },
