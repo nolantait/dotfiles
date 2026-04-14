@@ -20,7 +20,6 @@
     "prune": true,
     "reserved": 10000
   },
-  "lsp": false,
   "formatter": false,
   "permission": {
     "webfetch": "ask",

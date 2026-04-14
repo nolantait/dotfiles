@@ -40,6 +40,6 @@ return {
   },
   {
     "tpope/vim-rake",
-    ft = { "ruby" },
+    ft = { "ruby", "eruby" },
   },
 }
