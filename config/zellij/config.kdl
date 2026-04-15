@@ -6,6 +6,15 @@ keybinds clear-defaults=true {
     locked {
         bind "Ctrl s" { SwitchToMode "normal"; }
     }
+    normal {
+      bind "5" { NewPane "right"; SwitchToMode "locked"; }
+      bind "'" { NewPane "down"; SwitchToMode "locked"; }
+      bind "h" { MoveFocus "left"; SwitchToMode "locked"; }
+      bind "j" { MoveFocus "down"; SwitchToMode "locked"; }
+      bind "k" { MoveFocus "up"; SwitchToMode "locked"; }
+      bind "l" { MoveFocus "right"; SwitchToMode "locked"; }
+      bind "x" { CloseFocus; SwitchToMode "locked"; }
+    }
     pane {
         bind "left" { MoveFocus "left"; }
         bind "down" { MoveFocus "down"; }
