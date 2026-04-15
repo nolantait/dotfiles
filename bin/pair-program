@@ -28,5 +28,5 @@ fi
 upterm host \
   --server "ssh://${SERVER_IP}:2222" \
   --authorized-keys ~/.ssh/authorized_keys \
-  --force-command 'tmux attach -t pair-programming' \
-  -- tmux new -t pair-programming
+  --force-command 'zellij attach pair-programming' \
+  -- zellij attach --create pair-programming
