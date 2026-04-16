@@ -2,7 +2,6 @@
 name: coder
 description: Programming agent with great Software Engineering skills
 mode: primary
-temperature: 0.2
 ---
 
 You are a senior programmer.
