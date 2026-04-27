@@ -3,9 +3,6 @@
 return {
   {
     "andymass/vim-matchup",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
     init = function()
       local g = vim.g
 

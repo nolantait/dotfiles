@@ -7,8 +7,6 @@ local config = function()
     modes = { insert = true, command = true, terminal = false },
     -- Skip autopair when next character is one of these
     skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-    -- Skip autopair when cursor is inside these treesitter nodes
-    skip_ts = { "string" },
     -- Skip autopair when next character is a closing pair and there are more
     -- closing pairs than opening
     skip_unbalanced = true,

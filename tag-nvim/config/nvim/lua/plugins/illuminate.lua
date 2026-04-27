@@ -4,9 +4,6 @@ return {
   {
     -- Highlighting of the word under the cursor
     "RRethy/vim-illuminate",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
     event = "LazyFile",
     config = function()
       local illuminate = require("illuminate")

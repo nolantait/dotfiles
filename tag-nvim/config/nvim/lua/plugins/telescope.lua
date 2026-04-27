@@ -42,7 +42,6 @@ local config = function()
       sorting_strategy = "ascending",
       layout_strategy = "center",
       layout_config = {
-        anchor = 'S',
         horizontal = {
           prompt_position = "top",
           preview_width = 0.55,

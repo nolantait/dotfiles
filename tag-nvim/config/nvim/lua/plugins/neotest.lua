@@ -118,13 +118,9 @@ return {
     -- Test runner
     "nvim-neotest/neotest",
     enabled = false,
-    -- Setting to this specific commit until this issue is resolved:
-    -- https://github.com/nvim-neotest/neotest/issues/531
-    commit = "52fca67",
     dependencies = {
       "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
       "olimorris/neotest-rspec",
       "nvim-neotest/neotest-python",
     },

@@ -51,6 +51,10 @@ function M.setup(colors)
     LspSignatureActiveParameter = { fg = colors.yellow },
     LspCodeLens = { fg = colors.light_gray, italic = true },
 
+    rubySymbol = { fg = colors.purple },
+    rubyMacro = { fg = colors.blue },
+    rubyCapitalizedMethod = { fg = colors.yellow },
+
     ["@string.special"] = { link = "Statement" },
     ["@variable"] = { link = "Identifier" },
     ["@lsp.type.variable"] = { fg = colors.lighter_gray },

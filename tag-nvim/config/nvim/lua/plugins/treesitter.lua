@@ -76,9 +76,6 @@ return {
   {
     -- DOCS: This provides text object context to commenting plugins
     "nvim-treesitter/nvim-treesitter-context",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
     event = "LazyFile",
     opts = {
       enable = true,

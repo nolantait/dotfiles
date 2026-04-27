@@ -87,8 +87,7 @@ return {
       },
       format = { enable = true },
       telemetry = { enable = false },
-      -- Do not override treesitter lua highlighting with lua_ls's highlighting
-      semantic = { enable = false },
+      semantic = { enable = true },
       codeLens = { enable = true },
       workspace = {
         checkThirdParty = false,
