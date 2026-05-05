@@ -105,32 +105,32 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
         operator pcap postfix postgres privoxy pulse pvm quagga radvd \
         rpc rpcuser rpm shutdown squid sshd sync uucp vcsa xfs
 
-# Support for hosts completion
-_etc_hosts=()
-_ssh_config_hosts=()
-_ssh_hosts=()
-if [[ -r ~/.ssh/config ]] ; then
-    _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*})
-fi
-
-if [[ -r ~/.ssh/known_hosts ]] ; then
-    _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*})
-fi
-
-if [[ -r /etc/hosts ]] && [[ "$NOETCHOSTS" -eq 0 ]] ; then
-    : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(grep -v '^0\.0\.0\.0\|^127\.0\.0\.1\|^::1 ' /etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
-fi
-
-local localname
-localname="$(uname -n)"
-hosts=(
-    "${localname}"
-    "$_ssh_config_hosts[@]"
-    "$_ssh_hosts[@]"
-    "$_etc_hosts[@]"
-    localhost
-)
-zstyle ':completion:*:hosts' hosts $hosts
+# # Support for hosts completion
+# _etc_hosts=()
+# _ssh_config_hosts=()
+# _ssh_hosts=()
+# if [[ -r ~/.ssh/config ]] ; then
+#     _ssh_config_hosts=(${${(s: :)${(ps:\t:)${${(@M)${(f)"$(<$HOME/.ssh/config)"}:#Host *}#Host }}}:#*[*?]*})
+# fi
+#
+# if [[ -r ~/.ssh/known_hosts ]] ; then
+#     _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*})
+# fi
+#
+# if [[ -r /etc/hosts ]] && [[ "$NOETCHOSTS" -eq 0 ]] ; then
+#     : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(grep -v '^0\.0\.0\.0\|^127\.0\.0\.1\|^::1 ' /etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}}
+# fi
+#
+# local localname
+# localname="$(uname -n)"
+# hosts=(
+#     "${localname}"
+#     "$_ssh_config_hosts[@]"
+#     "$_ssh_hosts[@]"
+#     "$_etc_hosts[@]"
+#     localhost
+# )
+# zstyle ':completion:*:hosts' hosts $hosts
 
 # automatically load bash completion functions
 autoload -U +X bashcompinit && bashcompinit
