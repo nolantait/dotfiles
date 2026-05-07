@@ -4,7 +4,7 @@ local detect_ansible = function(path)
   local dir = path
 
   while dir ~= "/" do
-    if vim.fn.filereadable(dir .. "/.git") == 1 then
+    if vim.fn.filereadable(dir .. "/.ansible") == 1 then
       return "yaml.ansible"
     end
 

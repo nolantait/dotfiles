@@ -39,6 +39,7 @@ function M.setup()
   -- Unbind
   keymap("", "?", "<Nop>", M.options)
   keymap("", "<Leader>q", "<Nop>", M.options)
+
   -- Remove default cmdwin mappings to prevent conflicts
   keymap("n", "q:", "<Nop>", M.options)
   keymap("n", "q/", "<Nop>", M.options)
