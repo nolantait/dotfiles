@@ -8,7 +8,8 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^6",
+    enabled = false,
+    version = "^9",
     lazy = false,
     ft = { "rust", "rs" },
     keys = {
@@ -41,50 +42,52 @@ return {
             border = utils.border("FloatBorder"),
           },
         },
-        default_settings = {
-          -- rust-analyzer language server configuration
-          ["rust-analyzer"] = {
-            check = {
-              command = "clippy",
-              extraArgs = {
-                "--",
-                "-D",
-                "clippy::pedantic",
-                "-D",
-                "clippy::nursery",
-                "--no-deps",
+        server = {
+          default_settings = {
+            -- rust-analyzer language server configuration
+            ["rust-analyzer"] = {
+              -- check = {
+              --   command = "clippy",
+              --   extraArgs = {
+              --     "--",
+              --     "-D",
+              --     "clippy::pedantic",
+              --     "-D",
+              --     "clippy::nursery",
+              --     "--no-deps",
+              --   },
+              -- },
+              -- cargo = {
+              --   allFeatures = true,
+              --   loadOutDirsFromCheck = true,
+              --   runBuildScripts = true,
+              -- },
+              -- Add clippy lints for Rust.
+              -- checkOnSave = {
+              --   allFeatures = true,
+              --   command = "clippy",
+              --   extraArgs = { "--no-deps" },
+              -- },
+              procMacro = {
+                enable = true,
+                ignored = {
+                  ["async-trait"] = { "async_trait" },
+                  ["napi-derive"] = { "napi" },
+                  ["async-recursion"] = { "async_recursion" },
+                },
               },
-            },
-            cargo = {
-              allFeatures = true,
-              loadOutDirsFromCheck = true,
-              runBuildScripts = true,
-            },
-            -- Add clippy lints for Rust.
-            checkOnSave = {
-              allFeatures = true,
-              command = "clippy",
-              extraArgs = { "--no-deps" },
-            },
-            procMacro = {
-              enable = true,
-              ignored = {
-                ["async-trait"] = { "async_trait" },
-                ["napi-derive"] = { "napi" },
-                ["async-recursion"] = { "async_recursion" },
-              },
-            },
-            files = {
-              excludeDirs = {
-                ".direnv",
-                ".git",
-                ".github",
-                ".gitlab",
-                "bin",
-                "node_modules",
-                "target",
-                "venv",
-                ".venv",
+              files = {
+                excludeDirs = {
+                  ".direnv",
+                  ".git",
+                  ".github",
+                  ".gitlab",
+                  "bin",
+                  "node_modules",
+                  "target",
+                  "venv",
+                  ".venv",
+                },
               },
             },
           },
