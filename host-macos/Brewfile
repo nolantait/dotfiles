@@ -33,7 +33,7 @@ brew "nnn" # File manager
 brew "tmux" # Terminal multiplexer
 brew "overmind" # Process manager
 brew "podlet" # Podman podlet generator
-brew "postgresql@17", restart_service: :changed # PostgreSQL
+brew "postgresql@18", restart_service: :changed # PostgreSQL
 brew "procs" # Process viewer
 brew "ranger" # File manager
 brew "rcm" # Dotfile manager
