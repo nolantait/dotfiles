@@ -4,7 +4,6 @@ local config = function()
   local neotree = require("neo-tree")
   local events = require("neo-tree.events")
   local icons = require("globals.icons")
-  local utils = require("core.utils")
 
   local function on_move(data)
     require("snacks").rename.on_rename_file(data.source, data.destination)

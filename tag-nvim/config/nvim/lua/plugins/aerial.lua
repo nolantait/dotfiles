@@ -5,6 +5,7 @@ local utils = require("core.utils")
 return {
   {
     "stevearc/aerial.nvim",
+    enabled = false,
     -- Optional dependencies
     dependencies = {
       "nvim-tree/nvim-web-devicons",

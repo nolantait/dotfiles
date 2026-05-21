@@ -56,6 +56,7 @@ end
 return {
   {
     "uga-rosa/ccc.nvim",
+    enabled = false,
     event = "LazyFile",
     config = config,
     keys = {

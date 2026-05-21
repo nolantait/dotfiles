@@ -2,6 +2,7 @@ return {
   {
     -- Improved syntax highlighting and code understanding for other plugins
     "rachartier/tiny-inline-diagnostic.nvim",
+    enabled = false,
     event = "VeryLazy",
     priority = 1000,
     config = function()

@@ -117,6 +117,7 @@ return {
   {
     -- Debug Adapter Protocol setup for interactive debugging
     "mfussenegger/nvim-dap",
+    enabled = false,
     cmd = {
       "DapSetLogLevel",
       "DapShowLog",
@@ -217,11 +218,13 @@ return {
   },
   {
     "theHamsta/nvim-dap-virtual-text",
+    enabled = false,
     config = true,
     opts = { virt_text_pos = "eol" },
   },
   {
     "rcarriga/nvim-dap-ui",
+    enabled = false,
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",

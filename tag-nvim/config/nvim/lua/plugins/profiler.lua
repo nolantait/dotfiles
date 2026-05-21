@@ -51,6 +51,7 @@ end
 return {
   {
     "stevearc/profile.nvim",
+    enabled = false,
     lazy = false,
     config = config,
   },
