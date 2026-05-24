@@ -33,6 +33,7 @@
     "grep": "allow",
     "glob": "allow",
     "list": "allow",
+    "lsp": "allow",
 
     "bash": {
       "*": "ask",
