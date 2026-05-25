@@ -64,7 +64,7 @@ local M = {
   },
   options = {
     ambiwidth = "single", -- Treat ambiguous characters as single width
-    -- autoread = true, -- Automatically read file changes from disk
+    autoread = true, -- Automatically read file changes from disk
     arabic = false, -- Don't use Arabic-indic digits
     arabicshape = false, -- Don't use Arabic letter shaping
     autowrite = false, -- Don't automatically save before commands like :next and :make
