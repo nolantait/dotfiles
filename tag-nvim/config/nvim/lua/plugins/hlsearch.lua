@@ -3,7 +3,6 @@
 return {
   {
     "nvimdev/hlsearch.nvim",
-    enabled = false,
     config = true,
     event = "LazyFile",
   },
