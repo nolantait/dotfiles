@@ -8,7 +8,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    enabled = false,
+    enabled = true,
     version = "^9",
     lazy = false,
     ft = { "rust", "rs" },
