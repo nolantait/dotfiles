@@ -11,7 +11,6 @@ return {
     enabled = true,
     version = "^9",
     lazy = false,
-    ft = { "rust", "rs" },
     keys = {
       {
         "<Leader>od",
@@ -46,28 +45,27 @@ return {
           default_settings = {
             -- rust-analyzer language server configuration
             ["rust-analyzer"] = {
-              -- check = {
-              --   command = "clippy",
-              --   extraArgs = {
-              --     "--",
-              --     "-D",
-              --     "clippy::pedantic",
-              --     "-D",
-              --     "clippy::nursery",
-              --     "--no-deps",
-              --   },
-              -- },
-              -- cargo = {
-              --   allFeatures = true,
-              --   loadOutDirsFromCheck = true,
-              --   runBuildScripts = true,
-              -- },
-              -- Add clippy lints for Rust.
-              -- checkOnSave = {
-              --   allFeatures = true,
-              --   command = "clippy",
-              --   extraArgs = { "--no-deps" },
-              -- },
+              check = {
+                command = "clippy",
+                extraArgs = {
+                  "--",
+                  "-D",
+                  "clippy::pedantic",
+                  "-D",
+                  "clippy::nursery",
+                  "--no-deps",
+                },
+              },
+              cargo = {
+                allFeatures = true,
+                loadOutDirsFromCheck = true,
+                runBuildScripts = true,
+              },
+              checkOnSave = {
+                allFeatures = true,
+                command = "clippy",
+                extraArgs = { "--no-deps" },
+              },
               procMacro = {
                 enable = true,
                 ignored = {
