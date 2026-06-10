@@ -5,15 +5,6 @@
     "coder": {
       "prompt": "{file:./prompts/system.md}"
     },
-    "nudger": {
-      "prompt": "{file:./prompts/system.md}"
-    },
-    "implementor": {
-      "prompt": "{file:./prompts/system.md}"
-    },
-    "tester": {
-      "prompt": "{file:./prompts/system.md}"
-    }
   },
   "compaction": {
     "auto": true,
@@ -22,6 +13,7 @@
   },
   "formatter": false,
   "lsp": true,
+  "share": "disabled",
   "permission": {
     "webfetch": "ask",
     "websearch": "ask",
@@ -45,7 +37,7 @@
       "cargo *": "allow",
       "echo *": "allow",
       "find *": "allow",
-      "git diff *": "allow"
+      "git diff *": "allow",
       "git log *": "allow",
       "git show *": "allow",
       "grep *": "allow",
@@ -67,5 +59,4 @@
       "*.env.example": "allow"
     }
   },
-  "share": "disabled"
 }
