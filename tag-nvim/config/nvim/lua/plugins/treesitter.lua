@@ -43,7 +43,7 @@ local config = function()
       "lua",
       "python",
       "ruby",
-      -- "rust",
+      "rust",
       "sql",
       "typescript",
       "vim",

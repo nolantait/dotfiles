@@ -67,7 +67,7 @@ return {
       })
 
       vim.api.nvim_create_user_command("LspLog", function()
-        local log_path = vim.lsp.get_filename()
+        local log_path = vim.lsp.log.get_filename()
 
         if log_path then
           vim.cmd("edit " .. log_path)
