@@ -21,6 +21,7 @@
     "reserved": 10000
   },
   "formatter": false,
+  "lsp": true,
   "permission": {
     "webfetch": "ask",
     "websearch": "ask",
@@ -41,8 +42,12 @@
       "bin/rspec *": "allow",
       "bin/rubocop *": "allow",
       "bundle *": "allow",
+      "cargo *": "allow",
       "echo *": "allow",
       "find *": "allow",
+      "git diff *": "allow"
+      "git log *": "allow",
+      "git show *": "allow",
       "grep *": "allow",
       "head *": "allow",
       "ls *": "allow",
@@ -53,7 +58,6 @@
       "tail *": "allow",
       "which *": "allow",
       "xargs *": "allow",
-      "cargo *": "allow"
     },
 
     "read": {
