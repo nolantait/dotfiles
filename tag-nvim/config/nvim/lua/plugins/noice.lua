@@ -39,11 +39,11 @@ return {
       },
       lsp = {
         progress = {
-          enabled = true,
-          format = "lsp_progress",
-          format_done = "lsp_progress_done",
-          throttle = 1000 / 30, -- frequency to update lsp progress message
-          view = "mini",
+          enabled = false, -- Using fidget.nvim instead
+          -- format = "lsp_progress",
+          -- format_done = "lsp_progress_done",
+          -- throttle = 1000 / 30, -- frequency to update lsp progress message
+          -- view = "mini",
         },
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
