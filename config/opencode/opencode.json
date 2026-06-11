@@ -37,6 +37,7 @@
       "cargo *": "allow",
       "echo *": "allow",
       "find *": "allow",
+      "gem *": "allow",
       "git diff *": "allow",
       "git log *": "allow",
       "git show *": "allow",
