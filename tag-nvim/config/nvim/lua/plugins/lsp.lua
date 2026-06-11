@@ -69,10 +69,10 @@ return {
       vim.api.nvim_create_user_command("LspLog", function()
         local log_path = vim.lsp.log.get_filename()
 
-        if log_path then
-          vim.cmd("edit " .. log_path)
+        if log_path and vim.fn.filereadable(log_path) == 1 then
+          vim.cmd("edit " .. vim.fn.fnameescape(log_path))
         else
-          print("No LSP logs found.")
+          vim.notify("No LSP logs found.", vim.log.levels.WARN)
         end
       end, {
         desc = "Open LSP logs",

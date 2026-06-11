@@ -4,6 +4,7 @@ return {
   {
     -- Highlighting of the word under the cursor
     "RRethy/vim-illuminate",
+    enabled = false,
     event = "LazyFile",
     config = function()
       local illuminate = require("illuminate")

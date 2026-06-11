@@ -7,6 +7,7 @@ return {
   {
     -- LSP loading popup on bottom right
     "j-hui/fidget.nvim",
+    enabled = true,
     event = "LspAttach",
     tag = "legacy",
     opts = {

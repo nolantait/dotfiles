@@ -3,17 +3,12 @@ return {
     "ThePrimeagen/harpoon",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
-      global_settings = {
-        mark_branch = false,
-        save_on_toggle = false,
-        save_on_change = true,
-        enter_on_sendcmd = false,
-        excluded_filetypes = { "harpoon" },
-        tabline = true,
-        tabline_prefix = " ",
-        tabline_suffix = " ",
-        tmux_autoclose_windows = true,
-      },
+      mark_branch = false,
+      save_on_toggle = false,
+      save_on_change = true,
+      enter_on_sendcmd = false,
+      excluded_filetypes = { "harpoon" },
+      tmux_autoclose_windows = true,
     },
     keys = {
       {
@@ -21,7 +16,7 @@ return {
         mode = { "n" },
         desc = "Harpoon add file",
         function()
-          require("harpoon.mark").add_file()
+          require("harpoon"):list():append()
         end,
       },
       {
@@ -29,7 +24,7 @@ return {
         mode = { "n" },
         desc = "Harpoon remove file",
         function()
-          require("harpoon.mark").rm_file()
+          require("harpoon"):list():remove()
         end,
       },
       {
@@ -37,7 +32,7 @@ return {
         mode = { "n" },
         desc = "Harpoon toggle menu",
         function()
-          require("harpoon.ui").toggle_quick_menu()
+          require("harpoon"):list():open_ui()
         end,
       },
       {
@@ -45,7 +40,10 @@ return {
         mode = { "n" },
         desc = "Telescope search Harpoon marks",
         function()
-          vim.cmd("Telescope harpoon marks")
+          require("harpoon"):list():open_ui({
+            win = { enter = true },
+            ui = { select_on_buf = false },
+          })
         end,
       },
       {
@@ -53,7 +51,7 @@ return {
         mode = { "n" },
         desc = "Harpoon quick menu 1",
         function()
-          require("harpoon.ui").nav_file(1)
+          require("harpoon"):list():select(1)
         end,
       },
       {
@@ -61,7 +59,7 @@ return {
         mode = { "n" },
         desc = "Harpoon quick menu 2",
         function()
-          require("harpoon.ui").nav_file(2)
+          require("harpoon"):list():select(2)
         end,
       },
       {
@@ -69,7 +67,7 @@ return {
         mode = { "n" },
         desc = "Harpoon quick menu 3",
         function()
-          require("harpoon.ui").nav_file(3)
+          require("harpoon"):list():select(3)
         end,
       },
       {
@@ -77,7 +75,7 @@ return {
         mode = { "n" },
         desc = "Harpoon quick menu 4",
         function()
-          require("harpoon.ui").nav_file(4)
+          require("harpoon"):list():select(4)
         end,
       },
     },

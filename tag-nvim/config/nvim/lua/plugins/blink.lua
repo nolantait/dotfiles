@@ -5,7 +5,7 @@ return {
     dependencies = {
       "fang2hou/blink-copilot",
     },
-    version = "1.*",
+    version = "2.*",
 
     init = function()
       vim.api.nvim_create_autocmd("User", {
