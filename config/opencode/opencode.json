@@ -4,7 +4,7 @@
   "agent": {
     "coder": {
       "prompt": "{file:./prompts/system.md}"
-    },
+    }
   },
   "compaction": {
     "auto": true,
@@ -41,6 +41,7 @@
       "git diff *": "allow",
       "git log *": "allow",
       "git show *": "allow",
+      "git status *": "allow",
       "grep *": "allow",
       "head *": "allow",
       "ls *": "allow",
@@ -50,7 +51,7 @@
       "rspec *": "allow",
       "tail *": "allow",
       "which *": "allow",
-      "xargs *": "allow",
+      "xargs *": "allow"
     },
 
     "read": {
@@ -59,5 +60,5 @@
       "*.env.*": "deny",
       "*.env.example": "allow"
     }
-  },
+  }
 }
