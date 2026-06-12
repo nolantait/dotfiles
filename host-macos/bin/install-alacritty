@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+set -e -o pipefail
+
+app_name='Alacritty'
+owner='alacritty'
+repo='alacritty'
+version=$(curl -s "https://api.github.com/repos/${owner}/${repo}/releases/latest" | jq -r .tag_name)
+
+filename="${app_name}-${version}.dmg"
+
+cd ~/Downloads
+if [ -e "${filename}" ]; then
+  echo "${filename} exists already, aborting. Delete it to force installation"
+  exit 1
+fi
+
+echo "Downloading ${filename}"
+curl -L -O "https://github.com/${owner}/${repo}/releases/download/${version}/${filename}"
+
+echo 'Mounting image...'
+hdiutil attach ${filename}
+
+path="/Applications/${app_name}.app/"
+echo "Installing to ${path}"
+rsync -a "/Volumes/${app_name}/${app_name}.app/" "${path}"
+
+echo 'Unmounting image...'
+hdiutil detach "/Volumes/${app_name}"
+
+echo 'Bypassing Gatekeeper quarantine...'
+xattr -rd com.apple.quarantine "/Applications/${app_name}.app"
+
+echo 'Cleaning up...'
+rm "${filename}"
