@@ -48,6 +48,7 @@
       "mkdir *": "allow",
       "rails *": "allow",
       "rg *": "allow",
+      "tr *": "allow",
       "rspec *": "allow",
       "tail *": "allow",
       "which *": "allow",
