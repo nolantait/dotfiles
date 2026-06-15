@@ -49,6 +49,7 @@
       "pnpm *": "allow",
       "rails *": "allow",
       "rg *": "allow",
+      "sort *": "allow",
       "tr *": "allow",
       "rspec *": "allow",
       "tail *": "allow",
