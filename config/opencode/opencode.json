@@ -46,6 +46,7 @@
       "head *": "allow",
       "ls *": "allow",
       "mkdir *": "allow",
+      "pnpm *": "allow",
       "rails *": "allow",
       "rg *": "allow",
       "tr *": "allow",
