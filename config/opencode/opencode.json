@@ -53,6 +53,7 @@
       "tr *": "allow",
       "rspec *": "allow",
       "tail *": "allow",
+      "wc *": "allow",
       "which *": "allow",
       "xargs *": "allow"
     },
