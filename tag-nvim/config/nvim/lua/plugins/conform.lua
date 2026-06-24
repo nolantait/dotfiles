@@ -41,6 +41,7 @@ return {
     opts = {
       notify_on_error = true,
       formatters_by_ft = {
+        gdscript = { "gdformat" },
         bash = { "shfmt" },
         css = { "prettier" },
         html = { "prettier" },

@@ -22,5 +22,6 @@ vim.lsp.enable({
   "python_ruff",
   "python_ty",
   "ruby",
+  "godot",
   -- "rust",
 })
