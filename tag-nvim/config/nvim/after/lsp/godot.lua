@@ -5,9 +5,9 @@ local pipe = "/tmp/godot.pipe" -- I use /tmp/godot.pipe
 return {
   name = "Godot",
   cmd = cmd,
+  filetypes = { "gdscript" },
   root_markers = {
     "project.godot",
-    ".git",
   },
   on_attach = function(client, bufnr)
     vim.api.nvim_command('echo serverstart("' .. pipe .. '")')
