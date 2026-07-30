@@ -52,6 +52,7 @@
       "rails *": "allow",
       "rg *": "allow",
       "rspec *": "allow",
+      "sed *": "allow",
       "sort *": "allow",
       "tail *": "allow",
       "tr *": "allow",
