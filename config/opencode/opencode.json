@@ -30,6 +30,7 @@
 
     "bash": {
       "*": "ask",
+      "bin/packwerk *": "allow",
       "bin/rails *": "allow",
       "bin/rspec *": "allow",
       "bin/rubocop *": "allow",
