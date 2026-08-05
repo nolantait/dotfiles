@@ -30,17 +30,22 @@
 
     "bash": {
       "*": "ask",
+      "bin/packs *": "allow",
       "bin/packwerk *": "allow",
       "bin/rails *": "allow",
       "bin/rspec *": "allow",
       "bin/rubocop *": "allow",
+      "basename *": "allow",
       "bundle *": "allow",
       "cargo *": "allow",
       "cat *": "allow",
       "cp *": "allow",
+      "cut *": "allow",
       "echo *": "allow",
       "find *": "allow",
       "gem *": "allow",
+      "git branch *": "allow",
+      "git mv *": "allow",
       "git diff *": "allow",
       "git log *": "allow",
       "git show *": "allow",
@@ -50,12 +55,15 @@
       "ls *": "allow",
       "mkdir *": "allow",
       "pnpm *": "allow",
+      "printf *": "allow",
       "rails *": "allow",
       "rg *": "allow",
       "rspec *": "allow",
+      "ruby *": "allow",
       "sed *": "allow",
       "sort *": "allow",
       "tail *": "allow",
+      "timeout *": "allow",
       "tr *": "allow",
       "wc *": "allow",
       "which *": "allow",
@@ -67,6 +75,10 @@
       "*.env": "deny",
       "*.env.*": "deny",
       "*.env.example": "allow"
+    },
+
+    "external_directory": {
+      "~/.local/share/mise/*": "allow"
     }
   }
 }
