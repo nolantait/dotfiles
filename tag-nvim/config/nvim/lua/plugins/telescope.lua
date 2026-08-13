@@ -18,7 +18,7 @@ local config = function()
       file_ignore_patterns = {
         "node_modules/",
         ".git/",
-        ".cache",
+        ".cache$",
         "build/",
         "%.class",
         "%.pdf",
