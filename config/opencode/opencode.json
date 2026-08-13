@@ -54,6 +54,7 @@
       "git ls-tree *": "allow",
       "git mv *": "allow",
       "git show *": "allow",
+      "git stash *": "allow",
       "git status *": "allow",
       "grep *": "allow",
       "head *": "allow",
