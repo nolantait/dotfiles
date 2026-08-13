@@ -8,4 +8,4 @@
 
 set -e
 
-git branch --merged master | egrep -v "(^\*|^  master$|^  staging$|^  main$)" | xargs git branch --delete
+git branch --merged master | grep -Ev "(^\*|^  master$|^  staging$|^  main$)" | xargs git branch --delete
