@@ -12,7 +12,11 @@
     "reserved": 10000
   },
   "formatter": false,
-  "lsp": true,
+  "lsp": {
+    "ruby-lsp": {
+      "command": ["bundle", "exec", "rubocop", "--lsp"]
+    }
+  },
   "share": "disabled",
   "permission": {
     "webfetch": "ask",
