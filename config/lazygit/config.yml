@@ -1,8 +1,8 @@
 notARepository: 'quit'
 git:
-  pagers:
+  diffRenderers:
     - colorArg: always
-      pager: delta
+      command: delta
 os:
   editPreset: nvim
 gui:
