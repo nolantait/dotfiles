@@ -47,7 +47,7 @@ fi
 
 declare -A package_names
 package_names=(
-  [delta]="delta"
+  [delta]="git-delta"
   [bat]="bat"
   [eza]="eza"
   [mise]="mise"
