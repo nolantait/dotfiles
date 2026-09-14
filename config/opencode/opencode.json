@@ -3,6 +3,7 @@
   "disabled_providers": ["opencode"],
   "agent": {
     "coder": {
+      "mode": "primary",
       "prompt": "{file:./prompts/system.md}"
     }
   },

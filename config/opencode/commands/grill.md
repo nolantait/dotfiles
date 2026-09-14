@@ -1,4 +1,5 @@
 ---
+name: grill
 description: Grill the plan by asking questions to clarify the request
 agent: griller
 ---

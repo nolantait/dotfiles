@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "ruby-lsp" },
+  cmd = { "mise", "exec", "--", "ruby-lsp" },
   filetypes = { "ruby" },
   root_markers = { ".git", ".rubocop.yml", "Gemfile" },
   init_options = {
@@ -35,7 +35,7 @@ return {
     featuresConfiguration = {
       inlayHint = {
         implicitHashValue = false,
-        implicitRescue = false
+        implicitRescue = false,
       },
     },
     indexing = {
@@ -63,7 +63,7 @@ return {
         "web-console",
         -- Causes issues with indexing currently
         "phlex",
-        "phlex-rails"
+        "phlex-rails",
       },
     },
   },
