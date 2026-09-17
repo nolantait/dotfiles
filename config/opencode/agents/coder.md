@@ -1,5 +1,4 @@
 ---
-name: coder
 description: Programming agent with great Software Engineering skills
 mode: primary
 ---

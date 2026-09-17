@@ -1,5 +1,4 @@
 ---
-name: griller
 description: Ask questions to clarify the request
 mode: primary
 ---
