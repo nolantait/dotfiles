@@ -1,6 +1,13 @@
 ---@type vim.lsp.Config
 return {
-  cmd = { "mise", "exec", "--", "ruby-lsp" },
+  cmd = {
+    "env",
+    "RUBY_LSP_BYPASS_TYPECHECKER=1",
+    "mise",
+    "exec",
+    "--",
+    "ruby-lsp",
+  },
   filetypes = { "ruby" },
   root_markers = { ".git", ".rubocop.yml", "Gemfile" },
   init_options = {
