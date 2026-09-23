@@ -4,6 +4,10 @@
 local config = function()
   local treesitter = require("nvim-treesitter")
 
+  -- Docker Compose files use their own filetype (see filetype.lua) but should
+  -- still be highlighted/folded with the YAML parser.
+  vim.treesitter.language.register("yaml", "yaml.docker-compose")
+
   treesitter.setup({})
 
   local parsers = {
@@ -49,6 +53,7 @@ local config = function()
       "vim",
       "vimdoc",
       "yaml",
+      "yaml.docker-compose",
     },
     callback = function()
       vim.treesitter.start()

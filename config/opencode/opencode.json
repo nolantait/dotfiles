@@ -66,6 +66,7 @@
       "head *": "allow",
       "ls *": "allow",
       "lsof *": "allow",
+      "mise *": "allow",
       "mkdir *": "allow",
       "pnpm *": "allow",
       "printf *": "allow",

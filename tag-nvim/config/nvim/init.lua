@@ -11,7 +11,12 @@ require("load-plugins").setup()
 -- These are configured in `after/lsp/*.lua`
 --
 -- Rust is handled by rustacean.nvim
-vim.lsp.enable({
+--
+-- Only enable a server whose command is actually installed, otherwise
+-- `vim.lsp.enable` logs an "invalid config" error on every startup for each
+-- missing binary (ansible, docker, ruff, ty, ...). Install the missing ones with
+-- `:MasonInstall <name>` (see `lua/plugins/lsp.lua`).
+local servers = {
   "ansible",
   "bash",
   "copilot_ls",
@@ -24,4 +29,18 @@ vim.lsp.enable({
   "ruby",
   "godot",
   -- "rust",
-})
+}
+
+local function is_installed(name)
+  local config = vim.lsp.config[name]
+  local cmd = config and config.cmd
+
+  -- Function commands (socket/in-process servers like godot) are always valid.
+  if type(cmd) ~= "table" then
+    return true
+  end
+
+  return vim.fn.executable(cmd[1]) == 1
+end
+
+vim.lsp.enable(vim.tbl_filter(is_installed, servers))

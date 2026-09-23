@@ -5,11 +5,11 @@ return {
   root_markers = {
     {
       "pyproject.toml",
+      "ty.toml",
       "setup.py",
       "setup.cfg",
       "requirements.txt",
       "Pipfile",
-      "pyrightconfig.json",
     },
     ".git",
   },

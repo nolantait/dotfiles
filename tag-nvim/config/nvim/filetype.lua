@@ -24,7 +24,7 @@ vim.filetype.add({
     avanterules = "markdown",
     baml = "baml",
     mdx = "markdown",
-    tx = "conf"
+    tx = "conf",
   },
   filename = {
     -- Add new filetype for specific filenames
@@ -35,7 +35,10 @@ vim.filetype.add({
     ["gitignore"] = "gitignore",
   },
   pattern = {
-    -- Add new filetype for files matching a pattern
-    -- ["~/projects/myproject/*"] = "myfiletype",
+    -- Docker Compose files get a dedicated filetype so the Docker language
+    -- server attaches to them without also grabbing every other YAML file.
+    -- See `after/lsp/docker.lua` and `lua/plugins/treesitter.lua`.
+    ["[Dd]ocker%-[Cc]ompose.*%.ya?ml"] = "yaml.docker-compose",
+    ["compose.*%.ya?ml"] = "yaml.docker-compose",
   },
 })

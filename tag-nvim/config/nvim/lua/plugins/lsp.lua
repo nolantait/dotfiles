@@ -11,10 +11,12 @@ return {
 
       diagnostics.setup()
 
-      -- Sets up default LSP handlers
+      -- Sets up default LSP handlers. Buffer-local setup (navic, document
+      -- highlighting) lives in an `LspAttach` autocommand inside the handlers
+      -- module rather than `on_attach` here, because a server-specific
+      -- `on_attach` replaces the wildcard one when configs are merged.
       vim.lsp.config("*", {
         capabilities = handlers.capabilities,
-        on_attach = handlers.on_attach,
       })
 
       local complete_client = function(arg)
@@ -54,6 +56,7 @@ return {
 
         local timer = assert(vim.uv.new_timer())
         timer:start(500, 0, function()
+          timer:close()
           for _, name in ipairs(clients) do
             vim.schedule_wrap(function(x)
               vim.lsp.enable(x)

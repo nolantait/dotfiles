@@ -55,10 +55,6 @@ local function setup_diagnostic_config()
   vim.diagnostic.config({
     virtual_lines = false,
     virtual_text = true,
-    inlay_hints = {
-      enabled = false,
-      exclude = {},
-    },
     signs = {
       text = {
         [severity.ERROR] = icons.error,

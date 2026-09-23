@@ -153,4 +153,18 @@ function M.on_attach(client, buffer)
   end
 end
 
+-- A server-specific `on_attach` replaces the wildcard one when Neovim merges
+-- configs, which silently dropped this shared setup for servers like eslint and
+-- copilot_ls. Run it from `LspAttach` instead so it applies to every client.
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("tainted/lsp-attach", { clear = true }),
+  desc = "Shared LSP buffer setup (navic + document highlighting)",
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+    if client then
+      M.on_attach(client, event.buf)
+    end
+  end,
+})
+
 return M

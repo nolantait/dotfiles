@@ -21,6 +21,6 @@ return {
       },
     },
   },
-  filetypes = { "yaml.ansible", "yaml" },
-  root_markers = { "ansible.cfg", ".ansible-lint" },
+  filetypes = { "yaml.ansible" },
+  root_markers = { ".ansible", "ansible.cfg", ".ansible-lint" },
 }
