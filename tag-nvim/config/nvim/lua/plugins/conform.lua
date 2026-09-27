@@ -40,10 +40,23 @@ return {
     },
     opts = {
       notify_on_error = true,
+      formatters = {
+        topcoat = {
+          command = "topcoat",
+          args = { "fmt", "--stdin" },
+          require_cwd = true,
+          cwd = function(self, ctx)
+            return require("conform.util").root_file({ "Topcoat.toml" })(
+              self,
+              ctx
+            )
+          end,
+        },
+      },
       formatters_by_ft = {
-        gdscript = { "gdformat" },
         bash = { "shfmt" },
         css = { "prettier" },
+        gdscript = { "gdformat" },
         html = { "prettier" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
@@ -52,6 +65,7 @@ return {
         lua = { "stylua" },
         markdown = { "trim_whitespace", "trim_newlines" },
         python = { "ruff_format" },
+        rust = { "topcoat", lsp_format = "first" },
         sh = { "shfmt" },
         svg = { "htmlbeautifier" },
         toml = { "prettier" },
