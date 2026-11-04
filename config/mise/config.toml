@@ -11,7 +11,6 @@ uv = "latest"
 postinstall = "npx corepack enable"
 
 [settings]
-always_keep_download = false
 always_keep_install = false
 auto_install = true
 env_file = ".env"
