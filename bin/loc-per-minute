@@ -32,10 +32,15 @@ fi
 
 elapsed_minutes=$(awk "BEGIN { print $elapsed_seconds / 60.0 }")
 
-# Sum insertions + deletions
+# Sum insertions + deletions, skipping lockfiles (Gemfile.lock, Cargo.lock,
+# and the common JS lockfiles) matched against the path in each numstat entry
 read insertions deletions <<<"$(
-  git show --numstat --format="" $commits \
-  | awk '{ins+=$1; del+=$2} END {print ins, del}'
+  git show --numstat --format="" $commits |
+    awk '
+      $3 ~ /(^|\/)(Gemfile\.lock|Cargo\.lock|package-lock\.json|npm-shrinkwrap\.json|yarn\.lock|pnpm-lock\.yaml|bun\.lockb?)$/ { next }
+      { ins += $1; del += $2 }
+      END { print ins, del }
+    '
 )"
 
 total_lines=$((insertions + deletions))
