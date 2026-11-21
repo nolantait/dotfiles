@@ -28,6 +28,7 @@ local servers = {
   "python_ty",
   "ruby",
   "godot",
+  "wowlua_ls",
   -- "rust",
 }
 

@@ -24,6 +24,7 @@ vim.filetype.add({
     avanterules = "markdown",
     baml = "baml",
     mdx = "markdown",
+    toc = "toc",
     tx = "conf",
   },
   filename = {

@@ -1,0 +1,161 @@
+#!/usr/bin/env bash
+# Downloads the latest wowlua-ls release and installs it using the same layout
+# Mason uses, so Mason's bin directory (which it prepends to PATH inside
+# Neovim) picks it up automatically:
+#
+#   ~/.local/share/nvim/mason/packages/wowlua-ls/wowlua_ls
+#   ~/.local/share/nvim/mason/bin/wowlua_ls -> ../packages/wowlua-ls/wowlua_ls
+#
+# Mason doesn't know about the package, so it won't show up in :Mason. Rerun
+# this script (or `update-dotfiles`) to update it.
+#
+# Usage:
+#   install-wowlua-ls             # install/update to the latest release
+#   install-wowlua-ls --force     # reinstall even if already current
+#   install-wowlua-ls --version 0.37.0
+#   install-wowlua-ls --dir /path/to/mason
+
+set -euo pipefail
+
+REPO="TradeSkillMaster/wowlua-ls"
+PACKAGE_NAME="wowlua-ls"
+BIN_NAME="wowlua_ls"
+
+MASON_DIR="${WOWLUA_LS_MASON_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/nvim/mason}"
+FORCE=0
+TAG=""
+
+usage() {
+  cat <<'EOF'
+Downloads the latest wowlua-ls release and installs it using the same layout
+Mason uses, so Mason's bin directory (which it prepends to PATH inside Neovim)
+picks it up automatically.
+
+Mason doesn't know about the package, so it won't show up in :Mason. Rerun
+this script to update it.
+
+Usage:
+  install-wowlua-ls             # install/update to the latest release
+  install-wowlua-ls --force     # reinstall even if already current
+  install-wowlua-ls --version 0.37.0
+  install-wowlua-ls --dir /path/to/mason
+EOF
+}
+
+fail() {
+  echo "install-wowlua-ls: $*" >&2
+  exit 1
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --force)
+      FORCE=1
+      shift
+      ;;
+    --version)
+      [[ -n "${2:-}" ]] || fail "--version requires a release tag"
+      TAG="$2"
+      shift 2
+      ;;
+    --dir)
+      [[ -n "${2:-}" ]] || fail "--dir requires a path"
+      MASON_DIR="$2"
+      shift 2
+      ;;
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "Unknown option: $1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+done
+
+for cmd in curl jq; do
+  command -v "$cmd" >/dev/null 2>&1 || fail "required command not found: $cmd"
+done
+
+asset=""
+case "$(uname -s)/$(uname -m)" in
+  Linux/x86_64 | Linux/amd64)
+    asset="wowlua_ls-x86_64-unknown-linux-gnu"
+    ;;
+  Darwin/arm64 | Darwin/aarch64)
+    asset="wowlua_ls-aarch64-apple-darwin"
+    ;;
+  Darwin/x86_64)
+    asset="wowlua_ls-x86_64-apple-darwin"
+    ;;
+  *)
+    fail "no prebuilt release for $(uname -s)/$(uname -m). Build from source with: cargo build --release"
+    ;;
+esac
+
+if [[ -n "$TAG" ]]; then
+  tag="v${TAG#v}"
+  release_url="https://api.github.com/repos/$REPO/releases/tags/$tag"
+else
+  release_url="https://api.github.com/repos/$REPO/releases/latest"
+fi
+
+release_json="$(curl -fsSL --retry 3 -H 'Accept: application/vnd.github+json' "$release_url")" ||
+  fail "could not fetch release info from $release_url"
+
+tag="$(jq -r '.tag_name // empty' <<<"$release_json")"
+[[ -n "$tag" ]] || fail "release response did not contain a tag name"
+
+version="${tag#v}"
+download_url="$(jq -r --arg name "$asset" '.assets[] | select(.name == $name) | .browser_download_url' <<<"$release_json")"
+checksums_url="$(jq -r '.assets[] | select(.name == "checksums.txt") | .browser_download_url' <<<"$release_json")"
+[[ -n "$download_url" ]] || fail "release $tag has no asset named $asset"
+[[ -n "$checksums_url" ]] || fail "release $tag has no checksums.txt asset"
+
+pkg_dir="$MASON_DIR/packages/$PACKAGE_NAME"
+bin_dir="$MASON_DIR/bin"
+installed_version="$(cat "$pkg_dir/version.txt" 2>/dev/null || true)"
+
+if [[ "$FORCE" -eq 0 && "$installed_version" == "$version" && -x "$pkg_dir/$BIN_NAME" ]]; then
+  mkdir -p "$bin_dir"
+  ln -sfn "../packages/$PACKAGE_NAME/$BIN_NAME" "$bin_dir/$BIN_NAME"
+  echo "$BIN_NAME $version is already installed at $pkg_dir/$BIN_NAME"
+  exit 0
+fi
+
+tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/wowlua-ls.XXXXXX")"
+trap 'rm -rf "$tmp_dir"' EXIT
+
+echo "Downloading $BIN_NAME $version for $(uname -s)/$(uname -m)..."
+curl -fsSL --retry 3 -o "$tmp_dir/$asset" "$download_url" ||
+  fail "failed to download $download_url"
+curl -fsSL --retry 3 -o "$tmp_dir/checksums.txt" "$checksums_url" ||
+  fail "failed to download $checksums_url"
+
+awk -v file="$asset" '$2 == file' "$tmp_dir/checksums.txt" >"$tmp_dir/$asset.sha256"
+[[ -s "$tmp_dir/$asset.sha256" ]] || fail "no checksum found for $asset in checksums.txt"
+
+if command -v sha256sum >/dev/null 2>&1; then
+  (cd "$tmp_dir" && sha256sum -c "$asset.sha256")
+elif command -v shasum >/dev/null 2>&1; then
+  (cd "$tmp_dir" && shasum -a 256 -c "$asset.sha256")
+else
+  fail "need sha256sum or shasum to verify the download"
+fi
+
+mkdir -p "$pkg_dir" "$bin_dir"
+install -m 0755 "$tmp_dir/$asset" "$pkg_dir/$BIN_NAME.new"
+mv -f "$pkg_dir/$BIN_NAME.new" "$pkg_dir/$BIN_NAME"
+printf '%s\n' "$version" >"$pkg_dir/version.txt"
+ln -sfn "../packages/$PACKAGE_NAME/$BIN_NAME" "$bin_dir/$BIN_NAME"
+
+if [[ -n "$installed_version" && "$installed_version" != "$version" ]]; then
+  echo "Updated $BIN_NAME $installed_version -> $version"
+else
+  echo "Installed $BIN_NAME $version"
+fi
+echo "  binary: $pkg_dir/$BIN_NAME"
+echo "  linked: $bin_dir/$BIN_NAME"
+echo "Restart Neovim (or run :LspRestart wowlua_ls) to pick it up."

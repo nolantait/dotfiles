@@ -2,16 +2,30 @@
 return {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = {
-    ".luarc.json",
-    ".luarc.jsonc",
-    ".luacheckrc",
-    ".stylua.toml",
-    "stylua.toml",
-    "selene.toml",
-    "selene.yml",
-    ".git",
-  },
+  root_dir = function(bufnr, on_dir)
+    -- wowlua-ls owns WoW addon projects (see after/lsp/wowlua_ls.lua). Don't
+    -- attach the general-purpose Lua server there too, otherwise every
+    -- diagnostic and completion is reported twice.
+    if
+      vim.fs.root(bufnr, ".wowluarc.json")
+      or vim.fs.root(bufnr, function(name)
+        return name:match("%.toc$") ~= nil
+      end)
+    then
+      return
+    end
+
+    on_dir(vim.fs.root(bufnr, {
+      ".luarc.json",
+      ".luarc.jsonc",
+      ".luacheckrc",
+      ".stylua.toml",
+      "stylua.toml",
+      "selene.toml",
+      "selene.yml",
+      ".git",
+    }))
+  end,
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
