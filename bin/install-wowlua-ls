@@ -1,19 +1,24 @@
 #!/usr/bin/env bash
-# Downloads the latest wowlua-ls release and installs it using the same layout
-# Mason uses, so Mason's bin directory (which it prepends to PATH inside
-# Neovim) picks it up automatically:
+# Downloads the latest wowlua-ls release and installs it outside of Mason's
+# packages directory. Mason treats every directory under
+# `mason/packages/<name>` as an installed package and errors when it has no
+# registry entry for it, which breaks `:MasonUpdateAll`.
 #
-#   ~/.local/share/nvim/mason/packages/wowlua-ls/wowlua_ls
-#   ~/.local/share/nvim/mason/bin/wowlua_ls -> ../packages/wowlua-ls/wowlua_ls
+# The binary lives in the XDG data directory and is symlinked into Mason's bin
+# directory, which Mason prepends to PATH inside Neovim:
+#
+#   ~/.local/share/wowlua-ls/wowlua_ls
+#   ~/.local/share/nvim/mason/bin/wowlua_ls -> ~/.local/share/wowlua-ls/wowlua_ls
 #
 # Mason doesn't know about the package, so it won't show up in :Mason. Rerun
-# this script (or `update-dotfiles`) to update it.
+# this script to update it.
 #
 # Usage:
 #   install-wowlua-ls             # install/update to the latest release
 #   install-wowlua-ls --force     # reinstall even if already current
 #   install-wowlua-ls --version 0.37.0
-#   install-wowlua-ls --dir /path/to/mason
+#   install-wowlua-ls --dir /path/to/install/dir
+#   install-wowlua-ls --bin-dir /path/to/bin
 
 set -euo pipefail
 
@@ -21,15 +26,17 @@ REPO="TradeSkillMaster/wowlua-ls"
 PACKAGE_NAME="wowlua-ls"
 BIN_NAME="wowlua_ls"
 
+DATA_DIR="${WOWLUA_LS_DATA_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/wowlua-ls}"
 MASON_DIR="${WOWLUA_LS_MASON_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/nvim/mason}"
+BIN_DIR="${WOWLUA_LS_BIN_DIR:-$MASON_DIR/bin}"
 FORCE=0
 TAG=""
 
 usage() {
   cat <<'EOF'
-Downloads the latest wowlua-ls release and installs it using the same layout
-Mason uses, so Mason's bin directory (which it prepends to PATH inside Neovim)
-picks it up automatically.
+Downloads the latest wowlua-ls release and installs it outside of Mason's
+packages directory, symlinking the binary into Mason's bin directory (which
+Mason prepends to PATH inside Neovim).
 
 Mason doesn't know about the package, so it won't show up in :Mason. Rerun
 this script to update it.
@@ -38,7 +45,8 @@ Usage:
   install-wowlua-ls             # install/update to the latest release
   install-wowlua-ls --force     # reinstall even if already current
   install-wowlua-ls --version 0.37.0
-  install-wowlua-ls --dir /path/to/mason
+  install-wowlua-ls --dir /path/to/install/dir
+  install-wowlua-ls --bin-dir /path/to/bin
 EOF
 }
 
@@ -60,7 +68,12 @@ while [[ $# -gt 0 ]]; do
       ;;
     --dir)
       [[ -n "${2:-}" ]] || fail "--dir requires a path"
-      MASON_DIR="$2"
+      DATA_DIR="$2"
+      shift 2
+      ;;
+    --bin-dir)
+      [[ -n "${2:-}" ]] || fail "--bin-dir requires a path"
+      BIN_DIR="$2"
       shift 2
       ;;
     -h | --help)
@@ -114,14 +127,22 @@ checksums_url="$(jq -r '.assets[] | select(.name == "checksums.txt") | .browser_
 [[ -n "$download_url" ]] || fail "release $tag has no asset named $asset"
 [[ -n "$checksums_url" ]] || fail "release $tag has no checksums.txt asset"
 
-pkg_dir="$MASON_DIR/packages/$PACKAGE_NAME"
-bin_dir="$MASON_DIR/bin"
-installed_version="$(cat "$pkg_dir/version.txt" 2>/dev/null || true)"
+# Earlier versions of this script installed into Mason's packages directory.
+# That makes Mason's registry fail because it has no package definition for
+# wowlua-ls, so remove the old package (but leave real Mason packages alone:
+# they have a mason-receipt.json).
+legacy_pkg_dir="$MASON_DIR/packages/$PACKAGE_NAME"
+if [[ -d "$legacy_pkg_dir" && ! -f "$legacy_pkg_dir/mason-receipt.json" ]]; then
+  rm -rf "$legacy_pkg_dir"
+  echo "Removed legacy Mason package directory: $legacy_pkg_dir"
+fi
 
-if [[ "$FORCE" -eq 0 && "$installed_version" == "$version" && -x "$pkg_dir/$BIN_NAME" ]]; then
-  mkdir -p "$bin_dir"
-  ln -sfn "../packages/$PACKAGE_NAME/$BIN_NAME" "$bin_dir/$BIN_NAME"
-  echo "$BIN_NAME $version is already installed at $pkg_dir/$BIN_NAME"
+installed_version="$(cat "$DATA_DIR/version.txt" 2>/dev/null || true)"
+
+if [[ "$FORCE" -eq 0 && "$installed_version" == "$version" && -x "$DATA_DIR/$BIN_NAME" ]]; then
+  mkdir -p "$BIN_DIR"
+  ln -sfn "$DATA_DIR/$BIN_NAME" "$BIN_DIR/$BIN_NAME"
+  echo "$BIN_NAME $version is already installed at $DATA_DIR/$BIN_NAME"
   exit 0
 fi
 
@@ -145,17 +166,17 @@ else
   fail "need sha256sum or shasum to verify the download"
 fi
 
-mkdir -p "$pkg_dir" "$bin_dir"
-install -m 0755 "$tmp_dir/$asset" "$pkg_dir/$BIN_NAME.new"
-mv -f "$pkg_dir/$BIN_NAME.new" "$pkg_dir/$BIN_NAME"
-printf '%s\n' "$version" >"$pkg_dir/version.txt"
-ln -sfn "../packages/$PACKAGE_NAME/$BIN_NAME" "$bin_dir/$BIN_NAME"
+mkdir -p "$DATA_DIR" "$BIN_DIR"
+install -m 0755 "$tmp_dir/$asset" "$DATA_DIR/$BIN_NAME.new"
+mv -f "$DATA_DIR/$BIN_NAME.new" "$DATA_DIR/$BIN_NAME"
+printf '%s\n' "$version" >"$DATA_DIR/version.txt"
+ln -sfn "$DATA_DIR/$BIN_NAME" "$BIN_DIR/$BIN_NAME"
 
 if [[ -n "$installed_version" && "$installed_version" != "$version" ]]; then
   echo "Updated $BIN_NAME $installed_version -> $version"
 else
   echo "Installed $BIN_NAME $version"
 fi
-echo "  binary: $pkg_dir/$BIN_NAME"
-echo "  linked: $bin_dir/$BIN_NAME"
+echo "  binary: $DATA_DIR/$BIN_NAME"
+echo "  linked: $BIN_DIR/$BIN_NAME"
 echo "Restart Neovim (or run :LspRestart wowlua_ls) to pick it up."
