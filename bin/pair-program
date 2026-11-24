@@ -65,7 +65,6 @@ exec upterm host \
   --server "ssh://${SERVER}:2222" \
   "${auth_args[@]}" \
   --force-command "tmux attach -t ${TMUX_SESSION}" \
-  --no-exec --no-sftp --no-forwarding \
-  --join-timeout "$JOIN_TIMEOUT" \
+  --no-sftp \
   --hide-client-ip \
   -- tmux new -A -s "$TMUX_SESSION"
