@@ -1,44 +1,24 @@
-# Config file does not exist. Example config:
-
-# Upterm Configuration File
+# Upterm configuration.
 #
-# This file follows the XDG Base Directory Specification.
-# Settings here are overridden by environment variables (UPTERM_*) and command-line flags.
-#
-# Configuration priority (highest to lowest):
-#   1. Command-line flags
-#   2. Environment variables (UPTERM_* prefix)
-#   3. This config file
-#   4. Default values
+# This file is symlinked from ~/.config/upterm/config.yaml.
+# Precedence: command-line flags > UPTERM_* environment > this file > defaults.
 
-# Debug logging (default: false)
-# When enabled, writes debug-level logs to the log file.
-# debug: true
+# Default relay for `upterm host` when --server is not given. The pair-program
+# script passes --server explicitly, and the relay address is intentionally not
+# recorded in this public repo.
+# server: ssh://RELAY_HOST:2222
 
-# Default server address for hosting sessions (default: ssh://uptermd.upterm.dev:22)
-# Supported protocols: ssh, ws, wss
-# server: ssh://uptermd.upterm.dev:22
+# Guest allowlist. Prefer passing --authorized-keys or --authorized-user on the
+# command line (the pair-program script does). A bare "~" is NOT expanded here,
+# so a value of ~/.ssh/authorized_keys makes `upterm host` fail; use an absolute
+# path if you set this.
+# authorized-keys: /absolute/path/to/authorized_keys
 
-# Force a specific command for clients (default: none)
-# When set, clients cannot run arbitrary commands.
-# Use YAML array syntax: ["command", "arg1", "arg2"]
-# force-command: ["/bin/bash", "-l"]
+# ~/.ssh/known_hosts is also the default for --known-hosts. Keep it that way so
+# the self-hosted relay's pinned key is checked; never use --skip-host-key-check
+# for regular sessions.
 
-# Path to authorized_keys file for client authentication (default: none)
-authorized-keys: ~/.ssh/authorized_keys
-
-# Paths to private key files (default: generates ephemeral key)
-# private-key:
-#   - /path/to/private/key1
-#   - /path/to/private/key2
-
-# Read-only mode (default: false)
-# When enabled, clients can view but not interact with the session.
+# Defaults that are safe for shared sessions:
+# accept: false        # --accept also enables sftp
 # read-only: false
-
-# Auto-accept clients without confirmation (default: false)
-# WARNING: Only use this in trusted environments.
-# accept: false
-
-# Hide client IP addresses from logs and display (default: false)
 # hide-client-ip: false

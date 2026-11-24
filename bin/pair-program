@@ -1,32 +1,71 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Server IP must be provided
-SERVER_IP=""
+usage() {
+  cat >&2 <<'EOF'
+Usage: pair-program --server IP_OR_HOST [options]
 
-# Parse command-line arguments
+Options:
+  --server ADDR           Relay host (required). Port 2222 is used.
+  --guest PROVIDER:USER   Allow only this code-hosting user's keys to join,
+                          e.g. github:alice. Default: keys in
+                          ~/.ssh/authorized_keys.
+  -h, --help              Show this help.
+
+Environment:
+  PAIR_TMUX_SESSION       tmux session name (default: pair-programming)
+  PAIR_JOIN_TIMEOUT       end the session if nobody joins (default: 10m)
+  PAIR_AUTHORIZED_KEYS    guest keys file (default: ~/.ssh/authorized_keys)
+
+Share only the join/ssh line upterm prints; treat it as a secret.
+EOF
+  exit "${1:-1}"
+}
+
+SERVER=""
+GUEST=""
+
 while [[ $# -gt 0 ]]; do
-  case $1 in
+  case "$1" in
     --server)
-      SERVER_IP="$2"
+      [[ $# -ge 2 && -n "$2" && "$2" != -* ]] || usage
+      SERVER="$2"
       shift 2
       ;;
+    --guest)
+      [[ $# -ge 2 && -n "$2" ]] || usage
+      GUEST="$2"
+      shift 2
+      ;;
+    -h|--help)
+      usage 0
+      ;;
     *)
-      echo "Unknown option: $1"
-      echo "Usage: $0 --server IP_ADDRESS"
-      exit 1
+      echo "Unknown option: $1" >&2
+      usage
       ;;
   esac
 done
 
-# Check if server IP was provided
-if [ -z "$SERVER_IP" ]; then
-  echo "Error: Server IP is required"
-  echo "Usage: $0 --server IP_ADDRESS"
-  exit 1
+[[ -n "$SERVER" ]] || { echo "Error: --server is required" >&2; usage; }
+
+TMUX_SESSION="${PAIR_TMUX_SESSION:-pair-programming}"
+JOIN_TIMEOUT="${PAIR_JOIN_TIMEOUT:-10m}"
+AUTH_KEYS="${PAIR_AUTHORIZED_KEYS:-$HOME/.ssh/authorized_keys}"
+
+auth_args=()
+if [[ -n "$GUEST" ]]; then
+  auth_args+=(--authorized-user "$GUEST")
+else
+  [[ -r "$AUTH_KEYS" ]] || { echo "Error: cannot read $AUTH_KEYS" >&2; exit 1; }
+  auth_args+=(--authorized-keys "$AUTH_KEYS")
 fi
 
-upterm host \
-  --server "ssh://${SERVER_IP}:2222" \
-  --authorized-keys ~/.ssh/authorized_keys \
-  --force-command 'tmux attach -t pair-programming' \
-  -- tmux new -t pair-programming
+exec upterm host \
+  --server "ssh://${SERVER}:2222" \
+  "${auth_args[@]}" \
+  --force-command "tmux attach -t ${TMUX_SESSION}" \
+  --no-exec --no-sftp --no-forwarding \
+  --join-timeout "$JOIN_TIMEOUT" \
+  --hide-client-ip \
+  -- tmux new -A -s "$TMUX_SESSION"
